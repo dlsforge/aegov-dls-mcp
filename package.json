@@ -1,0 +1,31 @@
+{
+  "name": "@dlsforge/aegov-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing the UAE Design System (AEGOV DLS) to AI coding assistants. Community project. Not affiliated with or endorsed by TDRA.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "aegov-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
+    "smoke": "node scripts/smoke-test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.2",
+    "typescript": "5.9.3"
+  }
+}

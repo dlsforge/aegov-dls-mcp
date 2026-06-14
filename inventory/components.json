@@ -1,0 +1,313 @@
+{
+  "source": {
+    "package": "@aegov/design-system",
+    "version": "3.0.7",
+    "compiledFrom": "dist/plugin.js",
+    "method": "recursive introspection of the Tailwind plugin CSS-in-JS object"
+  },
+  "classRootCount": 27,
+  "classRoots": [
+    {
+      "root": "aegov-accordion",
+      "classes": [
+        ".aegov-accordion"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-alert",
+      "classes": [
+        ".aegov-alert"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-avatar",
+      "classes": [
+        ".aegov-avatar"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-backdrop",
+      "classes": [
+        ".aegov-backdrop"
+      ],
+      "layers": [
+        "aegov-base",
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-badge",
+      "classes": [
+        ".aegov-badge"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-banner",
+      "classes": [
+        ".aegov-banner"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-breadcrumb",
+      "classes": [
+        ".aegov-breadcrumb"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-btn",
+      "classes": [
+        ".aegov-btn"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-card",
+      "classes": [
+        ".aegov-card",
+        ".aegov-card-group"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-check",
+      "classes": [
+        ".aegov-check-group",
+        ".aegov-check-item"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-dropdown",
+      "classes": [
+        ".aegov-dropdown"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-file",
+      "classes": [
+        ".aegov-file-input-control"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-footer",
+      "classes": [
+        ".aegov-footer"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-form",
+      "classes": [
+        ".aegov-form-control"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-header",
+      "classes": [
+        ".aegov-header"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-hero",
+      "classes": [
+        ".aegov-hero",
+        ".aegov-hero-static"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-link",
+      "classes": [
+        ".aegov-link"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-mobile",
+      "classes": [
+        ".aegov-mobile-accordion"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-modal",
+      "classes": [
+        ".aegov-modal",
+        ".aegov-modal-backdrop",
+        ".aegov-modal-close",
+        ".aegov-modal-wrapper"
+      ],
+      "layers": [
+        "aegov-base",
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-pagination",
+      "classes": [
+        ".aegov-pagination",
+        ".aegov-pagination-current",
+        ".aegov-pagination-extend",
+        ".aegov-pagination-first",
+        ".aegov-pagination-last",
+        ".aegov-pagination-next",
+        ".aegov-pagination-page",
+        ".aegov-pagination-previous"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-popover",
+      "classes": [
+        ".aegov-popover"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-quote",
+      "classes": [
+        ".aegov-quote"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-step",
+      "classes": [
+        ".aegov-step",
+        ".aegov-step-title"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-tab",
+      "classes": [
+        ".aegov-tab"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-toast",
+      "classes": [
+        ".aegov-toast"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-toggle",
+      "classes": [
+        ".aegov-toggle"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    },
+    {
+      "root": "aegov-tooltip",
+      "classes": [
+        ".aegov-tooltip"
+      ],
+      "layers": [
+        "aegov-components"
+      ]
+    }
+  ],
+  "allAegovClasses": [
+    ".aegov-accordion",
+    ".aegov-alert",
+    ".aegov-avatar",
+    ".aegov-backdrop",
+    ".aegov-badge",
+    ".aegov-banner",
+    ".aegov-breadcrumb",
+    ".aegov-btn",
+    ".aegov-card",
+    ".aegov-card-group",
+    ".aegov-check-group",
+    ".aegov-check-item",
+    ".aegov-dropdown",
+    ".aegov-file-input-control",
+    ".aegov-footer",
+    ".aegov-form-control",
+    ".aegov-header",
+    ".aegov-hero",
+    ".aegov-hero-static",
+    ".aegov-link",
+    ".aegov-mobile-accordion",
+    ".aegov-modal",
+    ".aegov-modal-backdrop",
+    ".aegov-modal-close",
+    ".aegov-modal-wrapper",
+    ".aegov-pagination",
+    ".aegov-pagination-current",
+    ".aegov-pagination-extend",
+    ".aegov-pagination-first",
+    ".aegov-pagination-last",
+    ".aegov-pagination-next",
+    ".aegov-pagination-page",
+    ".aegov-pagination-previous",
+    ".aegov-popover",
+    ".aegov-quote",
+    ".aegov-step",
+    ".aegov-step-title",
+    ".aegov-tab",
+    ".aegov-toast",
+    ".aegov-toggle",
+    ".aegov-tooltip"
+  ]
+}

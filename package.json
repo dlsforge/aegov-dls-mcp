@@ -21,6 +21,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@aegov/design-system": "3.0.7",
     "@modelcontextprotocol/sdk": "1.29.0",
     "zod": "4.4.3"
   },

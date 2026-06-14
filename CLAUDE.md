@@ -24,8 +24,8 @@ The proprietary layer (AEGOV AI Studio, Arabic/RTL parity engine, service-protot
 ## Build order (from STAGE1-HANDOFF.md — do not skip ahead)
 
 1. Scaffold Node + TypeScript + MCP SDK; single `ping` tool; **prove an assistant connects before anything else.**
-2. Install and inspect `@aegov/design-system`; confirm the real inventory (expected: ~28 components, 9 blocks, 6 patterns — verify).
-3. Parse → `rules-core` (schemas, tokens, validators). This is the foundation every later product trusts; correctness over speed.
+2. Install and inspect `@aegov/design-system`; confirm the real inventory. **Done & verified (3.0.7):** 27 component class-roots from 41 `.aegov-*` classes — see `inventory/components.json` (regen via `scripts/extract-inventory.mjs`). The earlier "~28 components, 9 blocks, 6 patterns" was wrong: the package ships **components only** — see two-source note in step 3.
+3. Parse → `rules-core` (schemas, tokens, validators). This is the foundation every later product trusts; correctness over speed. **Verified two-source reality (STAGE1-HANDOFF.md §10):** components and tokens ship in the npm package (authoritative, version-pinned, introspected from `dist/plugin.js`) — but **blocks and patterns do NOT ship as code**; they exist only in the website docs and must be a separate, clearly-marked, docs-sourced path. Model the two provenance tiers distinctly (`provenance.tier: 'package' | 'docs'`); every docs-sourced record must carry a source URL, a retrieved-on date, and a `needs-revalidation` trust flag. **v1 scope:** core `@aegov/design-system` (HTML/CSS, Tailwind 4) only; `@aegov/design-system-react` (npm latest 1.1.2) is out of scope until after adoption.
 4. MCP tools: `listComponents`, `getComponent`, `getTokens`, `scaffoldUaePass`, `scaffoldEmiratesId`, `validate_snippet`.
 5. Eval suite: 10 common government screens in `/evals`; iterate the catalogue and tool descriptions (never hand-edit outputs) until they pass reliably.
 6. README + publish: npm under `@dlsforge`, GitHub under the `dlsforge` org, list on MCP registries.

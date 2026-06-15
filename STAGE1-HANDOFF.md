@@ -114,9 +114,11 @@ This is the central verified fact that shapes the parser:
 - **Blocks and patterns do NOT ship as code.** They exist **only** in the website docs at `designsystem.gov.ae`. They must be modelled as a **separate, clearly-marked, docs-sourced path** — never conflated with package-sourced data.
 - Every **docs-sourced record must carry**: a **source URL**, a **retrieved-on date** (ISO `YYYY-MM-DD`), and a **`needs-revalidation` trust flag**. These are mandatory, not optional metadata.
 
-### 10.3 Proposed rules-core provenance model (proposal — NOT yet built; awaiting review)
+### 10.3 rules-core taxonomy + provenance model (APPROVED 2026-06-15; schema in `src/catalog/types.ts`)
 
-Every catalogue record carries a discriminated `provenance` field so the two tiers are distinct at the type level, the storage level, and in tool output:
+**Taxonomy (Q1, approved).** Each component record is **keyed by its CSS class-root** (the verifiable package truth, e.g. `aegov-btn`). Docs name(s) attach as **aliases** (`docsNames`), with a **one-line `taxonomyNote`** whenever a root splits or merges docs concepts (e.g. `aegov-check` covers checkbox + radio). `docsNames`/`taxonomyNote` are **populated in the docs-sourcing pass**, not from memory — they stay empty in the package-only build. Beyond identity, every component record has an explicit **`rules` slot** for attached constraints (accessibility, mandated usage, RTL behaviour). Capturing the *standard*, not just the markup, is the point of rules-core; the `rules` slot is filled from sourced standards (each rule carrying its own provenance).
+
+**Provenance (Q2, approved).** Every record carries a discriminated `provenance` field so the two tiers are distinct at the type, storage, and tool-output levels:
 
 ```ts
 type Provenance =
@@ -126,22 +128,26 @@ type Provenance =
       version: string;            // exact pinned version, e.g. "3.0.7"
       extractedFrom: string;      // e.g. "dist/plugin.js"
       method: 'compiled-css-introspection';
-      // trust is implicit: authoritative. No revalidation flag.
+      contentHash: string;        // sha256 of NORMALIZED extracted content (not raw source)
     }
   | {
       tier: 'docs';               // blocks, patterns, usage guidance not in the package
       sourceUrl: string;          // canonical designsystem.gov.ae URL
       retrievedOn: string;        // ISO date the page was captured
-      trust: 'needs-revalidation';// ALWAYS present for docs tier
+      contentHash: string;        // sha256 of NORMALIZED extracted content (code example +
+                                  // guidance text), NOT raw page HTML — so drift-checks
+                                  // signal real changes, not cosmetic markup churn
       docsVersion: string | null; // captured if the docs expose one, else null
     };
 ```
 
 Design rules for the model:
-- **Discriminated union on `provenance.tier`** — TypeScript enforces that docs-tier records *must* have `sourceUrl` + `retrievedOn` + `trust`, and package-tier records *must* have `version` + `extractedFrom`. A docs record without a source URL or date won't compile.
+- **Discriminated union on `provenance.tier`** — TypeScript enforces that docs-tier records *must* have `sourceUrl` + `retrievedOn` + `contentHash`, and package-tier records *must* have `version` + `extractedFrom` + `contentHash`. A docs record without a source URL or date won't compile.
+- **Normalized content hash** — stored for *both* tiers. For docs records it hashes the extracted code example + guidance text (never raw HTML), so a later drift-check distinguishes a real content change from cosmetic page churn. For package records it hashes the component's normalized CSS subtree.
+- **No trust-level taxonomy yet.** Docs records are provisional by definition and must be revalidated, but we deliberately do **not** invent finer trust categories until we have seen the real docs. **`UAE Pass` and `Emirates ID` are high-stakes** and must be verified especially carefully against source; finer categories can emerge from there.
 - **Tier is fixed by record type in v1:** components and tokens are *only ever* `tier: 'package'`; blocks and patterns are *only ever* `tier: 'docs'`. If a future package version ships blocks as code, those records migrate to the package tier on a deliberate bump.
-- **Storage mirrors provenance:** package-sourced data lives in generated files like `inventory/components.json` / `catalog/tokens.json`; docs-sourced data lives in clearly separate files (`catalog/blocks.json`, `catalog/patterns.json`) so the tier is obvious before you even read a record.
-- **Tools surface the tier:** `listComponents` / `getComponent` / `getTokens` return package-tier data as authoritative; any tool returning a block/pattern includes the `provenance` block so the assistant (and the human in the loop) sees the `needs-revalidation` flag, the source URL, and the retrieval date. `validate_snippet` weights confidence by tier — package-sourced classes validate with certainty; docs-sourced block structure validates best-effort and is flagged.
+- **Storage mirrors provenance:** package-sourced data is generated into `catalog/catalog.json` (built by `scripts/build-catalog.mjs` from the authoritative `inventory/components.json`); docs-sourced records populate the same catalogue's `blocks`/`patterns` arrays and the `rules`/`docsNames`/`markup` slots, each carrying docs provenance.
+- **Tools surface the tier:** `listComponents` / `getComponent` / `getTokens` return package-tier data as authoritative; any tool returning a block/pattern or a docs-sourced rule includes its `provenance` so the assistant (and the human in the loop) sees the source URL and retrieval date. `validate_snippet` weights confidence by tier — package-sourced classes validate with certainty; docs-sourced block structure validates best-effort and is flagged.
 
 ### 10.4 v1 scope boundary
 

@@ -15,7 +15,9 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "start": "node dist/index.js",
-    "smoke": "node scripts/smoke-test.mjs"
+    "smoke": "node scripts/smoke-test.mjs",
+    "inventory": "node scripts/extract-inventory.mjs",
+    "catalog": "node scripts/build-catalog.mjs"
   },
   "engines": {
     "node": ">=18"

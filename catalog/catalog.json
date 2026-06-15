@@ -1,0 +1,3497 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "generatedFrom": {
+      "package": "@aegov/design-system",
+      "version": "3.0.7"
+    }
+  },
+  "components": [
+    {
+      "classRoot": "aegov-accordion",
+      "classes": [
+        ".aegov-accordion"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "dfd18d2cf73539932e5e8c9d1f28fa4fdcbf37ab643a19763bee76f6e0eb5dab"
+      }
+    },
+    {
+      "classRoot": "aegov-alert",
+      "classes": [
+        ".aegov-alert"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "04200337d46b47bfb9b9b5111acc30ed48115146687ef9b097a5af533e422778"
+      }
+    },
+    {
+      "classRoot": "aegov-avatar",
+      "classes": [
+        ".aegov-avatar"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d6eb42774b416a79154f896762c2db4f61994e2e35c7db925746d0699a916070"
+      }
+    },
+    {
+      "classRoot": "aegov-backdrop",
+      "classes": [
+        ".aegov-backdrop"
+      ],
+      "layers": [
+        "aegov-base",
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "abe6180ecfdf3b40806c7499c8aa81a19c9a04f0e0ea520c0775ca886669db51"
+      }
+    },
+    {
+      "classRoot": "aegov-badge",
+      "classes": [
+        ".aegov-badge"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a25a6769e18f66743fc5e61fc04442edc58e4814a2916a966c062e692976610b"
+      }
+    },
+    {
+      "classRoot": "aegov-banner",
+      "classes": [
+        ".aegov-banner"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "85bfac14d75b1d0293cec5049fc5023888f534424d456f0e9110b0800874e4e1"
+      }
+    },
+    {
+      "classRoot": "aegov-breadcrumb",
+      "classes": [
+        ".aegov-breadcrumb"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ca230802c5f0eb8e79a6a45567947767dd512c81cde5c4d50877c8dff668093e"
+      }
+    },
+    {
+      "classRoot": "aegov-btn",
+      "classes": [
+        ".aegov-btn"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "4e980ff55c3b4cb2c721bb8019b5b73d19c421723db8d9637917331c8980d55a"
+      }
+    },
+    {
+      "classRoot": "aegov-card",
+      "classes": [
+        ".aegov-card",
+        ".aegov-card-group"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "43173ba6ca814dbd9cfc2b3aebe21da606d7d872facb950f2fa5128e41852580"
+      }
+    },
+    {
+      "classRoot": "aegov-check",
+      "classes": [
+        ".aegov-check-group",
+        ".aegov-check-item"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "6dcef5bcfecc1ad301037c36d993fa7cf168b39fdf9ec2fb3e1a6a26a3b9edbb"
+      }
+    },
+    {
+      "classRoot": "aegov-dropdown",
+      "classes": [
+        ".aegov-dropdown"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "acc2e19aa9118bae6dc7ee2f60d01c44a5444082892bd4b060fbad49440e86f9"
+      }
+    },
+    {
+      "classRoot": "aegov-file",
+      "classes": [
+        ".aegov-file-input-control"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "496bbf377c50e24ab24eda41d123d0185f2d5e123c1cf23c1125b0e4a3713c9c"
+      }
+    },
+    {
+      "classRoot": "aegov-footer",
+      "classes": [
+        ".aegov-footer"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "630d1d6f528508ba369518dd2d3b94fce14e287a18adb9e404867d94ae82345e"
+      }
+    },
+    {
+      "classRoot": "aegov-form",
+      "classes": [
+        ".aegov-form-control"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "4d29d631bed3829818d9e577d812fa1cad19b34d6d3db508396aefe1a2da569a"
+      }
+    },
+    {
+      "classRoot": "aegov-header",
+      "classes": [
+        ".aegov-header"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8763ebeec4ffb9b2a54e1d0e022516ace52f1ded8a8036fbb46e010f0a8c827b"
+      }
+    },
+    {
+      "classRoot": "aegov-hero",
+      "classes": [
+        ".aegov-hero",
+        ".aegov-hero-static"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8bebad14ddef733ab51373fad5c03cae2e5f115772fa09d0c17add7cfd77c542"
+      }
+    },
+    {
+      "classRoot": "aegov-link",
+      "classes": [
+        ".aegov-link"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "36361e5d01fbc245b56206b6417483295ef6f030cf015e5036363ef123bbdbf1"
+      }
+    },
+    {
+      "classRoot": "aegov-mobile",
+      "classes": [
+        ".aegov-mobile-accordion"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a26227b0c6d7f82a6d7510c5dda2fdaf122face624121e42597c4a644f94d348"
+      }
+    },
+    {
+      "classRoot": "aegov-modal",
+      "classes": [
+        ".aegov-modal",
+        ".aegov-modal-backdrop",
+        ".aegov-modal-close",
+        ".aegov-modal-wrapper"
+      ],
+      "layers": [
+        "aegov-base",
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "780eb788250f27c739630cdb3cfd352c9f50274ef4ff5b4a0ffeb44284f27d84"
+      }
+    },
+    {
+      "classRoot": "aegov-pagination",
+      "classes": [
+        ".aegov-pagination",
+        ".aegov-pagination-current",
+        ".aegov-pagination-extend",
+        ".aegov-pagination-first",
+        ".aegov-pagination-last",
+        ".aegov-pagination-next",
+        ".aegov-pagination-page",
+        ".aegov-pagination-previous"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e2521342c9e8e95784c0d5f2f6bc5f2766a3a0844751435beb0c12826f3ce684"
+      }
+    },
+    {
+      "classRoot": "aegov-popover",
+      "classes": [
+        ".aegov-popover"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e6a3a0f8af0a0500d6bc4ddfe87567176e3d92ada3fa1da2bca9d8a95e66c9ec"
+      }
+    },
+    {
+      "classRoot": "aegov-quote",
+      "classes": [
+        ".aegov-quote"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3ace090bea6ae36339a656d05958af2a5b8e1f070c9cd35e6f71762b376feed9"
+      }
+    },
+    {
+      "classRoot": "aegov-step",
+      "classes": [
+        ".aegov-step",
+        ".aegov-step-title"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c472e91947816ac41ee8e5b5f16441b224caad02a01b7e19d76b0acd8eb51285"
+      }
+    },
+    {
+      "classRoot": "aegov-tab",
+      "classes": [
+        ".aegov-tab"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "cf7354de2fe02f9b9dcc78512d31634661a385ba6363b47bc42542a2e0cf92ed"
+      }
+    },
+    {
+      "classRoot": "aegov-toast",
+      "classes": [
+        ".aegov-toast"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "575e9e2f2eff0f7f340551c1a5725b87f7595300f72f8f6823adcbb9399e7d82"
+      }
+    },
+    {
+      "classRoot": "aegov-toggle",
+      "classes": [
+        ".aegov-toggle"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "61821390df7b76b5e31fa5df0aa332d440bd3599a85dd4146fd2c09548c8e4e4"
+      }
+    },
+    {
+      "classRoot": "aegov-tooltip",
+      "classes": [
+        ".aegov-tooltip"
+      ],
+      "layers": [
+        "aegov-components"
+      ],
+      "docsNames": [],
+      "taxonomyNote": null,
+      "rules": [],
+      "markup": null,
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0abcc71d68a9a76bea0527f372cd966487e9fcbb264c22ca6368e34ccfc8ad3d"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "--color-primary-50",
+      "value": "oklch(0.975 0.013 97.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9bacc6a8867ae8ad42b91b86ce72a8d936309fb8ae7c5c63d306318651c67d87"
+      }
+    },
+    {
+      "name": "--color-primary-100",
+      "value": "oklch(0.940 0.039 97.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e4363be840e091dd331e904bfd4a2fbdc20e06da14284540fb6fda7f7bec1644"
+      }
+    },
+    {
+      "name": "--color-primary-200",
+      "value": "oklch(0.879 0.071 94.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e3dc44a3bd97db6c0208a22681e0e6c1fc20f232232c53cb8308d7319b5033b1"
+      }
+    },
+    {
+      "name": "--color-primary-300",
+      "value": "oklch(0.802 0.104 91.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2a84358b04861afb59c8f2903d4eab0110639545c0f5e867f8334d3cf65f86e3"
+      }
+    },
+    {
+      "name": "--color-primary-400",
+      "value": "oklch(0.734 0.121 85.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7d996eb62cd816d8720f098ea0410967bf4b7a4438e2bab7bcc8dd0c8a6d85ef"
+      }
+    },
+    {
+      "name": "--color-primary-500",
+      "value": "oklch(0.660 0.114 80.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7ba6263a76d107886b888195dc01fb31d4eed5a92c08c082609461053db18b72"
+      }
+    },
+    {
+      "name": "--color-primary-600",
+      "value": "oklch(0.570 0.097 84.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b36532a6dbb3757ee1ea694810a7315192c96cf5107a0f0bf959e6a6642a4f3c"
+      }
+    },
+    {
+      "name": "--color-primary-700",
+      "value": "oklch(0.501 0.084 81.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "981b4aebe5413b736af09de96696b42944ec101a320b01061cb57986a9ac9f6f"
+      }
+    },
+    {
+      "name": "--color-primary-800",
+      "value": "oklch(0.428 0.069 57.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7722d1045392e51849c5f4c30b17306f8e258ace1671504584bb1f6c36c6d4ec"
+      }
+    },
+    {
+      "name": "--color-primary-900",
+      "value": "oklch(0.387 0.058 52.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "21c54948ca63dabb15f0de28c5f3228bd88cd27f48f7775b42bb4e6dc592a56c"
+      }
+    },
+    {
+      "name": "--color-primary-950",
+      "value": "oklch(0.264 0.043 46.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "6cb9cec53da18ffb6e004fa08755ffabf86582fba18f0aa86796f79a078a72cf"
+      }
+    },
+    {
+      "name": "--color-primary",
+      "value": "oklch(0.45 0.24 277.02)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9d3421649dd5d63281ad47480303b8c4fde20663cad0b7a25cc6b2f64176abf5"
+      }
+    },
+    {
+      "name": "--color-secondary-50",
+      "value": "oklch(0.976 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2f275c7bf85d7db22deedc05bc59615d6fdc4488a400e984d8b1d966b5823313"
+      }
+    },
+    {
+      "name": "--color-secondary-100",
+      "value": "oklch(0.915 0.003 247.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "da981231cfbcfac9bb9f639f17f37b921173df4fe1d86799119347b7066bf6b0"
+      }
+    },
+    {
+      "name": "--color-secondary-200",
+      "value": "oklch(0.826 0.008 260.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "90c5391c8a79c2729f8596ad469f52df8c770d00e1799fb6774bb2e66d7c33ae"
+      }
+    },
+    {
+      "name": "--color-secondary-300",
+      "value": "oklch(0.711 0.011 261.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bf108fb872d194fdf7c3814ea3a3b60f4d8597b4da0fccb0f43b16fb730c5ad1"
+      }
+    },
+    {
+      "name": "--color-secondary-400",
+      "value": "oklch(0.592 0.014 259.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9701a420cc614cfee1159d091babddf6f44f65da5bbd0dab7e9c0ff33bf82ce7"
+      }
+    },
+    {
+      "name": "--color-secondary-500",
+      "value": "oklch(0.502 0.016 262.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "355cee6603beff898fa3c6c51f0d24c12d8208a9903e7216feec8c4d9b6123dd"
+      }
+    },
+    {
+      "name": "--color-secondary-600",
+      "value": "oklch(0.427 0.016 266.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d6f6523010c40966fe504b5f9eeb557d3c05533a555fcb45a01337db616b114b"
+      }
+    },
+    {
+      "name": "--color-secondary-700",
+      "value": "oklch(0.372 0.011 271.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8141894581893bec82941f6a262c545f4c6afb0283c9ac8d23180a3c8ce1d748"
+      }
+    },
+    {
+      "name": "--color-secondary-800",
+      "value": "oklch(0.264 0.006 258.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1ecffce6ef6e0a0ad71e868d84b73189ed2ec42d246b2a5a928c0d65f93b3ce9"
+      }
+    },
+    {
+      "name": "--color-secondary-900",
+      "value": "oklch(0.230 0.008 264.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "f8cf449b8f3b14b63cca63e7b6c2acc6b6f87bb8124c9a16241113c57aa7c4e9"
+      }
+    },
+    {
+      "name": "--color-secondary-950",
+      "value": "oklch(0.169 0.006 271.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "419b5b7ae6628a121d7311bae799a1b53d92986ad5314b4742842ef3716abaf2"
+      }
+    },
+    {
+      "name": "--color-secondary",
+      "value": "oklch(0.65 0.241 354.31)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "12fe891fa8c7212f48ccacf193412d230005f2d162aa701cf28abd7cea000ea5"
+      }
+    },
+    {
+      "name": "--color-primary-support-50",
+      "value": "oklch(0.987 0.021 95.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "6d05cabd429cd433a775da84cf0419adcdcae1e0e3748b0c9933667af2b4e96d"
+      }
+    },
+    {
+      "name": "--color-primary-support-100",
+      "value": "oklch(0.963 0.058 97.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ecb7c1b5a7cdd545b9a3109154e3f9960ce55fe397f408a83d047d9529555b4d"
+      }
+    },
+    {
+      "name": "--color-primary-support-200",
+      "value": "oklch(0.923 0.113 96.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "93da1303ac94f6d3cb0f1346f31904ad1606cff50d86436dbded2375c9ca76bc"
+      }
+    },
+    {
+      "name": "--color-primary-support-300",
+      "value": "oklch(0.879 0.152 92.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "62e002abe2654bbf62d8a90aedbd564a79f37094b4fa25667b196d2565d62d9c"
+      }
+    },
+    {
+      "name": "--color-primary-support-400",
+      "value": "oklch(0.836 0.163 86.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "16658210ddd030d356315b41464e745257d2827aecc4c1a7f170882b33fd05e8"
+      }
+    },
+    {
+      "name": "--color-primary-support-500",
+      "value": "oklch(0.767 0.162 71.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "aa6598349ecadc47c20b6f5c759db16b9fd05d0412e051b80ac2182ea9e710d5"
+      }
+    },
+    {
+      "name": "--color-primary-support-600",
+      "value": "oklch(0.665 0.154 60.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1b3a34e0a4ecadd9d64bfa13cda6b95e5835a623771c37435b95a234f1ee7dbb"
+      }
+    },
+    {
+      "name": "--color-primary-support-700",
+      "value": "oklch(0.555 0.142 50.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "14c64f13ca01b5469a0b24741d2549368611ee54e3f5f49527ee56cc34ae86df"
+      }
+    },
+    {
+      "name": "--color-primary-support-800",
+      "value": "oklch(0.472 0.121 47.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9e74d5b74aefcfb8588a42da35e190bf2710915802d610671bcd4253d6de0d65"
+      }
+    },
+    {
+      "name": "--color-primary-support-900",
+      "value": "oklch(0.414 0.103 46.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ff2a3e5315e04a8d635f24aae372dcfbb336a74e236045ee2a429cde40998da6"
+      }
+    },
+    {
+      "name": "--color-primary-support-950",
+      "value": "oklch(0.279 0.072 46.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "93b90936e1a77bc48c03f3e2b1fdd7d8733719722da41cd9356d766c1d2cadb9"
+      }
+    },
+    {
+      "name": "--color-secondary-support-50",
+      "value": "oklch(0.978 0.013 226.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ef8f60abd436539d0b2573ce9b61cf05b1512b5f5e96084c2865a2f01403b056"
+      }
+    },
+    {
+      "name": "--color-secondary-support-100",
+      "value": "oklch(0.952 0.027 232.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "cba5fa128f3ff7c3ed910fbe2fb317d2dadeaa78ac854effdd19a2937f10d727"
+      }
+    },
+    {
+      "name": "--color-secondary-support-200",
+      "value": "oklch(0.908 0.060 224.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "5e3f8288c911d61f481957499f166ee569cef9a7ca8d549e8316d348f039ec44"
+      }
+    },
+    {
+      "name": "--color-secondary-support-300",
+      "value": "oklch(0.843 0.107 223.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ed142342ec8e44bb7b63bb54201c2d8e3a62ba3a9ebf750f0beebf3b36751e9a"
+      }
+    },
+    {
+      "name": "--color-secondary-support-400",
+      "value": "oklch(0.785 0.143 226.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "218454c2700feff47e0a1abd9f1cca23c4c70784ab88d2b4e8d085bedbefa66e"
+      }
+    },
+    {
+      "name": "--color-secondary-support-500",
+      "value": "oklch(0.699 0.147 234.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ef253c7751ab748f6d295ddc11ba92fd6a4bb227fe767709e9d831d5da33aa97"
+      }
+    },
+    {
+      "name": "--color-secondary-support-600",
+      "value": "oklch(0.623 0.143 240.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2811d4d108df7aa16951c9b1bfc3b3476308543b33e4b943a79b46432d821b42"
+      }
+    },
+    {
+      "name": "--color-secondary-support-700",
+      "value": "oklch(0.530 0.122 240.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0978f72ef94a6931407a6e522495dc55b5e30c3e2615ffa0317037da6ea2c09c"
+      }
+    },
+    {
+      "name": "--color-secondary-support-800",
+      "value": "oklch(0.465 0.105 238.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0eec3932c8711c17adad5a1e6b2f63ab0e494934f053981b38e2917c685abbc2"
+      }
+    },
+    {
+      "name": "--color-secondary-support-900",
+      "value": "oklch(0.410 0.088 238.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e6763c2236b886088de8d6b948390e8d094233608e1e8138b60cf89590f79621"
+      }
+    },
+    {
+      "name": "--color-secondary-support-950",
+      "value": "oklch(0.306 0.066 239.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "357299ed7ee3e9b8fa5fcd18b880b84f0b4aa4da48c80c5ddd03dbdbe68935ec"
+      }
+    },
+    {
+      "name": "--color-aered-support-50",
+      "value": "oklch(0.971 0.013 17.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7c638c54767754fbab01ea2199ec1ad95665fccaf23eb2d935bff97daf642bcc"
+      }
+    },
+    {
+      "name": "--color-aered-support-100",
+      "value": "oklch(0.939 0.028 20.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8b0a590ead303454a3e7771166e8acc9bf694d06ed6953956354ea1c21653072"
+      }
+    },
+    {
+      "name": "--color-aered-support-200",
+      "value": "oklch(0.889 0.055 21.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c06c8c5fca5167c0355ae20597b132fe963cf4b724ca109f711da4f00fcb79be"
+      }
+    },
+    {
+      "name": "--color-aered-support-300",
+      "value": "oklch(0.815 0.095 21.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e70ab505355f36406d0d9fd7eab3976ae0d0ccd25c5e9774a0fd18a3a215af51"
+      }
+    },
+    {
+      "name": "--color-aered-support-400",
+      "value": "oklch(0.719 0.151 24.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7ff6e8a7fc887ced86791c83e5c1bbbd45ba5d77920bcad28d9f8a2a52f63286"
+      }
+    },
+    {
+      "name": "--color-aered-support-500",
+      "value": "oklch(0.640 0.192 26.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "caa1afd4f03e52becedd4c1cb7f8d2fbd1dd5eb1bbe3f47ad4228d137616ea1d"
+      }
+    },
+    {
+      "name": "--color-aered-support-600",
+      "value": "oklch(0.584 0.199 27.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "57a93c38f188239a1c99af7178bc347d24ec6a67f06421818266c5bcbca9c4c2"
+      }
+    },
+    {
+      "name": "--color-aered-support-700",
+      "value": "oklch(0.504 0.181 28.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "daa5bc716c1247d4c41a4a2b320315c0add0f6b025987d7f7a30951a532a9c20"
+      }
+    },
+    {
+      "name": "--color-aered-support-800",
+      "value": "oklch(0.443 0.151 27.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "02a2a87abe9efae53a5cf82935b5cf2f9d2e3d6cb7f510af5ec6b483aec8130a"
+      }
+    },
+    {
+      "name": "--color-aered-support-900",
+      "value": "oklch(0.397 0.124 26.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "11cdfe348e30d484b4a65bf09f2ee202aadaa143f6bc00c47213b99b718685f9"
+      }
+    },
+    {
+      "name": "--color-aered-support-950",
+      "value": "oklch(0.258 0.082 26.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1b2b46c431f2edbb89f3a03783a419aca0dd907b8aa3cf7426b7a1fd3b62f051"
+      }
+    },
+    {
+      "name": "--color-aegold-50",
+      "value": "oklch(0.975 0.013 97.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9bacc6a8867ae8ad42b91b86ce72a8d936309fb8ae7c5c63d306318651c67d87"
+      }
+    },
+    {
+      "name": "--color-aegold-100",
+      "value": "oklch(0.940 0.039 97.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e4363be840e091dd331e904bfd4a2fbdc20e06da14284540fb6fda7f7bec1644"
+      }
+    },
+    {
+      "name": "--color-aegold-200",
+      "value": "oklch(0.879 0.071 94.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e3dc44a3bd97db6c0208a22681e0e6c1fc20f232232c53cb8308d7319b5033b1"
+      }
+    },
+    {
+      "name": "--color-aegold-300",
+      "value": "oklch(0.802 0.104 91.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2a84358b04861afb59c8f2903d4eab0110639545c0f5e867f8334d3cf65f86e3"
+      }
+    },
+    {
+      "name": "--color-aegold-400",
+      "value": "oklch(0.734 0.121 85.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7d996eb62cd816d8720f098ea0410967bf4b7a4438e2bab7bcc8dd0c8a6d85ef"
+      }
+    },
+    {
+      "name": "--color-aegold-500",
+      "value": "oklch(0.660 0.114 80.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7ba6263a76d107886b888195dc01fb31d4eed5a92c08c082609461053db18b72"
+      }
+    },
+    {
+      "name": "--color-aegold-600",
+      "value": "oklch(0.570 0.097 84.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b36532a6dbb3757ee1ea694810a7315192c96cf5107a0f0bf959e6a6642a4f3c"
+      }
+    },
+    {
+      "name": "--color-aegold-700",
+      "value": "oklch(0.501 0.084 81.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "981b4aebe5413b736af09de96696b42944ec101a320b01061cb57986a9ac9f6f"
+      }
+    },
+    {
+      "name": "--color-aegold-800",
+      "value": "oklch(0.428 0.069 57.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7722d1045392e51849c5f4c30b17306f8e258ace1671504584bb1f6c36c6d4ec"
+      }
+    },
+    {
+      "name": "--color-aegold-900",
+      "value": "oklch(0.387 0.058 52.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "21c54948ca63dabb15f0de28c5f3228bd88cd27f48f7775b42bb4e6dc592a56c"
+      }
+    },
+    {
+      "name": "--color-aegold-950",
+      "value": "oklch(0.264 0.043 46.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "6cb9cec53da18ffb6e004fa08755ffabf86582fba18f0aa86796f79a078a72cf"
+      }
+    },
+    {
+      "name": "--color-aered-50",
+      "value": "oklch(0.971 0.013 17.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7c638c54767754fbab01ea2199ec1ad95665fccaf23eb2d935bff97daf642bcc"
+      }
+    },
+    {
+      "name": "--color-aered-100",
+      "value": "oklch(0.939 0.028 20.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8b0a590ead303454a3e7771166e8acc9bf694d06ed6953956354ea1c21653072"
+      }
+    },
+    {
+      "name": "--color-aered-200",
+      "value": "oklch(0.889 0.055 21.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c06c8c5fca5167c0355ae20597b132fe963cf4b724ca109f711da4f00fcb79be"
+      }
+    },
+    {
+      "name": "--color-aered-300",
+      "value": "oklch(0.815 0.095 21.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e70ab505355f36406d0d9fd7eab3976ae0d0ccd25c5e9774a0fd18a3a215af51"
+      }
+    },
+    {
+      "name": "--color-aered-400",
+      "value": "oklch(0.719 0.151 24.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7ff6e8a7fc887ced86791c83e5c1bbbd45ba5d77920bcad28d9f8a2a52f63286"
+      }
+    },
+    {
+      "name": "--color-aered-500",
+      "value": "oklch(0.640 0.192 26.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "caa1afd4f03e52becedd4c1cb7f8d2fbd1dd5eb1bbe3f47ad4228d137616ea1d"
+      }
+    },
+    {
+      "name": "--color-aered-600",
+      "value": "oklch(0.584 0.199 27.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "57a93c38f188239a1c99af7178bc347d24ec6a67f06421818266c5bcbca9c4c2"
+      }
+    },
+    {
+      "name": "--color-aered-700",
+      "value": "oklch(0.504 0.181 28.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "daa5bc716c1247d4c41a4a2b320315c0add0f6b025987d7f7a30951a532a9c20"
+      }
+    },
+    {
+      "name": "--color-aered-800",
+      "value": "oklch(0.443 0.151 27.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "02a2a87abe9efae53a5cf82935b5cf2f9d2e3d6cb7f510af5ec6b483aec8130a"
+      }
+    },
+    {
+      "name": "--color-aered-900",
+      "value": "oklch(0.397 0.124 26.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "11cdfe348e30d484b4a65bf09f2ee202aadaa143f6bc00c47213b99b718685f9"
+      }
+    },
+    {
+      "name": "--color-aered-950",
+      "value": "oklch(0.258 0.082 26.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1b2b46c431f2edbb89f3a03783a419aca0dd907b8aa3cf7426b7a1fd3b62f051"
+      }
+    },
+    {
+      "name": "--color-aegreen-50",
+      "value": "oklch(0.978 0.011 149.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a7ebc4ec3c24a73054214e16713eb0fe4d76bc94f9f31fef7530a5669c00adf9"
+      }
+    },
+    {
+      "name": "--color-aegreen-100",
+      "value": "oklch(0.952 0.024 151.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a09f80294715d16d7955e628e8f6360e603ef3cbd7433aab5960a33d0f1afcc6"
+      }
+    },
+    {
+      "name": "--color-aegreen-200",
+      "value": "oklch(0.902 0.046 150.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9e3a73686970c4076fa79a623266d3b63c57f051e8b80709543d6d895c25d774"
+      }
+    },
+    {
+      "name": "--color-aegreen-300",
+      "value": "oklch(0.825 0.080 150.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "dfc7adf16d32f63dc1d472b92702c7f0d8e66f21bbd5315ac5d3749b6a275bd8"
+      }
+    },
+    {
+      "name": "--color-aegreen-400",
+      "value": "oklch(0.722 0.112 149.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bf8f5f93e65a7ae03d1e97928ec35373c89c27adc92c5b98bbca22e3ace2291e"
+      }
+    },
+    {
+      "name": "--color-aegreen-500",
+      "value": "oklch(0.627 0.126 148.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "04b9a616ea00d011027984d605290aab933a537e1afbbcc86c40e5734cfb7532"
+      }
+    },
+    {
+      "name": "--color-aegreen-600",
+      "value": "oklch(0.581 0.122 148.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1981a53cc5b965016b6de1250bde43f7f0cfe603c0d1e1a1d74b08b02aca5596"
+      }
+    },
+    {
+      "name": "--color-aegreen-700",
+      "value": "oklch(0.461 0.090 149.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d5b9c0954a1f4dd65de0c289f8095e6183f028c74512738fe1e62d92be3edbc2"
+      }
+    },
+    {
+      "name": "--color-aegreen-800",
+      "value": "oklch(0.397 0.067 149.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "44dad881e83bf8472cc98908a27934984105f77ccdf5bf0c403f44ef5164485a"
+      }
+    },
+    {
+      "name": "--color-aegreen-900",
+      "value": "oklch(0.351 0.056 150.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "147eb6252bce37ee9616974beebc2718ebdf42562b5e99eb0ac9201cb15cf750"
+      }
+    },
+    {
+      "name": "--color-aegreen-950",
+      "value": "oklch(0.238 0.040 151.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3edc635d57130b4eed4ec805a1f3d530301bb65b09c9130f21f680d4b9cef14e"
+      }
+    },
+    {
+      "name": "--color-aeblack-50",
+      "value": "oklch(0.976 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2f275c7bf85d7db22deedc05bc59615d6fdc4488a400e984d8b1d966b5823313"
+      }
+    },
+    {
+      "name": "--color-aeblack-100",
+      "value": "oklch(0.915 0.003 247.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "da981231cfbcfac9bb9f639f17f37b921173df4fe1d86799119347b7066bf6b0"
+      }
+    },
+    {
+      "name": "--color-aeblack-200",
+      "value": "oklch(0.826 0.008 260.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "90c5391c8a79c2729f8596ad469f52df8c770d00e1799fb6774bb2e66d7c33ae"
+      }
+    },
+    {
+      "name": "--color-aeblack-300",
+      "value": "oklch(0.711 0.011 261.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bf108fb872d194fdf7c3814ea3a3b60f4d8597b4da0fccb0f43b16fb730c5ad1"
+      }
+    },
+    {
+      "name": "--color-aeblack-400",
+      "value": "oklch(0.592 0.014 259.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9701a420cc614cfee1159d091babddf6f44f65da5bbd0dab7e9c0ff33bf82ce7"
+      }
+    },
+    {
+      "name": "--color-aeblack-500",
+      "value": "oklch(0.502 0.016 262.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "355cee6603beff898fa3c6c51f0d24c12d8208a9903e7216feec8c4d9b6123dd"
+      }
+    },
+    {
+      "name": "--color-aeblack-600",
+      "value": "oklch(0.427 0.016 266.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d6f6523010c40966fe504b5f9eeb557d3c05533a555fcb45a01337db616b114b"
+      }
+    },
+    {
+      "name": "--color-aeblack-700",
+      "value": "oklch(0.372 0.011 271.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8141894581893bec82941f6a262c545f4c6afb0283c9ac8d23180a3c8ce1d748"
+      }
+    },
+    {
+      "name": "--color-aeblack-800",
+      "value": "oklch(0.264 0.006 258.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1ecffce6ef6e0a0ad71e868d84b73189ed2ec42d246b2a5a928c0d65f93b3ce9"
+      }
+    },
+    {
+      "name": "--color-aeblack-900",
+      "value": "oklch(0.230 0.008 264.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "f8cf449b8f3b14b63cca63e7b6c2acc6b6f87bb8124c9a16241113c57aa7c4e9"
+      }
+    },
+    {
+      "name": "--color-aeblack-950",
+      "value": "oklch(0.169 0.006 271.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "419b5b7ae6628a121d7311bae799a1b53d92986ad5314b4742842ef3716abaf2"
+      }
+    },
+    {
+      "name": "--color-whitely-50",
+      "value": "oklch(1.000 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3f2d098e7bfd325408d9af0f4ef6f94c79c81748880b1e0ff954dbbbea921e42"
+      }
+    },
+    {
+      "name": "--color-whitely-100",
+      "value": "oklch(0.991 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "fc59d690787b9d939c160f0bcdc33a118700c50d70a2c6acbd020d1a023d1d7b"
+      }
+    },
+    {
+      "name": "--color-whitely-200",
+      "value": "oklch(0.976 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2f275c7bf85d7db22deedc05bc59615d6fdc4488a400e984d8b1d966b5823313"
+      }
+    },
+    {
+      "name": "--color-whitely-300",
+      "value": "oklch(0.961 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c2ed4c25f40ce457e2b2abb26dbf76edc03f5e033b8fca2fae6bcd36bf9e50ec"
+      }
+    },
+    {
+      "name": "--color-whitely-400",
+      "value": "oklch(0.946 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3850d884bdfad3c0a0eb05ff3f21a433d289790818bd4423f2c58f106a4156b5"
+      }
+    },
+    {
+      "name": "--color-whitely-500",
+      "value": "oklch(0.931 0.000 0.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1c649e9381df83bfbf3d0c841a09c38957c697ca7e2329e49718dd7fc699b89c"
+      }
+    },
+    {
+      "name": "--color-camel-50",
+      "value": "oklch(0.987 0.021 95.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "6d05cabd429cd433a775da84cf0419adcdcae1e0e3748b0c9933667af2b4e96d"
+      }
+    },
+    {
+      "name": "--color-camel-100",
+      "value": "oklch(0.963 0.058 97.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ecb7c1b5a7cdd545b9a3109154e3f9960ce55fe397f408a83d047d9529555b4d"
+      }
+    },
+    {
+      "name": "--color-camel-200",
+      "value": "oklch(0.923 0.113 96.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "93da1303ac94f6d3cb0f1346f31904ad1606cff50d86436dbded2375c9ca76bc"
+      }
+    },
+    {
+      "name": "--color-camel-300",
+      "value": "oklch(0.879 0.152 92.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "62e002abe2654bbf62d8a90aedbd564a79f37094b4fa25667b196d2565d62d9c"
+      }
+    },
+    {
+      "name": "--color-camel-400",
+      "value": "oklch(0.836 0.163 86.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "16658210ddd030d356315b41464e745257d2827aecc4c1a7f170882b33fd05e8"
+      }
+    },
+    {
+      "name": "--color-camel-500",
+      "value": "oklch(0.767 0.162 71.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "aa6598349ecadc47c20b6f5c759db16b9fd05d0412e051b80ac2182ea9e710d5"
+      }
+    },
+    {
+      "name": "--color-camel-600",
+      "value": "oklch(0.665 0.154 60.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1b3a34e0a4ecadd9d64bfa13cda6b95e5835a623771c37435b95a234f1ee7dbb"
+      }
+    },
+    {
+      "name": "--color-camel-700",
+      "value": "oklch(0.555 0.142 50.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "14c64f13ca01b5469a0b24741d2549368611ee54e3f5f49527ee56cc34ae86df"
+      }
+    },
+    {
+      "name": "--color-camel-800",
+      "value": "oklch(0.472 0.121 47.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9e74d5b74aefcfb8588a42da35e190bf2710915802d610671bcd4253d6de0d65"
+      }
+    },
+    {
+      "name": "--color-camel-900",
+      "value": "oklch(0.414 0.103 46.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ff2a3e5315e04a8d635f24aae372dcfbb336a74e236045ee2a429cde40998da6"
+      }
+    },
+    {
+      "name": "--color-camel-950",
+      "value": "oklch(0.279 0.072 46.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "93b90936e1a77bc48c03f3e2b1fdd7d8733719722da41cd9356d766c1d2cadb9"
+      }
+    },
+    {
+      "name": "--color-slate-50",
+      "value": "oklch(0.984 0.003 247.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1ae7612a6d31c82e15b3cd528ba918561a17a5a6c2a786fcc38fe1ab8cc6c182"
+      }
+    },
+    {
+      "name": "--color-slate-100",
+      "value": "oklch(0.968 0.007 247.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "317d1c9791d2cb59d506dac73b80562e49624b49ed1de73bceab44d411dae3e6"
+      }
+    },
+    {
+      "name": "--color-slate-200",
+      "value": "oklch(0.929 0.013 255.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "eb1fbe24d40559a9945b2f3a389176a4892dce93bc1db8f2fe67db563aaa7c31"
+      }
+    },
+    {
+      "name": "--color-slate-300",
+      "value": "oklch(0.869 0.020 252.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c23071500329a3610fe5bf54bcfbecb787fb1a76a09711c85eb7b86cba826028"
+      }
+    },
+    {
+      "name": "--color-slate-400",
+      "value": "oklch(0.711 0.035 256.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a73d6185fcbc0b535fd1cb24f3a2824f324f4222e7cb3ff88af420f10864ccf4"
+      }
+    },
+    {
+      "name": "--color-slate-500",
+      "value": "oklch(0.554 0.041 257.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9b16483ef62ae2c33bb21179ed928899a58eddb38271d9f5c8334ec6771a2573"
+      }
+    },
+    {
+      "name": "--color-slate-600",
+      "value": "oklch(0.446 0.037 257.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7fa26c349fcbd0583ff34f1c01b02e49c958ddb50d7588d189daa4262fb34500"
+      }
+    },
+    {
+      "name": "--color-slate-700",
+      "value": "oklch(0.372 0.039 257.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3d9a0f0a209e7e541cb23848d77262a33efd8cc7feac32b12a52612113a7cc8f"
+      }
+    },
+    {
+      "name": "--color-slate-800",
+      "value": "oklch(0.279 0.037 260.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "efbf09d42ea1853627ae425b839b0eacd236ff542e05344778b860bf102b50a6"
+      }
+    },
+    {
+      "name": "--color-slate-900",
+      "value": "oklch(0.208 0.040 265.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d62d20cb03b1badc4fa20da0521aa80c3fc6c38d321ebc36f30ceef9e282f0e2"
+      }
+    },
+    {
+      "name": "--color-slate-950",
+      "value": "oklch(0.129 0.041 264.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c6c363ca93c060a10ba50aea0c0c9c036bdca47b9d44532db2add9041c481e32"
+      }
+    },
+    {
+      "name": "--color-fuchsia-50",
+      "value": "oklch(0.977 0.017 320.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8002a9b4f0984a7faa12f80baa1456f33e51e59f10ab2e0bf5445a3138b076b7"
+      }
+    },
+    {
+      "name": "--color-fuchsia-100",
+      "value": "oklch(0.952 0.036 318.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "18c87f572657531fb865ba382f3f0fb06bf2130c488cc71a5f0e05f43479f2f9"
+      }
+    },
+    {
+      "name": "--color-fuchsia-200",
+      "value": "oklch(0.903 0.073 319.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "37a034134a17b2e0499ab484d9c3bf368d1be9d921d834ed2ef5e33f4d6b708a"
+      }
+    },
+    {
+      "name": "--color-fuchsia-300",
+      "value": "oklch(0.833 0.132 321.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9e90d074ef298c8966cefd075683e2f7abcf2844bff43fb1c8f627d0cfa42617"
+      }
+    },
+    {
+      "name": "--color-fuchsia-400",
+      "value": "oklch(0.748 0.207 322.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b4c6f2daf6655a7b303d3ba26c88fbff1a334ba6f47c2970d124221650e8e9f8"
+      }
+    },
+    {
+      "name": "--color-fuchsia-500",
+      "value": "oklch(0.667 0.259 322.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "3e9f0e520116a24de35f683b57637257ef5e9ed4651ecab59b136c77d0886abc"
+      }
+    },
+    {
+      "name": "--color-fuchsia-600",
+      "value": "oklch(0.591 0.257 322.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2118ea15fbe8238e1b18836e711895267895e105347aa4a72d8879542ed4f674"
+      }
+    },
+    {
+      "name": "--color-fuchsia-700",
+      "value": "oklch(0.518 0.226 323.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "facd36ef656a63282c340583295a56eea72dfd5211a49652231e3c7d406d7472"
+      }
+    },
+    {
+      "name": "--color-fuchsia-800",
+      "value": "oklch(0.452 0.192 324.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "753a82ef149dcee673674aacb963f3d8bcb8089598dbb7e3c400134b4e7ce256"
+      }
+    },
+    {
+      "name": "--color-fuchsia-900",
+      "value": "oklch(0.401 0.160 325.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "14ce75bbc8efa157c22f53fedf4593efdb7674624580a7e0a43c757c0c255858"
+      }
+    },
+    {
+      "name": "--color-fuchsia-950",
+      "value": "oklch(0.293 0.131 325.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8aa1c61f9c3d47413eba02f10d5cf6993ce25e151e17eacdd5c0896241c35dc0"
+      }
+    },
+    {
+      "name": "--color-techblue-50",
+      "value": "oklch(0.963 0.020 238.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "cc11cb1ed838189dc5233aa722af5087f89c83629523798b063392a76f5c202f"
+      }
+    },
+    {
+      "name": "--color-techblue-100",
+      "value": "oklch(0.933 0.037 238.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "dad4df3b8f0d29e6af8934618529df1ba70210f1b1af6a273b94bb474deddfd1"
+      }
+    },
+    {
+      "name": "--color-techblue-200",
+      "value": "oklch(0.873 0.067 243.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d25781f2d28303a434eef557b39a5b9bbbc1516db39fb8776fc0ae1abc5dc7f2"
+      }
+    },
+    {
+      "name": "--color-techblue-300",
+      "value": "oklch(0.792 0.110 248.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "325bfc982f1fafce51805505b10d92c9326221ef6801ce4fdfb0a984308e65fb"
+      }
+    },
+    {
+      "name": "--color-techblue-400",
+      "value": "oklch(0.682 0.169 257.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "281e5a05c031b5ae7caf84ef45f4688d4cde838e976ac42da6c782bfd8337c51"
+      }
+    },
+    {
+      "name": "--color-techblue-500",
+      "value": "oklch(0.581 0.229 262.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e8f2711084896465c828e9f2431f65fe2db3db401956f7664949f60c4b264a60"
+      }
+    },
+    {
+      "name": "--color-techblue-600",
+      "value": "oklch(0.498 0.283 264.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ab033f6fb373dcc16a7e1674288587666ec34fd572047827da014e6e3a7176b5"
+      }
+    },
+    {
+      "name": "--color-techblue-700",
+      "value": "oklch(0.496 0.284 263.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bf114641a7e9b32ec0a651980ed0275ee646e44b2be352841b6e4bf27f6e0a66"
+      }
+    },
+    {
+      "name": "--color-techblue-800",
+      "value": "oklch(0.406 0.229 263.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e605f0f9b10f7d9661cdd789073dc1de5d525fe43e26231b00fefb5457f5324f"
+      }
+    },
+    {
+      "name": "--color-techblue-900",
+      "value": "oklch(0.383 0.187 264.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "f7a3cadcfb0aeaa040f78933a26b319aca411d39c9f129c665e75160025f5603"
+      }
+    },
+    {
+      "name": "--color-techblue-950",
+      "value": "oklch(0.265 0.122 264.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9be33502d4766ce62c9bbfe10908503f64c1ab448e47717daa96bc30126d55bb"
+      }
+    },
+    {
+      "name": "--color-seablue-50",
+      "value": "oklch(0.978 0.013 226.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ef8f60abd436539d0b2573ce9b61cf05b1512b5f5e96084c2865a2f01403b056"
+      }
+    },
+    {
+      "name": "--color-seablue-100",
+      "value": "oklch(0.952 0.027 232.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "cba5fa128f3ff7c3ed910fbe2fb317d2dadeaa78ac854effdd19a2937f10d727"
+      }
+    },
+    {
+      "name": "--color-seablue-200",
+      "value": "oklch(0.908 0.060 224.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "5e3f8288c911d61f481957499f166ee569cef9a7ca8d549e8316d348f039ec44"
+      }
+    },
+    {
+      "name": "--color-seablue-300",
+      "value": "oklch(0.843 0.107 223.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ed142342ec8e44bb7b63bb54201c2d8e3a62ba3a9ebf750f0beebf3b36751e9a"
+      }
+    },
+    {
+      "name": "--color-seablue-400",
+      "value": "oklch(0.785 0.143 226.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "218454c2700feff47e0a1abd9f1cca23c4c70784ab88d2b4e8d085bedbefa66e"
+      }
+    },
+    {
+      "name": "--color-seablue-500",
+      "value": "oklch(0.699 0.147 234.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "ef253c7751ab748f6d295ddc11ba92fd6a4bb227fe767709e9d831d5da33aa97"
+      }
+    },
+    {
+      "name": "--color-seablue-600",
+      "value": "oklch(0.623 0.143 240.2)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2811d4d108df7aa16951c9b1bfc3b3476308543b33e4b943a79b46432d821b42"
+      }
+    },
+    {
+      "name": "--color-seablue-700",
+      "value": "oklch(0.530 0.122 240.4)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0978f72ef94a6931407a6e522495dc55b5e30c3e2615ffa0317037da6ea2c09c"
+      }
+    },
+    {
+      "name": "--color-seablue-800",
+      "value": "oklch(0.465 0.105 238.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0eec3932c8711c17adad5a1e6b2f63ab0e494934f053981b38e2917c685abbc2"
+      }
+    },
+    {
+      "name": "--color-seablue-900",
+      "value": "oklch(0.410 0.088 238.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "e6763c2236b886088de8d6b948390e8d094233608e1e8138b60cf89590f79621"
+      }
+    },
+    {
+      "name": "--color-seablue-950",
+      "value": "oklch(0.306 0.066 239.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "357299ed7ee3e9b8fa5fcd18b880b84f0b4aa4da48c80c5ddd03dbdbe68935ec"
+      }
+    },
+    {
+      "name": "--color-desert-50",
+      "value": "oklch(0.975 0.013 60.6)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "433f145529043e023f6b361d39a053eb9265171934700d3cfad98cb325461aac"
+      }
+    },
+    {
+      "name": "--color-desert-100",
+      "value": "oklch(0.945 0.031 64.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "036d5ba3e2cc0413ab320ee1543e7e3fb74650826b50fef7c9b22cf0aa1c640e"
+      }
+    },
+    {
+      "name": "--color-desert-200",
+      "value": "oklch(0.883 0.064 59.1)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "42703af461bac476f711d5ee0623dd4bab7aaf53925f5fb18d8e166dad33a8dd"
+      }
+    },
+    {
+      "name": "--color-desert-300",
+      "value": "oklch(0.804 0.107 53.9)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b9043545d8858f36e5d26089ed3a1aabb34f32bb11b07687c39d13577e565f65"
+      }
+    },
+    {
+      "name": "--color-desert-400",
+      "value": "oklch(0.714 0.153 45.8)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "83e99402baf42e32cb089b996f7e2ef67493ccbec832a5e7101d06e5b9ee0e08"
+      }
+    },
+    {
+      "name": "--color-desert-500",
+      "value": "oklch(0.657 0.186 40.5)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "00b2b358521b2749a2d03c85ca7bf8ec81f55083bcebe5c2e24b31ce9e26e85a"
+      }
+    },
+    {
+      "name": "--color-desert-600",
+      "value": "oklch(0.624 0.198 36.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bca0f73bad69aa63083646626877491f1be6fe0853ca63717090e7bae1f47cdd"
+      }
+    },
+    {
+      "name": "--color-desert-700",
+      "value": "oklch(0.521 0.172 33.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d78b81a0917ed78abc2efe770c9e7fbd172754341ff9e5835adda86db740cc2b"
+      }
+    },
+    {
+      "name": "--color-desert-800",
+      "value": "oklch(0.446 0.141 32.0)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9bd6e579987a5edf054cc6608c0bbbfa969507175941cceb20ae9fb659d8924e"
+      }
+    },
+    {
+      "name": "--color-desert-900",
+      "value": "oklch(0.387 0.116 31.7)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "62c383d98c3c6cdee4091b15f5c06ab589e9354c1ce178052e11b0bca323df4e"
+      }
+    },
+    {
+      "name": "--color-desert-950",
+      "value": "oklch(0.253 0.074 29.3)",
+      "category": "color",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "src/theme/colors.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "61f7f836982f1dd17a9f6e9ca38866794bf330f0d2db14c604e2fff767534153"
+      }
+    },
+    {
+      "name": "--font-heading",
+      "value": "'Inter', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "64910d170ce423c1674ce092530f0889e07a724b89ea335d59940cfb00fb216e"
+      }
+    },
+    {
+      "name": "--font-body",
+      "value": "'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "5b56b0f379dfa0c3d0ee087c3cb627b24d837a739199fdd38fcd3d9aba3c61a0"
+      }
+    },
+    {
+      "name": "--font-roboto",
+      "value": "'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "5b56b0f379dfa0c3d0ee087c3cb627b24d837a739199fdd38fcd3d9aba3c61a0"
+      }
+    },
+    {
+      "name": "--font-inter",
+      "value": "'Inter', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "64910d170ce423c1674ce092530f0889e07a724b89ea335d59940cfb00fb216e"
+      }
+    },
+    {
+      "name": "--font-notokufi",
+      "value": "'Noto Kufi Arabic', ui-sans-serif, 'Helvetica Neue', sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b9e6766ab448cba786d3b1919b35184f3717e38cd7c5699b37bf067083755131"
+      }
+    },
+    {
+      "name": "--font-alexandria",
+      "value": "'Alexandria', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif",
+      "category": "font",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d211ce6632194f90ab7569f62560fbd9e7bd08c7e3ab529f37749f31f2b4beb2"
+      }
+    },
+    {
+      "name": "--text-xs",
+      "value": "0.75rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "a9f23226d97114fb3454323a0b8dae081953def79efdfbb0572c8800fbe503f5"
+      }
+    },
+    {
+      "name": "--text-xs-line-height",
+      "value": "1rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b8be0c77cfdcd326362654410182d1fff9ad6eb3a2af41d732a7b69624c0a7d0"
+      }
+    },
+    {
+      "name": "--text-sm",
+      "value": "0.875rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8825a14685976988ad88e557aae98d675f239e1090e0ad3472259e8ddf80aeca"
+      }
+    },
+    {
+      "name": "--text-sm-line-height",
+      "value": "1.25rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c10b7e1d119f8d28ecf6dd91f526318b32544b8c865f84f1d55517ace43f2c56"
+      }
+    },
+    {
+      "name": "--text-base",
+      "value": "1rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b8be0c77cfdcd326362654410182d1fff9ad6eb3a2af41d732a7b69624c0a7d0"
+      }
+    },
+    {
+      "name": "--text-base-line-height",
+      "value": "1.5rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b81aec4635ad33ffe5cf11f743589dac7f7ffd56ac52a9929c182bedf81adca4"
+      }
+    },
+    {
+      "name": "--text-lg",
+      "value": "1.125rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8c756dc2fd39d3344419036c6001860271be04d16bcb3ba0f08ee5cc7e21879e"
+      }
+    },
+    {
+      "name": "--text-lg-line-height",
+      "value": "1.5rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b81aec4635ad33ffe5cf11f743589dac7f7ffd56ac52a9929c182bedf81adca4"
+      }
+    },
+    {
+      "name": "--text-xl",
+      "value": "1.25rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c10b7e1d119f8d28ecf6dd91f526318b32544b8c865f84f1d55517ace43f2c56"
+      }
+    },
+    {
+      "name": "--text-xl-line-height",
+      "value": "1.75rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "672ca1c737d9e77f5f98b3accbe84c793535ec075c138c3cd943251260c26619"
+      }
+    },
+    {
+      "name": "--text-display",
+      "value": "4.75rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "0d12e1fee5ccda7107930c628ebbd194542da905b100a2a9aebf2562ae29041f"
+      }
+    },
+    {
+      "name": "--text-display--line-height",
+      "value": "1.1",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b05e244762b1e472be89a93800cc3ee326743cecb55984bf12813addb8de66d0"
+      }
+    },
+    {
+      "name": "--text-display-weight",
+      "value": "600",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "284b7e6d788f363f910f7beb1910473e23ce9d6c871f1ce0f31f22a982d48ad4"
+      }
+    },
+    {
+      "name": "--text-h1",
+      "value": "3.875rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "d85bdcb306819d81294f526eb70e99f8cab170b2a336a6548acbcf6dbbfcc29f"
+      }
+    },
+    {
+      "name": "--text-h1--line-height",
+      "value": "1.1",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "b05e244762b1e472be89a93800cc3ee326743cecb55984bf12813addb8de66d0"
+      }
+    },
+    {
+      "name": "--text-h1-weight",
+      "value": "800",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1a1cf797fabe7f95836fabeca626907c77b3e6c9aff7c2290b396a238c69362e"
+      }
+    },
+    {
+      "name": "--text-h1-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--text-h2",
+      "value": "3rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "550d1671b7f995c928d048f4338a04e0accd42c5df4f9793910e9327f1c5d0ff"
+      }
+    },
+    {
+      "name": "--text-h2--line-height",
+      "value": "1.2",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "77ac319bfe1979e2d799d9e6987e65feb54f61511c03552ebae990826c208590"
+      }
+    },
+    {
+      "name": "--text-h2-weight",
+      "value": "800",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1a1cf797fabe7f95836fabeca626907c77b3e6c9aff7c2290b396a238c69362e"
+      }
+    },
+    {
+      "name": "--text-h2-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--text-h3",
+      "value": "2.5rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "fb391dd7c4154d1701abf2c418d3f6e3ac016cdd92965365792adc3bded8ead1"
+      }
+    },
+    {
+      "name": "--text-h3--line-height",
+      "value": "1.2",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "77ac319bfe1979e2d799d9e6987e65feb54f61511c03552ebae990826c208590"
+      }
+    },
+    {
+      "name": "--text-h3-weight",
+      "value": "800",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1a1cf797fabe7f95836fabeca626907c77b3e6c9aff7c2290b396a238c69362e"
+      }
+    },
+    {
+      "name": "--text-h3-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--text-h4",
+      "value": "2rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "bca5ebd7886ec04fc5f2570dda231a3630d7b3218ff6ba2d4e8811aee1f49610"
+      }
+    },
+    {
+      "name": "--text-h4--line-height",
+      "value": "2.375rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "9862d91638e3302a20b1e0c76c8e2a194153e8d8257d2007b4e033b7feec5f8c"
+      }
+    },
+    {
+      "name": "--text-h4-weight",
+      "value": "700",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "99ee50221221864d50c60baea6f14d8ac2e235cc6e78be6088cd40cc97fca394"
+      }
+    },
+    {
+      "name": "--text-h4-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--text-h5",
+      "value": "1.625rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "2ddfbc851e3ea382442df31baaaa1726caab51087765968b2434d7f43bda3ae0"
+      }
+    },
+    {
+      "name": "--text-h5--line-height",
+      "value": "2.125rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "74f1704c98b09f3edad6ddd82ef3a2fcdc6b6c72764014f326d7e9ffa0e40f09"
+      }
+    },
+    {
+      "name": "--text-h5-weight",
+      "value": "700",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "99ee50221221864d50c60baea6f14d8ac2e235cc6e78be6088cd40cc97fca394"
+      }
+    },
+    {
+      "name": "--text-h5-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--text-h6",
+      "value": "1.25rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c10b7e1d119f8d28ecf6dd91f526318b32544b8c865f84f1d55517ace43f2c56"
+      }
+    },
+    {
+      "name": "--text-h6--line-height",
+      "value": "1.75rem",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "672ca1c737d9e77f5f98b3accbe84c793535ec075c138c3cd943251260c26619"
+      }
+    },
+    {
+      "name": "--text-h6-weight",
+      "value": "600",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "284b7e6d788f363f910f7beb1910473e23ce9d6c871f1ce0f31f22a982d48ad4"
+      }
+    },
+    {
+      "name": "--text-h6-font-family",
+      "value": "var(--font-heading)",
+      "category": "typography",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8911eea9b843ee5dcf44bd30e4b9646cd940777f05ba0e1949a831db0b617428"
+      }
+    },
+    {
+      "name": "--shadow-button",
+      "value": "0px 0px 0px 6px",
+      "category": "shadow",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1b8e31bcbb66185627dde2b002c7c360af241616ee0663a76a13bcba1b4897bc"
+      }
+    },
+    {
+      "name": "--container-padding",
+      "value": "0.625rem",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "7b8ee66537dee68d092d43405601a5136286e0d372cf523b5a8ec4b229228f77"
+      }
+    },
+    {
+      "name": "--container-padding-md",
+      "value": "0.875rem",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "8825a14685976988ad88e557aae98d675f239e1090e0ad3472259e8ddf80aeca"
+      }
+    },
+    {
+      "name": "--container-padding-lg",
+      "value": "1.375rem",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "35da2da1b5fb8d099d5472cee6668ea340534eb30b0c851267be3ddee8a3a1e9"
+      }
+    },
+    {
+      "name": "--container-padding-xl",
+      "value": "1.25rem",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "c10b7e1d119f8d28ecf6dd91f526318b32544b8c865f84f1d55517ace43f2c56"
+      }
+    },
+    {
+      "name": "--container-padding-2xl",
+      "value": "1.75rem",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "672ca1c737d9e77f5f98b3accbe84c793535ec075c138c3cd943251260c26619"
+      }
+    },
+    {
+      "name": "--container-center",
+      "value": "mx-auto",
+      "category": "container",
+      "provenance": {
+        "tier": "package",
+        "package": "@aegov/design-system",
+        "version": "3.0.7",
+        "extractedFrom": "dist/plugin.js",
+        "method": "compiled-css-introspection",
+        "contentHash": "1752f11474a6de4eae948782e3a455eaa18ee44ee510af942c8e96856dcd3651"
+      }
+    }
+  ],
+  "blocks": [],
+  "patterns": []
+}

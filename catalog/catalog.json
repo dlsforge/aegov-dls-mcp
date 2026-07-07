@@ -6485,6 +6485,9 @@
         }
       ],
       "rules": [],
+      "packageClassRoots": [
+        "aegov-btn"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/content",
@@ -6510,6 +6513,10 @@
       },
       "examples": [],
       "rules": [],
+      "packageClassRoots": [
+        "aegov-check",
+        "aegov-form"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/filter",
@@ -6546,6 +6553,11 @@
             "docsVersion": null
           }
         }
+      ],
+      "packageClassRoots": [
+        "aegov-accordion",
+        "aegov-footer",
+        "aegov-mobile"
       ],
       "provenance": {
         "tier": "docs",
@@ -6595,6 +6607,14 @@
             "docsVersion": null
           }
         }
+      ],
+      "packageClassRoots": [
+        "aegov-btn",
+        "aegov-dropdown",
+        "aegov-form",
+        "aegov-header",
+        "aegov-modal",
+        "aegov-tooltip"
       ],
       "provenance": {
         "tier": "docs",
@@ -6678,6 +6698,10 @@
           }
         }
       ],
+      "packageClassRoots": [
+        "aegov-btn",
+        "aegov-hero"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/hero",
@@ -6727,6 +6751,10 @@
           }
         }
       ],
+      "packageClassRoots": [
+        "aegov-btn",
+        "aegov-form"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/newsletter",
@@ -6752,6 +6780,9 @@
       },
       "examples": [],
       "rules": [],
+      "packageClassRoots": [
+        "aegov-btn"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/page-rating",
@@ -6801,6 +6832,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/blocks/team",
@@ -6918,6 +6950,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/address",
@@ -6967,6 +7000,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/contact-number",
@@ -7005,6 +7039,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/currency-symbol",
@@ -7065,6 +7100,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/date",
@@ -7103,6 +7139,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/emirates-id-input",
@@ -7152,6 +7189,7 @@
           }
         }
       ],
+      "packageClassRoots": [],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/patterns/name",
@@ -7269,6 +7307,9 @@
           }
         }
       ],
+      "packageClassRoots": [
+        "aegov-tooltip"
+      ],
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/docs/components/navigation",
@@ -7328,6 +7369,10 @@
             "docsVersion": null
           }
         }
+      ],
+      "packageClassRoots": [
+        "aegov-card",
+        "aegov-link"
       ],
       "provenance": {
         "tier": "docs",

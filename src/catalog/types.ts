@@ -137,6 +137,12 @@ export interface DocsArtifact {
   /** Additional markup examples beyond the canonical one. */
   examples: MarkupExample[];
   rules: Rule[];
+  /**
+   * Package class-roots whose classes appear in this artifact's markup examples
+   * (mechanically derived, sorted). Links docs artifacts to the package-tier
+   * components they build on — e.g. the header block to `aegov-header`.
+   */
+  packageClassRoots: string[];
   provenance: DocsProvenance;
 }
 

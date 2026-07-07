@@ -40,12 +40,19 @@ function unescapeEntities(s) {
     .replace(/&amp;/g, "&");
 }
 
+/**
+ * Tag matcher that survives `>` inside quoted attribute values — the docs use
+ * Tailwind arbitrary variants like class="[&>li]:leading-normal", on which a
+ * naive /<[^>]+>/ stops early and leaks attribute debris into the text.
+ */
+const TAG_RE = /<\/?[a-zA-Z][^>"']*(?:(?:"[^"]*"|'[^']*')[^>"']*)*>|<!--[\s\S]*?-->/g;
+
 /** Strip tags from an HTML slice and normalize whitespace to single spaces. */
 function textOf(htmlSlice) {
   return unescapeEntities(
     htmlSlice
       .replace(/<pre[\s\S]*?<\/pre>/g, " ") // code is captured separately
-      .replace(/<[^>]+>/g, " "),
+      .replace(TAG_RE, " "),
   )
     .replace(/\s+/g, " ")
     .trim();
@@ -142,10 +149,15 @@ function extractPage(rawHtml, page) {
 
   // Content ends where the previous/next pager begins (the pager has no h2/h3,
   // so without this cut its link text would bleed into the last section).
+  // Cut at the START of the label's enclosing <div> — the marker sits mid-tag,
+  // and cutting there would leave an unclosed `<div class="font-bold...`
+  // fragment that the tag-stripper cannot remove.
   const pagerAt = html.indexOf('text-base mb-1">Previous</div>', contentStart);
   const nextAt = html.indexOf('text-base mb-1">Next</div>', contentStart);
   const cuts = [pagerAt, nextAt].filter((i) => i !== -1);
-  const contentEnd = cuts.length ? Math.min(...cuts) : html.length;
+  const contentEnd = cuts.length
+    ? html.lastIndexOf("<div", Math.min(...cuts))
+    : html.length;
   const content = html.slice(contentStart, contentEnd);
 
   // Split into sections on h2/h3 boundaries. The h1 intro (before the first

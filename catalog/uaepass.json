@@ -1,0 +1,611 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "origin": "https://docs.uaepass.ae",
+    "retrievedOn": "2026-07-07",
+    "note": "UAE Pass developer-docs guidance for the scaffolder. Docs-tier: provisional, high-stakes, needs revalidation against docs.uaepass.ae."
+  },
+  "buttonVariants": [
+    {
+      "id": "sign-in",
+      "label": "Sign in with UAE PASS",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up"
+    },
+    {
+      "id": "sign-up",
+      "label": "Sign up with UAE PASS",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up"
+    },
+    {
+      "id": "login",
+      "label": "Login with UAE PASS",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/login-option"
+    },
+    {
+      "id": "continue",
+      "label": "Continue with UAE PASS",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass"
+    },
+    {
+      "id": "sign",
+      "label": "Sign with UAE PASS",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass"
+    },
+    {
+      "id": "logo-only",
+      "label": null,
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/logo-only-buttons"
+    }
+  ],
+  "appearances": [
+    {
+      "id": "white",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/white-button"
+    },
+    {
+      "id": "outline",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/outline-button"
+    },
+    {
+      "id": "black",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/black-button"
+    }
+  ],
+  "radiusOptions": [
+    {
+      "id": "rectangle",
+      "note": "minimum radius",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-radius"
+    },
+    {
+      "id": "default",
+      "note": "standard radius, 12 pixels",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-radius"
+    },
+    {
+      "id": "pill",
+      "note": "maximum radius, 999",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-radius"
+    }
+  ],
+  "minSize": {
+    "minWidth": "140pt (140px @1x, 280px @2x)",
+    "minHeight": "30pt (30px @1x, 60px @2x)",
+    "minMargin": "1/10 of the button’s height",
+    "preserveAspectRatio": true,
+    "provenance": {
+      "tier": "docs",
+      "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-size-and-margin",
+      "retrievedOn": "2026-07-07",
+      "contentHash": "cabf1498ead12d076c5193bf1e5d989930063bdd1c7f62ded439990a1259f1a0",
+      "docsVersion": null
+    }
+  },
+  "endpoints": {
+    "staging": {
+      "authorization": "https://stg-id.uaepass.ae/idshub/authorize",
+      "token": "https://stg-id.uaepass.ae/idshub/token",
+      "userInfo": "https://stg-id.uaepass.ae/idshub/userinfo",
+      "logout": "https://stg-id.uaepass.ae/idshub/logout"
+    },
+    "production": {
+      "authorization": "https://id.uaepass.ae/idshub/authorize",
+      "token": "https://id.uaepass.ae/idshub/token",
+      "userInfo": "https://id.uaepass.ae/idshub/userinfo",
+      "logout": "https://id.uaepass.ae/idshub/logout"
+    },
+    "provenance": {
+      "tier": "docs",
+      "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/endpoints",
+      "retrievedOn": "2026-07-07",
+      "contentHash": "d62820fc14eaf311d1df2a2cc9fcf9541a7e210a406f21c0ea4367d91cec6cca",
+      "docsVersion": null
+    }
+  },
+  "authorize": {
+    "params": [
+      {
+        "name": "response_type",
+        "type": "string",
+        "description": "Must take the value, which indicates that an code authorization code is requested."
+      },
+      {
+        "name": "redirect_uri",
+        "type": "string",
+        "description": "Redirect URI to the application. The application waits to receive at this URI the authorization or authentication response message with the authorization code."
+      },
+      {
+        "name": "client_id",
+        "type": "string",
+        "description": "Identifier of the client application. (To be shared by UAEPASS Team)"
+      },
+      {
+        "name": "state",
+        "type": "string",
+        "description": "We recommend using this parameter to safeguard against CSRF attacks. The application can also include additional information in this parameter, such as the URL to which the browser is to be redirected when the authorization or authentication finishes. (To include multiple data in the value of this parameter, the application must serialize it as it sees fit.)"
+      },
+      {
+        "name": "scope",
+        "type": "string",
+        "description": "List of values, separated by spaces, that represent the scope of the authorization that the application wants to obtain. It queries the scopes required for accessing the resources or services in question. (To be shared by UAEPASS Team if its value is other than specified in sample above)"
+      },
+      {
+        "name": "acr_values",
+        "type": "string",
+        "description": "Defines conditions for authenticating the user (minimum levels or specific flows) who must authorize the access. (To be used as specified in sample or check with UAEPASS team for more details)"
+      },
+      {
+        "name": "ui_locales",
+        "type": "string",
+        "description": "Language parameter to be sent to render English or Arabic login pages of UAEPASS and below are the possible values: English page : en Arabic page : ar"
+      }
+    ],
+    "provenance": {
+      "tier": "docs",
+      "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/1.-obtaining-the-oauth2-access-code",
+      "retrievedOn": "2026-07-07",
+      "contentHash": "403f7f1ba2240489d447fe1b7380255c717c3077468f19604d4dfda67b4229a8",
+      "docsVersion": null
+    }
+  },
+  "assets": [
+    {
+      "label": "Login Buttons in SVG Format",
+      "url": "https://docs.uaepass.ae/files/-Ml3kQnakghDan2IUWK-",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f",
+        "docsVersion": null
+      }
+    },
+    {
+      "label": "Login Buttons in PNG Format",
+      "url": "https://docs.uaepass.ae/files/-Ml3kU__uL34eg4vx5fm",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f",
+        "docsVersion": null
+      }
+    },
+    {
+      "label": "Buttons Guidelines",
+      "url": "https://docs.uaepass.ae/files/-Ml3kZs8GqfeWctpz5UT",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f",
+        "docsVersion": null
+      }
+    },
+    {
+      "label": "UAEPASS Buttons",
+      "url": "https://docs.uaepass.ae/files/-Ml3kbkSSUXnUIp-swYG",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f",
+        "docsVersion": null
+      }
+    },
+    {
+      "label": "Sign In with UAEPASS Buttons",
+      "url": "https://docs.uaepass.ae/files/-Ml3kMknCXO1yUmTDoVu",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f",
+        "docsVersion": null
+      }
+    },
+    {
+      "label": null,
+      "url": "https://docs.uaepass.ae/files/1hPaWmnX2nPl3bucuCfm",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-assets",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "607eff9344bc725008854b22bf4d40c09ea6e6a22c8ddbfa748d2d7e1a85c430",
+        "docsVersion": null
+      }
+    }
+  ],
+  "rules": [
+    {
+      "kind": "usage",
+      "topic": "Button Guidelines",
+      "statement": "Instructions\nFollow these guidelines to offer a seamless experience with UAE PASS.\n\nUse the recommended styles on websites and mobile apps.\nDo not create your own button styles – maintain UAE PASS consistency.\n\nPick a button style that suits your platform’s design.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "a633ebb24ac913cdcc1bded8b3d1f6fef19c55cb439178d82c249fefc3b2b301",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "UAEPASS Button Guidelines",
+      "statement": "UAEPASS Buttons Guidelines English\n\nUAE PASS Buttons Guidelines Arabic\n\nUAEPASS Buttons PNGs\n\nSVGs",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/uaepass-button-guideline",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "9df3c0ddd415db7740b55801320b1c66d5a24e7e02c3a00439af173148ba388d",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Button Guidelines - English",
+      "statement": "The system provides several options of the buttons. Depending on the platform on which your\ncontent runs, choose the variant that fits the terminology of your experience and use it consistently\nthroughout your interfaces.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-guidelines-english",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "ad213b46b82f3e59cbcf658477d9b8c2bd79461e505f4ae763ef78ff64255b58",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "bilingual",
+      "topic": "Button Titles – Arabic",
+      "statement": "The system provides Arabic button titles. The Arabic buttons are available in the same styles and\ndifferent states as the English ones.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-titles-arabic",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "90c0dc96d392524b8858859986fb57f1c9563e4f22c18dc3cfefbd89d02246c7",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Button Options",
+      "statement": "Depending on the platform, the system provides up to three options for the appearance of the UAE\nPASS buttons: white, white with an outline, and black. Choose the appearance that works best with\nthe background on which the button displays.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-options",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "90ac575c19ce03e0e35c38ede2c4bf54fb9e25e5625ccce1f3bc8fc0e7e6344d",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Button Radius",
+      "statement": "Adjust the corner radius to match your UI: choose from\n\n1. Rectangle (Minimum radius)\n2. Default (Standard radius, 12 pixels)\n3. Pill-shaped (Maximum radius, 999)",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-radius",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "8ddee62363cc83cd50a6c2d8dfee251e7230f067065cfc42e767c14050c41789",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Button Size and Margin",
+      "statement": "Minimum size:\n\n- Width: 140pt\n- Height: 30pt\n- Margin: 1/10th of button height\nPreserve aspect ratio.\n\nEnsure the button scales correctly across devices and screen sizes, maintaining the aspect ratio so the UAE PASS logo remains unstretched.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-size-and-margin",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "cabf1498ead12d076c5193bf1e5d989930063bdd1c7f62ded439990a1259f1a0",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Button States and Feedback",
+      "statement": "Active and Disabled State. The active state is when a button is ‘clickable’/’tappable’. While that may\nsound a bit obvious, the important thing to note here is that a button can be disabled if the user\nhasn’t completed the necessary steps.\n\nFocus and Pressed State. The focus state is when the button has been tabbed to. The pressed state\nis the state when the user’s cursor or finger is ‘holding down’ on the button.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-states-and-feedback",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "9c352c19399ff08979f07d9532ae4c5fe5631ef81c2d905848e4ea0e350a5efc",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Logo-Only Buttons",
+      "statement": "When using logo-only UAE PASS buttons, always maintain a 1:1 aspect ratio and avoid adding extra or horizontal padding, as the artwork already includes the necessary spacing. To fit the button into your UI design, use masks (such as circular or rounded square shapes) rather than cropping the logo or modifying its built-in padding. The logo must remain intact and unaltered to preserve branding integrity.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/logo-only-buttons",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "b82233e964e8915a5a7523fdb4b4d0e50d565153678906d35c734e98e52248f7",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Powered by UAE PASS",
+      "statement": "If you intend to use the UAE PASS logo alongside additional text, such as “Powered by UAE PASS”, within your website or mobile application, you must obtain prior written consent or have an existing agreement with the UAE PASS team.\n\nYou may use the UAE PASS logo in a referential manner to indicate that your product is compatible with UAE PASS services, provided that you comply with the following requirements:\n\nAny indication that your product or platform is supported by the UAE PASS service must be presented in a referential format. The recommended phrasing is:\n“[Your Product Name], powered by UAE PASS”\n\nPlease refer to the example below for proper usage.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/powered-by-uae-pass",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "feb0314e5d5e072a5a01b53106c9715fb9da1204b8628f129be3c5f8d35dcdb3",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Login Option",
+      "statement": "If using “Login” instead of “Sign in”, apply the same button guidelines.\n\nDon’t mix both terms on one page.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/login-option",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "b6a55000e95166d42ff6e5d491c24cd057a2d4ec6a4e9b594f4b9ef95cf059a4",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Tooltip Info",
+      "statement": "To include the UAE PASS slogan, place the text \"What is UAE PASS?\" directly below the button with a 10px vertical spacing. This text acts as a tooltip trigger to display the slogan: \"UAE PASS is a single trusted digital identity for all citizens, residents, and visitors.\"",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/tooltip-info",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "0b1ce8708b6b91ad8c8a31354913d3e6d583886044d1ab2766aa7f8bf823e8ab",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Sign in and Sign up",
+      "statement": "Buttons Usage - Mobile and Portal view\nIn mobile view, button titles must clearly indicate that the user is signing in to or signing up for your app using their UAE PASS — not creating a new UAE PASS account through your app.\n\nMobile View",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "53a20307a3150a0e7daf0a22ba11af1128cd516c7a7f5be2b4e822aa2d7b2ede",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Mobile View",
+      "statement": "If your interface requires to use Logo-only buttons, make sure\n\nto align logos across multiple sign-in buttons, adjust the button\n\nappearance to coordinate with your UI with guidelines\n\nconsideration.\nAlways make sure that people can instantly identify your button\nas a Sign in with UAE PASS button.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "0bfe40c302c03572e238ee1d13e5e12f1ebbf89121612e66739d2e9be67655eb",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Portal Horizontal & Vertical View",
+      "statement": "If you choose to display only a “Sign in” or “Login” button, ensure that the UAE PASS button is clearly visible to users upon landing on the login page, following the recommended design guidelines.\n\nPortal Vertical Sign up - Bottom\n\nPortal Sign up vertical option\nIf you choose to put “Sign up”\n\nbutton below your native login,\nplease make sure that UAE PASS\nbutton is clearly appearing to the\nusers once they land to the login\n\npage.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "a2c691b21ec11c8ed1ab16a16f9571841b98532134d360ff4319c8886cb9f159",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Portal Vertical Sign up - Bottom",
+      "statement": "Portal Sign up vertical option\nIf you choose to put “Sign up”\nbutton below your native login,\nplease make sure that UAE PASS\nbutton is clearly appearing to the\nusers once they land to the login\npage.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-bottom",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "09a795523597716abb6b7030f77a57034bc7c4039c6ee04813db5b2278b79ab1",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Portal Vertical Sign up - Top",
+      "statement": "If you choose to place the \"Sign Up\" button above your native login, please ensure that the UAE PASS button remains clearly visible and easily identifiable to users as soon as they land on the login page.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-top",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "85a655066ca0ad6649411913d6f1369c922183789c9728a49ef522a040046bf3",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Sign with UAE PASS",
+      "statement": "Portal Option A\n\nIf your platform provides UAE\nPASS digital signature option,\nplease follow the below guidelines\ndepending on your use case.\n\nCase A: If UAE PASS is the only\ndigital signature option that you\nprovide make sure you use “Sign\nwith UAE PASS” button as shown\nin the example.\n\nCase B: If you use multiple digital\nsignature options, make sure you\nstate a clear text that says “Sign\nwith UAE PASS”. There are two\noptions in this case: Text only\nselection and text with logo.\nPlease use what best matches\nwith your platform.\n\nCase B - Text only\n\nCase C - Text with logo",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "68f815165f0cdc15582a75d9e4fea8731dc2b9ec89dd01c64f0321ebfa2e6d14",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Continue with UAE PASS",
+      "statement": "Continue with UAE PASS\nUsers should be clearly informed that by proceeding, they are sharing a digital copy of their documents for identity verification purposes. This step serves as a replacement for the traditional physical document verification process.\n\nThe “Continue with UAE PASS” capability may follow either the “Sign in” or “Sign up with UAE PASS” flow, but it must be clearly communicated to the user that this action involves sharing their personal documents.\n\nService providers are encouraged to highlight the advantages of using UAE PASS for document sharing and to provide users with clear guidance on how to upgrade their account and upload the necessary documents.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "333272634a100b9d8116809674886e95977aab5dac33aaef378b226f50cf77ed",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "User journey 1",
+      "statement": "Case A: New Customer Onboarding\nA new customer selects “Continue with UAE PASS” to share their documents as part of the onboarding process for accessing the service provider’s platform.\n\nCase B: Accessing a Product or Service\nA new or existing customer selects “Continue with UAE PASS” to share documents required to access a specific product or service offered by the provider.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-1",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "67d9557bd24b0f9d346ec59a783a9a6d638f5fbef0997146e1aafb13084668a4",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "User journey 2",
+      "statement": "Case C: KYC Document Update\nAn existing customer selects “Continue with UAE PASS” to update their KYC documents in response to a request from the service provider.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-2",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "e27aeb5a461901213bd496c71b09d2af60af3ddd03ba81e1dfcdbdf6eae6c308",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Do's & Don'ts",
+      "statement": "Preserve the capitalization style of the title. All variants of the button title capitalize the first word —\nthat is, Sign or Continue; all other letters are lowercase. Don't change this style by, for example,\ncapitalizing every letter in the title.\n\nKeep the title and logo vertically aligned within the button. To do this, vertically align the title to the\n\nmiddle of the button, then add the logo image, making sure its height matches the height of the button",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "3900da1e2489fb5c667bbf4877a910dc57bc9d463180f74be02e5973745bd254",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "White Button",
+      "statement": "The white style is available on all platforms and the web. Use this style on dark or colored\nbackgrounds that provide sufficient contrast.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/white-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "98f6219c95ca808e167b101c4cd98040d009faa3bbecd239642e824ea21652ed",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Black Button",
+      "statement": "The black button style is available across all platforms and the web. It is best used on white or light-colored backgrounds that offer sufficient contrast.\n\nAvoid using this style on black or dark backgrounds, as it may reduce visibility and compromise accessibility.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/black-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "9d5cdbfd8089c37416a5075bd3796be0f8aac988927235f92a73600f1aa64995",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Outline Button",
+      "statement": "The white outlined button style is supported across all platforms, including the web. It should be used on white or light-colored backgrounds where the standard, white-filled button does not provide sufficient contrast.\n\nAvoid using this style on dark or saturated backgrounds, as the black outline may create unnecessary visual clutter. In such cases, use the solid white button style to ensure clear contrast and maintain visual clarity.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/outline-button",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "f650bcab40ce93ccd23ce62e83954a5803a1a98be2a6bc687bf695859c59100a",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Logo and Title Colors",
+      "statement": "Within a button, the title text must be in either black or white—custom colors are not permitted.\n\nFor the UAE PASS logo, only two color variations are allowed:\n\n- Black logo with green and red accents\n- White logo with green and red accents\n\nAvoid using fully black or fully white logos, and do not apply any custom color treatments to the logo under any circumstances.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/logo-and-title-colors",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "b39227044a1f6148da8c4949a7e624a811a8023c861b6bacda2a968ef37b556e",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Sign in & Sign up",
+      "statement": "Do not display “Sign in” and “Sign up” buttons on the same page.\nEach button should appear within its respective flow:\n\n- Use the “Sign in” button exclusively on the sign-in page\n- Use the “Sign up” button on the registration or create account page\n\nThis ensures a clear and user-friendly experience.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/sign-in-and-sign-up",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "4802a2866f3cc8b1ebbec264ef64cf1ed263a120277846b37156d22fe11561d6",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Using Logo & Text",
+      "statement": "- Do not enlarge the UAE PASS logo beyond the recommended size. An oversized logo may interfere with surrounding content, as illustrated in the example.\n- Ensure that both the text and button remain clear and legible. Use appropriate sizing and alignment to maintain a clean, user-friendly interface.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/using-logo-and-text",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "4697ade0c3c4f5c29b7b9dea5a196a63a8304cd5f78137643e747009be978c83",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "Text Format",
+      "statement": "(figure) UAE PASS As a Title or normal text",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-format",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "ceb1d0827465776b7bbeb04a538ca33f9c2dc14919283f1b8dc892974be5c78e",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "accessibility",
+      "topic": "Text Visibility & Spacing",
+      "statement": "- Avoid poor contrast. Ensure all user details and button text are clearly visible against the background.\n- Maintain consistent alignment. Use the correct size and alignment to guide the user toward the intended action.\n- Do not combine multiple actions in a single button. This can lead to confusion. Instead, separate actions clearly—each button should represent one distinct function, as demonstrated in the example.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-visibility-and-spacing",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "4d1a515d680ab52c786b0a05fc9198b23a4973872db8980e9eed441902b45dbe",
+        "docsVersion": null
+      }
+    },
+    {
+      "kind": "usage",
+      "topic": "System Error",
+      "statement": "The service provider retains the flexibility to add any error icon to the system. However, we\nrecommend using specific icons that align with our notification function. While customization or\nremoval may be challenging; these recommended icons ensure clarity and effective communication.",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/system-error",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "bf1b83a1d057cb480fc6266e5453679f50ebfa47f61ee4d9bf9e82b373826311",
+        "docsVersion": null
+      }
+    }
+  ],
+  "visualGuidance": [
+    {
+      "topic": "Mobile View Option A & B",
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/krjbPv0s1zc2JE314W3U",
+          "caption": null
+        }
+      ],
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass/mobile-view-option-a-and-b",
+        "retrievedOn": "2026-07-07",
+        "contentHash": "3753807eac7452ba5de0c1258a46d4ed0c730ce4f9cbdc27cc95b141326bc636",
+        "docsVersion": null
+      }
+    }
+  ]
+}

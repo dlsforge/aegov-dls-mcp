@@ -157,6 +157,12 @@ export interface Catalog {
      * carry their own `retrievedOn` date, set once at capture.
      */
     generatedFrom: { package: string; version: string };
+    /**
+     * Docs↔package drift: classes used by docs examples that do NOT ship in the
+     * pinned package (typos + undefined hooks), keyed by class name with the
+     * reviewed explanation. validate_snippet must not accept these as valid.
+     */
+    knownDocsOnlyClasses: Record<string, string>;
   };
   components: ComponentRecord[];
   tokens: TokenRecord[];
@@ -166,4 +172,67 @@ export interface Catalog {
   patterns: DocsArtifact[];
   /** Docs component pages with no package class-root (navigation, slider). */
   docsOnlyComponents: DocsArtifact[];
+}
+
+// --- UAE Pass guidance (catalog/uaepass.json) ---------------------------------------
+//
+// Sourced from docs.uaepass.ae (STAGE1-HANDOFF.md §10.6: confirmed canonical),
+// via the same snapshot → extract → curated-build pipeline as the DLS docs.
+// Everything here is docs-tier and HIGH-STAKES: provisional, needs revalidation.
+
+/** A UAE Pass rule: verbatim page text from docs.uaepass.ae. */
+export interface UaePassRule {
+  kind: RuleKind;
+  /** The source page's display name, e.g. "Logo and Title Colors". */
+  topic: string;
+  /** The page's guidance text, verbatim. */
+  statement: string;
+  provenance: DocsProvenance;
+}
+
+/** OAuth2 endpoint set for one UAE Pass environment. */
+export interface UaePassEndpointSet {
+  authorization: string;
+  token: string;
+  userInfo: string;
+  logout: string;
+}
+
+export interface UaePassGuidance {
+  meta: {
+    schemaVersion: number;
+    origin: string;
+    retrievedOn: string;
+    note: string;
+  };
+  /** Documented button wordings; ids are ours, labels are the docs' phrasing. */
+  buttonVariants: Array<{ id: string; label: string | null; sourceUrl: string }>;
+  /** white / outline / black — the only permitted appearances. */
+  appearances: Array<{ id: string; sourceUrl: string }>;
+  radiusOptions: Array<{ id: string; note: string; sourceUrl: string }>;
+  minSize: {
+    minWidth: string;
+    minHeight: string;
+    minMargin: string;
+    preserveAspectRatio: boolean;
+    provenance: DocsProvenance;
+  };
+  endpoints: {
+    staging: UaePassEndpointSet;
+    production: UaePassEndpointSet;
+    provenance: DocsProvenance;
+  };
+  authorize: {
+    params: Array<{ name: string; type: string; description: string }>;
+    provenance: DocsProvenance;
+  };
+  /** Official downloadable button artwork (SVG/PNG) — never hand-drawn. */
+  assets: Array<{ label: string | null; url: string; provenance: DocsProvenance }>;
+  rules: UaePassRule[];
+  /** Image-only guideline pages: guidance exists but only as figures. */
+  visualGuidance: Array<{
+    topic: string;
+    images: Array<{ url: string; caption: string | null }>;
+    provenance: DocsProvenance;
+  }>;
 }

@@ -11,12 +11,16 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { loadCatalog } from "./catalog/load.js";
+import { loadCatalog, loadUaePass } from "./catalog/load.js";
 import { registerListComponents } from "./tools/listComponents.js";
 import { registerGetComponent } from "./tools/getComponent.js";
 import { registerGetTokens } from "./tools/getTokens.js";
+import { registerScaffoldUaePass } from "./tools/scaffoldUaePass.js";
+import { registerScaffoldEmiratesId } from "./tools/scaffoldEmiratesId.js";
+import { registerValidateSnippet } from "./tools/validateSnippet.js";
 
 const catalog = loadCatalog();
+const uaePass = loadUaePass();
 
 const server = new McpServer({
   name: "aegov-dls",
@@ -46,6 +50,9 @@ server.registerTool(
 registerListComponents(server, catalog);
 registerGetComponent(server, catalog);
 registerGetTokens(server, catalog);
+registerScaffoldUaePass(server, uaePass);
+registerScaffoldEmiratesId(server, catalog);
+registerValidateSnippet(server, catalog);
 
 const transport = new StdioServerTransport();
 await server.connect(transport);

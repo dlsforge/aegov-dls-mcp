@@ -6,10 +6,17 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import type { Catalog } from "./types.js";
+import type { Catalog, UaePassGuidance } from "./types.js";
+
+function loadJson(name: string) {
+  const here = dirname(fileURLToPath(import.meta.url));
+  return JSON.parse(readFileSync(join(here, "..", "..", "catalog", name), "utf8"));
+}
 
 export function loadCatalog(): Catalog {
-  const here = dirname(fileURLToPath(import.meta.url));
-  const path = join(here, "..", "..", "catalog", "catalog.json");
-  return JSON.parse(readFileSync(path, "utf8")) as Catalog;
+  return loadJson("catalog.json") as Catalog;
+}
+
+export function loadUaePass(): UaePassGuidance {
+  return loadJson("uaepass.json") as UaePassGuidance;
 }

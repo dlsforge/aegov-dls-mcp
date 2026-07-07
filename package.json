@@ -20,7 +20,10 @@
     "inventory": "node scripts/extract-inventory.mjs",
     "docs:fetch": "node scripts/fetch-docs.mjs",
     "docs:extract": "node scripts/extract-docs.mjs",
-    "catalog": "node scripts/build-catalog.mjs"
+    "catalog": "node scripts/build-catalog.mjs",
+    "uaepass:fetch": "node scripts/fetch-uaepass.mjs",
+    "uaepass:extract": "node scripts/extract-uaepass.mjs",
+    "uaepass:build": "node scripts/build-uaepass.mjs"
   },
   "engines": {
     "node": ">=18"

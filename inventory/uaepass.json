@@ -1,0 +1,1556 @@
+{
+  "origin": "https://docs.uaepass.ae",
+  "retrievedOn": "2026-07-07",
+  "pages": [
+    {
+      "path": "/feature-guides/authentication/web-application",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application",
+      "retrievedOn": "2026-07-07",
+      "name": "Web Integration",
+      "sections": [
+        {
+          "level": 3,
+          "heading": "Here are the articles in this Section:",
+          "text": "{% content-ref url=\"/pages/-MekZ9p6eOTVn70icAX9\" %}\nIntroduction\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZ9ur4NdJj_Sl5YRe\" %}\nPre-Requisites\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZ9gXXJUhqEbofoJG\" %}\nEndpoints\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZdVuXNkSD7SoQIJs\" %}\n1. Authorization Code\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZ_djDB775H5QmwNV\" %}\n2. Access Token\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZq2SRW81pnLHnNb7\" %}\n3. User Information\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MekZzPtYuHMjOEPVU0A\" %}\n4. Logout\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-Mek_67eDrqVa8jGV-WZ\" %}\nUser Linking\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-MkpUgEyh2UrTU0au9Hz\" %}\nLogin Button\n{% endcontent-ref %}",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "6793c9e6251dcc5b61724465fac736bdc10f30e0ee2175d1a8e582c55f5287ab"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/1.-obtaining-the-oauth2-access-code",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/1.-obtaining-the-oauth2-access-code",
+      "retrievedOn": "2026-07-07",
+      "name": "1. Authorization Code",
+      "sections": [
+        {
+          "level": 4,
+          "heading": "For Standard Citizen/Resident Integration Flow:",
+          "text": "Open the below URL to authenticate",
+          "codeBlocks": [
+            {
+              "language": "http",
+              "code": "https://stg-id.uaepass.ae/idshub/authorize?response_type=code&client_id=sandbox_stage&scope=urn:uae:digitalid:profile:general&state=HnlHOJTkTb66Y5H&redirect_uri=https://stg-selfcare.uaepass.ae&acr_values=urn:safelayer:tws:policies:authentication:level:low"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 4,
+          "heading": "For Visitor Integration:",
+          "text": "SP need to use the below scopes to their first authentication call to retrieve the desired attributes of the user profile:\n\nExample:",
+          "codeBlocks": [
+            {
+              "language": null,
+              "code": "scope=urn:uae:digitalid:profile:general urn:uae:digitalid:profile:general:profileType urn:uae:digitalid:profile:general:unifiedId"
+            },
+            {
+              "language": null,
+              "code": "https://stg-id.uaepass.ae/idshub/authorize?redirect_uri=https://localhost:8080&client_id={client_id}&response_type=code&state=pd3PgezRwk596u2yfRwqOgru&scope=urn:uae:digitalid:profile:general urn:uae:digitalid:profile:general:profileType urn:uae:digitalid:profile:general:unifiedId&acr_values=urn:safelayer:tws:policies:authentication:level:low"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Step 2: Authenticate",
+          "text": "Page will redirect to UAEPASS login page.",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Step 3: Authorization Code",
+          "text": "Provide the login identifier and confirm the push notification on the mobile. SP should use below code to pass to Access token Call.\n\nNote: Copy the {Authorization Code} to be used in next step to get the access token\n\nResponse:",
+          "codeBlocks": [
+            {
+              "language": null,
+              "code": "https://stg-selfcare.uaepass.ae/?code={Authorization Code}&state={State value}"
+            },
+            {
+              "language": "http",
+              "code": "{your redirect_uri}?code={authorization_code}&state={state value}"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 2,
+          "heading": "Authentication Request",
+          "text": "`GET` `https://stg-id.uaepass.ae/idshub/authorize`\n\nOnce the authentication of the user is complete, and the user has granted authorization, the application receives an HTTP GET request of the following type from the user’s browser. This HTTP request is an OAuth 2.0 authorization response. The application receives this request at the redirect URL specified in the authorization or authentication request message (the redirect_uri parameter) or in the registered redirect URL.",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 4,
+          "heading": "Query Parameters",
+          "text": "",
+          "codeBlocks": [
+            {
+              "language": null,
+              "code": "GET {redirection_uri_path}?code={code}&state={state}\nHTTP/1.1 Host: {redirection_uri_host}"
+            }
+          ],
+          "tables": [
+            [
+              [
+                "Name",
+                "Type",
+                "Description"
+              ],
+              [
+                "response\\_type",
+                "string",
+                "Must take the value, which indicates that an code authorization code is requested."
+              ],
+              [
+                "redirect\\_uri",
+                "string",
+                "Redirect URI to the application. The application waits to receive at this URI the authorization or authentication response message with the authorization code."
+              ],
+              [
+                "client\\_id",
+                "string",
+                "Identifier of the client application. (To be shared by UAEPASS Team)"
+              ],
+              [
+                "state",
+                "string",
+                "We recommend using this parameter to safeguard against CSRF attacks. The application can also include additional information in this parameter, such as the URL to which the browser is to be redirected when the authorization or authentication finishes. (To include multiple data in the value of this parameter, the application must serialize it as it sees fit.)"
+              ],
+              [
+                "scope",
+                "string",
+                "List of values, separated by spaces, that represent the scope of the authorization that the application wants to obtain. It queries the scopes required for accessing the resources or services in question. (To be shared by UAEPASS Team if its value is other than specified in sample above)"
+              ],
+              [
+                "acr\\_values",
+                "string",
+                "Defines conditions for authenticating the user (minimum levels or specific flows) who must authorize the access. (To be used as specified in sample or check with UAEPASS team for more details)"
+              ],
+              [
+                "ui\\_locales",
+                "string",
+                "Language parameter to be sent to render English or Arabic login pages of UAEPASS and below are the possible values: English page : en Arabic page : ar"
+              ]
+            ]
+          ]
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3dGmgXtHf705j48el",
+          "caption": "Figure 3: Login Page"
+        }
+      ],
+      "contentHash": "403f7f1ba2240489d447fe1b7380255c717c3077468f19604d4dfda67b4229a8"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/2.-obtaining-the-access-token",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/2.-obtaining-the-access-token",
+      "retrievedOn": "2026-07-07",
+      "name": "2. Access Token",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "As per the diagram shown in figure 2, SP should obtain the access token by passing the same authorization code which was received in the previous step.",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "cURL Request for Token Generation Call",
+          "text": "Replace code parameter '{ code}' with the value received from Authorization Code.",
+          "codeBlocks": [
+            {
+              "language": "css",
+              "code": "curl --location --request POST 'https://stg-id.uaepass.ae/idshub/token?grant_type=authorization_code&redirect_uri=https://stg-selfcare.uaepass.ae&code=bfe96299-83f4-3ee9-80e4-56c24f5265d3' \\\n--header 'Content-Type: multipart/form-data' \\\n--header 'Authorization: Basic c2FuZGJveF9zdGFnZTpzYW5kYm94X3N0YWdl'"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Response",
+          "text": "",
+          "codeBlocks": [
+            {
+              "language": "json",
+              "code": "{\n  \"access_token\": \"67f2536e-07e6-37c1-967f-78562000a4f9\",\n  \"scope\": \"urn:uae:digitalid:profile:general\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600\n}"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 2,
+          "heading": "API detail to exchange the token",
+          "text": "`POST` `https://stg-id.uaepass.ae/idshub/token`",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 4,
+          "heading": "Query Parameters",
+          "text": "",
+          "codeBlocks": [],
+          "tables": [
+            [
+              [
+                "Name",
+                "Type",
+                "Description"
+              ],
+              [
+                "grant\\_type",
+                "string",
+                "Must have the value as “authorization\\_code”."
+              ],
+              [
+                "redirect\\_uri",
+                "string",
+                "Redirect URI to the application. The application waits to receive at this URI the authorization or authentication response message with the authorization code."
+              ],
+              [
+                "code",
+                "string",
+                "Authorization code received in the previous authorization response."
+              ]
+            ]
+          ]
+        },
+        {
+          "level": 4,
+          "heading": "Headers",
+          "text": "JSON object containing the access token, associated information and (if the scope was openid requested) an ID token.\n\naccess_token: Access token generated by UAE PASS.\ntoken_type: Type of access token. Always has the “Bearer” value.\nexpires_in: Lifetime (in seconds) of the access token.\nscope: Scopes granted to those to which the access token is associated, separated by spaces.\" %}\n\nunsupported_grant_type: The value of the grant_type parameter in the request is not supported. TrustedX currently only supports the authorization_code type.\ninvalid_grant, codeNotFound: The authorization code specified in the code parameter of the request was not issued in a recent authorization response or has expired.\ninvalid_grant, expiredCode: The authorization code specified in the code parameter of the request has expired. This error appears when passing the expired code to token generation call. The auth code received from authorization url should be utilized by SP within 10 seconds.\ninvalid_grant, codeNotIssuedToClientId: The authorization code specified was issued for a different client application than that identified in the Authorization HTTP header.\ninvalid_grant, redirectUriMismatch: The authorization code specified was issued for an authorization request associated to a redirect URL different from the URL specified in the redirect_uri parameter of the request. Please make sure that SP passes the same redirect url in authentication and token generation calls.\ninvalid_grant, invalidOrExpiredCode: The authorization code specified in the code parameter of the request has expired or invalid.\ninvalid_scope: Only for the client credentials grant flow. One of the scopes requested by the application is not included in this list of scopes provided by the authorization server or has not been enabled for the client credentials grant. This error also occurs if the application did not request any scope and the server has no default scope defined for this type of grant.\nInvalid_basic_header_authentication: This error appears when SP is not passing the client id or secret properly as configured in server.\nInvalid_Token: Please make sure that SP is passing the token to user profile API using header Authorization as Bearer {token}. \" %}\n\ninvalid_client, invalidCredentials: The client application cannot be authenticated with the credentials included in the Authorization HTTP header. This may be because there is no Client Application configured in TrustedX with the identifier specified or because the entity exists but the secret does not match the configured secret. \" %}",
+          "codeBlocks": [
+            {
+              "language": "json",
+              "code": "{\n  \"access_token\": \"67f2536e-07e6-37c1-967f-78562000a4f9\",\n  \"scope\": \"urn:uae:digitalid:profile:general\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600\n}"
+            },
+            {
+              "language": "json",
+              "code": "{\n  \"error\": \"Error code\",\n  \"error_description\": \"invalidHttpBasicAuthenticationToken\"\n}"
+            },
+            {
+              "language": "json",
+              "code": "{\n  \"error\": \"Error code\",\n  \"error_description\": \"Additional description of the error\"\n}"
+            },
+            {
+              "language": "json",
+              "code": "{\n  \"error_description\": \"description\"\n}"
+            }
+          ],
+          "tables": [
+            [
+              [
+                "Name",
+                "Type",
+                "Description"
+              ],
+              [
+                "Authorization",
+                "string",
+                "Basic {credentials}"
+              ],
+              [
+                "Content-Type",
+                "string",
+                "multipart/form-data; charset=UTF-8"
+              ]
+            ]
+          ]
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "9f01e9a771fa83b3b421b6231d803e10c1d2b836ee1a05e62da33f718131dc4f"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/3.-obtaining-authenticated-user-information-from-the-access-token",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/3.-obtaining-authenticated-user-information-from-the-access-token",
+      "retrievedOn": "2026-07-07",
+      "name": "3. User Information",
+      "sections": [
+        {
+          "level": 3,
+          "heading": "cURL Request for User Information",
+          "text": "Replace code parameter '{Access Token}' with the value received from Step 2",
+          "codeBlocks": [
+            {
+              "language": "bash",
+              "code": "curl --location --request GET 'https://stg-id.uaepass.ae/idshub/userinfo' \\\n--header 'Authorization: Bearer {Access Token}'"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Response(Citizen/Resident Profile)",
+          "text": "",
+          "codeBlocks": [
+            {
+              "language": "json",
+              "code": "{\n    \"sub\": \"UAEPASS/7a05992e-3244-49d3-bcbc-7894c8fca25e\",\n    \"fullnameAR\": \"ساوميا,,,,شارما,,\",\n    \"gender\": \"Male\",\n    \"mobile\": \"97151234003\",\n    \"lastnameEN\": \"ABC\",\n    \"fullnameEN\": \"Ram,,,,ABC,,\",\n    \"uuid\": \"7a05992e-3244-49d3-bcbc-7894c8fca25e\",\n    \"lastnameAR\": \"شارما\",\n    \"idn\": \"784189014978983\",\n    \"nationalityEN\": \"IND\",\n    \"firstnameEN\": \"Ram\",\n    \"userType\": \"SOP3\",\n    \"nationalityAR\": \"هندى\",\n    \"firstnameAR\": \"ساوميا\",\n    \"email\": \"ramabc1234@gmail.com\"\n}"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Response(Visitor Profile)",
+          "text": "",
+          "codeBlocks": [
+            {
+              "language": "json",
+              "code": "{\n   \"sub\": \"35q00600-27a0-5555-8d93-453392902b84\",\n   \"fullnameAR\": \"عمر,بدوى,حسنين,,عبدالله,,\",\n   \"mobile\": \"971566612311\",\n   \"fullnameEN\": \"AMAR,,,,KHAN,,\",\n   \"uuid\": \"35q87600-27a0-5555-8d93-453392902b84\",\n   \"profileType\": \"2\",\n   \"nationalityEN\": \"IND\",\n   \"nationalityAR\": \"هندى\",\n   \"firstnameEN\": \"AMAR\",\n   \"unifiedID\": \"123458099\",\n   \"userType\": \"SOP3\",\n   \"firstnameAR\": \"عمر\",\n   \"lastnameAR\": \"شارما\",\n   \"lastnameEN\": \"Khan\",\n   \"email\": Khan@dubai.ae\n}"
+            }
+          ],
+          "tables": []
+        },
+        {
+          "level": 2,
+          "heading": "API Details",
+          "text": "`GET` `https://stg-id.uaepass.ae/idshub/userinfo`",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 4,
+          "heading": "Headers",
+          "text": "",
+          "codeBlocks": [
+            {
+              "language": "json",
+              "code": "{\n  \"sub\": \"800F475AC0E7A9ED01B2D5D2C25A59B3\",\n  \"userType\": \"SOP3\",\n  \"fullnameAR\": \"سميث جون\",\n  \"fullnameEN\": \"John Smith\",\n  \"gender\": \"Male\",\n  \"lastnameEN\": \"Smith\",\n  \"nationalityAR\": \"الهند\",\n  \"firstnameEN\": \"John\",\n  \"idn\": \"784000000000000\",\n  \"idType\": \"ID\",\n  \"email\": \"john.smith@organization.com\",\n  \"spuuid\": \"b1320896-fb2e-5140-baf0-fa915eb9be5d\",\n  \"nationalityEN\": \"IND\",\n  \"firstnameAR\": \"جون\",\n  \"lastnameAR\": \"سميث\",\n  \"acr\": \"urn:safelayer:tws:policies:authentication:level:high\",\n  \"mobile\": \"9715555555555\",\n  \"titleEN\": \"Dr.\",\n  \"titleAR\": \".د\",\n  \"amr\": [\n    \"urn:safelayer:tws:policies:authentication:adaptive:methods:mobileid\",\n    \"urn:uae:authentication:method:verified\"\n  ]\n}"
+            }
+          ],
+          "tables": [
+            [
+              [
+                "Name",
+                "Type",
+                "Description"
+              ],
+              [
+                "Authorization \\*",
+                "string",
+                "Bearer {access token received in previous step}"
+              ]
+            ]
+          ]
+        },
+        {
+          "level": 3,
+          "heading": "Step 2 and 3 are shown pictorially below as sequence diagram:",
+          "text": "SOP Handling for Visitor Profile",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/uWWA93UJzle9WsYXg9of",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/-MekZxVy5U5Cxaq4fO6z",
+          "caption": "Figure 6: Access Token"
+        }
+      ],
+      "contentHash": "6dabad497bde6ad9eafe9a6fdd2d8f056dda705488c82e95d40b96955f4c03c3"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/4.-web-single-sign-on-sso-and-logout-user-session-from-uae-pass",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/4.-web-single-sign-on-sso-and-logout-user-session-from-uae-pass",
+      "retrievedOn": "2026-07-07",
+      "name": "4. Logout",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "To logout from UAEPASS, use the following logout URL.\n\nredirect_uri should be replaced by URL of Relying party where the response will be sent after logout from UAEPASS.\n\nIn case additional parameter has to be passed in logout redirect_uri, then encoded value of redirect_uri to be passed.\"\n\nNote: Service Provider should make sure to logout the user from UAEPASS when user clicks on Logout from Service Provider Web Portal.",
+          "codeBlocks": [
+            {
+              "language": null,
+              "code": "https://stg-id.uaepass.ae/idshub/logout?redirect_uri=https://stg-selfcare.uaepass.ae"
+            }
+          ],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "389f35e99cb029e9310b464a2ed2b231de8d869d9ecf46288f7419fd8eb6f837"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/add-login-button",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/add-login-button",
+      "retrievedOn": "2026-07-07",
+      "name": "Login Button",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Login Buttons in SVG Format\n\nLogin Buttons in PNG Format\n\nButtons Guidelines\n\nUAEPASS Buttons\n\nSign In with UAEPASS Buttons",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3kQnakghDan2IUWK-",
+          "label": "Login Buttons in SVG Format"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3kU__uL34eg4vx5fm",
+          "label": "Login Buttons in PNG Format"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3kZs8GqfeWctpz5UT",
+          "label": "Buttons Guidelines"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3kbkSSUXnUIp-swYG",
+          "label": "UAEPASS Buttons"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/-Ml3kMknCXO1yUmTDoVu",
+          "label": "Sign In with UAEPASS Buttons"
+        }
+      ],
+      "images": [],
+      "contentHash": "58af73cc4343d9c1cb1087124edf8f75a075a574f96c10e2fb495c1ee5b1a14f"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/authentication-postman-walkthrough",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/authentication-postman-walkthrough",
+      "retrievedOn": "2026-07-07",
+      "name": "Authentication Postman Walkthrough",
+      "sections": [],
+      "files": [
+        {
+          "url": "https://docs.uaepass.ae/files/zQuGZUGofK9NcQcPfRQv",
+          "label": null
+        }
+      ],
+      "images": [],
+      "contentHash": "df74ffe702ea2012a1085bf78b692512a05272a5dfeda32807c1a73d93fd1f64"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/endpoints",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/endpoints",
+      "retrievedOn": "2026-07-07",
+      "name": "Endpoints",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Since the integration is based on OAuth 2.0, below are the standard endpoints of UAE PASS for Staging and Production environment.\n\nStaging\n\nProduction",
+          "codeBlocks": [],
+          "tables": [
+            [
+              [
+                "Endpoint",
+                "URL"
+              ],
+              [
+                "Authorization",
+                "https://stg-id.uaepass.ae/idshub/authorize"
+              ],
+              [
+                "Token",
+                "https://stg-id.uaepass.ae/idshub/token"
+              ],
+              [
+                "User Info",
+                "https://stg-id.uaepass.ae/idshub/userinfo"
+              ],
+              [
+                "Logout",
+                "https://stg-id.uaepass.ae/idshub/logout"
+              ]
+            ],
+            [
+              [
+                "Endpoint",
+                "URL"
+              ],
+              [
+                "Authorization",
+                "https://id.uaepass.ae/idshub/authorize"
+              ],
+              [
+                "Token",
+                "https://id.uaepass.ae/idshub/token"
+              ],
+              [
+                "User Info",
+                "https://id.uaepass.ae/idshub/userinfo"
+              ],
+              [
+                "Logout",
+                "https://id.uaepass.ae/idshub/logout"
+              ]
+            ]
+          ]
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "d62820fc14eaf311d1df2a2cc9fcf9541a7e210a406f21c0ea4367d91cec6cca"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/introduction",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/introduction",
+      "retrievedOn": "2026-07-07",
+      "name": "Introduction",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Below is the high-level flow:\n\n- As an enhancement to UAE PASS, Visitors will also be allowed to create verified profile and access services integrated with UAE PASS.\n- SPs who will allow the Authentication for Visitor need to capture the response of a user profile from UAE PASS and depending on the attributes received, SP needs to handle their business flow.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/-MekZOQA5B2pBkOCwCtn",
+          "caption": "Figure 2: High-level Flow"
+        }
+      ],
+      "contentHash": "42b2f913d0a67907ca4eca63ec7d95565dd695f967c4c453d92675332cccdac4"
+    },
+    {
+      "path": "/feature-guides/authentication/web-application/pre-requisites",
+      "url": "https://docs.uaepass.ae/feature-guides/authentication/web-application/pre-requisites",
+      "retrievedOn": "2026-07-07",
+      "name": "Pre-Requisites",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "- [x] Developer / Tester should have a user created on staging environment.\n- [x] Staging mobile app installed on developer device.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "779607b7bc50a38792a94e4ad2e1b9b5fb3cce19678654a274bbd49de00facfb"
+    },
+    {
+      "path": "/guidelines/design-guidelines",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines",
+      "retrievedOn": "2026-07-07",
+      "name": "Design Guidelines",
+      "sections": [
+        {
+          "level": 3,
+          "heading": "Here are the articles in this Section:",
+          "text": "{% content-ref url=\"/pages/-Mkl2HMma_K13iudE0L1\" %}\nUAEPASS Button Guidelines\n{% endcontent-ref %}\n\n{% content-ref url=\"/pages/-Mkl2NM0-z6lLRC9DlIr\" %}\nText Message Guidelines\n{% endcontent-ref %}",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "4ae3972fd53abba25a3934830c63d2de1210296061605d10c0228db5cc160560"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines",
+      "retrievedOn": "2026-07-07",
+      "name": "Account Linking Guidelines",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The UAE PASS Account Linking Guide outlines the required standards and recommended flows for securely associating a user’s UAE PASS identity with their local profile on a Service Provider’s platform. The goal is to ensure a seamless, secure, and user-friendly experience whether the linking is performed automatically or manually.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "b27937dd60ba28845a46189ffd885dcbce464af69f6875bc604c745d129e321f"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/automatic-linking",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/automatic-linking",
+      "retrievedOn": "2026-07-07",
+      "name": "Automatic Linking",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "User accounts should be automatically linked to UAE PASS using one or more of the following identifiers: UAE PASS Unique User Identifier (SPUUID), Emirates ID, or Unique ID. This approach ensures a seamless, secure, and user-transparent experience without requiring manual intervention.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "941697aee24e150850ef10f7507c52ca24a5e07267a36aab833c7eaf70351105"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/manual-linking",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/manual-linking",
+      "retrievedOn": "2026-07-07",
+      "name": "Manual Linking",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Manual linking is required when automatic matching is not possible or when multiple user records need to be clarified. The guide defines four key cases to cover different scenarios:",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "c0af9db5b26c7ad64675623c283f0e05f5f660678aeabe46d4021b005f81bde3"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-a",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-a",
+      "retrievedOn": "2026-07-07",
+      "name": "Case A",
+      "sections": [
+        {
+          "level": 2,
+          "heading": "Two records found with the same \"Unique Identifier\"",
+          "text": "If the Service Provider Component (SPC) detects two records with the same unique identifier—such as an Emirates ID number or email address—the system should prompt the user to select the correct account.\n\nExample Scenarios:\n\n- Record 1: 784-1234-1134567-1\n- Record 2: 784-1234-1134567-1\n\nOr\n\n- Record 1:\n- Record 2:\n\nIn such cases, SPC must display a selection screen allowing the user to choose which record to proceed with, ensuring accuracy and user control during the account linking process.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/JAEh6ThlleXTDhu4uoI6",
+          "caption": null
+        }
+      ],
+      "contentHash": "27ec011b3800534fa6f9d7987d4d86ba98986f021d0246be5aeec04874f5214c"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-b",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-b",
+      "retrievedOn": "2026-07-07",
+      "name": "Case B",
+      "sections": [
+        {
+          "level": 2,
+          "heading": "Matching User Record Identified",
+          "text": "When the Service Provider detects two records with matching user information—one from UAE PASS and one from the local system—the system should automatically compare the data.\n\nIf a match is confirmed, the user will be prompted to log in using their existing Service Provider credentials (e.g., username and password) to securely link the accounts. This method ensures a smooth and secure account linking experience, enabling seamless access to services.\n\n> The appropriate design screen for Case B should be displayed to guide the user through this step.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/09K9nF1KLw9vg7Qmm1LR",
+          "caption": null
+        }
+      ],
+      "contentHash": "dd1f049f9ac0a9dcca69d8ff3f8b54aa93eced024e59ab04349121c99d39e640"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-c",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-c",
+      "retrievedOn": "2026-07-07",
+      "name": "Case C",
+      "sections": [
+        {
+          "level": 2,
+          "heading": "No record found with the same \"Unique Identifier\"",
+          "text": "SPC is allowing online user registration,\nManual account linking shows one page with\nboth options:\nIf user has already local login, the user enters\nlocal Service Provider username/\npassword and link accounts.\n\nIf the user doesn’t a have local login and SP is\nallowing online user registration, then user\ncan start the sign-up process.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/grVPZS23dG74FM1iOxQI",
+          "caption": null
+        }
+      ],
+      "contentHash": "d26d785aa01b0f669e2e6182793382954946bd21c607fd19256905523ef8791d"
+    },
+    {
+      "path": "/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-d",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/account-linking-guidelines/manual-linking/case-d",
+      "retrievedOn": "2026-07-07",
+      "name": "Case D",
+      "sections": [
+        {
+          "level": 2,
+          "heading": "1. Account Verification Prompt (No Unique Identifier Found)",
+          "text": "If no unique key attribute is found (such as SPUUID, Emirates ID, email, or mobile number), the system should prompt the user with a question:\n“Do you already have an account with the Service Provider?”\n\nDepending on the user's response, apply the following flow:\n\n- If Yes: Prompt the user to enter their local Service Provider credentials (username and password) to manually link the accounts.\n- Apply the corresponding design guidelines to support this step and ensure a secure linking process.",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 2,
+          "heading": "2. New User Creation",
+          "text": "If No: The Service Provider should initiate new user registration by prefilling the registration form using the verified data retrieved from UAE PASS. This ensures a streamlined onboarding process while minimizing manual data entry for the user.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/mIFKZgqqCS6f8WlVcSb3",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/Kp58gE9LMHWz3zwqzcgO",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/MH5bBOfX8f2w8A31Gdhu",
+          "caption": null
+        }
+      ],
+      "contentHash": "48d6b6d039a791939d4e858e529eaff3831e664d0473555c073063d148de9ab1"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Guidelines",
+      "sections": [
+        {
+          "level": 2,
+          "heading": "Instructions",
+          "text": "Follow these guidelines to offer a seamless experience with UAE PASS.\n\nUse the recommended styles on websites and mobile apps.\nDo not create your own button styles – maintain UAE PASS consistency.\n\nPick a button style that suits your platform’s design.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "a633ebb24ac913cdcc1bded8b3d1f6fef19c55cb439178d82c249fefc3b2b301"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-assets",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-assets",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Assets",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "This file contains all official UAE PASS button assets for use by service providers integrating with UAE PASS across web and mobile platforms.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [
+        {
+          "url": "https://docs.uaepass.ae/files/1hPaWmnX2nPl3bucuCfm",
+          "label": null
+        }
+      ],
+      "images": [],
+      "contentHash": "607eff9344bc725008854b22bf4d40c09ea6e6a22c8ddbfa748d2d7e1a85c430"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-guidelines-english",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-guidelines-english",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Guidelines - English",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The system provides several options of the buttons. Depending on the platform on which your\ncontent runs, choose the variant that fits the terminology of your experience and use it consistently\nthroughout your interfaces.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/POMe2hLTARZIWZzQJM6y",
+          "caption": null
+        }
+      ],
+      "contentHash": "ad213b46b82f3e59cbcf658477d9b8c2bd79461e505f4ae763ef78ff64255b58"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-options",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-options",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Options",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Depending on the platform, the system provides up to three options for the appearance of the UAE\nPASS buttons: white, white with an outline, and black. Choose the appearance that works best with\nthe background on which the button displays.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/Xj65Gpmh5a0n4ZN3nJRz",
+          "caption": null
+        }
+      ],
+      "contentHash": "90ac575c19ce03e0e35c38ede2c4bf54fb9e25e5625ccce1f3bc8fc0e7e6344d"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-radius",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-radius",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Radius",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Adjust the corner radius to match your UI: choose from\n\n1. Rectangle (Minimum radius)\n2. Default (Standard radius, 12 pixels)\n3. Pill-shaped (Maximum radius, 999)",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/SB7Iqs29DdHnjErgsYjg",
+          "caption": null
+        }
+      ],
+      "contentHash": "8ddee62363cc83cd50a6c2d8dfee251e7230f067065cfc42e767c14050c41789"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-size-and-margin",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-size-and-margin",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Size and Margin",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Minimum size:\n\n- Width: 140pt\n- Height: 30pt\n- Margin: 1/10th of button height\nPreserve aspect ratio.\n\nEnsure the button scales correctly across devices and screen sizes, maintaining the aspect ratio so the UAE PASS logo remains unstretched.",
+          "codeBlocks": [],
+          "tables": [
+            [
+              [
+                "Minimum Width",
+                "Minimum Height",
+                "Minimum Margin"
+              ],
+              [
+                "140pt (140px @1x, 280px @2x)",
+                "30pt (30px @1x, 60px @2x)",
+                "1/10 of the button’s height"
+              ]
+            ]
+          ]
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/lwMUlig9WWVMstsJPOpo",
+          "caption": null
+        }
+      ],
+      "contentHash": "cabf1498ead12d076c5193bf1e5d989930063bdd1c7f62ded439990a1259f1a0"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-states-and-feedback",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-states-and-feedback",
+      "retrievedOn": "2026-07-07",
+      "name": "Button States and Feedback",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Active and Disabled State. The active state is when a button is ‘clickable’/’tappable’. While that may\nsound a bit obvious, the important thing to note here is that a button can be disabled if the user\nhasn’t completed the necessary steps.\n\nFocus and Pressed State. The focus state is when the button has been tabbed to. The pressed state\nis the state when the user’s cursor or finger is ‘holding down’ on the button.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/hEEojmQgthfKNiPvRMNr",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/EYDqTc3nGeIZ28O68XCo",
+          "caption": null
+        }
+      ],
+      "contentHash": "9c352c19399ff08979f07d9532ae4c5fe5631ef81c2d905848e4ea0e350a5efc"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/button-titles-arabic",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/button-titles-arabic",
+      "retrievedOn": "2026-07-07",
+      "name": "Button Titles – Arabic",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The system provides Arabic button titles. The Arabic buttons are available in the same styles and\ndifferent states as the English ones.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/AA40CbgjekBJ3FeTXbB5",
+          "caption": null
+        }
+      ],
+      "contentHash": "90c0dc96d392524b8858859986fb57f1c9563e4f22c18dc3cfefbd89d02246c7"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass",
+      "retrievedOn": "2026-07-07",
+      "name": "Continue with UAE PASS",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Continue with UAE PASS\nUsers should be clearly informed that by proceeding, they are sharing a digital copy of their documents for identity verification purposes. This step serves as a replacement for the traditional physical document verification process.\n\nThe “Continue with UAE PASS” capability may follow either the “Sign in” or “Sign up with UAE PASS” flow, but it must be clearly communicated to the user that this action involves sharing their personal documents.\n\nService providers are encouraged to highlight the advantages of using UAE PASS for document sharing and to provide users with clear guidance on how to upgrade their account and upload the necessary documents.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "333272634a100b9d8116809674886e95977aab5dac33aaef378b226f50cf77ed"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-1",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-1",
+      "retrievedOn": "2026-07-07",
+      "name": "User journey 1",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Case A: New Customer Onboarding\nA new customer selects “Continue with UAE PASS” to share their documents as part of the onboarding process for accessing the service provider’s platform.\n\nCase B: Accessing a Product or Service\nA new or existing customer selects “Continue with UAE PASS” to share documents required to access a specific product or service offered by the provider.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/BnQbdufOXPHHMN5GtI3C",
+          "caption": null
+        }
+      ],
+      "contentHash": "67d9557bd24b0f9d346ec59a783a9a6d638f5fbef0997146e1aafb13084668a4"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-2",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/continue-with-uae-pass/user-journey-2",
+      "retrievedOn": "2026-07-07",
+      "name": "User journey 2",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Case C: KYC Document Update\nAn existing customer selects “Continue with UAE PASS” to update their KYC documents in response to a request from the service provider.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/aFpMALqF34ePBpr46dzF",
+          "caption": null
+        }
+      ],
+      "contentHash": "e27aeb5a461901213bd496c71b09d2af60af3ddd03ba81e1dfcdbdf6eae6c308"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts",
+      "retrievedOn": "2026-07-07",
+      "name": "Do's & Don'ts",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Preserve the capitalization style of the title. All variants of the button title capitalize the first word —\nthat is, Sign or Continue; all other letters are lowercase. Don't change this style by, for example,\ncapitalizing every letter in the title.\n\nKeep the title and logo vertically aligned within the button. To do this, vertically align the title to the\n\nmiddle of the button, then add the logo image, making sure its height matches the height of the button",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "3900da1e2489fb5c667bbf4877a910dc57bc9d463180f74be02e5973745bd254"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/black-button",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/black-button",
+      "retrievedOn": "2026-07-07",
+      "name": "Black Button",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The black button style is available across all platforms and the web. It is best used on white or light-colored backgrounds that offer sufficient contrast.\n\nAvoid using this style on black or dark backgrounds, as it may reduce visibility and compromise accessibility.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/zV9dhRzNjn5LjpTlc0gi",
+          "caption": null
+        }
+      ],
+      "contentHash": "9d5cdbfd8089c37416a5075bd3796be0f8aac988927235f92a73600f1aa64995"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/logo-and-title-colors",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/logo-and-title-colors",
+      "retrievedOn": "2026-07-07",
+      "name": "Logo and Title Colors",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Within a button, the title text must be in either black or white—custom colors are not permitted.\n\nFor the UAE PASS logo, only two color variations are allowed:\n\n- Black logo with green and red accents\n- White logo with green and red accents\n\nAvoid using fully black or fully white logos, and do not apply any custom color treatments to the logo under any circumstances.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/aLcrR8w0HehhaUD3IZes",
+          "caption": null
+        }
+      ],
+      "contentHash": "b39227044a1f6148da8c4949a7e624a811a8023c861b6bacda2a968ef37b556e"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/outline-button",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/outline-button",
+      "retrievedOn": "2026-07-07",
+      "name": "Outline Button",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The white outlined button style is supported across all platforms, including the web. It should be used on white or light-colored backgrounds where the standard, white-filled button does not provide sufficient contrast.\n\nAvoid using this style on dark or saturated backgrounds, as the black outline may create unnecessary visual clutter. In such cases, use the solid white button style to ensure clear contrast and maintain visual clarity.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/ebglOm3WvfiNyWp9Tv3U",
+          "caption": null
+        }
+      ],
+      "contentHash": "f650bcab40ce93ccd23ce62e83954a5803a1a98be2a6bc687bf695859c59100a"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/sign-in-and-sign-up",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/sign-in-and-sign-up",
+      "retrievedOn": "2026-07-07",
+      "name": "Sign in & Sign up",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Do not display “Sign in” and “Sign up” buttons on the same page.\nEach button should appear within its respective flow:\n\n- Use the “Sign in” button exclusively on the sign-in page\n- Use the “Sign up” button on the registration or create account page\n\nThis ensures a clear and user-friendly experience.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/AvHyXRnC1Fb6ccDtDrnS",
+          "caption": null
+        }
+      ],
+      "contentHash": "4802a2866f3cc8b1ebbec264ef64cf1ed263a120277846b37156d22fe11561d6"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/system-error",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/system-error",
+      "retrievedOn": "2026-07-07",
+      "name": "System Error",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The service provider retains the flexibility to add any error icon to the system. However, we\nrecommend using specific icons that align with our notification function. While customization or\nremoval may be challenging; these recommended icons ensure clarity and effective communication.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/yGATXNs2gzcJ8NDuIcbU",
+          "caption": null
+        }
+      ],
+      "contentHash": "bf1b83a1d057cb480fc6266e5453679f50ebfa47f61ee4d9bf9e82b373826311"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-format",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-format",
+      "retrievedOn": "2026-07-07",
+      "name": "Text Format",
+      "sections": [],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/DlD3hrxBseBWoYwBB2yw",
+          "caption": "UAE PASS As a Title or normal text"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/c9zlUKjvApHitZHmwhiM",
+          "caption": null
+        }
+      ],
+      "contentHash": "ceb1d0827465776b7bbeb04a538ca33f9c2dc14919283f1b8dc892974be5c78e"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-visibility-and-spacing",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/text-visibility-and-spacing",
+      "retrievedOn": "2026-07-07",
+      "name": "Text Visibility & Spacing",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "- Avoid poor contrast. Ensure all user details and button text are clearly visible against the background.\n- Maintain consistent alignment. Use the correct size and alignment to guide the user toward the intended action.\n- Do not combine multiple actions in a single button. This can lead to confusion. Instead, separate actions clearly—each button should represent one distinct function, as demonstrated in the example.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/k9Xv3YZx9zyMq5oCMifS",
+          "caption": null
+        }
+      ],
+      "contentHash": "4d1a515d680ab52c786b0a05fc9198b23a4973872db8980e9eed441902b45dbe"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/using-logo-and-text",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/using-logo-and-text",
+      "retrievedOn": "2026-07-07",
+      "name": "Using Logo & Text",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "- Do not enlarge the UAE PASS logo beyond the recommended size. An oversized logo may interfere with surrounding content, as illustrated in the example.\n- Ensure that both the text and button remain clear and legible. Use appropriate sizing and alignment to maintain a clean, user-friendly interface.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/4ezvF5OqhP8HlfkjZVR4",
+          "caption": null
+        }
+      ],
+      "contentHash": "4697ade0c3c4f5c29b7b9dea5a196a63a8304cd5f78137643e747009be978c83"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/dos-and-donts/white-button",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/dos-and-donts/white-button",
+      "retrievedOn": "2026-07-07",
+      "name": "White Button",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "The white style is available on all platforms and the web. Use this style on dark or colored\nbackgrounds that provide sufficient contrast.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/nIY0JxBElUihb0AqIr3W",
+          "caption": null
+        }
+      ],
+      "contentHash": "98f6219c95ca808e167b101c4cd98040d009faa3bbecd239642e824ea21652ed"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/login-option",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/login-option",
+      "retrievedOn": "2026-07-07",
+      "name": "Login Option",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "If using “Login” instead of “Sign in”, apply the same button guidelines.\n\nDon’t mix both terms on one page.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/NsHNaHwq8XrCaPWF2KvV",
+          "caption": null
+        }
+      ],
+      "contentHash": "b6a55000e95166d42ff6e5d491c24cd057a2d4ec6a4e9b594f4b9ef95cf059a4"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/logo-only-buttons",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/logo-only-buttons",
+      "retrievedOn": "2026-07-07",
+      "name": "Logo-Only Buttons",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "When using logo-only UAE PASS buttons, always maintain a 1:1 aspect ratio and avoid adding extra or horizontal padding, as the artwork already includes the necessary spacing. To fit the button into your UI design, use masks (such as circular or rounded square shapes) rather than cropping the logo or modifying its built-in padding. The logo must remain intact and unaltered to preserve branding integrity.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/rFEcyAkLZOfD9jwbGrkO",
+          "caption": null
+        }
+      ],
+      "contentHash": "b82233e964e8915a5a7523fdb4b4d0e50d565153678906d35c734e98e52248f7"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/powered-by-uae-pass",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/powered-by-uae-pass",
+      "retrievedOn": "2026-07-07",
+      "name": "Powered by UAE PASS",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "If you intend to use the UAE PASS logo alongside additional text, such as “Powered by UAE PASS”, within your website or mobile application, you must obtain prior written consent or have an existing agreement with the UAE PASS team.\n\nYou may use the UAE PASS logo in a referential manner to indicate that your product is compatible with UAE PASS services, provided that you comply with the following requirements:\n\nAny indication that your product or platform is supported by the UAE PASS service must be presented in a referential format. The recommended phrasing is:\n“[Your Product Name], powered by UAE PASS”\n\nPlease refer to the example below for proper usage.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/4DgGcZnLucOWxM6EGGNI",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/CL7i8WIIbuIkanppyDAq",
+          "caption": null
+        }
+      ],
+      "contentHash": "feb0314e5d5e072a5a01b53106c9715fb9da1204b8628f129be3c5f8d35dcdb3"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up",
+      "retrievedOn": "2026-07-07",
+      "name": "Sign in and Sign up",
+      "sections": [
+        {
+          "level": 3,
+          "heading": "Buttons Usage - Mobile and Portal view",
+          "text": "In mobile view, button titles must clearly indicate that the user is signing in to or signing up for your app using their UAE PASS — not creating a new UAE PASS account through your app.\n\nMobile View",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/65pR1oA4OAdOHjIOgn3d",
+          "caption": null
+        }
+      ],
+      "contentHash": "53a20307a3150a0e7daf0a22ba11af1128cd516c7a7f5be2b4e822aa2d7b2ede"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view",
+      "retrievedOn": "2026-07-07",
+      "name": "Mobile View",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "If your interface requires to use Logo-only buttons, make sure\n\nto align logos across multiple sign-in buttons, adjust the button\n\nappearance to coordinate with your UI with guidelines\n\nconsideration.\nAlways make sure that people can instantly identify your button\nas a Sign in with UAE PASS button.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/5JwmqA3JwrrKcwByGXoY",
+          "caption": null
+        }
+      ],
+      "contentHash": "0bfe40c302c03572e238ee1d13e5e12f1ebbf89121612e66739d2e9be67655eb"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view",
+      "retrievedOn": "2026-07-07",
+      "name": "Portal Horizontal & Vertical View",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "If you choose to display only a “Sign in” or “Login” button, ensure that the UAE PASS button is clearly visible to users upon landing on the login page, following the recommended design guidelines.\n\nPortal Vertical Sign up - Bottom\n\nPortal Sign up vertical option\nIf you choose to put “Sign up”\n\nbutton below your native login,\nplease make sure that UAE PASS\nbutton is clearly appearing to the\nusers once they land to the login\n\npage.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/JPwlCeB2uiY0OLkOCkpD",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/R6nSFQo9W4JZTGcwYcel",
+          "caption": null
+        }
+      ],
+      "contentHash": "a2c691b21ec11c8ed1ab16a16f9571841b98532134d360ff4319c8886cb9f159"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-bottom",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-bottom",
+      "retrievedOn": "2026-07-07",
+      "name": "Portal Vertical Sign up - Bottom",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Portal Sign up vertical option\nIf you choose to put “Sign up”\nbutton below your native login,\nplease make sure that UAE PASS\nbutton is clearly appearing to the\nusers once they land to the login\npage.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/mr9O4cXCUVSqHL8ASyjV",
+          "caption": null
+        }
+      ],
+      "contentHash": "09a795523597716abb6b7030f77a57034bc7c4039c6ee04813db5b2278b79ab1"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-top",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-in-and-sign-up/mobile-view/portal-horizontal-and-vertical-view/portal-vertical-sign-up-top",
+      "retrievedOn": "2026-07-07",
+      "name": "Portal Vertical Sign up - Top",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "If you choose to place the \"Sign Up\" button above your native login, please ensure that the UAE PASS button remains clearly visible and easily identifiable to users as soon as they land on the login page.",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/USBca548IOGW7JPPOrQ6",
+          "caption": null
+        }
+      ],
+      "contentHash": "85a655066ca0ad6649411913d6f1369c922183789c9728a49ef522a040046bf3"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass",
+      "retrievedOn": "2026-07-07",
+      "name": "Sign with UAE PASS",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Portal Option A\n\nIf your platform provides UAE\nPASS digital signature option,\nplease follow the below guidelines\ndepending on your use case.\n\nCase A: If UAE PASS is the only\ndigital signature option that you\nprovide make sure you use “Sign\nwith UAE PASS” button as shown\nin the example.\n\nCase B: If you use multiple digital\nsignature options, make sure you\nstate a clear text that says “Sign\nwith UAE PASS”. There are two\noptions in this case: Text only\nselection and text with logo.\nPlease use what best matches\nwith your platform.\n\nCase B - Text only\n\nCase C - Text with logo",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/73HAwCt8J1nbACmMqMmt",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/LpLKmFTlYpoqapakUDoS",
+          "caption": null
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/vUSB8Au2tKVlhhdTJykb",
+          "caption": null
+        }
+      ],
+      "contentHash": "68f815165f0cdc15582a75d9e4fea8731dc2b9ec89dd01c64f0321ebfa2e6d14"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass/mobile-view-option-a-and-b",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/sign-with-uae-pass/mobile-view-option-a-and-b",
+      "retrievedOn": "2026-07-07",
+      "name": "Mobile View Option A & B",
+      "sections": [],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/krjbPv0s1zc2JE314W3U",
+          "caption": null
+        }
+      ],
+      "contentHash": "3753807eac7452ba5de0c1258a46d4ed0c730ce4f9cbdc27cc95b141326bc636"
+    },
+    {
+      "path": "/guidelines/design-guidelines/button-guidelines/tooltip-info",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/button-guidelines/tooltip-info",
+      "retrievedOn": "2026-07-07",
+      "name": "Tooltip Info",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "To include the UAE PASS slogan, place the text \"What is UAE PASS?\" directly below the button with a 10px vertical spacing. This text acts as a tooltip trigger to display the slogan: \"UAE PASS is a single trusted digital identity for all citizens, residents, and visitors.\"",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [
+        {
+          "url": "https://docs.uaepass.ae/files/4OkwovjnRx9YcTijaNl5",
+          "caption": null
+        }
+      ],
+      "contentHash": "0b1ce8708b6b91ad8c8a31354913d3e6d583886044d1ab2766aa7f8bf823e8ab"
+    },
+    {
+      "path": "/guidelines/design-guidelines/error-messages",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/error-messages",
+      "retrievedOn": "2026-07-07",
+      "name": "Error Messages",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "Description Message in English Message in Arabic Feature SOP 1: Unverified User\nRestriction\nError Message \"You are not eligible to access this\nservice. Your account is either not\nupgraded or you have a visitor\naccount. Please contact &#x3C;SP Name>\nto access the services. \"أنت غير مؤهل للوصول إلى هذه الخدمة. إما أن حسابك لم تتم ترقيته أو أن لديك حساب زائر. يُرجى التواصل مع &#x3C;اسم الجهة> لتمكين من الوصول إلى الخدمة.\" Authentication SOP 2: Digital Signature Restriction “Your UAE PASS signature is not\nqualified. Please upgrade your\naccount following instructions in the\nUAE PASS app &#x3C;> to obtain a Qualified Signature” \"توقيعك الرقمي في الهوية الرقمية الحالي لا يسمح باستخدام هذه الخدمة, يرجى ترقية حسابك حسب التعليمات على تطبيق الهوية الرقمية &#x3C;رابط التطبيق>.\" Digital Signature Service Provider allows\nservices only for existing\nusers “This Service is only for registered\nusers, please contact &#x3C;SP Name> in\norder to access the services” \"هذه الخدمة مخصصة للمستخدمين المسجلين فقط، يرجى التواصل مع &#x3C;اسم الجهة> للوصول إلى الخدمات\" Authentication User cancels the login User cancelled the login. قام المستخدم بالغاء تسجيل الدخول Authentication User cancels the signing User cancelled the signing process. قام المستخدم بالغاء عملية التوقيع Digital Signature User clicks on exit on UAE\nPASS notification during\ndata sharing You have exited the notification\nrequest. Please restart the process لقد خرجت من طلب الاشعار, يرجى اعادة المحاولة مرى أخرى. Document Sharing Error during data sharing There was an error while fetching\nyour documents from UAE PASS.\nPlease restart the process .حصل خطأ أثناء جمع مستنداتك من الهوية الرقمية. يرجى اعادة المحاولة Document Sharing SP is accepting\nOnly UAE Nationals EID\nholders This service is only accessible to\nUAE Nationals. هذه الخدمة متاحة فقط لمواطني دولة الإمارات العربية المتحدة. Authentication Any exception raised\nduring response\nprocessing. Something went wrong during the\nlogin, please try again later! حدث خطأ ما أثناء تسجيل الدخول، يُرجى المحاولة مرة أخرى لاحقًا! Authentication User clicks Reject Button on the notification Screen during document Sharing You have rejected the data sharing request on UAEPASS. Please retry. لقد قمت برفض طلب مشاركة البيانات عن طريقة الهوية الرقمية, يرجى إعادة المحاولة Document Sharing User Cancel the facial biometric request You canceled the facial confirmation request. لقد قمتَ بإلغاء طلب تأكيد بصمة الوجه Facial Bio Metric Transaction Confirmation When face verification fails after 3 attempts Face scan was unsuccessful. Please try again. لقد تعذّر التحقق من بصمة الوجه. حاول مرة أخرى Facial Bio Metric Transaction Confirmation SOP1, SOP2, Verified visitor user restriction Requestee is not eligible to use this service. Requestee's account is either not upgraded or have a visitor account. Please contact {SP Name} to use the services. المستفيد غير مؤهل لاستخدام هذه الخدمة. حساب المستفيد إما غير محدث أو لديه حساب زائر. يرجى الاتصال بـ &#x3C;اسم مزود الخدمة> لاستخدام الخدمات. Data Sharing Authorization",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Error Codes for Authentication and Digital Signature Cancellation:",
+          "text": "Error Code English Arabic Authentication: error=invalid_request error=login_required error=access_denied error=cancelledOnApp User cancelled the login قام المستخدم بإلغاء تسجيل الدخول Digital Signature: error: invalid_request error: login_required error: access_denied User cancelled the signing process قام المستخدم بإلغاء عملية التوقيع",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "2b08508f2ca9d5fffee4ed8d229f0f8fdcfcef458919cb8692854d808450dee6"
+    },
+    {
+      "path": "/guidelines/design-guidelines/text-message-guidelines",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/text-message-guidelines",
+      "retrievedOn": "2026-07-07",
+      "name": "Text Message Guidelines",
+      "sections": [
+        {
+          "level": 3,
+          "heading": "Error Messages:",
+          "text": "Scenario English Arabic Feature SOP 1 - Unverified user restriction You are not eligible to access this service. Your account is either not upgraded or you have a visitor account. Please contact &#x3C;SP Name> to access the services. أنت غير مؤهل للوصول إلى هذه الخدمة. إما أن حسابك لم تتم ترقيته أو لديك حساب زائر. يرجى الاتصال بـ &#x3C;اسم الجهة> لتتمكن من الوصول إلى الخدمة. Authentication Service Provider allows services only for existing users This service is only for registered users, please contact &#x3C;SP Name> in order to access the services هذه الخدمة مخصصة فقط للمستخدمين المسجلين، يرجى التواصل مع &#x3C;اسم الجهة> لتتمكن من الوصول إلى الخدمات Authentication User cancel the login User cancelled the login قام المستخدم بإلغاء تسجيل الدخول Authentication SP is accepting only UAE nationals EID holders This service is only accesible to UAE Nationals هذه الخدمة متاحة فقط لمواطني دولة الإمارات العربية المتحدة. Authentication Any exception rasied during response processing Something went wrong during the login, please try again later! حدث خطأ ما أثناء تسجيل الدخول، يرجى المحاولة مرة أخرى لاحقًا! Authentication SOP 2 - Digital Signature Restriction Please upgrade your account following instructions in the UAE PASS application يرجى ترقية حسابك باتباع الإرشادات الموجودة في تطبيق الهوية الرقمية Digital Signature User cancel the signing User cancelled the signing process قام المستخدم بإلغاء عملية التوقيع Digital Signature",
+          "codeBlocks": [],
+          "tables": []
+        },
+        {
+          "level": 3,
+          "heading": "Error Code for Authentication and Digital Signature Cancellation:",
+          "text": "Error Code English Arabic Authentication: error=invalid_request error=login_required error=access_denied error=cancelledOnApp User cancelled the login قام المستخدم بإلغاء تسجيل الدخول Digital Signature: error: invalid_request error: login_required error: access_denied User cancelled the signing process قام المستخدم بإلغاء عملية التوقيع",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [],
+      "images": [],
+      "contentHash": "4581f1fc57100ee5b5b04ac31d6667d48c003def7d9b813a6f7adab63af6372a"
+    },
+    {
+      "path": "/guidelines/design-guidelines/uaepass-button-guideline",
+      "url": "https://docs.uaepass.ae/guidelines/design-guidelines/uaepass-button-guideline",
+      "retrievedOn": "2026-07-07",
+      "name": "UAEPASS Button Guidelines",
+      "sections": [
+        {
+          "level": 1,
+          "heading": "intro",
+          "text": "UAEPASS Buttons Guidelines English\n\nUAE PASS Buttons Guidelines Arabic\n\nUAEPASS Buttons PNGs\n\nSVGs",
+          "codeBlocks": [],
+          "tables": []
+        }
+      ],
+      "files": [
+        {
+          "url": "https://docs.uaepass.ae/files/Rair9EE7FLBynCwNqGlx",
+          "label": "UAEPASS Buttons Guidelines English"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/ZDROWdzws7QQOP8HejiL",
+          "label": "UAE PASS Buttons Guidelines Arabic"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/jshDBUuUmLyNWYq2Pgmg",
+          "label": "UAEPASS Buttons PNGs"
+        },
+        {
+          "url": "https://docs.uaepass.ae/files/btUKh5nNr3ljxnKv6dyD",
+          "label": "SVGs"
+        }
+      ],
+      "images": [],
+      "contentHash": "9df3c0ddd415db7740b55801320b1c66d5a24e7e02c3a00439af173148ba388d"
+    }
+  ]
+}

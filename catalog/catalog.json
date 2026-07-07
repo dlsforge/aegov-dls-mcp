@@ -1,9 +1,16 @@
 {
   "meta": {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "generatedFrom": {
       "package": "@aegov/design-system",
       "version": "3.0.7"
+    },
+    "knownDocsOnlyClasses": {
+      "aegov-newslette": "Typo in the docs newsletter block example (class=\"aegov-newslette ...\"); neither it nor a corrected 'aegov-newsletter' ships in @aegov/design-system 3.0.7.",
+      "aegov-pagination-larger": "Used by docs pagination examples (responsive page-number visibility); not defined in 3.0.7 compiled CSS.",
+      "aegov-pagination-smaller": "Used by docs pagination examples (responsive page-number visibility); not defined in 3.0.7 compiled CSS.",
+      "aegov-slider-next": "Carousel control hook in the docs hero block example (slick-slider integration); not defined in 3.0.7 compiled CSS.",
+      "aegov-slider-prev": "Carousel control hook in the docs hero block example (slick-slider integration); not defined in 3.0.7 compiled CSS."
     }
   },
   "components": [

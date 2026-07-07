@@ -1,0 +1,60 @@
+{
+  "$comment": "REVIEWED mapping of designsystem.gov.ae docs pages to package class-roots. First derived mechanically from class-usage evidence in inventory/docs.json (aegovClassesInExamples, per-block root frequency), then reviewed by hand. build-catalog.mjs validates every mapping against the evidence and fails on contradiction. Regenerate the evidence with: node scripts/fetch-docs.mjs && node scripts/extract-docs.mjs. Evidence snapshot: retrievedOn 2026-07-07.",
+  "componentPages": {
+    "accordion": { "root": "aegov-accordion" },
+    "alert": { "root": "aegov-alert" },
+    "avatar": { "root": "aegov-avatar" },
+    "badge": { "root": "aegov-badge" },
+    "banner": { "root": "aegov-banner" },
+    "blockquote": { "root": "aegov-quote" },
+    "breadcrumbs": { "root": "aegov-breadcrumb" },
+    "button": { "root": "aegov-btn" },
+    "card": { "root": "aegov-card" },
+    "checkbox": { "root": "aegov-check" },
+    "dropdown": { "root": "aegov-dropdown" },
+    "file-input": { "root": "aegov-file" },
+    "hyperlink": { "root": "aegov-link" },
+    "input": { "root": "aegov-form" },
+    "modal": { "root": "aegov-modal" },
+    "navigation": {
+      "root": null,
+      "note": "No dedicated package class-root; the docs 'Navigation' is a composition of Tailwind utilities (side-nav examples add aegov-tooltip). Kept as a docs-only component artifact."
+    },
+    "pagination": { "root": "aegov-pagination" },
+    "popover": { "root": "aegov-popover" },
+    "radio": { "root": "aegov-check" },
+    "range-slider": { "root": "aegov-form" },
+    "select": { "root": "aegov-form" },
+    "slider": {
+      "root": null,
+      "note": "No package slider/carousel component; the docs 'Slider' composes aegov-card/aegov-link with a slick-carousel integration and references unshipped aegov-slider-next/prev hooks. Kept as a docs-only component artifact."
+    },
+    "steps": { "root": "aegov-step" },
+    "tabs": { "root": "aegov-tab" },
+    "textarea": { "root": "aegov-form" },
+    "toast": { "root": "aegov-toast" },
+    "toggle": { "root": "aegov-toggle" },
+    "tooltip": { "root": "aegov-tooltip" }
+  },
+  "blockPagesStyledByPackage": {
+    "footer": "aegov-footer",
+    "header": "aegov-header",
+    "hero": "aegov-hero"
+  },
+  "taxonomyNotes": {
+    "aegov-check": "Docs document 'Checkbox' and 'Radio' as separate components; both are styled by the aegov-check root (aegov-check-group / aegov-check-item).",
+    "aegov-form": "Docs 'Input', 'Select', 'Textarea' and 'Range slider' are separate pages all styled by aegov-form-control under this root; the file-input docs also wrap their control in it.",
+    "aegov-header": "Documented as the 'Header' BLOCK on designsystem.gov.ae, but its styles ship in the package — refines the earlier 'blocks do not ship as code' finding: markup is docs-only, styling is package-tier.",
+    "aegov-footer": "Documented as the 'Footer' BLOCK on designsystem.gov.ae, but its styles ship in the package — markup is docs-only, styling is package-tier.",
+    "aegov-hero": "Documented as the 'Hero' BLOCK on designsystem.gov.ae, but its styles ship in the package — markup is docs-only, styling is package-tier.",
+    "aegov-mobile": "Support root (mobile accordion variant); used inside the header and footer block examples, no dedicated docs page.",
+    "aegov-backdrop": "Overlay primitive shared with modal; no dedicated docs page."
+  },
+  "knownDocsOnlyClasses": {
+    "aegov-newslette": "Typo in the docs newsletter block example (class=\"aegov-newslette ...\"); neither it nor a corrected 'aegov-newsletter' ships in @aegov/design-system 3.0.7.",
+    "aegov-pagination-larger": "Used by docs pagination examples (responsive page-number visibility); not defined in 3.0.7 compiled CSS.",
+    "aegov-pagination-smaller": "Used by docs pagination examples (responsive page-number visibility); not defined in 3.0.7 compiled CSS.",
+    "aegov-slider-next": "Carousel control hook in the docs hero block example (slick-slider integration); not defined in 3.0.7 compiled CSS.",
+    "aegov-slider-prev": "Carousel control hook in the docs hero block example (slick-slider integration); not defined in 3.0.7 compiled CSS."
+  }
+}

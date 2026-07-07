@@ -17,6 +17,7 @@
     "watch": "tsc --watch",
     "start": "node dist/index.js",
     "smoke": "node scripts/smoke-test.mjs",
+    "evals": "node scripts/run-evals.mjs",
     "inventory": "node scripts/extract-inventory.mjs",
     "docs:fetch": "node scripts/fetch-docs.mjs",
     "docs:extract": "node scripts/extract-docs.mjs",

@@ -1,0 +1,24 @@
+{
+  "id": "06-contact-us",
+  "name": "Contact us page",
+  "reference": ["Ministry_Template_Contact us.png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete 'Contact us' page of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; a contact form with full name, email address, phone number, a subject dropdown, a message textarea and a submit button — every field properly labelled; the ministry's contact details (phone, toll-free number, email, address and working hours); and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-form",
+      "aegov-btn"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "<select[\\s>]", "flags": "i", "why": "subject dropdown" },
+      { "pattern": "<textarea[\\s>]", "flags": "i", "why": "message textarea" },
+      { "pattern": "<label[\\s>][^>]*for=", "flags": "i", "why": "labelled form controls (WCAG)" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

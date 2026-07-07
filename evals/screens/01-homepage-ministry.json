@@ -1,0 +1,24 @@
+{
+  "id": "01-homepage-ministry",
+  "name": "Ministry homepage",
+  "reference": ["Homepage_Ministry.pdf", "Homepage_Authority.pdf"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete homepage for a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; a hero banner with a title, short description and a call-to-action; a 'Services' section with category tabs and a grid of service cards (each card links to a service and has a 'Start service' action); an 'Initiatives and activities' section; a 'Stay in touch' news section; a newsletter signup; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-hero",
+      "aegov-card",
+      "aegov-tab",
+      "aegov-btn"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "type=\"email\"|newsletter", "flags": "i", "why": "newsletter signup section" },
+      { "pattern": "<main[\\s>]", "flags": "i", "why": "landmark structure (WCAG)" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

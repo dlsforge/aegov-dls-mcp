@@ -1,0 +1,21 @@
+{
+  "id": "08-faqs",
+  "name": "FAQs page",
+  "reference": ["Ministry_Template_FAQs.png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete FAQs page of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; a page-title banner; frequently asked questions grouped into expandable/collapsible items with accessible controls; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-accordion"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "aria-expanded", "flags": "i", "why": "accessible disclosure controls (WCAG)" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

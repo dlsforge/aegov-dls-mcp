@@ -1,0 +1,30 @@
+{
+  "id": "02-service-details",
+  "name": "Service details page",
+  "reference": [
+    "Ministry_Template_ServiceDetails-v1.pdf",
+    "Ministry_Template_ServiceDetails-v2.pdf",
+    "Ministry_Template_ServiceDetails-v3.pdf"
+  ],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete service-details page for a UAE government service called 'Payment of a traffic fine' as a single standalone HTML page. The service requires the user to log in with UAE Pass before starting. The page needs: the standard government header and footer; breadcrumb navigation; the service title with a prominent 'Start service' action; an 'About this service' section; 'The process' as numbered steps; 'Conditions of use'; a frequently-asked-questions section; the service specifications (completion duration, service fees, service channels, payment channels, target audience, support); related services; and everything else a standard UAE government service page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-accordion",
+      "aegov-btn",
+      "aegov-card"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "UAE PASS", "flags": "i", "why": "access control: service requires UAE Pass login (ServiceDetails v1-v3)" },
+      { "pattern": "start service|apply for service", "flags": "i", "why": "primary CTA present in all three TDRA variants" },
+      { "pattern": "<ol[\\s>]", "flags": "i", "why": "the process as numbered steps" },
+      { "pattern": "service fee", "flags": "i", "why": "service specifications section" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "05-search-results",
+  "name": "Search results page",
+  "reference": ["Ministry_Template_Search Result.png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete search-results page of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; a prominent search field showing the current query; the result count; a list of results with titles, descriptions and content-type tags; pagination; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-form",
+      "aegov-pagination"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "result", "flags": "i", "why": "result count / results list" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

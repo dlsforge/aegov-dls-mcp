@@ -1,0 +1,27 @@
+{
+  "id": "10-emirates-id-form-rtl",
+  "name": "Arabic RTL application form with Emirates ID",
+  "reference": ["ServiceDetails v3 conditions (Emirates ID); designsystem.gov.ae emirates-id-input pattern"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete application form page of a UAE government service in Arabic, right-to-left, as a single standalone HTML page. The service is a residence-permit renewal, which requires the applicant's Emirates ID. The page needs: the standard government header and footer; breadcrumb navigation; an application form with the applicant's full name, Emirates ID number (with the standard formatting, validation and masking behaviour of the design system), email address and mobile number — every field properly labelled in Arabic; a submit button; and everything else a standard UAE government page is expected to carry. Mark any Arabic text you generate as needing native-speaker review.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-form",
+      "aegov-btn"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful|هل وجدت", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template (may be localized)" },
+      { "pattern": "pattern=\"\\^784-\\\\d\\{4\\}-\\\\d\\{7\\}-\\\\d\\$\"", "flags": "", "why": "Emirates ID input validates the mandatory format (non-negotiable)" },
+      { "pattern": "[\\u0600-\\u06FF]", "flags": "", "why": "Arabic content present" },
+      { "pattern": "<html[^>]*dir=\"rtl\"", "flags": "i", "why": "document-level RTL direction" },
+      { "pattern": "dir=\"ltr\"", "flags": "i", "why": "the Emirates ID number field stays LTR inside the RTL layout" },
+      { "pattern": "<label[\\s>][^>]*for=", "flags": "i", "why": "labelled form controls (WCAG)" }
+    ],
+    "forbiddenPatterns": [
+      { "pattern": "784-\\d{4}-\\d{7}-\\d", "flags": "", "why": "no full-format Emirates ID value may appear unmasked in the page" }
+    ],
+    "documentLang": true,
+    "rtl": true
+  }
+}

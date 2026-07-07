@@ -3,7 +3,8 @@
  * the same machinery AI assistants embed. Spawns the built server, completes
  * the initialize handshake, lists tools, and exercises ping plus the three
  * read tools (listComponents, getComponent, getTokens) including name
- * resolution, tier surfacing, and the unknown-name error path.
+ * resolution, tier surfacing, and the unknown-name error path, plus the
+ * step-5 tools (scaffoldUaePass, scaffoldEmiratesId, validate_snippet).
  *
  * Run: npm run build && npm run smoke
  */
@@ -130,6 +131,89 @@ try {
       tok.tokens.every((t) => t.category === "color" && t.name.includes("primary")) &&
       tok.tier === "package",
     `matched=${tok.matched}, first=${tok.tokens?.[0]?.name}=${tok.tokens?.[0]?.value}`,
+  );
+
+  const step5Tools = ["scaffoldUaePass", "scaffoldEmiratesId", "validate_snippet"];
+  check(
+    "tools/list exposes step-5 tools",
+    step5Tools.every((n) => tools.some((t) => t.name === n)),
+    `tools: [${tools.map((t) => t.name).join(", ")}]`,
+  );
+
+  const { body: up } = await call("scaffoldUaePass", {});
+  check(
+    "scaffoldUaePass defaults: bilingual sign-in, black, staging",
+    up.html?.en?.includes("aegov-btn") &&
+      up.html.en.includes("Sign in with UAE PASS") &&
+      up.html?.ar?.includes('dir="rtl"') &&
+      up.arabicNote?.includes("GENERATED") &&
+      up.oauth?.endpoints?.authorization === "https://stg-id.uaepass.ae/idshub/authorize" &&
+      up.oauth?.authorizeUrlTemplate.includes("response_type=code") &&
+      up.officialAssets?.files?.length > 0 &&
+      up.rules?.length > 0 &&
+      up.provenance?.guidance?.origin === "https://docs.uaepass.ae",
+    `rules=${up.rules?.length}, assets=${up.officialAssets?.files?.length}`,
+  );
+
+  const { body: upProd } = await call("scaffoldUaePass", {
+    variant: "continue",
+    appearance: "white",
+    language: "en",
+    environment: "production",
+  });
+  check(
+    "scaffoldUaePass continue/white/en/production",
+    upProd.html?.en?.includes("Continue with UAE PASS") &&
+      !upProd.html?.ar &&
+      upProd.oauth?.endpoints?.authorization === "https://id.uaepass.ae/idshub/authorize" &&
+      upProd.rules?.some((r) => r.topic === "Continue with UAE PASS") &&
+      upProd.rules?.some((r) => r.topic === "White Button"),
+    `topics=${JSON.stringify(upProd.rules?.slice(0, 3).map((r) => r.topic))}`,
+  );
+
+  const { body: eidS } = await call("scaffoldEmiratesId", {});
+  check(
+    "scaffoldEmiratesId defaults: bilingual, masked display",
+    eidS.html?.includes("aegov-form-control") &&
+      eidS.html.includes('pattern="^784-\\d{4}-\\d{7}-\\d$"') &&
+      eidS.html.includes('dir="ltr"') &&
+      eidS.js?.includes('replace(/\\D/g, "")') && // 15 raw digits, no dashes required
+      eidS.maskedDisplay?.html?.includes("reveal") &&
+      eidS.rules?.length >= 2 &&
+      eidS.provenance?.guidance?.trust?.includes("HIGH-STAKES"),
+    `rules=${eidS.rules?.length}`,
+  );
+
+  const { body: vOk } = await call("validate_snippet", {
+    html: '<button class="aegov-btn btn-outline" type="button">Salam</button>',
+  });
+  check(
+    "validate_snippet passes a valid DLS button",
+    vOk.valid === true && vOk.classes?.packageVerified?.includes("aegov-btn"),
+    vOk.summary,
+  );
+
+  const { body: vBad } = await call("validate_snippet", {
+    html:
+      '<div class="aegov-newslette aegov-btnn"><img src="x.png">' +
+      '<input placeholder="784-XXXX-XXXXXXX-X"><span>784-1980-1234567-1</span></div>',
+  });
+  check(
+    "validate_snippet flags docs-only class, unknown class, missing alt, unvalidated+unmasked EID",
+    vBad.valid === false &&
+      vBad.findings?.some((f) => f.message.includes("aegov-newslette")) &&
+      vBad.findings?.some((f) => f.message.includes("aegov-btnn")) &&
+      vBad.findings?.some((f) => f.message.includes("alt")) &&
+      vBad.findings?.some((f) => f.message.includes("pattern validation")) &&
+      vBad.findings?.some((f) => f.message.includes("masked")),
+    vBad.summary,
+  );
+
+  const { body: vScaffold } = await call("validate_snippet", { html: eidS.html });
+  check(
+    "validate_snippet accepts scaffoldEmiratesId output",
+    vScaffold.valid === true,
+    vScaffold.summary + (vScaffold.valid ? "" : ` ${JSON.stringify(vScaffold.findings)}`),
   );
 } catch (err) {
   check("connection", false, err instanceof Error ? err.message : String(err));

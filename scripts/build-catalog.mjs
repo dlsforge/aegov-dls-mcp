@@ -343,8 +343,11 @@ const docsOnlyComponents = componentPages
 
 const catalog = {
   meta: {
-    schemaVersion: 2,
+    schemaVersion: 3,
     generatedFrom: { package: pkg.name, version: pkg.version },
+    // Docs↔package drift, baked in so validate_snippet can flag these classes
+    // at runtime without the (unshipped) inventory/ directory.
+    knownDocsOnlyClasses: docsMap.knownDocsOnlyClasses,
   },
   components,
   tokens,

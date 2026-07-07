@@ -63,7 +63,7 @@ export interface Rule {
 /** A canonical markup example. Docs-sourced. */
 export interface MarkupExample {
   html: string;
-  /** Optional usage notes from the docs. */
+  /** Optional usage notes from the docs (for variant examples: the docs section heading). */
   notes?: string;
   provenance: DocsProvenance;
 }
@@ -90,8 +90,14 @@ export interface ComponentRecord {
   taxonomyNote: string | null;
   /** Attached rules/constraints — accessibility, mandated usage, RTL, etc. */
   rules: Rule[];
-  /** Canonical markup example; null until docs-sourced. */
+  /** Canonical markup example (the docs "code structure" skeleton); null until docs-sourced. */
   markup: MarkupExample | null;
+  /**
+   * Variant markup examples from the docs (sizes, icons, states, RTL, …).
+   * The docs turned out to carry many per component — a single canonical
+   * example was not enough for an assistant to emit correct variants.
+   */
+  examples: MarkupExample[];
   /** Provenance of the identity/classes (package tier). */
   provenance: PackageProvenance;
 }
@@ -115,16 +121,21 @@ export interface TokenRecord {
 }
 
 /**
- * A docs-sourced block or pattern. Placeholder tier in v1 (arrays stay empty
- * until the docs-sourcing path is built); the shape is fixed here so the
- * generator and tools can rely on it.
+ * A docs-sourced block, pattern, or docs-only "component".
+ *
+ * `type: "component"` covers docs component pages with no package class-root
+ * (verified: 'Navigation' and 'Slider' are compositions of utilities/other
+ * components) — they are real docs content but must not masquerade as
+ * package-tier components.
  */
 export interface DocsArtifact {
   /** Stable slug. */
   id: string;
   name: string;
-  type: "block" | "pattern";
+  type: "block" | "pattern" | "component";
   markup: MarkupExample | null;
+  /** Additional markup examples beyond the canonical one. */
+  examples: MarkupExample[];
   rules: Rule[];
   provenance: DocsProvenance;
 }
@@ -143,8 +154,10 @@ export interface Catalog {
   };
   components: ComponentRecord[];
   tokens: TokenRecord[];
-  /** Docs-sourced; empty in v1 until the docs path is built. */
+  /** Docs-sourced blocks (markup docs-only; header/footer/hero styles ship in the package). */
   blocks: DocsArtifact[];
-  /** Docs-sourced; empty in v1 until the docs path is built. */
+  /** Docs-sourced patterns (guidance-only pages; typically no markup). */
   patterns: DocsArtifact[];
+  /** Docs component pages with no package class-root (navigation, slider). */
+  docsOnlyComponents: DocsArtifact[];
 }

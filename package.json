@@ -17,6 +17,8 @@
     "start": "node dist/index.js",
     "smoke": "node scripts/smoke-test.mjs",
     "inventory": "node scripts/extract-inventory.mjs",
+    "docs:fetch": "node scripts/fetch-docs.mjs",
+    "docs:extract": "node scripts/extract-docs.mjs",
     "catalog": "node scripts/build-catalog.mjs"
   },
   "engines": {

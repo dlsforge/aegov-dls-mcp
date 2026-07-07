@@ -1,0 +1,22 @@
+{
+  "id": "07-news-article",
+  "name": "News article (inner page)",
+  "reference": ["Ministry_Template_News Inner.png", "Ministry_Template_News & Media.png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete news-article page of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; the article with headline, publication date, category, a lead image placeholder and several paragraphs of body text; share actions; a 'Related news' section with cards; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-card"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "<article[\\s>]", "flags": "i", "why": "article landmark for the news body" },
+      { "pattern": "share", "flags": "i", "why": "share actions" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

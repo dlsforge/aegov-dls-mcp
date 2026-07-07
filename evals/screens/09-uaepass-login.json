@@ -1,0 +1,25 @@
+{
+  "id": "09-uaepass-login",
+  "name": "Sign-in page with UAE Pass",
+  "reference": ["ServiceDetails access-control block; docs.uaepass.ae button guidelines"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete sign-in page of a UAE government service as a single standalone HTML page, bilingual (English and Arabic). Signing in happens exclusively through UAE Pass, following the official UAE Pass button guidelines. The page needs: the standard government header and footer; a centered sign-in panel explaining that the service uses UAE Pass, with the official sign-in button in both languages; a short 'What is UAE Pass?' explanation; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-btn"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "sign in with UAE PASS", "flags": "i", "why": "documented button wording (docs.uaepass.ae)" },
+      { "pattern": "[\\u0600-\\u06FF]", "flags": "", "why": "Arabic variant present (bilingual requirement)" },
+      { "pattern": "dir=\"rtl\"", "flags": "i", "why": "Arabic content carries RTL direction" },
+      { "pattern": "lang=\"ar\"", "flags": "i", "why": "Arabic content is language-tagged" }
+    ],
+    "forbiddenPatterns": [
+      { "pattern": "state=[A-Za-z0-9]{8}", "flags": "", "why": "OAuth2 state must never be hardcoded in markup" }
+    ],
+    "documentLang": true,
+    "rtl": false
+  }
+}

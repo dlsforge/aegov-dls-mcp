@@ -1,0 +1,24 @@
+{
+  "id": "03-services-list",
+  "name": "Our-services list with filters",
+  "reference": ["Ministry_Template_Our services.png", "Ministry_Template_Our services-1.png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete 'Our Services' listing page of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; a page-title banner; a left sidebar with service categories and filter groups of checkboxes; a search field for services; a results list of services (title, description, tags) showing the result count; pagination; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-check",
+      "aegov-form",
+      "aegov-pagination"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" },
+      { "pattern": "type=\"checkbox\"", "flags": "i", "why": "filter checkboxes" },
+      { "pattern": "type=\"search\"|search", "flags": "i", "why": "service search field" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "04-services-cards",
+  "name": "Services page (cards layout)",
+  "reference": ["Ministry_Template_Service Page(Cards Layout).png"],
+  "prompt": "Using the UAE Design System (AEGOV DLS), build the complete services page (cards layout) of a UAE ministry website as a single standalone HTML page. The page needs: the standard government header and footer; breadcrumb navigation; a page-title banner; audience tabs (All services / Government / Business / Individual); a search field; a grid of service cards, each with an icon, title, short description, tags and an 'Explore' link; pagination; and everything else a standard UAE government page is expected to carry.",
+  "checks": {
+    "requiredClassRoots": [
+      "aegov-header",
+      "aegov-footer",
+      "aegov-breadcrumb",
+      "aegov-tab",
+      "aegov-card",
+      "aegov-pagination"
+    ],
+    "requiredPatterns": [
+      { "pattern": "did you find this content useful", "flags": "i", "why": "page-rating block is standard furniture on every TDRA template" }
+    ],
+    "forbiddenPatterns": [],
+    "documentLang": true,
+    "rtl": false
+  }
+}

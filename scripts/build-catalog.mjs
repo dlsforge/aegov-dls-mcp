@@ -315,6 +315,11 @@ for (const name of Object.keys(baseRoot)) {
 
 function docsArtifact(page, type, { allSectionRules = false } = {}) {
   const { markup, examples } = markupFrom(page);
+  const packageClassRoots = [
+    ...new Set(
+      page.aegovClassesInExamples.map((c) => classToRoot[c]).filter(Boolean),
+    ),
+  ].sort();
   return {
     id: page.slug,
     name: page.name,
@@ -322,6 +327,7 @@ function docsArtifact(page, type, { allSectionRules = false } = {}) {
     markup,
     examples,
     rules: rulesFrom(page, { allSections: allSectionRules }),
+    packageClassRoots,
     provenance: docsProvenance(page),
   };
 }

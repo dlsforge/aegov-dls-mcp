@@ -2,14 +2,21 @@
 /**
  * @dlsforge/aegov-mcp — MCP server for the UAE Design System (AEGOV DLS).
  *
- * Stage 1, step 1: a single trivial `ping` tool to prove an AI assistant
- * can connect over stdio before any catalogue work begins.
+ * Serves the rules-core catalogue (catalog/catalog.json, generated from the
+ * pinned @aegov/design-system package + a designsystem.gov.ae docs snapshot)
+ * to AI coding assistants over stdio.
  *
  * stdout is the JSON-RPC channel — never write logs there; use stderr.
  */
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import { loadCatalog } from "./catalog/load.js";
+import { registerListComponents } from "./tools/listComponents.js";
+import { registerGetComponent } from "./tools/getComponent.js";
+import { registerGetTokens } from "./tools/getTokens.js";
+
+const catalog = loadCatalog();
 
 const server = new McpServer({
   name: "aegov-dls",
@@ -36,6 +43,12 @@ server.registerTool(
   }),
 );
 
+registerListComponents(server, catalog);
+registerGetComponent(server, catalog);
+registerGetTokens(server, catalog);
+
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error("aegov-dls MCP server running on stdio");
+console.error(
+  `aegov-dls MCP server running on stdio — catalogue ${catalog.meta.generatedFrom.package}@${catalog.meta.generatedFrom.version} (${catalog.components.length} components, ${catalog.tokens.length} tokens)`,
+);

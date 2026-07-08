@@ -56,7 +56,7 @@ export function registerGetComponent(server: McpServer, catalog: Catalog): void 
       return json(
         hit.kind === "component"
           ? componentView(catalog, hit.record)
-          : artifactView(hit.record),
+          : artifactView(catalog, hit.record),
       );
     },
   );

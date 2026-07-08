@@ -52,8 +52,39 @@ function docsSourcesOf(parts: Array<MarkupExample | Rule | null>, extra?: DocsPr
   return [...byUrl.values()].sort((a, b) => (a.url < b.url ? -1 : 1));
 }
 
-function exampleView(m: MarkupExample) {
-  return { html: m.html, notes: m.notes ?? null, source: m.provenance.sourceUrl };
+const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+
+/**
+ * Docs examples are served verbatim — including the handful of classes the
+ * docs use that do NOT ship in the pinned package (catalog.meta
+ * .knownDocsOnlyClasses, e.g. aegov-pagination-larger). Annotate any affected
+ * example so an assistant copying it knows to drop/replace those classes
+ * instead of failing validate_snippet after the fact.
+ */
+function driftClassesIn(html: string, drift: Record<string, string>): string[] {
+  const found = new Set<string>();
+  for (const m of html.matchAll(CLASS_ATTR_RE)) {
+    for (const token of (m[1] ?? m[2]).split(/\s+/)) {
+      if (token in drift) found.add(token);
+    }
+  }
+  return [...found].sort();
+}
+
+function exampleView(m: MarkupExample, drift: Record<string, string>) {
+  const driftClasses = driftClassesIn(m.html, drift);
+  return {
+    html: m.html,
+    notes: m.notes ?? null,
+    source: m.provenance.sourceUrl,
+    ...(driftClasses.length
+      ? {
+          driftWarning:
+            `This official docs example uses class(es) that do NOT ship in the pinned package ` +
+            `and will fail validation — remove or replace them: ${driftClasses.join(", ")}`,
+        }
+      : {}),
+  };
 }
 
 function ruleView(r: Rule) {
@@ -75,6 +106,7 @@ function usedBy(catalog: Catalog, classRoot: string) {
 }
 
 export function componentView(catalog: Catalog, c: ComponentRecord) {
+  const drift = catalog.meta.knownDocsOnlyClasses;
   return {
     kind: "component",
     tier: "package",
@@ -83,8 +115,8 @@ export function componentView(catalog: Catalog, c: ComponentRecord) {
     taxonomyNote: c.taxonomyNote,
     classes: c.classes,
     layers: c.layers,
-    markup: c.markup ? exampleView(c.markup) : null,
-    examples: c.examples.map(exampleView),
+    markup: c.markup ? exampleView(c.markup, drift) : null,
+    examples: c.examples.map((e) => exampleView(e, drift)),
     rules: c.rules.map(ruleView),
     usedByDocsArtifacts: usedBy(catalog, c.classRoot),
     provenance: {
@@ -98,15 +130,16 @@ export function componentView(catalog: Catalog, c: ComponentRecord) {
   };
 }
 
-export function artifactView(a: DocsArtifact) {
+export function artifactView(catalog: Catalog, a: DocsArtifact) {
+  const drift = catalog.meta.knownDocsOnlyClasses;
   return {
     kind: a.type === "component" ? "docs-only-component" : a.type,
     tier: "docs",
     id: a.id,
     name: a.name,
     packageClassRoots: a.packageClassRoots,
-    markup: a.markup ? exampleView(a.markup) : null,
-    examples: a.examples.map(exampleView),
+    markup: a.markup ? exampleView(a.markup, drift) : null,
+    examples: a.examples.map((e) => exampleView(e, drift)),
     rules: a.rules.map(ruleView),
     provenance: docsSource(a.provenance),
   };

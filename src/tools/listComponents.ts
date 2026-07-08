@@ -17,7 +17,9 @@ export function registerListComponents(server: McpServer, catalog: Catalog): voi
         "docs-only components. Call this first to discover what exists and the exact identifier " +
         "to pass to getComponent. Package-tier data is authoritative for the pinned " +
         "@aegov/design-system version; docs-tier data comes from designsystem.gov.ae and is " +
-        "provisional.",
+        "provisional. When building a full page, note the standard page furniture: every UAE " +
+        "government page carries the header block, the footer block, and the page-rating block " +
+        "('Did you find this content useful?') near the end of the page content.",
       inputSchema: {},
     },
     async () =>
@@ -53,6 +55,7 @@ export function registerListComponents(server: McpServer, catalog: Catalog): voi
         notes: [
           `docs-tier records are ${DOCS_TRUST}`,
           "Use getComponent with any classRoot, docs name, block/pattern id, or member class to get markup, variant examples and rules.",
+          "Standard page furniture: every UAE government page carries the 'header' block, the 'footer' block, and the 'page-rating' block ('Did you find this content useful?') near the end of the page content — include all three when composing a full page.",
         ],
       }),
   );

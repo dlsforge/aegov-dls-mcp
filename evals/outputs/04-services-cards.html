@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Government services | Ministry of Human Resources &amp; Emiratisation - United Arab Emirates</title>
+   <meta name="description" content="Browse all UAE government services by audience: government, business and individual. Search the catalogue and explore each service.">
+   <!-- Official AEGOV DLS font stack (tokens: --font-heading Inter, --font-body Roboto, --font-notokufi Noto Kufi Arabic) -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+   <!-- @aegov/design-system@3.0.7 compiled CSS + JS. NOTE: verify these dist paths against the published package before deployment; the design-system ships as a Tailwind v4 plugin and the compiled bundle path is not exposed by the catalogue tools. -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aegov/design-system@3.0.7/dist/css/style.css">
+</head>
+<body>
+   <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+   <header class="aegov-header">
+    <div class="header-desktop hidden lg:block">
+       <div class="header-top py-3">
+          <div class="container">
+             <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="header-logo logos">
+                   <div class="logo-item">
+                      <a href="#" class="logo block"> <img src="https://designsystem.gov.ae/img/logo-ministry.svg" alt="Ministry logo"> <span class="sr-only">Logo</span> </a>
+                   </div>
+                   <div class="logo-item">
+                      <a href="#" data-modal-target="modal-gold-star" data-modal-toggle="modal-gold-star" class="block"> <img src="https://designsystem.gov.ae/img/global-star.png" alt="Gold star logo" class="secondary-logo"> <span class="sr-only">Gold star Logo</span> </a>
+                   </div>
+                </div>
+                <div class="header-top-right flex flex-wrap items-center">
+                   <form action="#" method="post">
+                      <div class="aegov-form-control w-64 xl:w-80 ">
+                         <div class="form-control-input">
+                            <input type="search" aria-label="search in site" name="searchelem" id="searchelem" placeholder="search for something">
+                            <button type="submit" class="control-suffix">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                 <rect width="256" height="256" fill="none"></rect>
+                                 <circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle>
+                                 <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                              </svg>
+                              <span class="sr-only">Search</span>
+                           </button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="header-navs">
+          <div class="container">
+             <div class="flex content-between flex-wrap lg:flex-nowrap lg:justify-between lg:items-center">
+                <nav class="main-navigation" aria-label="Main navigation">
+                   <div class="menu-main-menu-container">
+                      <ul class="menu nav-menu lg:flex lg:items-center lg:gap-1 xl:gap-2">
+                         <li class="menu-item lg:inline-flex lg:items-center has-link-icon">
+                            <a href="#" class="hover:text-primary-800! hover:border-primary-800!">
+                               <svg class="text-inherit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                  <rect width="256" height="256" fill="none" />
+                                  <path d="M152,208V160a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v48a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V115.54a8,8,0,0,1,2.62-5.92l80-75.54a8,8,0,0,1,10.77,0l80,75.54a8,8,0,0,1,2.62,5.92V208a8,8,0,0,1-8,8H160A8,8,0,0,1,152,208Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                               </svg>
+                               <span>Home</span>
+                            </a>
+                         </li>
+                         <li class="menu-item lg:inline-flex lg:items-center menu-item-has-children group">
+                            <a href="#" data-dropdown-toggle="OurServicesHover" data-dropdown-trigger="hover" class="group-hover:text-primary-800! group-hover:border-primary-800!">Services</a>
+                            <button type="button" id="OurServicesMenus" data-dropdown-toggle="OurServicesHover" class="submenu-btn shrink-0 group-hover:text-primary-800!">
+                               <span><span class="sr-only">show submenu for "Service catalogue"</span></span>
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                  <rect width="256" height="256" fill="none" />
+                                  <polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                               </svg>
+                            </button>
+                            <div id="OurServicesHover" class="submenu hidden z-10 lg:py-4 xl:py-5 2xl:py-6 inset-x-0! top-full! transform-none! xl:px-4 2xl:px-5">
+                               <div class="container">
+                                  <div class="lg:grid lg:grid-cols-5 [&>div]:p-3" aria-labelledby="OurServicesMenus">
+                                     <div>
+                                        <h2 class="submenu-title max-lg:text-sm">Business services</h2>
+                                        <ul class="space-y-1.5 xl:space-y-2 2xl:space-y-2.5">
+                                           <li class="menu-item"> <a href="#">Trade licence renewal</a> </li>
+                                           <li class="menu-item"> <a href="#">VAT registration</a> </li>
+                                           <li class="menu-item"> <a href="#">Labour contract attestation</a> </li>
+                                           <li class="menu-item"> <a href="#">View all services</a> </li>
+                                        </ul>
+                                     </div>
+                                     <div>
+                                        <h2 class="submenu-title max-lg:text-sm">Individual services</h2>
+                                        <ul class="space-y-1.5 xl:space-y-2 2xl:space-y-2.5">
+                                           <li class="menu-item"> <a href="#">Emirates ID renewal</a> </li>
+                                           <li class="menu-item"> <a href="#">Vehicle registration</a> </li>
+                                           <li class="menu-item"> <a href="#">Birth certificate</a> </li>
+                                           <li class="menu-item"> <a href="#">View all services</a> </li>
+                                        </ul>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </li>
+                         <li class="menu-item lg:inline-flex lg:items-center"> <a href="#" class="hover:text-primary-800! hover:border-primary-800!">Open data</a> </li>
+                         <li class="menu-item relative lg:inline-flex lg:items-center menu-item-has-children group">
+                            <a href="#" data-dropdown-toggle="AboutHover" data-dropdown-trigger="hover" class="group-hover:text-primary-800! group-hover:border-primary-800!">About</a>
+                            <button type="button" id="AboutMenus" data-dropdown-toggle="AboutHover" class="submenu-btn shrink-0 group-hover:text-primary-800!">
+                               <span><span class="sr-only">show submenu for "About the ministry"</span></span>
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                  <rect width="256" height="256" fill="none" />
+                                  <polyline points="208 96 128 176 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                               </svg>
+                            </button>
+                            <div id="AboutHover" class="submenu hidden z-10 lg:py-4 xl:py-5 2xl:py-6 rounded-bordered -mt-2.5!">
+                               <div class="[&>div]:p-3 [&>div]:w-72 lg:flex lg:flex-wrap" aria-labelledby="AboutMenus">
+                                  <div>
+                                     <ul class="space-y-1.5 xl:space-y-2 2xl:space-y-2.5">
+                                        <li class="menu-item"> <a href="#">About the Ministry</a> </li>
+                                        <li class="menu-item"> <a href="#">The Minister</a> </li>
+                                        <li class="menu-item"> <a href="#">Organization chart</a> </li>
+                                        <li class="menu-item"> <a href="#">Strategy</a> </li>
+                                        <li class="menu-item"> <a href="#">Contact</a> </li>
+                                     </ul>
+                                  </div>
+                               </div>
+                            </div>
+                         </li>
+                      </ul>
+                   </div>
+                </nav>
+                <div class="header-navs-right">
+                   <ul class="flex items-center">
+                      <li>
+                         <a href="#" data-tooltip-placement="bottom" data-tooltip-target="tooltip-login" class="lg:h-12 xl:h-14 lg:px-2 xl:px-3 flex items-center justify-center shrink-0">
+                            <svg class="shrink-0 w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                               <rect width="256" height="256" fill="none" />
+                               <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                               <path d="M32,216c19.37-33.47,54.55-56,96-56s76.63,22.53,96,56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                            </svg>
+                            <span class="sr-only">Login</span>
+                         </a>
+                         <div id="tooltip-login" role="tooltip" class="z-50 aegov-tooltip">
+                            Login
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                         </div>
+                      </li>
+                      <li>
+                         <a href="#" onclick="return false;" data-modal-target="modal-lang" data-modal-toggle="modal-lang" data-tooltip-placement="bottom" data-tooltip-target="tooltip-Switch-language" class="lg:h-12 xl:h-14 lg:px-2 xl:px-3 flex items-center justify-center shrink-0 no-underline text-lg! font-normal!">
+                           <svg class="shrink-0 w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><path d="M168,128c0,64-40,96-40,96s-40-32-40-96,40-96,40-96S168,64,168,128Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="37.46" y1="96" x2="218.54" y2="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="37.46" y1="160" x2="218.54" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></svg>
+                           <span class="sr-only">Switch Language</span>
+                          </a>
+                         <div id="tooltip-Switch-language" role="tooltip" class="z-50 aegov-tooltip">
+                            Switch language
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                         </div>
+                      </li>
+                   </ul>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- header for mobile -->
+    <div class="header-mobile lg:hidden">
+       <div class="header-top py-2">
+          <div class="container">
+             <div class="max-lg:flex max-lg:items-center justify-between">
+                <div class="header-logo logos">
+                   <div class="logo-item">
+                      <a href="#" class="logo block"> <img src="https://designsystem.gov.ae/img/logo-ministry.svg" alt="Ministry logo"> <span class="sr-only">Logo</span> </a>
+                   </div>
+                </div>
+                <div class="header-top-right">
+                   <div class="flex items-center gap-3">
+                      <button type="button" data-modal-target="openMenu" data-modal-toggle="openMenu" class="hamburger-icon text-aeblack-700">
+                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                            <rect width="256" height="256" fill="none"></rect>
+                            <line x1="40" y1="128" x2="216" y2="128" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="40" y1="64" x2="216" y2="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                            <line x1="40" y1="192" x2="216" y2="192" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+                         </svg>
+                         <span class="sr-only">Toggle main menu</span>
+                      </button>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- header for mobile end -->
+ </header>
+   <main id="main-content">
+      <!-- Breadcrumb -->
+      <div class="container pt-6">
+         <nav aria-label="Breadcrumb" class="aegov-breadcrumb with-seperator">
+            <ol>
+               <li><a href="#">Home</a></li>
+               <li><a href="#" title="Services">Services</a></li>
+               <li><span aria-current="page">Service catalogue</span></li>
+            </ol>
+         </nav>
+      </div>
+
+      <!-- Page title banner -->
+      <section class="bg-primary-50 mt-6">
+         <div class="container py-8 md:py-12 xl:py-16">
+            <h1 class="text-h3 md:text-h2 xl:text-h1 font-bold text-aeblack-900">Government services</h1>
+            <p class="mt-3 md:mt-4 text-base md:text-lg font-light text-aeblack-600 max-w-3xl">Browse the full catalogue of services offered by the Ministry. Filter by audience, search by keyword, and explore each service to get started.</p>
+         </div>
+      </section>
+
+      <div class="container py-8 md:py-12 xl:py-16">
+         <!-- Search field -->
+         <form action="#" method="get" role="search" class="mb-8 md:mb-10">
+            <div class="aegov-form-control control-lg max-w-2xl">
+               <label for="service_search">Search services</label>
+               <div class="form-control-input">
+                  <input type="search" name="service_search" id="service_search" placeholder="Search by service name or keyword">
+                  <span class="control-suffix">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true">
+                        <rect width="256" height="256" fill="none" />
+                        <circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                     </svg>
+                  </span>
+               </div>
+            </div>
+         </form>
+
+         <!-- Audience tabs -->
+         <div class="aegov-tab">
+            <ul class="tab-items gap-4 md:gap-6 lg:gap-7 xl:gap-8 max-xl:overflow-auto" data-tabs-toggle="#services-tab-content" role="tablist">
+               <li role="presentation"><a href="#" onclick="return false;" data-tabs-target="#tab-all" role="tab" id="tab-all-btn" aria-controls="tab-all" class="tab-link whitespace-nowrap">All services</a></li>
+               <li role="presentation"><a href="#" onclick="return false;" data-tabs-target="#tab-government" role="tab" id="tab-government-btn" aria-controls="tab-government" class="tab-link whitespace-nowrap">Government</a></li>
+               <li role="presentation"><a href="#" onclick="return false;" data-tabs-target="#tab-business" role="tab" id="tab-business-btn" aria-controls="tab-business" class="tab-link whitespace-nowrap">Business</a></li>
+               <li role="presentation"><a href="#" onclick="return false;" data-tabs-target="#tab-individual" role="tab" id="tab-individual-btn" aria-controls="tab-individual" class="tab-link whitespace-nowrap">Individual</a></li>
+            </ul>
+         </div>
+
+         <div id="services-tab-content" class="py-6 md:py-8">
+            <!-- Panel: All services -->
+            <div class="tab-content" role="tabpanel" id="tab-all" aria-labelledby="tab-all-btn">
+               <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M240,104v64a8,8,0,0,1-8,8H211.13a32,32,0,0,0-62.26,0H107.13a32,32,0,0,0-62.26,0H24a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H176.67a8,8,0,0,1,6.4,3.2L216,120h16A8,8,0,0,1,240,104Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="76" cy="176" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="180" cy="176" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Vehicle registration renewal</a></h5>
+                     <p class="line-clamp-3">Renew the registration of your private or commercial vehicle and receive your updated registration card and plates.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Transport</span>
+                        <span class="aegov-badge badge-success">Instant</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore vehicle registration renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="96" cy="120" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M50.83,176a44,44,0,0,1,90.34,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="164" y1="104" x2="200" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="164" y1="144" x2="200" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Emirates ID renewal</a></h5>
+                     <p class="line-clamp-3">Renew your Emirates ID card before it expires. Track your application and receive updates on collection or delivery.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Identity</span>
+                        <span class="aegov-badge badge-warning">Popular</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore Emirates ID renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M48,216V40a8,8,0,0,1,8-8h96l56,56V216a8,8,0,0,1-8,8H56A8,8,0,0,1,48,216Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="168" x2="160" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Trade licence renewal</a></h5>
+                     <p class="line-clamp-3">Renew your commercial trade licence, update establishment details and settle any outstanding fees online.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Business</span>
+                        <span class="aegov-badge">Online</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore trade licence renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><line x1="128" y1="24" x2="128" y2="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="216" x2="128" y2="232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M96,168h48a24,24,0,0,0,0-48H112a24,24,0,0,1,0-48h48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">VAT registration</a></h5>
+                     <p class="line-clamp-3">Register your business for Value Added Tax, obtain your Tax Registration Number and manage your tax profile.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Tax</span>
+                        <span class="aegov-badge">Business</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore VAT registration">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M128,144a40,40,0,1,0-40-40A40,40,0,0,0,128,144Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M63.8,199.37a72,72,0,0,1,128.4,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Golden residency application</a></h5>
+                     <p class="line-clamp-3">Apply for long-term Golden residency for investors, entrepreneurs and specialised talents, and track your status.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Residency</span>
+                        <span class="aegov-badge badge-warning">Featured</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore Golden residency application">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M56,128a71.68,71.68,0,0,1,3.42-22C41.63,108.09,24,112.6,24,128s17.63,19.91,35.42,22A71.68,71.68,0,0,1,56,128Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M96,168H88a72,72,0,0,1-72-40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><rect x="72" y="40" width="112" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Birth certificate attestation</a></h5>
+                     <p class="line-clamp-3">Request attestation of a birth certificate for official use inside or outside the country, with document tracking.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Documents</span>
+                        <span class="aegov-badge">Individual</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore birth certificate attestation">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+
+               </div>
+
+               <!-- Pagination -->
+               <div class="mt-10 md:mt-12">
+                  <div class="flex items-center justify-center">
+                     <div class="aegov-pagination flex flex-1 justify-between items-center sm:hidden">
+                        <a class="aegov-pagination-previous" href="#">
+                           <svg aria-hidden="true" class="rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                              <rect width="256" height="256" fill="none" />
+                              <polyline points="160 208 80 128 160 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                           </svg>
+                           <span>Previous</span>
+                        </a>
+                        <span class="pages">Page 1 of 8</span>
+                        <a class="aegov-pagination-next" href="#">
+                           <span>Next</span>
+                           <svg aria-hidden="true" class="rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                              <rect width="256" height="256" fill="none" />
+                              <polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                           </svg>
+                        </a>
+                     </div>
+                     <div class="aegov-pagination max-sm:hidden" role="navigation">
+                        <a class="aegov-pagination-previous" rel="prev" aria-label="Previous Page" href="#">
+                           <svg aria-hidden="true" class="rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                              <rect width="256" height="256" fill="none" />
+                              <polyline points="160 208 80 128 160 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                           </svg>
+                           <span>Previous</span>
+                        </a>
+                        <span aria-current="page" class="aegov-pagination-current">1</span>
+                        <a class="aegov-pagination-page" title="Page 2" href="#">2</a>
+                        <a class="aegov-pagination-page" title="Page 3" href="#">3</a>
+                        <a class="aegov-pagination-page" title="Page 4" href="#">4</a>
+                        <span class="aegov-pagination-extend">...</span>
+                        <a class="aegov-pagination-page" title="Page 8" href="#">8</a>
+                        <a class="aegov-pagination-next" rel="next" aria-label="Next Page" href="#">
+                           <span>Next</span>
+                           <svg aria-hidden="true" class="rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                              <rect width="256" height="256" fill="none" />
+                              <polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                           </svg>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Panel: Government -->
+            <div class="tab-content" role="tabpanel" id="tab-government" aria-labelledby="tab-government-btn">
+               <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><line x1="32" y1="216" x2="224" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="48" y1="112" x2="48" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="112" x2="96" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="160" y1="112" x2="160" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="208" y1="112" x2="208" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M128,24,222.86,72a4,4,0,0,1-1.79,7.58H34.93A4,4,0,0,1,33.14,72Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Inter-government data exchange</a></h5>
+                     <p class="line-clamp-3">Request secure data-sharing agreements and integrations between federal and local government entities.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Government</span>
+                        <span class="aegov-badge">Integration</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore inter-government data exchange">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M48,216V40a8,8,0,0,1,8-8h96l56,56V216a8,8,0,0,1-8,8H56A8,8,0,0,1,48,216Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Digital procurement portal</a></h5>
+                     <p class="line-clamp-3">Publish tenders, manage supplier registration and process procurement approvals for government departments.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Government</span>
+                        <span class="aegov-badge">Procurement</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore digital procurement portal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="88 128 112 152 168 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Entity performance reporting</a></h5>
+                     <p class="line-clamp-3">Submit periodic performance indicators and compliance reports required from government entities.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Government</span>
+                        <span class="aegov-badge">Reporting</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore entity performance reporting">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Panel: Business -->
+            <div class="tab-content" role="tabpanel" id="tab-business" aria-labelledby="tab-business-btn">
+               <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M48,216V40a8,8,0,0,1,8-8h96l56,56V216a8,8,0,0,1-8,8H56A8,8,0,0,1,48,216Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Trade licence renewal</a></h5>
+                     <p class="line-clamp-3">Renew your commercial trade licence, update establishment details and settle any outstanding fees online.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Business</span>
+                        <span class="aegov-badge">Online</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore trade licence renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><line x1="128" y1="24" x2="128" y2="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="216" x2="128" y2="232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M96,168h48a24,24,0,0,0,0-48H112a24,24,0,0,1,0-48h48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">VAT registration</a></h5>
+                     <p class="line-clamp-3">Register your business for Value Added Tax, obtain your Tax Registration Number and manage your tax profile.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Tax</span>
+                        <span class="aegov-badge">Business</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore VAT registration">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><rect x="40" y="72" width="176" height="144" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M88,72V56a24,24,0,0,1,24-24h32a24,24,0,0,1,24,24V72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Labour contract attestation</a></h5>
+                     <p class="line-clamp-3">Register and attest employee labour contracts, and issue work permits for your establishment.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Employment</span>
+                        <span class="aegov-badge">Business</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore labour contract attestation">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Panel: Individual -->
+            <div class="tab-content" role="tabpanel" id="tab-individual" aria-labelledby="tab-individual-btn">
+               <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="96" cy="120" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M50.83,176a44,44,0,0,1,90.34,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="164" y1="104" x2="200" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="164" y1="144" x2="200" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Emirates ID renewal</a></h5>
+                     <p class="line-clamp-3">Renew your Emirates ID card before it expires. Track your application and receive updates on collection or delivery.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Identity</span>
+                        <span class="aegov-badge badge-warning">Popular</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore Emirates ID renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M240,104v64a8,8,0,0,1-8,8H211.13a32,32,0,0,0-62.26,0H107.13a32,32,0,0,0-62.26,0H24a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H176.67a8,8,0,0,1,6.4,3.2L216,120h16A8,8,0,0,1,240,104Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="76" cy="176" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="180" cy="176" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Vehicle registration renewal</a></h5>
+                     <p class="line-clamp-3">Renew the registration of your private or commercial vehicle and receive your updated registration card and plates.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Transport</span>
+                        <span class="aegov-badge badge-success">Instant</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore vehicle registration renewal">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="aegov-card card-bordered card-glow card-service">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-9 h-9 text-primary-600" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M56,128a71.68,71.68,0,0,1,3.42-22C41.63,108.09,24,112.6,24,128s17.63,19.91,35.42,22A71.68,71.68,0,0,1,56,128Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><rect x="72" y="40" width="112" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                     <h5 class="card-service-title line-clamp-2"><a href="#">Birth certificate attestation</a></h5>
+                     <p class="line-clamp-3">Request attestation of a birth certificate for official use inside or outside the country, with document tracking.</p>
+                     <div class="flex flex-wrap items-center gap-2">
+                        <span class="aegov-badge badge-info">Documents</span>
+                        <span class="aegov-badge">Individual</span>
+                     </div>
+                     <div class="block">
+                        <a href="#" class="aegov-link" title="Explore birth certificate attestation">
+                           Explore
+                           <svg class="link-icon rtl:-scale-x-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><polyline points="144 56 216 128 144 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Page rating -->
+         <div class="mt-12 md:mt-16 border-t border-aeblack-100 pt-10 md:pt-12">
+            <div class="max-w-2xl">
+               <div class="text-lg md:text-xl xl:text-2xl text-aeblack-950 font-bold font-inter leading-normal mb-3">Did you find this content useful?</div>
+               <p class="text-aeblack-500 font-light mb-5 md:mb-7 xl:mb-9">You can help us improve by providing your feedback about your experience.</p>
+               <div class="flex gap-6 flex-wrap">
+                  <button type="button" class="aegov-btn btn-outline" aria-label="Yes, this content was useful">
+                     <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none" />
+                        <path d="M32,104H80a0,0,0,0,1,0,0V208a0,0,0,0,1,0,0H32a8,8,0,0,1-8-8V112A8,8,0,0,1,32,104Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <path d="M80,104l40-80a32,32,0,0,1,32,32V80h64a16,16,0,0,1,15.87,18l-12,96A16,16,0,0,1,204,208H80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                     </svg>
+                     Yes
+                  </button>
+                  <button type="button" class="aegov-btn btn-outline" aria-label="No, this content was not useful">
+                     <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none" />
+                        <path d="M32,48H80a0,0,0,0,1,0,0V152a0,0,0,0,1,0,0H32a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <path d="M80,152l40,80a32,32,0,0,0,32-32V176h64a16,16,0,0,0,15.87-18l-12-96A16,16,0,0,0,204,48H80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                     </svg>
+                     No
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+   <footer class="aegov-footer">
+    <div class="footer-top sm:py-6 md:py-12">
+       <div class="container">
+           <div class="footer-top-left sm:flex gap-3 xl:px-6">
+                <nav aria-label="footer navigation" class="aegov-accordion aegov-mobile-accordion [&_.accordion-active_svg]:rotate-45 flex-1" id="mobile-accordion-collapse" data-accordion="collapse">
+                    <ul class="grid sm:gap-x-2.5 sm:grid-cols-2 lg:grid-cols-4 sm:gap-y-8 md:gap-y-12 w-full">
+                        <li class="accordion-item border-b border-aeblack-100 sm:border-none">
+                            <div class="accordion-title sm:mb-4" id="mobile-accordion-collapse-heading-1">
+                                <button class="max-sm:py-4 max-sm:flex justify-between sm:justify-start max-sm:items-center xl:cursor-default sm:pointer-events-none" aria-label="heading" type="button" data-accordion-target="#mobile-accordion-collapse-body-1" aria-expanded="true" aria-controls="mobile-accordion-collapse-body-1">
+                                    <span>The Ministry</span>
+                                    <svg class="sm:hidden" data-accordion-icon width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H13.125V20.25C13.125 20.5484 13.0065 20.8345 12.7955 21.0455C12.5845 21.2565 12.2984 21.375 12 21.375C11.7016 21.375 11.4155 21.2565 11.2045 21.0455C10.9935 20.8345 10.875 20.5484 10.875 20.25V13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H10.875V3.75C10.875 3.45163 10.9935 3.16548 11.2045 2.9545C11.4155 2.74353 11.7016 2.625 12 2.625C12.2984 2.625 12.5845 2.74353 12.7955 2.9545C13.0065 3.16548 13.125 3.45163 13.125 3.75V10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="accordion-content hidden max-sm:py-4 sm:block" id="mobile-accordion-collapse-body-1" aria-labelledby="mobile-accordion-collapse-heading-1">
+                                <ul class="accordion-content-body">
+                                    <li><a href="#">About the ministry</a></li>
+                                    <li><a href="#">About the minister</a></li>
+                                    <li><a href="#">Customer happiness charter</a></li>
+                                    <li><a href="#">Awards</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="accordion-item border-b border-aeblack-100 sm:border-none">
+                            <div class="accordion-title sm:mb-4" id="mobile-accordion-collapse-heading-2">
+                                <button class="max-sm:py-4 max-sm:flex justify-between sm:justify-start max-sm:items-center xl:cursor-default sm:pointer-events-none" aria-label="heading" type="button" data-accordion-target="#mobile-accordion-collapse-body-2" aria-expanded="false" aria-controls="mobile-accordion-collapse-body-2">
+                                    <span>Using the website</span>
+                                    <svg class="sm:hidden" data-accordion-icon width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H13.125V20.25C13.125 20.5484 13.0065 20.8345 12.7955 21.0455C12.5845 21.2565 12.2984 21.375 12 21.375C11.7016 21.375 11.4155 21.2565 11.2045 21.0455C10.9935 20.8345 10.875 20.5484 10.875 20.25V13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H10.875V3.75C10.875 3.45163 10.9935 3.16548 11.2045 2.9545C11.4155 2.74353 11.7016 2.625 12 2.625C12.2984 2.625 12.5845 2.74353 12.7955 2.9545C13.0065 3.16548 13.125 3.45163 13.125 3.75V10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="accordion-content hidden max-sm:py-4 sm:block" id="mobile-accordion-collapse-body-2" aria-labelledby="mobile-accordion-collapse-heading-2">
+                                <ul class="accordion-content-body">
+                                    <li><a href="#">Sitemap</a></li>
+                                    <li><a href="#">Disclaimer</a></li>
+                                    <li><a href="#">Privacy policy</a></li>
+                                    <li><a href="#">Terms and conditions</a></li>
+                                    <li><a href="#">Accessibility</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="accordion-item border-b border-aeblack-100 sm:border-none">
+                            <div class="accordion-title sm:mb-4" id="mobile-accordion-collapse-heading-3">
+                                <button class="max-sm:py-4 max-sm:flex justify-between sm:justify-start max-sm:items-center xl:cursor-default sm:pointer-events-none" aria-label="heading" type="button" data-accordion-target="#mobile-accordion-collapse-body-3" aria-expanded="false" aria-controls="mobile-accordion-collapse-body-3">
+                                    <span>Information and support</span>
+                                    <svg class="sm:hidden" data-accordion-icon width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H13.125V20.25C13.125 20.5484 13.0065 20.8345 12.7955 21.0455C12.5845 21.2565 12.2984 21.375 12 21.375C11.7016 21.375 11.4155 21.2565 11.2045 21.0455C10.9935 20.8345 10.875 20.5484 10.875 20.25V13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H10.875V3.75C10.875 3.45163 10.9935 3.16548 11.2045 2.9545C11.4155 2.74353 11.7016 2.625 12 2.625C12.2984 2.625 12.5845 2.74353 12.7955 2.9545C13.0065 3.16548 13.125 3.45163 13.125 3.75V10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="accordion-content hidden max-sm:py-4 sm:block" id="mobile-accordion-collapse-body-3" aria-labelledby="mobile-accordion-collapse-heading-3">
+                                <ul class="accordion-content-body">
+                                    <li><a href="#">Services catalogue</a></li>
+                                    <li><a href="#">Media centre</a></li>
+                                    <li><a href="#">Contact us</a></li>
+                                    <li><a href="#">Feedback and complaints</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="accordion-item border-b border-aeblack-100 sm:border-none">
+                            <div class="accordion-title sm:mb-4" id="mobile-accordion-collapse-heading-4">
+                                <button class="max-sm:py-4 max-sm:flex justify-between sm:justify-start max-sm:items-center xl:cursor-default sm:pointer-events-none" aria-label="heading" type="button" data-accordion-target="#mobile-accordion-collapse-body-4" aria-expanded="false" aria-controls="mobile-accordion-collapse-body-4">
+                                    <span>References</span>
+                                    <svg class="sm:hidden" data-accordion-icon width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H13.125V20.25C13.125 20.5484 13.0065 20.8345 12.7955 21.0455C12.5845 21.2565 12.2984 21.375 12 21.375C11.7016 21.375 11.4155 21.2565 11.2045 21.0455C10.9935 20.8345 10.875 20.5484 10.875 20.25V13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H10.875V3.75C10.875 3.45163 10.9935 3.16548 11.2045 2.9545C11.4155 2.74353 11.7016 2.625 12 2.625C12.2984 2.625 12.5845 2.74353 12.7955 2.9545C13.0065 3.16548 13.125 3.45163 13.125 3.75V10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="accordion-content hidden max-sm:py-4 sm:block" id="mobile-accordion-collapse-body-4" aria-labelledby="mobile-accordion-collapse-heading-4">
+                                <ul class="accordion-content-body">
+                                    <li><a href="#">Regulations</a></li>
+                                    <li><a href="#">Media kit</a></li>
+                                    <li><a href="#">Abbreviations and glossary</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class=" text-center footer-contact lg:w-48 xl:w-[277px]">
+                    <ul class="divide-y divide-aeblack-100">
+                        <li>
+                            <a href="#">
+                                <img src="https://designsystem.gov.ae/img/tawasul.png" alt="tawasul" class="inline-block w-36 lg:w-auto">
+                            </a>
+                        </li>
+                        <li class="custom-divide">
+                            <a href="#" class="inline-with-gap">
+                                <svg class="fill-aegreen-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><path d="M152.27,37.93a8,8,0,0,1,9.8-5.66,86.22,86.22,0,0,1,61.66,61.66,8,8,0,0,1-5.66,9.8A8.23,8.23,0,0,1,216,104a8,8,0,0,1-7.73-5.93,70.35,70.35,0,0,0-50.33-50.34A8,8,0,0,1,152.27,37.93Zm-2.33,41.8c13.79,3.68,22.65,12.55,26.33,26.34A8,8,0,0,0,184,112a8.23,8.23,0,0,0,2.07-.27,8,8,0,0,0,5.66-9.8c-5.12-19.16-18.5-32.54-37.66-37.66a8,8,0,1,0-4.13,15.46Zm72.43,78.73-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"/></svg>
+                                <span>171</span>
+                            </a>
+                            <a href="#" class="inline-with-gap">
+                                <svg class="fill-aegreen-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg>
+                                <span>04-7771777</span>
+                            </a>
+                        </li>
+                        <li class="inline-with-gap">
+                            <span class="text-aeblack-500 inline-with-gap">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline points="160 56 160 96 200 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="160" y1="96" x2="208" y2="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M164.39,145.34a8,8,0,0,1,7.59-.69l47.16,21.13a8,8,0,0,1,4.8,8.3A48.33,48.33,0,0,1,176,216,136,136,0,0,1,40,80,48.33,48.33,0,0,1,81.92,32.06a8,8,0,0,1,8.3,4.8l21.13,47.2a8,8,0,0,1-.66,7.53L89.32,117a7.93,7.93,0,0,0-.54,7.81c8.27,16.93,25.77,34.22,42.75,42.41a7.92,7.92,0,0,0,7.83-.59Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                                Toll free:
+                            </span>
+                            <a href="#" class="">
+                                800 12
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+           </div>
+       </div>
+    </div>
+    <div class="footer-bottom py-6 md:py-12">
+        <div class="container">
+            <div class="flex flex-wrap gap-y-6 items-center justify-between">
+                <div class="w-full lg:w-7/12">
+                    <div class="text-aeblack-700 text-xs sm:text-sm mb-0">&copy; 2026. Ministry of Human Resources &amp; Emiratisation. All rights reserved. <span class="text-aeblack-500">Last updated on 09/07/2026 at 15:45</span></div>
+                </div>
+                <div class="w-full lg:w-5/12 social-sharing max-md:w-full justify-center lg:justify-end">
+                    <span class="text-sm text-aeblack-700 max-sm:hidden">Follow us on: </span>
+                    <ul class="flex items-center gap-6">
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M168,88H152a24,24,0,0,0-24,24V224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="144" x2="160" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                                <span class="sr-only">facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="40" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"/><rect x="32" y="32" width="192" height="192" rx="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="180" cy="76" r="12"/></svg>
+                                <span class="sr-only">instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="88" cy="84" r="12"/></svg>
+                                <span class="sr-only">LinkedIn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><path d="M88,176S32.85,144,40.78,56c0,0,39.66,40,87.22,48V88c0-22,18-40.27,40-40a40.74,40.74,0,0,1,36.67,24H240l-32,32c-4.26,66.84-60.08,120-128,120-32,0-40-12-40-12S72,200,88,176Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                                <span class="sr-only">twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polygon points="160 128 112 96 112 160 160 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M24,128c0,29.91,3.07,47.45,5.41,56.47A16,16,0,0,0,39,195.42C72.52,208.35,128,208,128,208s55.48.35,89-12.58a16,16,0,0,0,9.63-10.95c2.34-9,5.41-26.56,5.41-56.47s-3.07-47.45-5.41-56.47a16,16,0,0,0-9.63-11C183.48,47.65,128,48,128,48s-55.48-.35-89,12.58a16,16,0,0,0-9.63,11C27.07,80.54,24,98.09,24,128Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                                <span class="sr-only">YouTube</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+ </footer>
+ <!-- @aegov/design-system bundled JavaScript (accordion, dropdown, modal, tooltip, tabs behaviour). NOTE: verify this dist path against the published package before deployment. -->
+ <script src="https://cdn.jsdelivr.net/npm/@aegov/design-system@3.0.7/dist/js/aegov-scripts.min.js"></script>
+</body>
+</html>

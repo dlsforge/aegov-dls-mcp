@@ -155,8 +155,14 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
       }
       for (const input of html.matchAll(/<input\b[^>]*>/gi)) {
         const tag = input[0];
+        // A field's identity comes from its name/id/placeholder/label — not the
+        // entered value. A search box whose value happens to mention "Emirates
+        // ID" (e.g. a search query) is still a search box, not an ID input.
+        const identity = tag.replace(/\bvalue\s*=\s*(?:"[^"]*"|'[^']*')/gi, "");
         const looksEid =
-          /784/.test(tag) || /emirates[-_ ]?id/i.test(tag) || /\beid\b/i.test(tag);
+          /784/.test(identity) ||
+          /emirates[-_ ]?id/i.test(identity) ||
+          /\beid\b/i.test(identity);
         if (!looksEid) continue;
         const pattern = tag.match(/\bpattern\s*=\s*"([^"]*)"/)?.[1];
         if (!pattern) {

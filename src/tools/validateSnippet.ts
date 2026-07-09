@@ -18,7 +18,9 @@ import { z } from "zod";
 import type { Catalog } from "../catalog/types.js";
 import { json } from "./shared.js";
 
-const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+// Matches class="…", class='…', and the HTML5-valid unquoted class=… form
+// (third group) — an unquoted attribute must not slip past class validation.
+const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/g;
 
 type Finding = {
   level: "error" | "warning" | "info";
@@ -29,7 +31,7 @@ type Finding = {
 function classTokens(html: string): string[] {
   const out: string[] = [];
   for (const m of html.matchAll(CLASS_ATTR_RE)) {
-    for (const token of (m[1] ?? m[2]).split(/\s+/)) if (token) out.push(token);
+    for (const token of (m[1] ?? m[2] ?? m[3] ?? "").split(/\s+/)) if (token) out.push(token);
   }
   return out;
 }
@@ -37,6 +39,8 @@ function classTokens(html: string): string[] {
 /** Emirates ID: full-format value (all digits — an unmasked real ID shape). */
 const FULL_EID_RE = /\b784-\d{4}-\d{7}-\d\b/;
 const EID_PATTERN = "^784-\\d{4}-\\d{7}-\\d$";
+/** Signals an <input> is an Emirates ID field — from its own attributes or its <label>. */
+const EID_SIGNAL_RE = /784|emirates[-_ ]?id|\beid\b|الهوية الإماراتية/i;
 
 export function registerValidateSnippet(server: McpServer, catalog: Catalog): void {
   // Package truth: every class that ships in the pinned version.
@@ -144,27 +148,43 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
       }
 
       // --- UAE-specific checks (non-negotiables) -------------------------------
-      if (FULL_EID_RE.test(html.replace(/pattern\s*=\s*"[^"]*"/g, ""))) {
+      if (FULL_EID_RE.test(html.replace(/pattern\s*=\s*(?:"[^"]*"|'[^']*')/g, ""))) {
         findings.push({
-          level: "warning",
+          level: "error",
           confidence: "heuristic",
           message:
             "Snippet contains a full-format Emirates ID value (784-NNNN-NNNNNNN-N). Displayed " +
-            "Emirates IDs should be masked (784-1945-XXXXXXX-X) with an explicit reveal control.",
+            "Emirates IDs must be masked (784-1945-XXXXXXX-X) with an explicit reveal control.",
         });
+      }
+      // Map <label for="X"> → its visible text, so an EID field identified only
+      // by its label (input carrying a generic name/id) is still recognised.
+      const labelFor = new Map<string, string>();
+      for (const lbl of html.matchAll(
+        /<label\b[^>]*\bfor\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>([\s\S]*?)<\/label>/gi,
+      )) {
+        const forId = lbl[1] ?? lbl[2];
+        if (forId) labelFor.set(forId, `${labelFor.get(forId) ?? ""} ${lbl[3]}`);
       }
       for (const input of html.matchAll(/<input\b[^>]*>/gi)) {
         const tag = input[0];
-        // A field's identity comes from its name/id/placeholder/label — not the
-        // entered value. A search box whose value happens to mention "Emirates
-        // ID" (e.g. a search query) is still a search box, not an ID input.
+        // A field's identity comes from its name/id/placeholder/aria AND its
+        // associated <label> — never the entered value (value is stripped: a
+        // search box whose value mentions "Emirates ID" is still a search box).
+        // The input's own attributes are decisive; the label is only a secondary
+        // signal, gated by looksSearch so a search box labelled "…Emirates ID…"
+        // isn't mistaken for an ID-entry field.
         const identity = tag.replace(/\bvalue\s*=\s*(?:"[^"]*"|'[^']*')/gi, "");
+        const idAttr = tag.match(/\bid\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+        const labelText = idAttr ? (labelFor.get(idAttr[1] ?? idAttr[2] ?? "") ?? "") : "";
+        const looksSearch = /type\s*=\s*["']?search|role\s*=\s*["']?search|\bsearch\b/i.test(
+          identity,
+        );
         const looksEid =
-          /784/.test(identity) ||
-          /emirates[-_ ]?id/i.test(identity) ||
-          /\beid\b/i.test(identity);
+          EID_SIGNAL_RE.test(identity) || (!looksSearch && EID_SIGNAL_RE.test(labelText));
         if (!looksEid) continue;
-        const pattern = tag.match(/\bpattern\s*=\s*"([^"]*)"/)?.[1];
+        const patternMatch = tag.match(/\bpattern\s*=\s*(?:"([^"]*)"|'([^']*)')/);
+        const pattern = patternMatch ? (patternMatch[1] ?? patternMatch[2]) : undefined;
         if (!pattern) {
           findings.push({
             level: "error",

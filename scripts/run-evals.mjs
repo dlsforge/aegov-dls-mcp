@@ -53,12 +53,12 @@ async function validateSnippet(html) {
 
 // --- checks ---------------------------------------------------------------------
 
-const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/g;
 
 function classTokens(html) {
   const out = new Set();
   for (const m of html.matchAll(CLASS_ATTR_RE))
-    for (const t of (m[1] ?? m[2]).split(/\s+/)) if (t) out.add(t);
+    for (const t of (m[1] ?? m[2] ?? m[3] ?? "").split(/\s+/)) if (t) out.add(t);
   return out;
 }
 

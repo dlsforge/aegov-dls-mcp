@@ -83,6 +83,19 @@
   `aegov-button` gets an error with **no** suggestion ("button" is not a substring of "btn" and vice
   versa). The error itself still fires — compliance is unaffected. Possible later improvement: also
   match against docs names when computing suggestions.
+- **T3 (non-negotiable NOT tool-enforced): DMY dates.** CLAUDE.md lists DMY dates as a
+  non-negotiable, but no tool checks date formats — an MDY date (`12/31/2026`) passes
+  `validate_snippet` silently. Asserted as a KNOWN LIMIT test so a future check must flip it
+  deliberately. Decision needed (same class as F2 was): either add a heuristic date check to
+  `validate_snippet`, or state that DMY is prompt-guidance only.
+- **T4 (non-negotiable partially enforced): tokens over arbitrary values.** `validate_snippet`
+  verifies class identity but never inspects `style="..."` — hard-coded hex colours and px values
+  pass silently. Enforced today only indirectly (evals + the tools' guidance text). KNOWN LIMIT
+  test added; candidate for a Stage-2-auditor-grade check.
+- **T5 (design limit, documented): structure is not validated.** Correct aegov-* classes in wrong
+  nesting (e.g. `aegov-check-item` outside a form control) validate clean — the tool checks class
+  identity (package tier, certain) and heuristics, not DOM structure. Per-screen structure is
+  covered by the eval specs' requiredPatterns instead. KNOWN LIMIT test added.
 - **T2 (consistency, negligible impact):** the F4 unquoted-`class` regex fix was applied to
   `src/tools/validateSnippet.ts` and `scripts/run-evals.mjs`, but `src/tools/shared.ts`
   (`driftClassesIn`, used for driftWarning annotations on served docs examples) still matches only

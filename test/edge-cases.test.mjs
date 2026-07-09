@@ -174,6 +174,17 @@ describe("scaffoldUaePass language/environment edges (E5, E6)", () => {
     assert.equal(v.body.valid, true, JSON.stringify(v.body.findings));
   });
 
+  test("all three radius options emit distinct, validating markup", async () => {
+    const outputs = [];
+    for (const radius of ["default", "rectangle", "pill"]) {
+      const { body } = await srv.call("scaffoldUaePass", { radius, language: "en" });
+      const v = await srv.call("validate_snippet", { html: body.html.en });
+      assert.equal(v.body.valid, true, `radius=${radius}: ${JSON.stringify(v.body.findings)}`);
+      outputs.push(body.html.en);
+    }
+    assert.equal(new Set(outputs).size, 3, "radius options must produce different markup");
+  });
+
   test("staging and production endpoints sit on the documented hosts", async () => {
     const stg = await srv.call("scaffoldUaePass", { environment: "staging" });
     const prod = await srv.call("scaffoldUaePass", { environment: "production" });
@@ -297,6 +308,41 @@ describe("validate_snippet input edges (F5, F6, F7, F8, F9)", () => {
       html: '<div dir="rtl"><p>مرحبا</p></div>',
     });
     assert.ok(!warningsOf(body).some((f) => f.message.includes("rtl")));
+  });
+
+  test("malformed HTML (unclosed tags, stray brackets) answers without crashing", async () => {
+    const { body } = await srv.call("validate_snippet", {
+      html: '<div class="aegov-card"><span>unclosed <a href="#" <<>> <p>stray',
+    });
+    assert.ok(typeof body.valid === "boolean");
+    assert.ok(body.classes.packageVerified.includes("aegov-card"));
+  });
+
+  // --- known limits, asserted so a future fix must update these deliberately ------
+  // (checklist findings T3-T5 — the validator does NOT cover these today)
+
+  test("KNOWN LIMIT T5: correct classes in wrong structure still validate (no nesting checks)", async () => {
+    // aegov-check-item outside any form control, aegov-modal missing its dialog role:
+    // class identity is package-verified, structure is not the validator's job (yet).
+    const { body } = await srv.call("validate_snippet", {
+      html: '<footer class="aegov-check-item"><em class="aegov-modal">x</em></footer>',
+    });
+    assert.equal(body.valid, true);
+  });
+
+  test("KNOWN LIMIT T4: hard-coded style values are not flagged (tokens-only not enforced)", async () => {
+    const { body } = await srv.call("validate_snippet", {
+      html: '<button class="aegov-btn" type="button" style="color:#ff0000;padding:13px">x</button>',
+    });
+    assert.equal(body.valid, true);
+    assert.ok(!body.findings.some((f) => f.message.includes("style")));
+  });
+
+  test("KNOWN LIMIT T3: MDY-format dates are not flagged (DMY not enforced)", async () => {
+    const { body } = await srv.call("validate_snippet", {
+      html: '<p class="aegov-card">Deadline: 12/31/2026</p>',
+    });
+    assert.equal(body.valid, true);
   });
 
   test("F9: ~200KB input answers without crashing", async () => {

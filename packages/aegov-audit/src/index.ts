@@ -13,26 +13,32 @@ import { pathToFileURL } from "node:url";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { runAxe, AXE_VERSION } from "./engines/axe.js";
 import { runDlsRules, dlsPackageRef } from "./engines/dls.js";
 import { runTokenFidelity } from "./engines/tokens.js";
 import { runStructureChecks } from "./engines/structure.js";
 import { runUaePassCheck } from "./engines/uaepass.js";
+import { runMetaChecks } from "./engines/meta.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
 import { countBySeverity, type AuditFinding } from "./report/types.js";
+import { buildReport, renderMarkdown } from "./report/report.js";
 
 const USAGE = `Mizan — AEGOV DLS compliance auditor (early scaffold)
 
-Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]]
+Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <dir>]
 
   <url|path>     A http(s):// URL or a local HTML file to audit.
-  --json         Emit the normalized findings as JSON on stdout.
-  --lighthouse   Also run Lighthouse (mobile + desktop category scores;
-                 slower — two full page loads under simulated throttling).
+  --json         Emit the full machine report as JSON on stdout.
+  --lighthouse   Also run Lighthouse (mobile + desktop category scores and
+                 LCP/FCP, evaluated against the verified TDRA thresholds
+                 under LOCAL run conditions; slower — two full page loads).
   --parity [url] Also load the other-language variant (given URL, or
                  discovered via <link hreflang>) and flag structural
                  differences for human review.
+  --out <dir>    Write report.json + report.md (shaped to mirror the official
+                 TDRA assessment checklist v2.0) into <dir>.
 
 Loads the target in headless Chromium and runs axe-core (WCAG) plus the
 AEGOV DLS rules — the shared rules-core checks, token fidelity, component
@@ -63,6 +69,16 @@ if (withParity && args[parityIdx + 1] && !args[parityIdx + 1].startsWith("--")) 
   parityUrl = args[parityIdx + 1];
   consumed.add(parityIdx + 1);
 }
+const outIdx = args.indexOf("--out");
+let outDir: string | null = null;
+if (outIdx !== -1) {
+  if (!args[outIdx + 1] || args[outIdx + 1].startsWith("--")) {
+    console.error("aegov-audit: --out needs a directory argument");
+    process.exit(2);
+  }
+  outDir = args[outIdx + 1];
+  consumed.add(outIdx + 1);
+}
 const target = args.find((a, i) => !a.startsWith("--") && !consumed.has(i));
 if (!target || args.includes("--help") || args.includes("-h")) {
   console.log(USAGE);
@@ -90,6 +106,7 @@ try {
     ...(await runTokenFidelity(page)),
     ...(await runStructureChecks(page)),
     ...(await runUaePassCheck(page)),
+    ...(await runMetaChecks(page)),
   ];
   if (withParity) {
     const alternate = parityUrl ?? (await discoverAlternate(page));
@@ -112,25 +129,23 @@ try {
     }
   }
 
+  const report = buildReport({
+    target: url,
+    page: { status, loadMs, nodes, title, lang, dir },
+    engines: { axe: AXE_VERSION, dls: dlsPackageRef() },
+    findings,
+    lighthouse,
+  });
+
+  if (outDir) {
+    mkdirSync(outDir, { recursive: true });
+    writeFileSync(resolve(outDir, "report.json"), JSON.stringify(report, null, 2) + "\n");
+    writeFileSync(resolve(outDir, "report.md"), renderMarkdown(report));
+    console.error(`aegov-audit: wrote ${resolve(outDir, "report.json")} and report.md`);
+  }
+
   if (json) {
-    console.log(
-      JSON.stringify(
-        {
-          target: url,
-          status,
-          loadMs,
-          page: { nodes, title, lang, dir },
-          engines: { axe: AXE_VERSION, dls: dlsPackageRef() },
-          findings,
-          lighthouse,
-          note:
-            "Automated checks cover only a machine-checkable subset of WCAG — " +
-            "a clean run is not compliance.",
-        },
-        null,
-        2,
-      ),
-    );
+    console.log(JSON.stringify(report, null, 2));
   } else {
     console.log(
       `loaded ${url}\n` +
@@ -172,10 +187,18 @@ try {
         );
       }
       console.log(
-        "  Scores are local-run numbers, not TDRA verdicts — thresholds are not asserted " +
-          "until the current assessment criteria are verified.",
+        "  Scores are evaluated against the verified TDRA thresholds under LOCAL run " +
+          "conditions (see the report) — not comparable to TDRA's environment.",
       );
     }
+    const c = report.tdraChecklist;
+    const flagged = c.machineCheckedItems.filter((i) => i.status === "findings");
+    console.log(
+      `\nTDRA checklist v${c.source.version}: ${flagged.length} of ${c.machineCheckedItems.length} ` +
+        `machine-checked items have findings (${flagged.map((i) => i.id).join(", ") || "none"}); ` +
+        `${c.humanReviewCount} of ${c.totalItems} items need human review. ` +
+        `Use --out <dir> for the full reviewer-shaped report.`,
+    );
     console.log(
       "\nNote: automated checks cover only a machine-checkable subset of WCAG — " +
         "a clean run is not compliance.",

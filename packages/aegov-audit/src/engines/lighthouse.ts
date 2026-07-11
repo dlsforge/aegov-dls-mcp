@@ -35,6 +35,11 @@ export type LighthouseScores = {
     bestPractices: number | null;
     seo: number | null;
   };
+  /** Load-time metrics (ms) — the TDRA page states LCP ≤ 2.5 s, FCP ≤ 1.8 s. */
+  metrics: {
+    largestContentfulPaintMs: number | null;
+    firstContentfulPaintMs: number | null;
+  };
   runConditions: {
     lighthouseVersion: string;
     formFactor: FormFactor;
@@ -81,6 +86,14 @@ export async function runLighthouse(
         accessibility: pct(cats["accessibility"]?.score),
         bestPractices: pct(cats["best-practices"]?.score),
         seo: pct(cats["seo"]?.score),
+      },
+      metrics: {
+        largestContentfulPaintMs:
+          (result.lhr.audits["largest-contentful-paint"]?.numericValue as number | undefined) ??
+          null,
+        firstContentfulPaintMs:
+          (result.lhr.audits["first-contentful-paint"]?.numericValue as number | undefined) ??
+          null,
       },
       runConditions: {
         lighthouseVersion: LIGHTHOUSE_VERSION,

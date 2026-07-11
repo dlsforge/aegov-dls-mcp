@@ -4,7 +4,7 @@
  */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import type { Catalog } from "../catalog/types.js";
+import type { Catalog } from "@dlsforge/aegov-rules-core";
 import {
   artifactView,
   buildIndex,

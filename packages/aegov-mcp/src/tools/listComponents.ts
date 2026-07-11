@@ -3,7 +3,7 @@
  * metadata for an assistant to pick the right follow-up getComponent call.
  */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { Catalog } from "../catalog/types.js";
+import type { Catalog } from "@dlsforge/aegov-rules-core";
 import { DOCS_TRUST, json } from "./shared.js";
 
 export function registerListComponents(server: McpServer, catalog: Catalog): void {

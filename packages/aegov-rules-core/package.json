@@ -1,0 +1,62 @@
+{
+  "name": "@dlsforge/aegov-rules-core",
+  "version": "0.1.0",
+  "description": "Machine-readable model of the UAE Design System (AEGOV DLS): component schemas, resolved design tokens, catalogue loader, and the DLS rule engine. Community project. Not affiliated with or endorsed by TDRA.",
+  "license": "MIT",
+  "author": "Alam Khan Durrani",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlsforge/aegov-dls-mcp.git",
+    "directory": "packages/aegov-rules-core"
+  },
+  "homepage": "https://github.com/dlsforge/aegov-dls-mcp#readme",
+  "bugs": "https://github.com/dlsforge/aegov-dls-mcp/issues",
+  "keywords": [
+    "uae",
+    "aegov",
+    "design-system",
+    "design-tokens",
+    "uae-pass",
+    "emirates-id",
+    "government",
+    "accessibility",
+    "rtl"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "catalog"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "inventory": "node scripts/extract-inventory.mjs",
+    "docs:fetch": "node scripts/fetch-docs.mjs",
+    "docs:extract": "node scripts/extract-docs.mjs",
+    "catalog": "node scripts/build-catalog.mjs && node scripts/validate-catalog.mjs",
+    "uaepass:fetch": "node scripts/fetch-uaepass.mjs",
+    "uaepass:extract": "node scripts/extract-uaepass.mjs",
+    "uaepass:build": "node scripts/build-uaepass.mjs && node scripts/validate-catalog.mjs",
+    "validate": "node scripts/validate-catalog.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@aegov/design-system": "3.0.7",
+    "@types/node": "24.13.2",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,6 +1,8 @@
 # CLAUDE.md — aegov-dls-mcp
 
-> Instructions for Claude Code working in this repository. Read `STAGE1-HANDOFF.md` for the full build brief before writing code. `PROJECT-CONTEXT-v2.md` holds the project's strategy and decisions; `FUTURE-STAGES-NOTES.md` holds what comes after this repo's scope.
+> Instructions for Claude Code working in this repository. Read `STAGE1-HANDOFF.md` (MCP server, done) and `STAGE2-HANDOFF.md` (Mizan auditor, in progress) for the build briefs before writing code. `PROJECT-CONTEXT-v2.md` holds the project's strategy and decisions; `FUTURE-STAGES-NOTES.md` holds what comes after this repo's scope.
+>
+> **Layout (since Stage-2 step 0):** npm-workspaces monorepo — `packages/aegov-rules-core` (catalogue + DLS rule engine), `packages/aegov-mcp` (the MCP server, imports the core), `packages/aegov-audit` (Mizan, in progress). Root scripts fan out: `npm test` / `npm run evals` / `npm run smoke` / `npm run validate`.
 
 ## What this repo is
 

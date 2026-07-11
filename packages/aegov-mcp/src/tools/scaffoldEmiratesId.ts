@@ -14,7 +14,7 @@
  */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import type { Catalog } from "../catalog/types.js";
+import type { Catalog } from "@dlsforge/aegov-rules-core";
 import { DOCS_TRUST, json } from "./shared.js";
 
 export const EMIRATES_ID_PATTERN = "^784-\\d{4}-\\d{7}-\\d$";

@@ -11,7 +11,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { loadCatalog, loadUaePass } from "./catalog/load.js";
+import { loadCatalog, loadUaePass } from "@dlsforge/aegov-rules-core";
 import { registerListComponents } from "./tools/listComponents.js";
 import { registerGetComponent } from "./tools/getComponent.js";
 import { registerGetTokens } from "./tools/getTokens.js";
@@ -24,7 +24,7 @@ const uaePass = loadUaePass();
 
 const server = new McpServer({
   name: "aegov-dls",
-  version: "0.1.0",
+  version: "0.1.1",
 });
 
 server.registerTool(

@@ -1,66 +1,22 @@
 {
-  "name": "@dlsforge/aegov-mcp",
-  "version": "0.1.0",
-  "description": "MCP server exposing the UAE Design System (AEGOV DLS) to AI coding assistants. Community project. Not affiliated with or endorsed by TDRA.",
+  "name": "dlsforge-monorepo",
+  "private": true,
+  "description": "npm-workspaces root for the DLSForge packages: @dlsforge/aegov-rules-core, @dlsforge/aegov-mcp, @dlsforge/aegov-audit. Community project. Not affiliated with or endorsed by TDRA.",
   "license": "MIT",
   "author": "Alam Khan Durrani",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dlsforge/aegov-dls-mcp.git"
-  },
-  "homepage": "https://github.com/dlsforge/aegov-dls-mcp#readme",
-  "bugs": "https://github.com/dlsforge/aegov-dls-mcp/issues",
-  "keywords": [
-    "mcp",
-    "model-context-protocol",
-    "uae",
-    "aegov",
-    "design-system",
-    "uae-pass",
-    "emirates-id",
-    "government",
-    "accessibility",
-    "rtl"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "type": "module",
-  "bin": {
-    "aegov-mcp": "dist/index.js"
-  },
-  "main": "dist/index.js",
-  "files": [
-    "dist",
-    "catalog"
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepack": "npm run build",
-    "watch": "tsc --watch",
-    "start": "node dist/index.js",
-    "smoke": "node scripts/smoke-test.mjs",
-    "test": "node --test \"test/**/*.test.mjs\"",
-    "evals": "node scripts/run-evals.mjs",
-    "inventory": "node scripts/extract-inventory.mjs",
-    "docs:fetch": "node scripts/fetch-docs.mjs",
-    "docs:extract": "node scripts/extract-docs.mjs",
-    "catalog": "node scripts/build-catalog.mjs && node scripts/validate-catalog.mjs",
-    "uaepass:fetch": "node scripts/fetch-uaepass.mjs",
-    "uaepass:extract": "node scripts/extract-uaepass.mjs",
-    "uaepass:build": "node scripts/build-uaepass.mjs && node scripts/validate-catalog.mjs",
-    "validate": "node scripts/validate-catalog.mjs"
+    "build": "npm run build -w @dlsforge/aegov-rules-core && npm run build -w @dlsforge/aegov-mcp",
+    "test": "npm run test -w @dlsforge/aegov-rules-core && npm run test -w @dlsforge/aegov-mcp",
+    "evals": "npm run evals -w @dlsforge/aegov-mcp",
+    "smoke": "npm run smoke -w @dlsforge/aegov-mcp",
+    "validate": "npm run validate -w @dlsforge/aegov-rules-core",
+    "start": "npm run start -w @dlsforge/aegov-mcp"
   },
   "engines": {
     "node": ">=18"
-  },
-  "dependencies": {
-    "@aegov/design-system": "3.0.7",
-    "@modelcontextprotocol/sdk": "1.29.0",
-    "zod": "4.4.3"
-  },
-  "devDependencies": {
-    "@types/node": "24.13.2",
-    "typescript": "5.9.3"
   }
 }

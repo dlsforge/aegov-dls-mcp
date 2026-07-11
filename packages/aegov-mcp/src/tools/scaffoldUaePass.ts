@@ -12,7 +12,7 @@
  */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import type { UaePassGuidance, UaePassRule } from "../catalog/types.js";
+import type { UaePassGuidance, UaePassRule } from "@dlsforge/aegov-rules-core";
 import { json } from "./shared.js";
 
 export const UAEPASS_TRUST =

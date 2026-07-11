@@ -97,11 +97,11 @@
   nesting (e.g. `aegov-check-item` outside a form control) validate clean — the tool checks class
   identity (package tier, certain) and heuristics, not DOM structure. Per-screen structure is
   covered by the eval specs' requiredPatterns instead. KNOWN LIMIT test added.
-- **T2 (consistency, negligible impact):** the F4 unquoted-`class` regex fix was applied to
-  `src/tools/validateSnippet.ts` and `scripts/run-evals.mjs`, but `src/tools/shared.ts`
-  (`driftClassesIn`, used for driftWarning annotations on served docs examples) still matches only
-  quoted attributes. Docs examples are always quoted, so no observed impact — flagged for
-  consistency the next time shared.ts is touched.
+- **T2 — RESOLVED (2026-07-12, Stage-2 step 0):** the F4 unquoted-`class` regex fix had been
+  applied to `validateSnippet.ts` and `run-evals.mjs`, but `shared.ts` (`driftClassesIn`, used
+  for driftWarning annotations on served docs examples) still matched only quoted attributes.
+  Closed during the monorepo extraction: `driftClassesIn` now delegates token extraction to the
+  rule engine's `classTokens` (quoted + unquoted, the same function validate_snippet uses).
 
 ## Second adversarial pass (2026-07-11 — new suites in `test/adversarial/`)
 
@@ -133,6 +133,24 @@ known limits for the Stage-1 exit test (T5 with the standing caveat that structu
 enforcement lives in the eval specs, not the tool — re-litigate for the Stage-2
 auditor). T3 (DMY) received its ruling on 2026-07-11 — tool-enforced; see the resolved
 entry above.
+
+## Monorepo extraction (2026-07-12 — Stage-2 step 0, STAGE2-HANDOFF §6)
+
+The repo became an npm-workspaces monorepo; the DLS checks moved out of
+`validateSnippet.ts` into `@dlsforge/aegov-rules-core` (`src/rules/engine.ts`) as pure
+functions, and `validate_snippet` became a thin MCP wrapper over `validateHtml`. All 84
+Stage-1 tests were preserved across the split and stay green, plus new suites pin the seam:
+
+- **This package (`packages/aegov-mcp`), 81 tests:** the original 79 (everything except
+  catalogue fidelity) + 2 new core-tarball checks (G1b). G1 changed meaning: the mcp tarball
+  now ships `dist/` only — the catalogue arrives via the `@dlsforge/aegov-rules-core`
+  dependency. G2/bin install probes install BOTH tarballs via `file:` specifiers
+  (`test/helpers/tarballs.mjs`) until the core is published to npm.
+- **`packages/aegov-rules-core`, 20 tests:** the 5 catalogue-fidelity tests (moved) + 15 new
+  unit tests for the extracted rule engine (`test/rules-engine.test.mjs`).
+- **T2 closed** (see the resolved entry above). T4/T5 remain open by design — they are
+  Stage 2 auditor work (rendered DOM), per STAGE2-HANDOFF §6 step 4.
+- The `0.1.1` republish is deferred (STAGE2-HANDOFF §11); npm still serves `0.1.0`.
 
 ## Known out-of-scope for this suite
 

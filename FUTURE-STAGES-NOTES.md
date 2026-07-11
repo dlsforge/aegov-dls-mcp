@@ -6,6 +6,8 @@
 
 ## Stage 2 — Compliance & Accessibility Auditor
 
+> **Superseded:** this section has been expanded into the full build brief `STAGE2-HANDOFF.md` (currently DRAFT, awaiting Alam's go). Where the two disagree, the handoff wins; this section remains as the original strategy record.
+
 ### Intent
 A tool that inspects a finished or in-progress government website and reports, in seconds, whether it meets the UAE's mandatory standards — turning a slow, expert-only manual review into an instant, repeatable check. It combines proven accessibility/performance engines with a custom layer of **design-system-specific** checks that generic tools cannot do.
 

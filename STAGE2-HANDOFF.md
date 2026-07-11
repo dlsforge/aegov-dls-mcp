@@ -44,23 +44,30 @@ aegov-dls-mcp/                     # repo name stays (don't rename a published r
 │  ├─ aegov-rules-core/            # @dlsforge/aegov-rules-core  (NEW — extracted from Stage 1)
 │  │  ├─ src/                      #   schema (types.ts), loader, and the DLS rule engine
 │  │  ├─ catalog/                  #   catalog.json + uaepass.json move here (the data)
-│  │  ├─ scripts/                  #   extract-inventory / fetch+extract docs / build-catalog / validate-catalog
+│  │  ├─ inventory/                #   components.json moves with its generating script
+│  │  ├─ scripts/                  #   ALL catalogue generators: extract-inventory, fetch-docs,
+│  │  │                            #   extract-docs, build-catalog, validate-catalog,
+│  │  │                            #   fetch-uaepass, extract-uaepass, build-uaepass
+│  │  ├─ test/                     #   catalogue-fidelity + rule-engine soundness suites
 │  │  └─ package.json
 │  ├─ aegov-mcp/                   # @dlsforge/aegov-mcp  (MOVED from repo root)
-│  │  └─ src/ …                    #   now imports @dlsforge/aegov-rules-core
+│  │  ├─ src/ …                    #   now imports @dlsforge/aegov-rules-core
+│  │  ├─ scripts/                  #   run-evals.mjs + smoke-test.mjs stay with the server they exercise
+│  │  ├─ test/                     #   MCP-protocol / tarball / publish-hygiene suites + STAGE1-CHECKLIST.md
+│  │  └─ evals/                    #   the 10 eval screens drive the MCP tools — they stay with the server
 │  └─ aegov-audit/                 # @dlsforge/aegov-audit — Mizan  (NEW)
 │     ├─ src/
 │     └─ package.json
 └─ STAGE1-HANDOFF.md, STAGE2-HANDOFF.md, PROJECT-CONTEXT-v2.md, FUTURE-STAGES-NOTES.md, CLAUDE.md
 ```
 
-**Migration must not regress Stage 1.** After the move, the full Stage 1 gate has to stay green from the new locations: `npm test` (84/84), `npm run evals` (10/10), `npm run smoke` (19/19), `npm run validate`. Only then republish: `@dlsforge/aegov-rules-core@0.1.0` (new) and `@dlsforge/aegov-mcp@0.1.1` (the version that imports the shared core). The live `0.1.0` server keeps working for existing users; `0.1.1` is the first shared-core release.
+**Migration must not regress Stage 1.** After the move, the full Stage 1 gate has to stay green from the new locations: `npm test` (84/84 — the split will spread these across two workspace suites; the gate is the *total* staying 84, not one suite holding them all), `npm run evals` (10/10), `npm run smoke` (19/19), `npm run validate`. Only then republish: `@dlsforge/aegov-rules-core@0.1.0` (new) and `@dlsforge/aegov-mcp@0.1.1` (the version that imports the shared core). The live `0.1.0` server keeps working for existing users; `0.1.1` is the first shared-core release.
 
 ## 6. Build order (do these in sequence — mirror Stage 1's "prove the smallest thing first")
 
 **0. Extract `@dlsforge/aegov-rules-core` and convert to the workspaces monorepo.** This is the cross-stage trigger Stage 1 deliberately deferred (packaging decision: "do NOT split out rules-core until the auditor begins — that's the extraction trigger"). Three things move into the core and become a clean, tested public API:
    - **The catalogue data + schema + loader:** `catalog/*.json`, `src/catalog/types.ts`, `src/catalog/load.ts`, and the generating `scripts/`.
-   - **The DLS rule engine:** the DLS-specific checks currently inline in `src/tools/validateSnippet.ts` — class identity vs the pinned package, Emirates ID format/masking/pattern, `img` alt, Arabic-without-RTL, DMY dates, drift-class rejection — lifted into pure, unit-tested functions over a **normalized input** so both callers reuse them: `validate_snippet` (source strings, as now) and Mizan (rendered DOM). Fold in the T2 consistency note from the Stage 1 checklist (`shared.ts` drift regex) while the code is open.
+   - **The DLS rule engine:** *every* check currently inline in `src/tools/validateSnippet.ts` — the file is the source of truth; the inventory at extraction time is: class identity vs the pinned package (with the did-you-mean suggestions, known limit T1), the docs-tier class-evidence check (non-aegov classes verified against the full docs-example corpus — note its build-time dependency on the whole catalogue), drift-class rejection, Emirates ID format/masking/pattern **including the `<label for>` / `aria-labelledby` resolution machinery it depends on** (hardened by the N2–N4 adversarial fixes), `img` alt, `<button>` without explicit `type`, Arabic-without-RTL, and DMY dates. All of it lifted into pure, unit-tested functions over a **normalized input** so both callers reuse them: `validate_snippet` (source strings, as now) and Mizan (rendered DOM) — and every check moves *with its adversarial regression tests*. Fold in the T2 consistency note from the Stage 1 checklist while the code is open: apply the F4 unquoted-attribute fix to `driftClassesIn` in `shared.ts`, which still matches only quoted `class` attributes.
    - Prove no regression (§5), then publish core + republish mcp.
 
 **1. Scaffold `aegov-audit` and prove it can load a real page.** CLI skeleton `aegov-audit <url|path>` that opens the target in Playwright and prints "loaded, N nodes". **Do not move past this until it renders a real government page**, exactly as Stage 1 didn't move past `ping`.
@@ -77,7 +84,7 @@ aegov-dls-mcp/                     # repo name stays (don't rename a published r
    - **Arabic / RTL parity** — both language versions present and structurally equivalent; Playwright loads both and diffs structure. Flag, don't assert (human confirms).
    - **Official components over hand-rolled** equivalents.
 
-**5. Report aggregation.** Merge axe + Lighthouse + DLS findings into (a) machine JSON and (b) a human report **shaped to mirror the official TDRA assessment checklist**, each finding carrying severity, the rule, its provenance, and the fix. Include the exact run conditions in the report.
+**5. Report aggregation.** Merge axe + Lighthouse + DLS findings into (a) machine JSON and (b) a human report **shaped to mirror the official TDRA assessment checklist**, each finding carrying severity, the rule, its provenance, and the fix. Findings reuse Stage 1's confidence tiers (`package | docs | heuristic`): a check grounded in a docs-tier record — blocks and patterns are docs-only, `needs-revalidation` — must say so in the finding; best-effort evidence, never presented as package-tier certainty. Include the exact run conditions in the report.
 
 **6. GitHub Action wrapper.** A reusable action so an entity's repo audits itself on every change; fail the build on critical findings, warn on the rest.
 
@@ -94,7 +101,7 @@ Identical to Stage 1's standard — Mizan checks what the MCP server generates:
 - **Emirates ID** format + masking + pattern validation.
 - **Arabic / RTL first-class** — parity between language versions.
 - **DLS tokens only** — no arbitrary hard-coded values.
-- **Official components/blocks/patterns** over hand-rolled equivalents.
+- **Official components/blocks/patterns** over hand-rolled equivalents *(block/pattern rules rest on docs-tier records — findings from them carry docs-tier confidence, never package-tier certainty; see step 5)*.
 - **DMY dates.**
 
 Consistency rule: Mizan and the MCP server must enforce the *same* rules from the *same* core. If a rule changes, it changes once in `aegov-rules-core` and both tools follow.
@@ -110,6 +117,7 @@ Consistency rule: Mizan and the MCP server must enforce the *same* rules from th
 
 - **No public scoreboard / no ranking of government sites** — private reports only (locked, §2).
 - **Stay out of TDRA's announced roadmap lanes** (`PROJECT-CONTEXT-v2.md`): dark mode, Steps→Progress, Alerts→Callouts, nav dropdowns, new Card variations, Figma slots. Don't build checks that assume a lane TDRA is about to change.
+- **Automated WCAG coverage is partial.** axe-core machine-checks only a subset of WCAG 2.2 AA success criteria; many require human judgement. Every report must state which criteria were machine-checked and which need manual review — a clean automated run is **not** 2.2 AA compliance, and presenting it as such would break the exit test's "no critical miss" clause.
 - **Human-in-the-loop for Arabic parity** — automated flag, native-speaker confirm. Never silently "improve" Arabic.
 - **Pin dependencies**; axe-core / Lighthouse / Playwright move fast — bump deliberately, re-run evals on every bump.
 - **Verify live**: DLS version, MCP core API, and every TDRA number. Installed package + live assessment doc win over memory.

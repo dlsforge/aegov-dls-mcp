@@ -83,11 +83,12 @@
   `aegov-button` gets an error with **no** suggestion ("button" is not a substring of "btn" and vice
   versa). The error itself still fires — compliance is unaffected. Possible later improvement: also
   match against docs names when computing suggestions.
-- **T3 (non-negotiable NOT tool-enforced): DMY dates.** CLAUDE.md lists DMY dates as a
-  non-negotiable, but no tool checks date formats — an MDY date (`12/31/2026`) passes
-  `validate_snippet` silently. Asserted as a KNOWN LIMIT test so a future check must flip it
-  deliberately. Decision needed (same class as F2 was): either add a heuristic date check to
-  `validate_snippet`, or state that DMY is prompt-guidance only.
+- **T3 — RESOLVED (decision 2026-07-11, Alam: tool-enforced).** `validate_snippet` now
+  errors on any unambiguously month-first date (second component 13-31, impossible as a
+  month, e.g. `12/31/2026`) and names the DMY form to use. Ambiguous dates (both
+  components ≤ 12, e.g. `03/07/2026`) cannot be judged by a heuristic and pass silently —
+  the residual gap is inherent, not an oversight. The known-limit test was flipped to an
+  enforcement test + DMY/ambiguous control in `test/edge-cases.test.mjs`.
 - **T4 (non-negotiable partially enforced): tokens over arbitrary values.** `validate_snippet`
   verifies class identity but never inspects `style="..."` — hard-coded hex colours and px values
   pass silently. Enforced today only indirectly (evals + the tools' guidance text). KNOWN LIMIT
@@ -130,8 +131,8 @@ complete on every record; tarball bin shim + shebang work outside the repo.
 **T1–T5 adjudicated against the definition of done:** T1, T2, T4, T5 are legitimate
 known limits for the Stage-1 exit test (T5 with the standing caveat that structure
 enforcement lives in the eval specs, not the tool — re-litigate for the Stage-2
-auditor). T3 (DMY) still needs the explicit ruling F2 got: nothing enforces it today
-(tool or specs), though all dates in the 10 outputs are DMY-consistent.
+auditor). T3 (DMY) received its ruling on 2026-07-11 — tool-enforced; see the resolved
+entry above.
 
 ## Known out-of-scope for this suite
 

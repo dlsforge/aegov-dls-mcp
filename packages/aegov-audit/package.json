@@ -41,11 +41,13 @@
     "test": "node --test \"test/**/*.test.mjs\""
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.19"
   },
   "dependencies": {
     "@dlsforge/aegov-rules-core": "0.1.0",
     "axe-core": "4.12.1",
+    "chrome-launcher": "1.2.1",
+    "lighthouse": "13.4.0",
     "playwright": "1.61.1"
   },
   "devDependencies": {

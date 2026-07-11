@@ -74,7 +74,7 @@
 | G2 | Installed from the packed tarball into a clean directory, the bin starts and serves ping + a catalogue tool over stdio (catalog path resolution works outside the repo) | `test/packaging.test.mjs` |
 | G3 | package.json: MIT, engines node>=18, exact-pinned dependencies (no ^/~), bin present | `test/packaging.test.mjs` |
 | G4 | LICENSE file ships in the tarball | `test/packaging.test.mjs` run (verified present, 1.1 kB) |
-| G5 | README with the required "Community project. Not affiliated with or endorsed by TDRA." disclaimer | **step 7 — knowingly not written yet** |
+| G5 | README with the required "Community project. Not affiliated with or endorsed by TDRA." disclaimer | written 2026-07-11 (step 7); ships in the tarball, disclaimer verified |
 
 ## Findings from the first full run (2026-07-10 — all suites green, 58/58 + evals 10/10 + smoke 19/19 + validate OK)
 

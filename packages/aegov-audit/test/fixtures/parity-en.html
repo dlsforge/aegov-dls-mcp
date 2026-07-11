@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- English half of the parity fixture pair. The Arabic half is seeded with
+     known divergences: missing dir=rtl, far fewer links, no form, and no
+     aegov-card component. -->
+<html lang="en" dir="ltr">
+<head><meta charset="utf-8"><title>Service page — EN</title></head>
+<body>
+  <header><nav>
+    <a href="/a">One</a><a href="/b">Two</a><a href="/c">Three</a><a href="/d">Four</a>
+    <a href="/e">Five</a><a href="/f">Six</a><a href="/g">Seven</a><a href="/h">Eight</a>
+  </nav></header>
+  <main>
+    <h1>Apply for a service</h1>
+    <h2>Requirements</h2>
+    <div class="aegov-card">Card content</div>
+    <form action="/apply">
+      <label for="name">Full name</label>
+      <input id="name" type="text" name="name">
+      <button class="aegov-btn" type="submit">Submit</button>
+    </form>
+  </main>
+  <footer>Contact</footer>
+</body>
+</html>

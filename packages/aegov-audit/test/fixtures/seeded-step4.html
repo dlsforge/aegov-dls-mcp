@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Seeded fixture for the step-4 rendered-DOM engines: token fidelity (T4),
+     structure (T5), UAE Pass. Every defect is known; controls prove the
+     engines stay quiet when they should. -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Seeded step-4 defects — Mizan fixture</title>
+  <style>
+    /* DEFECT dls-token-color: arbitrary non-token background on a DLS component */
+    .aegov-card { background-color: rgb(1, 2, 3); }
+    /* CONTROL: a DLS component styled with an exact token value (primary-50) */
+    .aegov-badge { color: oklch(0.975 0.013 97.4); }
+  </style>
+</head>
+<body>
+  <!-- DEFECT dls-token-inline-style: hard-coded inline colour on a DLS component -->
+  <button class="aegov-btn" type="button" style="color:#ff0000">Styled wrong</button>
+
+  <!-- CONTROL: clean DLS button, no inline style -->
+  <button class="aegov-btn" type="button">Clean button</button>
+
+  <div class="aegov-card">Card with arbitrary background</div>
+  <span class="aegov-badge">Badge with token colour</span>
+
+  <!-- DEFECT dls-structure-check-item: wrapper missing its <label> -->
+  <div class="aegov-check-item" id="broken-check">
+    <input id="cb-broken" type="checkbox">
+  </div>
+
+  <!-- CONTROL: valid check-item per the docs -->
+  <div class="aegov-check-item">
+    <input id="cb-ok" type="checkbox">
+    <label for="cb-ok">I agree</label>
+  </div>
+
+  <!-- DEFECT dls-structure-modal: no role, no accessible name, no wrapper -->
+  <div class="aegov-modal hidden" id="broken-modal">
+    <div><p>Bare modal content</p></div>
+  </div>
+
+  <!-- CONTROL: valid modal per the docs -->
+  <div class="aegov-modal hidden" id="ok-modal" role="dialog" aria-labelledby="ok-modal-title">
+    <div class="aegov-modal-wrapper"><h2 id="ok-modal-title">Title</h2></div>
+  </div>
+
+  <!-- DEFECT dls-uaepass-missing: a real login surface, no UAE Pass anywhere -->
+  <form action="/session">
+    <label for="pw">Password</label>
+    <input id="pw" type="password" name="password">
+    <button type="submit">Log in</button>
+  </form>
+</body>
+</html>

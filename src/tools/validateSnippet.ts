@@ -130,8 +130,11 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
       }
 
       // --- heuristic structure / accessibility checks -------------------------
+      // NB: HTML attribute names are case-insensitive and values may be
+      // unquoted — every attribute regex below must carry the `i` flag and the
+      // unquoted alternative ([^\s"'=<>`]+), or valid markup gets flagged.
       for (const img of html.matchAll(/<img\b[^>]*>/gi)) {
-        if (!/\balt\s*=/.test(img[0]))
+        if (!/\balt\s*=/i.test(img[0]))
           findings.push({
             level: "error",
             confidence: "heuristic",
@@ -139,7 +142,7 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
           });
       }
       for (const btn of html.matchAll(/<button\b[^>]*>/gi)) {
-        if (!/\btype\s*=/.test(btn[0]))
+        if (!/\btype\s*=/i.test(btn[0]))
           findings.push({
             level: "warning",
             confidence: "heuristic",
@@ -148,7 +151,7 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
       }
 
       // --- UAE-specific checks (non-negotiables) -------------------------------
-      if (FULL_EID_RE.test(html.replace(/pattern\s*=\s*(?:"[^"]*"|'[^']*')/g, ""))) {
+      if (FULL_EID_RE.test(html.replace(/pattern\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+)/gi, ""))) {
         findings.push({
           level: "error",
           confidence: "heuristic",
@@ -161,30 +164,51 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
       // by its label (input carrying a generic name/id) is still recognised.
       const labelFor = new Map<string, string>();
       for (const lbl of html.matchAll(
-        /<label\b[^>]*\bfor\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>([\s\S]*?)<\/label>/gi,
+        /<label\b[^>]*\bfor\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))[^>]*>([\s\S]*?)<\/label>/gi,
       )) {
-        const forId = lbl[1] ?? lbl[2];
-        if (forId) labelFor.set(forId, `${labelFor.get(forId) ?? ""} ${lbl[3]}`);
+        const forId = lbl[1] ?? lbl[2] ?? lbl[3];
+        if (forId) labelFor.set(forId, `${labelFor.get(forId) ?? ""} ${lbl[4]}`);
+      }
+      // Map id → immediate text content of any element, so aria-labelledby
+      // references resolve to their visible text too.
+      const idText = new Map<string, string>();
+      for (const el of html.matchAll(
+        /<[a-z][^>]*\bid\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))[^>]*>([^<]*)/gi,
+      )) {
+        const id = el[1] ?? el[2] ?? el[3];
+        if (id) idText.set(id, `${idText.get(id) ?? ""} ${el[4]}`);
       }
       for (const input of html.matchAll(/<input\b[^>]*>/gi)) {
         const tag = input[0];
         // A field's identity comes from its name/id/placeholder/aria AND its
-        // associated <label> — never the entered value (value is stripped: a
-        // search box whose value mentions "Emirates ID" is still a search box).
-        // The input's own attributes are decisive; the label is only a secondary
-        // signal, gated by looksSearch so a search box labelled "…Emirates ID…"
-        // isn't mistaken for an ID-entry field.
-        const identity = tag.replace(/\bvalue\s*=\s*(?:"[^"]*"|'[^']*')/gi, "");
-        const idAttr = tag.match(/\bid\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
-        const labelText = idAttr ? (labelFor.get(idAttr[1] ?? idAttr[2] ?? "") ?? "") : "";
+        // associated <label> / aria-labelledby text — never the entered value
+        // (value is stripped: a search box whose value mentions "Emirates ID"
+        // is still a search box). The input's own attributes are decisive; the
+        // label text is only a secondary signal, gated by looksSearch so a
+        // search box labelled "…Emirates ID…" isn't mistaken for an ID field.
+        const identity = tag.replace(/\bvalue\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+)/gi, "");
+        const idAttr = tag.match(/\bid\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/i);
+        const ariaRef = tag.match(
+          /\baria-labelledby\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/i,
+        );
+        const labelText = [
+          idAttr ? (labelFor.get(idAttr[1] ?? idAttr[2] ?? idAttr[3] ?? "") ?? "") : "",
+          ...(ariaRef
+            ? (ariaRef[1] ?? ariaRef[2] ?? ariaRef[3] ?? "")
+                .split(/\s+/)
+                .map((ref) => idText.get(ref) ?? "")
+            : []),
+        ].join(" ");
         const looksSearch = /type\s*=\s*["']?search|role\s*=\s*["']?search|\bsearch\b/i.test(
           identity,
         );
         const looksEid =
           EID_SIGNAL_RE.test(identity) || (!looksSearch && EID_SIGNAL_RE.test(labelText));
         if (!looksEid) continue;
-        const patternMatch = tag.match(/\bpattern\s*=\s*(?:"([^"]*)"|'([^']*)')/);
-        const pattern = patternMatch ? (patternMatch[1] ?? patternMatch[2]) : undefined;
+        const patternMatch = tag.match(/\bpattern\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/i);
+        const pattern = patternMatch
+          ? (patternMatch[1] ?? patternMatch[2] ?? patternMatch[3])
+          : undefined;
         if (!pattern) {
           findings.push({
             level: "error",

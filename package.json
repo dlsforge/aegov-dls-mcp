@@ -3,6 +3,28 @@
   "version": "0.1.0",
   "description": "MCP server exposing the UAE Design System (AEGOV DLS) to AI coding assistants. Community project. Not affiliated with or endorsed by TDRA.",
   "license": "MIT",
+  "author": "Alam Khan Durrani",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlsforge/aegov-dls-mcp.git"
+  },
+  "homepage": "https://github.com/dlsforge/aegov-dls-mcp#readme",
+  "bugs": "https://github.com/dlsforge/aegov-dls-mcp/issues",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "uae",
+    "aegov",
+    "design-system",
+    "uae-pass",
+    "emirates-id",
+    "government",
+    "accessibility",
+    "rtl"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "bin": {
     "aegov-mcp": "dist/index.js"

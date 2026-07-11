@@ -41,6 +41,13 @@ const FULL_EID_RE = /\b784-\d{4}-\d{7}-\d\b/;
 const EID_PATTERN = "^784-\\d{4}-\\d{7}-\\d$";
 /** Signals an <input> is an Emirates ID field — from its own attributes or its <label>. */
 const EID_SIGNAL_RE = /784|emirates[-_ ]?id|\beid\b|الهوية الإماراتية/i;
+/**
+ * Unambiguously MDY-ordered date: first component a valid month (1-12), second
+ * 13-31 — impossible as a month, so the date is provably month-first. Ambiguous
+ * dates (both components <= 12) cannot be judged and are not flagged.
+ * DMY dates are a non-negotiable for UAE government content.
+ */
+const MDY_DATE_RE = /\b(0?[1-9]|1[0-2])\/(1[3-9]|2\d|3[01])\/((?:19|20)\d{2})\b/g;
 
 export function registerValidateSnippet(server: McpServer, catalog: Catalog): void {
   // Package truth: every class that ships in the pinned version.
@@ -73,8 +80,9 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
         "pinned @aegov/design-system version (certain), checks other classes against official " +
         "docs-example usage (best-effort), and runs UAE-specific checks — Emirates ID inputs must " +
         "validate ^784-\\d{4}-\\d{7}-\\d$ and displayed IDs must be masked, images need alt, " +
-        "Arabic content needs RTL handling. Call this on every snippet you emit before showing " +
-        "it to the user; fix errors and re-validate.",
+        "Arabic content needs RTL handling, dates must be DMY (day/month/year, never " +
+        "month-first). Call this on every snippet you emit before showing it to the user; fix " +
+        "errors and re-validate.",
       inputSchema: {
         html: z.string().min(1).describe("The HTML snippet to validate"),
       },
@@ -225,6 +233,15 @@ export function registerValidateSnippet(server: McpServer, catalog: Catalog): vo
               `Emirates ID input pattern '${pattern}' differs from the required ${EID_PATTERN}.`,
           });
         }
+      }
+      for (const m of html.matchAll(MDY_DATE_RE)) {
+        findings.push({
+          level: "error",
+          confidence: "heuristic",
+          message:
+            `Date '${m[0]}' is month-first (MDY) — UAE government content uses DMY dates: ` +
+            `write it as ${m[2]}/${m[1].padStart(2, "0")}/${m[3]}.`,
+        });
       }
       const hasArabic = /[؀-ۿ]/.test(html);
       if (hasArabic && !/\bdir\s*=\s*["']?rtl/i.test(html)) {

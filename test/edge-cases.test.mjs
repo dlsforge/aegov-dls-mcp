@@ -338,11 +338,22 @@ describe("validate_snippet input edges (F5, F6, F7, F8, F9)", () => {
     assert.ok(!body.findings.some((f) => f.message.includes("style")));
   });
 
-  test("KNOWN LIMIT T3: MDY-format dates are not flagged (DMY not enforced)", async () => {
+  // T3 RESOLVED (decision 2026-07-11): DMY is tool-enforced. An unambiguously
+  // month-first date (second component 13-31 — impossible as a month) is an
+  // error; ambiguous dates (both components <= 12) cannot be judged and pass.
+  test("T3: unambiguous MDY date (12/31/2026) → error naming the DMY form", async () => {
     const { body } = await srv.call("validate_snippet", {
       html: '<p class="aegov-card">Deadline: 12/31/2026</p>',
     });
-    assert.equal(body.valid, true);
+    assert.equal(body.valid, false);
+    assert.ok(errorsOf(body).some((f) => f.message.includes("31/12/2026")));
+  });
+
+  test("T3 control: DMY date (31/12/2026) and ambiguous date (03/07/2026) stay valid", async () => {
+    const { body } = await srv.call("validate_snippet", {
+      html: '<p class="aegov-card">From 03/07/2026 until 31/12/2026</p>',
+    });
+    assert.equal(body.valid, true, JSON.stringify(body.findings));
   });
 
   test("F9: ~200KB input answers without crashing", async () => {

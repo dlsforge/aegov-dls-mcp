@@ -1,0 +1,53 @@
+{
+  "name": "@dlsforge/aegov-audit",
+  "version": "0.0.1",
+  "description": "Mizan — compliance & accessibility auditor for UAE government websites against the AEGOV DLS and TDRA assessment criteria. Community project. Not affiliated with or endorsed by TDRA.",
+  "license": "MIT",
+  "author": "Alam Khan Durrani",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlsforge/aegov-dls-mcp.git",
+    "directory": "packages/aegov-audit"
+  },
+  "homepage": "https://github.com/dlsforge/aegov-dls-mcp#readme",
+  "bugs": "https://github.com/dlsforge/aegov-dls-mcp/issues",
+  "keywords": [
+    "uae",
+    "aegov",
+    "design-system",
+    "accessibility",
+    "wcag",
+    "audit",
+    "compliance",
+    "government",
+    "rtl"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "bin": {
+    "aegov-audit": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@dlsforge/aegov-rules-core": "0.1.0",
+    "playwright": "1.61.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.2",
+    "typescript": "5.9.3"
+  }
+}

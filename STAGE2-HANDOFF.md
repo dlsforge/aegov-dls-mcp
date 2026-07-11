@@ -2,7 +2,7 @@
 
 > **Purpose of this file.** Build brief for Stage 2 of the UAE Government Digital Service Accelerator: the compliance & accessibility auditor, product name **Mizan** (ميزان — *scale/balance*), package `@dlsforge/aegov-audit`. It lives at the repo root beside `STAGE1-HANDOFF.md`. Read this top to bottom before writing code. `PROJECT-CONTEXT-v2.md` holds the strategy; `FUTURE-STAGES-NOTES.md §Stage 2` is the source these details expand on; `CLAUDE.md` holds the hard rules that still apply unchanged.
 >
-> **Status: DRAFT for Alam's review.** Do not start building until Alam gives the go and the two open decisions in §11 are settled. Every TDRA threshold below is **provisional and must be re-verified live** (§8).
+> **Status: GO (Alam, 2026-07-12).** Both §11 decisions are settled: **(1) full npm-workspaces monorepo**, **(2) the `@dlsforge/aegov-mcp@0.1.1` republish is DEFERRED** — the version is bumped locally when it starts importing the shared core, but nothing ships to npm until Alam decides; the live `0.1.0` keeps serving existing users. Every TDRA threshold below remains **provisional and must be re-verified live** (§8).
 
 ---
 
@@ -128,10 +128,10 @@ Consistency rule: Mizan and the MCP server must enforce the *same* rules from th
 
 Roughly **80–140 effort-hours** — larger than Stage 1 because it integrates several finicky engines (each with its own run-condition quirks) and adds the custom rules. Two-to-four weeks of active lead-developer-plus-owner collaboration; longer part-time. Step 0 (the extraction) is real work in its own right — budget for it and its regression gate before any auditor code.
 
-## 11. Open decisions to settle before build (Alam)
+## 11. Open decisions — SETTLED (Alam, 2026-07-12)
 
-1. **Monorepo conversion vs. lighter split.** §5 recommends full npm workspaces (three packages, one repo). Confirm — or choose to publish `rules-core` from a subfolder without restructuring `mcp`. Workspaces is cleaner long-term; the restructure touches the already-published server's build.
-2. **Republish cadence for `@dlsforge/aegov-mcp`.** Extraction makes the server import the shared core → a `0.1.1`. Confirm we republish immediately after the step-0 regression gate (recommended, so both tools share one core), or defer until there's another reason to ship the server.
+1. **Monorepo conversion vs. lighter split → full npm workspaces.** Three packages, one repo, per §5.
+2. **Republish cadence for `@dlsforge/aegov-mcp` → DEFERRED.** The workspace bumps to `0.1.1` locally when it imports the shared core, but is NOT published until Alam decides. Consequence: until `@dlsforge/aegov-rules-core` is published, the clean-install-from-tarball test (G2) must install both tarballs (rules-core first, then mcp) instead of resolving from the registry — restore the single-tarball flow when the core is published.
 
 Secondary (can decide during build): exact eval fixture set; whether the GitHub Action ships in the same package or its own; how much of the report to render as HTML vs. Markdown.
 

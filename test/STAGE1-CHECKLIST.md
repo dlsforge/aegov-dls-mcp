@@ -102,6 +102,37 @@
   quoted attributes. Docs examples are always quoted, so no observed impact — flagged for
   consistency the next time shared.ts is touched.
 
+## Second adversarial pass (2026-07-11 — new suites in `test/adversarial/`)
+
+Independent re-attack of everything the first suites didn't reach. Baseline reproduced
+green first (63 tests at the time; now 83 with the new suites; evals 10/10, smoke 19/19,
+validate OK).
+
+**What held up (now permanently asserted):** interleaved/pipelined JSON-RPC over raw
+stdio (concurrent calls, one-chunk pipelining, garbage frames, batch arrays,
+pre-initialize calls — no crashes, no response cross-wiring); catalogue ⇔ installed
+3.0.7 fidelity re-verified by an independent re-extraction of `dist/plugin.js`
+(41 classes exact both directions, version pin coherent across all provenance records,
+palette token values byte-match the package theme source); docs-tier provenance
+complete on every record; tarball bin shim + shebang work outside the repo.
+
+**Fixed from this pass:**
+- **N1 (publish hazard):** `prepack: npm run build` added to package.json. Before:
+  `npm pack` from a dist-less checkout (dist/ is gitignored) exited 0 with a 4-file
+  tarball containing NO server. After: it builds, or fails loudly.
+- **N2–N4 (`validateSnippet.ts`, same family as F1–F4):** attribute checks are now
+  case-insensitive (`PATTERN=`/`ALT=`/`TYPE=` were false-flagged); `pattern`/`for`/
+  `id`/`value` accept HTML5 unquoted values (false positives, plus an F1-family false
+  negative — an EID field with unquoted `for=`/`id=` validated clean);
+  `aria-labelledby` text now resolves as an EID label signal. Regression tests:
+  `test/adversarial/validate-soundness2.test.mjs`.
+
+**T1–T5 adjudicated against the definition of done:** T1, T2, T4, T5 are legitimate
+known limits for the Stage-1 exit test (T5 with the standing caveat that structure
+enforcement lives in the eval specs, not the tool — re-litigate for the Stage-2
+auditor). T3 (DMY) still needs the explicit ruling F2 got: nothing enforces it today
+(tool or specs), though all dates in the 10 outputs are DMY-consistent.
+
 ## Known out-of-scope for this suite
 
 - Native-speaker Arabic review (human, pending with Alam — flagged in outputs by design).

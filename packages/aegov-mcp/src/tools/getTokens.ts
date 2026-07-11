@@ -4,7 +4,7 @@
  */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import type { Catalog, TokenCategory } from "../catalog/types.js";
+import type { Catalog, TokenCategory } from "@dlsforge/aegov-rules-core";
 import { json } from "./shared.js";
 
 const CATEGORIES = [

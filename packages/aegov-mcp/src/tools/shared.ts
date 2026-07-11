@@ -8,14 +8,15 @@
  * trust) listed once per distinct source in `docsSources`. The catalogue file
  * itself keeps every hash — nothing is lost, only de-duplicated in transit.
  */
-import type {
-  Catalog,
-  ComponentRecord,
-  DocsArtifact,
-  DocsProvenance,
-  MarkupExample,
-  Rule,
-} from "../catalog/types.js";
+import {
+  classTokens,
+  type Catalog,
+  type ComponentRecord,
+  type DocsArtifact,
+  type DocsProvenance,
+  type MarkupExample,
+  type Rule,
+} from "@dlsforge/aegov-rules-core";
 
 export const DOCS_TRUST =
   "docs-sourced from designsystem.gov.ae — provisional, needs revalidation against the live site";
@@ -52,21 +53,20 @@ function docsSourcesOf(parts: Array<MarkupExample | Rule | null>, extra?: DocsPr
   return [...byUrl.values()].sort((a, b) => (a.url < b.url ? -1 : 1));
 }
 
-const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
-
 /**
  * Docs examples are served verbatim — including the handful of classes the
  * docs use that do NOT ship in the pinned package (catalog.meta
  * .knownDocsOnlyClasses, e.g. aegov-pagination-larger). Annotate any affected
  * example so an assistant copying it knows to drop/replace those classes
  * instead of failing validate_snippet after the fact.
+ *
+ * Token extraction is the rule engine's (T2 closed: quoted AND unquoted
+ * class attributes, matching the F4 fix in validate_snippet).
  */
 function driftClassesIn(html: string, drift: Record<string, string>): string[] {
   const found = new Set<string>();
-  for (const m of html.matchAll(CLASS_ATTR_RE)) {
-    for (const token of (m[1] ?? m[2]).split(/\s+/)) {
-      if (token in drift) found.add(token);
-    }
+  for (const token of classTokens(html)) {
+    if (token in drift) found.add(token);
   }
   return [...found].sort();
 }

@@ -35,7 +35,13 @@ function extractAegovClasses(styles) {
 
 describe("catalogue ⇔ installed package fidelity", () => {
   test("version pin is coherent: package.json dep === installed === catalog meta === every component provenance", () => {
-    assert.equal(repoPkg.dependencies["@aegov/design-system"], installedPkg.version);
+    // The pin lives in devDependencies since the monorepo extraction: the
+    // shipped catalogue is self-contained, @aegov/design-system is needed
+    // only to (re)generate and to run this fidelity suite.
+    const pinned =
+      repoPkg.dependencies?.["@aegov/design-system"] ??
+      repoPkg.devDependencies?.["@aegov/design-system"];
+    assert.equal(pinned, installedPkg.version);
     assert.equal(catalog.meta.generatedFrom.version, installedPkg.version);
     for (const c of catalog.components) {
       assert.equal(c.provenance.version, installedPkg.version, c.classRoot);

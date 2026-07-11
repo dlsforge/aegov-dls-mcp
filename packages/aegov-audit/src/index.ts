@@ -14,6 +14,7 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
 import { runAxe, AXE_VERSION } from "./engines/axe.js";
+import { runDlsRules, dlsPackageRef } from "./engines/dls.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
 import { countBySeverity } from "./report/types.js";
 
@@ -66,7 +67,9 @@ try {
   }));
   const loadMs = Date.now() - started;
 
-  const findings = await runAxe(page);
+  const axeFindings = await runAxe(page);
+  const dlsFindings = await runDlsRules(page);
+  const findings = [...axeFindings, ...dlsFindings];
 
   let lighthouse: LighthouseScores[] | null = null;
   if (withLighthouse) {
@@ -85,7 +88,7 @@ try {
           status,
           loadMs,
           page: { nodes, title, lang, dir },
-          engines: { axe: AXE_VERSION },
+          engines: { axe: AXE_VERSION, dls: dlsPackageRef() },
           findings,
           lighthouse,
           note:
@@ -103,15 +106,25 @@ try {
         `  title: ${title}\n` +
         `  lang=${lang} dir=${dir}\n`,
     );
-    const counts = countBySeverity(findings);
+    const counts = countBySeverity(axeFindings);
     console.log(
-      `axe-core ${AXE_VERSION}: ${findings.length} violation(s) — ` +
+      `axe-core ${AXE_VERSION}: ${axeFindings.length} violation(s) — ` +
         `${counts.critical} critical, ${counts.serious} serious, ` +
         `${counts.moderate} moderate, ${counts.minor} minor`,
     );
-    for (const f of findings) {
+    for (const f of axeFindings) {
       console.log(`  [${f.severity}] ${f.ruleId} — ${f.message} (${f.nodeCount} node(s))`);
       if (f.targets[0]) console.log(`      e.g. ${f.targets[0]}`);
+    }
+
+    const dlsCounts = countBySeverity(dlsFindings);
+    console.log(
+      `\nDLS rules (${dlsPackageRef()}, shared with validate_snippet): ` +
+        `${dlsFindings.length} finding(s) — ${dlsCounts.serious} serious, ` +
+        `${dlsCounts.moderate} moderate, ${dlsCounts.minor} minor`,
+    );
+    for (const f of dlsFindings) {
+      console.log(`  [${f.severity}|${f.confidence}] ${f.ruleId} — ${f.message}`);
     }
     if (lighthouse) {
       console.log("");

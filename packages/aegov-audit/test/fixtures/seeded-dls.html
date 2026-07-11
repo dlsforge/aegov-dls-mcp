@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Seeded DLS-defect fixture (STAGE2-HANDOFF §6 step 4): known violations
+     of the AEGOV DLS non-negotiables, including one injected by JavaScript
+     so it exists ONLY in the rendered DOM — the case Stage 1's
+     validate_snippet (source strings) could never see. -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Seeded DLS defects — Mizan fixture</title>
+</head>
+<body>
+  <!-- CONTROL: a valid, shipped DLS component class -->
+  <button class="aegov-btn" type="button">Apply now</button>
+
+  <!-- DEFECT dls-class-identity: aegov-* class that does not ship -->
+  <button class="aegov-fancy-button" type="button">Fake component</button>
+
+  <!-- DEFECT dls-eid-unmasked: displayed full-format Emirates ID -->
+  <p>Your ID: 784-1984-1234567-1</p>
+
+  <!-- DEFECT dls-eid-pattern: EID input without pattern validation -->
+  <label for="eid">Emirates ID</label>
+  <input id="eid" name="emirates-id" type="text">
+
+  <!-- DEFECT dls-dmy-dates: unambiguous month-first date -->
+  <p>Deadline: 12/31/2026</p>
+
+  <!-- DEFECT dls-arabic-rtl: Arabic text with no RTL direction anywhere -->
+  <p>قدّم طلبك الآن</p>
+
+  <script>
+    // Rendered-DOM-only defect: this drift class exists ONLY after JS runs.
+    // (aegov-pagination-larger is in the docs but does NOT ship in the
+    // pinned package — catalog.meta.knownDocsOnlyClasses.)
+    const nav = document.createElement("nav");
+    nav.className = "aegov-pagination-larger";
+    nav.textContent = "1 2 3";
+    document.body.appendChild(nav);
+  </script>
+</body>
+</html>

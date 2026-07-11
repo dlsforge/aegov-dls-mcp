@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Seeded accessibility-defect fixture (STAGE2-HANDOFF §6 step 2): every
+     defect below is KNOWN and the axe test asserts it is caught; the valid
+     control elements assert the engine stays quiet when it should. -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Seeded a11y defects — Mizan fixture</title>
+</head>
+<body>
+  <!-- DEFECT html-has-lang: <html> above has no lang attribute -->
+
+  <!-- DEFECT image-alt: image with no alt -->
+  <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40">
+
+  <!-- DEFECT label: input with no associated label -->
+  <input type="text" name="unlabelled">
+
+  <!-- DEFECT color-contrast: grey-on-slightly-lighter-grey text -->
+  <p style="color:#999999;background:#aaaaaa;">Low contrast paragraph text.</p>
+
+  <!-- CONTROL (must NOT flag button-name): a real, named button -->
+  <button type="button">Submit application</button>
+
+  <!-- CONTROL (must NOT flag image-alt): image with alt -->
+  <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="decorative sample">
+</body>
+</html>

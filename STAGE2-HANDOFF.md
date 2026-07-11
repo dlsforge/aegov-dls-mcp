@@ -108,12 +108,14 @@ Identical to Stage 1's standard — Mizan checks what the MCP server generates:
 
 Consistency rule: Mizan and the MCP server must enforce the *same* rules from the *same* core. If a rule changes, it changes once in `aegov-rules-core` and both tools follow.
 
-## 8. Compliance targets & the TDRA thresholds (RE-VERIFY — do not trust these numbers)
+## 8. Compliance targets & the TDRA thresholds — **VERIFIED LIVE 2026-07-12**
 
-- **WCAG 2.2 AA**, reported against 2.1 as well.
-- **TDRA assessment criteria**, provisionally including Lighthouse **Accessibility / Performance / SEO ≥ 90, Best Practices ≥ 80**, with load-time targets, on **both desktop and mobile**. **These figures move — parse the actual TDRA assessment XLSX/document at build time before claiming alignment** (`PROJECT-CONTEXT-v2.md` standing caution). Treat anything here written from memory as provisional.
+- **Latest official checklist confirmed: v2.0, published 2023-09-26** (`tdra_dls-assessmentcriteria-2023_version2_0.xlsx`) — the assessment-criteria page (site last updated 2026-05-26) still links exactly this file; no v3 exists anywhere (searched; TDRA's GitHub and the DGOV service page reference the same document). TDRA says the checklist updates with design-system releases — re-check at every Mizan release (`npm run tdra:fetch && npm run tdra:extract` in `packages/aegov-audit`).
+- **Faithful extraction committed:** `packages/aegov-audit/reference/tdra-assessment-criteria.json` — 125 items across 3 sections (Strategy/UX/Content 16, Design 45, Technology 64), questions verbatim, full docs-tier provenance. **The report layer (step 5) mirrors THIS file.**
+- **Thresholds (stated on the criteria page, NOT inside the workbook):** Lighthouse **Accessibility / Performance / SEO ≥ 90; Best Practices ≥ 80 (preferably ≥ 90)**, on **both desktop and mobile**; load time **LCP ≤ 2.5 s, FCP ≤ 1.8 s**. Source: https://designsystem.gov.ae/resources/assessment-criteria (retrieved 2026-07-12); recorded in the reference JSON's `meta.pageStatedThresholds`.
+- **The workbook's own accessibility baseline is WCAG 2.1 AA** (item 3.12). Mizan reports against 2.2 AA and 2.1 both — 2.1 is the official checklist's bar, 2.2 is the current standard.
 - **Run conditions matter.** Lighthouse scores depend on run location, network throttling, and device emulation. Fix and **document the exact conditions in every report**, or the numbers are not comparable to TDRA's.
-- Shape the report to the **official assessment checklist** structure so it's reviewer-ready.
+- Shape the report to the **official assessment checklist** structure (the reference JSON) so it's reviewer-ready.
 
 ## 9. Guardrails and cautions
 

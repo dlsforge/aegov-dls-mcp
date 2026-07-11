@@ -1,0 +1,918 @@
+{
+  "meta": {
+    "title": "TDRA DLS Assessment Criteria",
+    "version": "2.0",
+    "published": "2023-09-26",
+    "provenance": {
+      "tier": "docs",
+      "sourceUrl": "https://designsystem.gov.ae/assets/files/tdra_dls-assessmentcriteria-2023_version2_0.xlsx",
+      "pageUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+      "retrievedOn": "2026-07-11",
+      "trust": "docs-sourced from designsystem.gov.ae — provisional, needs revalidation against the live page before each release; TDRA updates the checklist with design-system releases"
+    },
+    "pageStatedThresholds": {
+      "lighthouse": {
+        "accessibility": ">=90",
+        "performance": ">=90",
+        "seo": ">=90",
+        "bestPractices": ">=80 (preferably >=90)",
+        "formFactors": [
+          "desktop",
+          "mobile"
+        ]
+      },
+      "loadTime": {
+        "largestContentfulPaint": "<=2.5s",
+        "firstContentfulPaint": "<=1.8s"
+      },
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+        "retrievedOn": "2026-07-11"
+      }
+    },
+    "wcagBaseline": "WCAG 2.1 AA (workbook item 3.12)"
+  },
+  "sections": [
+    "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+    "SECTION 2 : DESIGN",
+    "SECTION 3: TECHNOLOGY"
+  ],
+  "items": [
+    {
+      "id": "1.1",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "Strategy",
+      "subCategory": null,
+      "question": "Have you implemented a version of the design system greater than 1.0?"
+    },
+    {
+      "id": "1.2",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "Strategy",
+      "subCategory": null,
+      "question": "Have you created a target audience Empathy Map? Refer to Insights on designsystem.gov.ae/insights/creating-an-empathy-map-the-first-step-in-design-thinking"
+    },
+    {
+      "id": "1.3",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "Strategy",
+      "subCategory": null,
+      "question": "Did you conduct internal workshop to gather requirements and document stakeholder requirements?"
+    },
+    {
+      "id": "1.4",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "Strategy",
+      "subCategory": null,
+      "question": "Have you analysed the analytics of the current website to understand has been successful and what is not?"
+    },
+    {
+      "id": "1.5",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Research",
+      "question": "Have you created the sitemap and information architecture for the website?"
+    },
+    {
+      "id": "1.6",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Research",
+      "question": "Have you conducted user research before planning the design and content?"
+    },
+    {
+      "id": "1.7",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Research",
+      "question": "Have you created (atleast) 4 user persona's in your ethnographic research?"
+    },
+    {
+      "id": "1.8",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Research",
+      "question": "Have you created a user flow journey for the persona's?"
+    },
+    {
+      "id": "1.9",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": null,
+      "question": "Have you created low-fidelity wireframes to map the user journey?"
+    },
+    {
+      "id": "1.10",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you created a content strategy with an Arabic-first approach?"
+    },
+    {
+      "id": "1.11",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you added \"real copy\" to your wireframes?"
+    },
+    {
+      "id": "1.12",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you created a map of static and dynamic content as per the information architecture?"
+    },
+    {
+      "id": "1.13",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Media",
+      "question": "Have you created a strategy and plan for content regarding Text, Images and Video?"
+    },
+    {
+      "id": "1.14",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you read and understood the tone, voice, and structure of content mentioned on the Content Guideline? Refer to designsystem.gov.ae/guidelines/content"
+    },
+    {
+      "id": "1.15",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you created copy in English following the Oxford Dictionary and using British English as the standard?"
+    },
+    {
+      "id": "1.16",
+      "section": "SECTION 1 : STRATEGY, USER EXPERIENCE AND CONTENT",
+      "category": "User experience",
+      "subCategory": "Content",
+      "question": "Have you created copy in Arabic following the MSA dialect"
+    },
+    {
+      "id": "2.1",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Typography",
+      "question": "Has the design team studied the Typography guideline? Refer to designsystem.gov.ae/guidelines/typography"
+    },
+    {
+      "id": "2.2",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Typography",
+      "question": "Has your design process included the approved font mentioned in the design system?"
+    },
+    {
+      "id": "2.3",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Typography",
+      "question": "Has the design process added the the approved fonts for headings in the mentioned font weight?"
+    },
+    {
+      "id": "2.4",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Typography",
+      "question": "Has the design process planned for responsive typography?"
+    },
+    {
+      "id": "2.5",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Typography",
+      "question": "Has the design process ensured spacing between sections as requited by WCAG 2.1 and mentioned in the guideline?"
+    },
+    {
+      "id": "2.6",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Has the design team adhered to the neutral colour palette for background colour?"
+    },
+    {
+      "id": "2.7",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Has the design team adhered to the primary text colour of AEBLACK-800?"
+    },
+    {
+      "id": "2.8",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Has the design team adhered to the use of the primary colour of AEGOLD-600 for actions?"
+    },
+    {
+      "id": "2.9",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Have you tested sections of your website's background and foreground colour usage to be 3:1?"
+    },
+    {
+      "id": "2.10",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Have you tested contrast ratio of action elements background and foreground to be 4.5:1?"
+    },
+    {
+      "id": "2.11",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "Are functional colours such as errors, warnings, success and information being followed as described?"
+    },
+    {
+      "id": "2.12",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Colour System",
+      "question": "FOR MINISTRIES ONLY: Are you following the primary colour palette only using AEGOLD and AEBLACK as your primary colours?"
+    },
+    {
+      "id": "2.13",
+      "section": "SECTION 2 : DESIGN",
+      "category": null,
+      "subCategory": "Colour System",
+      "question": "Has the design process ensured the distinction between primary and secondary colour use for action buttons"
+    },
+    {
+      "id": "2.14",
+      "section": "SECTION 2 : DESIGN",
+      "category": null,
+      "subCategory": "Imagery",
+      "question": "Has the design team studied the Imagery guideline? Refer to designsystem.gov.ae/guidelines/imagery"
+    },
+    {
+      "id": "2.15",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Imagery",
+      "question": "Are you using simple backgrounds for your hero image? Or have you created the hero imagery strategy to include graphics using the primary and secondary palette?"
+    },
+    {
+      "id": "2.16",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Imagery",
+      "question": "Have you used photography based images adhering to principles mentioned in the Imagery Guideline?"
+    },
+    {
+      "id": "2.17",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Imagery",
+      "question": "Are you following the use of images as per the brand guidelines of the United Arab Emirates Federal Government?"
+    },
+    {
+      "id": "2.18",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Imagery",
+      "question": "Is the design of custom images following the principles of how to place text on images?"
+    },
+    {
+      "id": "2.19",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Imagery",
+      "question": "If you are using illustrations, are they following the principles of creating them? Answer Completed, if you are not using any illustrations."
+    },
+    {
+      "id": "2.20",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Iconography",
+      "question": "Has the design team studied the Iconography guideline? Refer to designsystem.gov.ae/guidelines/iconography"
+    },
+    {
+      "id": "2.21",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Iconography",
+      "question": "Are you using the approved library for use of icons?"
+    },
+    {
+      "id": "2.22",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Iconography",
+      "question": "If you have designed custom icons, are you following the instructions of how to place icons centrally as described in the Figma file?"
+    },
+    {
+      "id": "2.23",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Iconography",
+      "question": "Has the design process ensured that all icons are a minimum of 24px in width and height?"
+    },
+    {
+      "id": "2.24",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Iconography",
+      "question": "Are you following the principles of where to place icons as mentioned in the Iconography guideline?"
+    },
+    {
+      "id": "2.25",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design team studied the Layout and Spacing guideline? Refer to designsystem.gov.ae/guidelines/layout"
+    },
+    {
+      "id": "2.26",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design process created layouts and wireframes at 1536px as the canvas and 1480px as the container?"
+    },
+    {
+      "id": "2.27",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design process created mockups of the design for mobile?"
+    },
+    {
+      "id": "2.28",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design process followed a mobile-first approach?"
+    },
+    {
+      "id": "2.29",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design process ensured the distinction between primary and secondary colour use for action buttons"
+    },
+    {
+      "id": "2.30",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Layout",
+      "question": "Has the design process ensured the use of the spacing grid as described in the guideline?"
+    },
+    {
+      "id": "2.31",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Actions",
+      "question": "Is there a clear clear and visual difference between the design styles applied to action buttons and hyperlinks?"
+    },
+    {
+      "id": "2.32",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Actions",
+      "question": "Has the design process ensured the right use of components as described in the Action guidelines of the design system? Refer to designsystem.gov.ae/guidelines/actions"
+    },
+    {
+      "id": "2.33",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Actions",
+      "question": "Has the design team created form elements using the approved components of the design system?"
+    },
+    {
+      "id": "2.34",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Accessibility",
+      "question": "Has the design team tested the design for visual accessibility?"
+    },
+    {
+      "id": "2.35",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Accessibility",
+      "question": "Has the design team created hidden design elements such as \"Skip to content\""
+    },
+    {
+      "id": "2.36",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Accessibility",
+      "question": "Has the design team created images and graphics that follow the Imagery guideline for accessibility?"
+    },
+    {
+      "id": "2.37",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Accessibility",
+      "question": "Has the design team ensured that colour contrast is maintained in graphics and images as well?"
+    },
+    {
+      "id": "2.38",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Guidelines",
+      "subCategory": "Accessibility",
+      "question": "Has the design team tested the layout when zoomed in to a browser at 175%?"
+    },
+    {
+      "id": "2.39",
+      "section": "SECTION 2 : DESIGN",
+      "category": "General design",
+      "subCategory": null,
+      "question": "Is the design for the website following approved template layouts?"
+    },
+    {
+      "id": "2.40",
+      "section": "SECTION 2 : DESIGN",
+      "category": "General design",
+      "subCategory": null,
+      "question": "Is the design for the website using the approved header and footer elements without change?"
+    },
+    {
+      "id": "2.41",
+      "section": "SECTION 2 : DESIGN",
+      "category": "General design",
+      "subCategory": null,
+      "question": "Is the overall design utilising blocks, cards, and components as described in the design system?"
+    },
+    {
+      "id": "2.42",
+      "section": "SECTION 2 : DESIGN",
+      "category": "General design",
+      "subCategory": null,
+      "question": "Have you created user-friendly error pages for 404, 403, 500"
+    },
+    {
+      "id": "2.43",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Testing",
+      "subCategory": null,
+      "question": "Has the design team created a prototype and tested the design against the user journey?"
+    },
+    {
+      "id": "2.44",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Testing",
+      "subCategory": null,
+      "question": "Was user-centric design testing conducted - as described on designsystem.gov.ae/resources/assets-and-tools"
+    },
+    {
+      "id": "2.45",
+      "section": "SECTION 2 : DESIGN",
+      "category": "Testing",
+      "subCategory": null,
+      "question": "Were consistency checks carried out validating the design with guidelines and components?"
+    },
+    {
+      "id": "3.1",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Have you installed the latest version of the design system via NPM?"
+    },
+    {
+      "id": "3.2",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Have you built your frontend using TailwindCSS classes?"
+    },
+    {
+      "id": "3.3",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Have you ensured each part of your website's sections are divided into reusable blocks or components?"
+    },
+    {
+      "id": "3.4",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Is your frontend code structurally hierarchical using the accurate placement of <h1> to <h6> tags?"
+    },
+    {
+      "id": "3.5",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Are you separating sections of your website into separate containers and not boxing your entire website?"
+    },
+    {
+      "id": "3.6",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "UI",
+      "question": "Are you using components and block code as mentioned in the design system?"
+    },
+    {
+      "id": "3.7",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "For parts of your websites that are not components and blocks, are you adhering to WAI accessibility principles?"
+    },
+    {
+      "id": "3.8",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Have you added the \"aria-hidden=\"true\" attribute to icons that must not be read by screen readers?"
+    },
+    {
+      "id": "3.9",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Have you ensured all icons have a supporting text - either visible or wrapped in the \"sr-only\" class?"
+    },
+    {
+      "id": "3.10",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Are you adding accurate aria attributes to form elements and labels?"
+    },
+    {
+      "id": "3.11",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Have you ensured progressive enhacements to accessibility when using navigation elements?"
+    },
+    {
+      "id": "3.12",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Have you tested your frontend code to be AA Level compliant with WCAG 2.1"
+    },
+    {
+      "id": "3.13",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Can you navigate your entire website using only a keyboard - without the use of a trackpad or a mouse?"
+    },
+    {
+      "id": "3.14",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Accessibility",
+      "question": "Have you added a focus state to every action element? Have you tested your website for focus states?"
+    },
+    {
+      "id": "3.15",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Testing",
+      "question": "Have you carried out Mobile responsiveness testing?"
+    },
+    {
+      "id": "3.16",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Testing",
+      "question": "Have you tested your frontend code on Edge, Chrome, Firefox, Safari, Safari mobile, Chrome mobile?"
+    },
+    {
+      "id": "3.17",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Testing",
+      "question": "Have you carried out design validation testing to ensure that your frontend matches the design?"
+    },
+    {
+      "id": "3.18",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Testing",
+      "question": "Have you used any testing tool listed on designsystem.gov.ae/resources/assets-and-tools"
+    },
+    {
+      "id": "3.19",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Are you using the approved header layout and design as mentioned on designsystem.gov.ae/docs/blocks/header"
+    },
+    {
+      "id": "3.20",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Have you used the header code as described for mobile use?"
+    },
+    {
+      "id": "3.21",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Are you using the approved footer layout and design as mentioned on designsystem.gov.ae/docs/blocks/footer"
+    },
+    {
+      "id": "3.22",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Have you used the footer code as described for mobile use?"
+    },
+    {
+      "id": "3.23",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Is your hero block using <picture> with srcset to add a different image for mobile and desktop?"
+    },
+    {
+      "id": "3.24",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Have you used the login block as described with UAE Pass as the primary login method?"
+    },
+    {
+      "id": "3.25",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Frontend",
+      "subCategory": "Blocks",
+      "question": "Have you added the Page Rating block to all service card pages?"
+    },
+    {
+      "id": "3.26",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Is the Doctype HTML5 on the top of all pages?"
+    },
+    {
+      "id": "3.27",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Is the charset declared as UTF-8?"
+    },
+    {
+      "id": "3.28",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Is the viewport declared accurately?"
+    },
+    {
+      "id": "3.29",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Are all meta title and description tags unique? Have you ensured unique dynamic content when required?"
+    },
+    {
+      "id": "3.30",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Has a favicon been included with variations for bookmarking sizes?"
+    },
+    {
+      "id": "3.31",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Are you using the Apple-meta tags to control the colour of your website's pre header?"
+    },
+    {
+      "id": "3.32",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Are you using \"rel=canonical\" to avoid duplicate content page indexing?"
+    },
+    {
+      "id": "3.33",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured adding the \"direction\" attribute to your body tag according to your language?"
+    },
+    {
+      "id": "3.34",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured added the \"lang\" attribute to your HTML tag based on your language?"
+    },
+    {
+      "id": "3.35",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured all pages list the alternate language tag?"
+    },
+    {
+      "id": "3.36",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured you have the facility to generate open meta tags for social media?"
+    },
+    {
+      "id": "3.37",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you structured your HTML using HTML5 semantic tags (such as <header>, <footer>, <section>, <main>)"
+    },
+    {
+      "id": "3.38",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you created the Error pages - 404, 403, 500"
+    },
+    {
+      "id": "3.39",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured you are following the design system guideline on use of hyperlinks to add \"rel=noopener\" where required?"
+    },
+    {
+      "id": "3.40",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Are all pages and all HTML code W3C compliant?"
+    },
+    {
+      "id": "3.41",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured the use of Google Fonts and not loading fonts from your server?"
+    },
+    {
+      "id": "3.42",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you tested all pages on responsive breakpoints mentioned in the design system?"
+    },
+    {
+      "id": "3.43",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "HTML",
+      "subCategory": null,
+      "question": "Have you ensured that CSS is NON-Blocking?"
+    },
+    {
+      "id": "3.44",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Optimisation",
+      "subCategory": null,
+      "question": "Are you implementing graceful degradation for your website on outdated browsers?"
+    },
+    {
+      "id": "3.45",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Optimisation",
+      "subCategory": null,
+      "question": "Are you informing the user if they are using an outdated browser as described in the design system's browser support?"
+    },
+    {
+      "id": "3.46",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Optimisation",
+      "subCategory": null,
+      "question": "Are you minifying your rendered CSS and JavaScript for a production environment?"
+    },
+    {
+      "id": "3.47",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Optimisation",
+      "subCategory": null,
+      "question": "Are you implementing a cache system for faster page load?"
+    },
+    {
+      "id": "3.48",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Media",
+      "subCategory": null,
+      "question": "Are all images dynamically adding an alt tag that is meaningful to the image?"
+    },
+    {
+      "id": "3.49",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Media",
+      "subCategory": null,
+      "question": "Are you using Picture/Srcset for images as described in the design system?"
+    },
+    {
+      "id": "3.50",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Media",
+      "subCategory": null,
+      "question": "Have you enabled lazy loading for images?"
+    },
+    {
+      "id": "3.51",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Media",
+      "subCategory": null,
+      "question": "Are you using WebP as your image format primarily?"
+    },
+    {
+      "id": "3.52",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Media",
+      "subCategory": null,
+      "question": "Are you videos being loaded based on user's device and internet speed? This would happen by default if you are hosting public videos on Youtube or Vimeo"
+    },
+    {
+      "id": "3.53",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "Eliminating all images on the page, is your page weight below 500KB while loading?"
+    },
+    {
+      "id": "3.54",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "With all images on your page, is your page weight below 4MB while loading?"
+    },
+    {
+      "id": "3.55",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "Have you consulted with the backend team on preconnection time, dns handshake time and how it is affecting the loading speed of your website?"
+    },
+    {
+      "id": "3.56",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "Have you consulted with the backend team on WebMetric Measurement Criteria to measure LCP and FCP?"
+    },
+    {
+      "id": "3.57",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "Have you ensured JavaScript is placed at the end of your website?"
+    },
+    {
+      "id": "3.58",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Performance",
+      "subCategory": null,
+      "question": "Have you taken into account third party scripts and software that will affect your load time in a production environment?"
+    },
+    {
+      "id": "3.59",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Compliance",
+      "subCategory": null,
+      "question": "Have you added a cookie banner?"
+    },
+    {
+      "id": "3.60",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Content management",
+      "subCategory": null,
+      "question": "Are you using a Headless CMS?"
+    },
+    {
+      "id": "3.61",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Content management",
+      "subCategory": null,
+      "question": "Does your technology strategy involve the use of a JavaScript Framework (Such as Next.js) with a headless CMS for content management?"
+    },
+    {
+      "id": "3.62",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Content management",
+      "subCategory": null,
+      "question": "Does your content management system include the ability to manage Meta Tags as a page level?"
+    },
+    {
+      "id": "3.63",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Content management",
+      "subCategory": null,
+      "question": "Are you ensuring the correct using of image sizes added as part of your content for each page that will be used by open tags?"
+    },
+    {
+      "id": "3.64",
+      "section": "SECTION 3: TECHNOLOGY",
+      "category": "Content management",
+      "subCategory": null,
+      "question": "Does your content management system generate a Sitemap.xml file?"
+    }
+  ]
+}

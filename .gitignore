@@ -4,3 +4,4 @@ dist/
 .docs-cache/
 .uaepass-cache/
 .claude/settings.local.json
+.tdra-cache/

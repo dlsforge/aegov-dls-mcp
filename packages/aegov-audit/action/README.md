@@ -54,5 +54,5 @@ Audit a deployed page with Lighthouse (TDRA's four categories + LCP/FCP — need
 
 ## Notes
 
-- Until `@dlsforge/aegov-audit` is published to npm, the default install cannot resolve — use `install-spec` with packed tarballs (`@dlsforge/aegov-rules-core` first, then the audit tarball), exactly as [`.github/workflows/mizan-selftest.yml`](../../../.github/workflows/mizan-selftest.yml) does.
+- `@dlsforge/aegov-audit` is [live on npm](https://www.npmjs.com/package/@dlsforge/aegov-audit) — the default install resolves on its own. Pin `version` (e.g. `0.0.1`) in real pipelines. The `install-spec` input remains for installing from packed tarballs; this repo's own [`mizan-selftest.yml`](../../../.github/workflows/mizan-selftest.yml) uses it to test the *current* source rather than the published version.
 - Reports are private to the repo's own team (artifact + job summary). No public scoreboard — by design.

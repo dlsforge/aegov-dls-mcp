@@ -1,6 +1,8 @@
 # Publishing runbook — Stage 2 step 8
 
-The exact sequence to publish the two ready packages to npm under `@dlsforge`. Everything below is **prepared and dry-run verified**; only the two `npm publish` commands need Alam's credentials.
+> **DONE 2026-07-13.** Both packages are live: [`@dlsforge/aegov-rules-core@0.1.0`](https://www.npmjs.com/package/@dlsforge/aegov-rules-core) and [`@dlsforge/aegov-audit@0.0.1`](https://www.npmjs.com/package/@dlsforge/aegov-audit), published by Alam (`alamkhanak`), verified by a clean registry install + functional run (`--fail-on critical` → exit 1 on the seeded fixture). Post-publish cleanups landed: single-tarball G2 flow restored, action README caveat dropped, releases tagged. This file stays as the runbook for future releases.
+
+The exact sequence to publish the packages to npm under `@dlsforge`.
 
 > **Order is not optional.** `@dlsforge/aegov-rules-core` must publish **first** — `@dlsforge/aegov-audit` depends on it at `0.1.0` and will not resolve from a clean install until the core is on the registry.
 >

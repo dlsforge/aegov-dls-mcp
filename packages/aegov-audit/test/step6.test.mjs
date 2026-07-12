@@ -158,7 +158,7 @@ describe("action.yml contract (pinned — update deliberately)", () => {
   test("the pipeline keeps annotate, summary, artifact upload and the final gate", () => {
     assert.match(yml, /annotate\.mjs/);
     assert.match(yml, /GITHUB_STEP_SUMMARY/);
-    assert.match(yml, /actions\/upload-artifact@v4/);
+    assert.match(yml, /actions\/upload-artifact@v7/);
     assert.match(yml, /Enforce fail-on/);
   });
 });

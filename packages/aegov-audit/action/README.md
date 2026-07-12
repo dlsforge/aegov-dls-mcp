@@ -11,7 +11,7 @@ jobs:
   mizan:
     runs-on: ubuntu-latest # Linux recommended (playwright --with-deps)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # …build your site into dist/ here…
       - name: Mizan audit
         uses: dlsforge/aegov-dls-mcp/packages/aegov-audit/action@main # pin a tag/SHA in real pipelines

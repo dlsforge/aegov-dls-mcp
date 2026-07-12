@@ -16,6 +16,8 @@ type MetaScan = {
   dir: string;
   alternates: string[];
   hasArabicText: boolean;
+  /** Arabic letters / (Arabic + Latin letters) over the visible body text. */
+  arabicRatio: number;
 };
 
 export async function runMetaChecks(page: Page): Promise<AuditFinding[]> {
@@ -35,6 +37,12 @@ export async function runMetaChecks(page: Page): Promise<AuditFinding[]> {
       document.querySelectorAll('link[rel="alternate"][hreflang]'),
     ).map((l) => l.getAttribute("hreflang") ?? ""),
     hasArabicText: /[؀-ۿ]/.test(document.body?.textContent ?? ""),
+    arabicRatio: (() => {
+      const text = (document.body?.textContent ?? "").slice(0, 20000);
+      const arabic = (text.match(/[؀-ۿ]/g) ?? []).length;
+      const latin = (text.match(/[A-Za-z]/g) ?? []).length;
+      return arabic + latin === 0 ? 0 : arabic / (arabic + latin);
+    })(),
   }))) as MetaScan;
 
   const findings: AuditFinding[] = [];
@@ -77,6 +85,26 @@ export async function runMetaChecks(page: Page): Promise<AuditFinding[]> {
       'Set dir="rtl" on the Arabic version and dir="ltr" on the English version.',
     );
   }
+  // Declared language vs the script the content is actually written in —
+  // found live on fnrc.gov.ae (step-7 recorded run): an Arabic page declaring
+  // lang="en" misleads assistive technology and search engines alike.
+  const declaresArabic = scan.lang.toLowerCase().startsWith("ar");
+  if (scan.lang && !declaresArabic && scan.arabicRatio > 0.5)
+    add(
+      "meta-lang-mismatch",
+      "serious",
+      `The document declares lang="${scan.lang}" but the visible text is predominantly Arabic ` +
+        `(${Math.round(scan.arabicRatio * 100)}% Arabic script) — the declared language must match the content.`,
+      'Serve the Arabic variant with <html lang="ar" dir="rtl"> (and the English variant with lang="en").',
+    );
+  if (declaresArabic && scan.arabicRatio < 0.2 && scan.arabicRatio > 0)
+    add(
+      "meta-lang-mismatch",
+      "serious",
+      `The document declares lang="${scan.lang}" but the visible text is predominantly Latin script ` +
+        `(only ${Math.round(scan.arabicRatio * 100)}% Arabic) — the declared language must match the content.`,
+      'Serve the English variant with <html lang="en"> (and the Arabic variant with lang="ar" dir="rtl").',
+    );
   if (scan.alternates.length === 0)
     add("meta-alternate", "minor", "No alternate-language link tags (<link rel=\"alternate\" hreflang=…>) — pages should list their other-language version.", "Add hreflang alternate links on every page of both language versions.");
 

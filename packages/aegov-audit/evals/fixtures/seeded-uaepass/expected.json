@@ -1,0 +1,28 @@
+{
+  "description": "A genuine login surface (password field + sign-in control) with no UAE Pass anywhere — the mandatory-UAE-Pass heuristic must flag it, and nothing else may fire (labels correct, meta complete, no Emirates ID signals).",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "dls-uaepass-missing",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-not-used",
+      "severity": "serious"
+    }
+  ],
+  "forbidden": [
+    "label",
+    "image-alt",
+    "color-contrast",
+    "html-has-lang",
+    "meta-lang",
+    "meta-viewport",
+    "meta-charset",
+    "dls-eid-unmasked",
+    "dls-eid-pattern",
+    "dls-class-identity",
+    "dls-img-alt",
+    "dls-dmy-dates"
+  ]
+}

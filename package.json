@@ -12,6 +12,7 @@
     "build": "npm run build -w @dlsforge/aegov-rules-core && npm run build -w @dlsforge/aegov-mcp && npm run build -w @dlsforge/aegov-audit",
     "test": "npm run test -w @dlsforge/aegov-rules-core && npm run test -w @dlsforge/aegov-mcp && npm run test -w @dlsforge/aegov-audit",
     "evals": "npm run evals -w @dlsforge/aegov-mcp",
+    "evals:audit": "npm run evals -w @dlsforge/aegov-audit",
     "smoke": "npm run smoke -w @dlsforge/aegov-mcp",
     "validate": "npm run validate -w @dlsforge/aegov-rules-core",
     "start": "npm run start -w @dlsforge/aegov-mcp"

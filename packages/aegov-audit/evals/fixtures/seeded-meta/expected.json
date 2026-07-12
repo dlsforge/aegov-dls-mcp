@@ -1,0 +1,53 @@
+{
+  "description": "Document-level defects only: legacy doctype, non-UTF-8 charset (none declared), missing viewport/canonical/lang/dir/alternates. Every finding maps to TDRA checklist items 3.26-3.35; body content is clean so nothing else may fire.",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "meta-doctype",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "meta-charset",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "meta-viewport",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "meta-canonical",
+      "severity": "minor"
+    },
+    {
+      "ruleId": "meta-lang",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "meta-dir",
+      "severity": "minor"
+    },
+    {
+      "ruleId": "meta-alternate",
+      "severity": "minor"
+    },
+    {
+      "ruleId": "html-has-lang",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-not-used",
+      "severity": "serious"
+    }
+  ],
+  "forbidden": [
+    "image-alt",
+    "label",
+    "color-contrast",
+    "dls-uaepass-missing",
+    "dls-eid-unmasked",
+    "dls-eid-pattern",
+    "dls-class-identity",
+    "dls-img-alt",
+    "dls-dmy-dates"
+  ]
+}

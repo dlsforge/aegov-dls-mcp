@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded Emirates ID and date defects</title>
+  <link rel="canonical" href="https://example.gov.ae/seeded-eid">
+  <link rel="alternate" hreflang="en" href="https://example.gov.ae/seeded-eid">
+  <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/seeded-eid">
+</head>
+<body>
+  <header><h1>Application status</h1></header>
+  <main>
+    <!-- SEED 1: full unmasked Emirates ID displayed (dls-eid-unmasked) -->
+    <p>Application submitted for Emirates ID 784-1972-1234567-1.</p>
+
+    <!-- SEED 2: Emirates ID input without the required validation pattern
+         (dls-eid-pattern). The label is present, so axe stays quiet. -->
+    <form action="/verify" method="post">
+      <p>
+        <label for="eid">Emirates ID</label>
+        <input id="eid" name="eid" type="text">
+      </p>
+      <button type="submit">Verify</button>
+    </form>
+
+    <!-- SEED 3: unambiguous month-first date (dls-dmy-dates) -->
+    <p>Decision issued on 07/25/2026.</p>
+  </main>
+  <footer><p>Ministry of Example.</p></footer>
+</body>
+</html>

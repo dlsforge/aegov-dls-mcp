@@ -1,0 +1,32 @@
+{
+  "description": "Arabic page served under lang=\"en\" in an LTR context — the exact defect found live during the recorded real-site run. The declared-language/content-script mismatch must flag (meta-lang-mismatch) and the Arabic blocks must draw RTL review flags; meta-lang itself must stay quiet (a lang IS declared — it is just wrong).",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "meta-lang-mismatch",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "minCount": 3
+    },
+    {
+      "ruleId": "dls-not-used",
+      "severity": "serious"
+    }
+  ],
+  "forbidden": [
+    "meta-lang",
+    "meta-dir",
+    "meta-viewport",
+    "meta-charset",
+    "meta-doctype",
+    "html-has-lang",
+    "image-alt",
+    "label",
+    "dls-uaepass-missing",
+    "dls-class-identity",
+    "dls-eid-unmasked"
+  ]
+}

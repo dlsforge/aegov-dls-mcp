@@ -23,6 +23,7 @@ import { runStructureChecks } from "./engines/structure.js";
 import { runUaePassCheck } from "./engines/uaepass.js";
 import { runMetaChecks } from "./engines/meta.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
+import { settleNavigation } from "./engines/settle.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
 import {
   countAtOrAbove,
@@ -115,13 +116,23 @@ try {
   const started = Date.now();
   const response = await page.goto(url, { waitUntil: "load", timeout: 60_000 });
   const status = response?.status() ?? 0;
-  const { nodes, title, lang, dir } = await page.evaluate(() => ({
-    nodes: document.querySelectorAll("*").length,
-    title: document.title,
-    lang: document.documentElement.lang || "(unset)",
-    dir: document.documentElement.dir || "(unset)",
-  }));
   const loadMs = Date.now() - started;
+  // Local files never redirect — skip the settle there to keep evals fast.
+  if (/^https?:/i.test(url)) await settleNavigation(page);
+  const pageInfo = () =>
+    page.evaluate(() => ({
+      nodes: document.querySelectorAll("*").length,
+      title: document.title,
+      lang: document.documentElement.lang || "(unset)",
+      dir: document.documentElement.dir || "(unset)",
+    }));
+  const { nodes, title, lang, dir } = await pageInfo().catch(async (err) => {
+    if (!String(err).includes("Execution context was destroyed")) throw err;
+    await page.waitForLoadState("load", { timeout: 30_000 });
+    await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+    return pageInfo();
+  });
+  const finalUrl = page.url();
 
   const axeFindings = await runAxe(page);
   const dlsFindings: AuditFinding[] = [
@@ -154,7 +165,7 @@ try {
 
   const report = buildReport({
     target: url,
-    page: { status, loadMs, nodes, title, lang, dir },
+    page: { status, loadMs, nodes, title, lang, dir, finalUrl },
     engines: { axe: AXE_VERSION, dls: dlsPackageRef() },
     findings,
     lighthouse,
@@ -171,7 +182,7 @@ try {
     console.log(JSON.stringify(report, null, 2));
   } else {
     console.log(
-      `loaded ${url}\n` +
+      `loaded ${url}${finalUrl !== url ? ` → ${finalUrl}` : ""}\n` +
         `  status ${status}, ${nodes} nodes in ${loadMs}ms\n` +
         `  title: ${title}\n` +
         `  lang=${lang} dir=${dir}\n`,

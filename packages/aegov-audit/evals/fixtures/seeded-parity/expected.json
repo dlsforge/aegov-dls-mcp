@@ -1,0 +1,35 @@
+{
+  "description": "Degraded Arabic variant: lang=ar without dir=rtl, the featured aegov-card missing, and 12-vs-4 link drift. All three parity rules must FLAG for human review (never assert); the English base page itself is clean so nothing else fires.",
+  "target": "index.html",
+  "parity": "ar.html",
+  "expected": [
+    {
+      "ruleId": "dls-parity-rtl",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "dls-parity-components",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "dls-parity-structure",
+      "severity": "moderate"
+    }
+  ],
+  "forbidden": [
+    "image-alt",
+    "label",
+    "color-contrast",
+    "html-has-lang",
+    "meta-lang",
+    "meta-dir",
+    "meta-viewport",
+    "dls-parity-lang",
+    "dls-uaepass-missing",
+    "dls-class-identity",
+    "dls-token-inline-style",
+    "dls-token-color",
+    "dls-arabic-rtl",
+    "dls-not-used"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "description": "Four seeded WCAG defects: alt-less image, CMS-placeholder alt text, unlabeled form field, low-contrast text. Document meta is complete, so every meta rule must stay quiet; no aegov classes, so the DLS class/token/structure rules must stay quiet.",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "image-alt",
+      "severity": "critical"
+    },
+    {
+      "ruleId": "label",
+      "severity": "critical"
+    },
+    {
+      "ruleId": "color-contrast",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-img-alt",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-img-alt-placeholder",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "dls-not-used",
+      "severity": "serious"
+    }
+  ],
+  "forbidden": [
+    "meta-lang",
+    "meta-dir",
+    "meta-viewport",
+    "meta-charset",
+    "meta-doctype",
+    "meta-canonical",
+    "meta-alternate",
+    "html-has-lang",
+    "dls-uaepass-missing",
+    "dls-class-identity",
+    "dls-token-inline-style",
+    "dls-token-color",
+    "dls-eid-unmasked",
+    "dls-eid-pattern",
+    "dls-dmy-dates"
+  ]
+}

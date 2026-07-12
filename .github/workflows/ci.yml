@@ -1,0 +1,25 @@
+# Monorepo gate — the same four commands that gate every stage locally
+# (CLAUDE.md / STAGE2-HANDOFF §5): test, evals, smoke, validate.
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22" # aegov-audit (lighthouse 13) needs >=22.19
+      - run: npm ci
+      - name: Install Playwright Chromium (audit tests render pages)
+        run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm test
+      - run: npm run validate
+      - run: npm run evals
+      - run: npm run smoke

@@ -1,0 +1,76 @@
+# Dogfood the reusable action (STAGE2-HANDOFF §6 step 6) end-to-end on GitHub's
+# own runners. Neither package is on npm yet (step 8), so the action installs
+# from packed workspace tarballs via install-spec — rules-core first, then the
+# audit tarball (the G2 two-tarball flow from STAGE2-HANDOFF §11).
+#
+# Two runs against the seeded-a11y fixture (known defects, incl. a critical
+# image-alt): one with fail-on none that must SUCCEED and report the findings
+# via outputs, one with fail-on critical that must FAIL — proving both halves
+# of "fail the build on critical findings, warn on the rest".
+name: Mizan action self-test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Pack workspace tarballs
+        id: pack
+        run: |
+          DEST="$RUNNER_TEMP/tarballs"
+          mkdir -p "$DEST"
+          npm pack -w @dlsforge/aegov-rules-core -w @dlsforge/aegov-audit --pack-destination "$DEST"
+          CORE=$(ls "$DEST"/dlsforge-aegov-rules-core-*.tgz)
+          AUDIT=$(ls "$DEST"/dlsforge-aegov-audit-*.tgz)
+          echo "spec=$CORE $AUDIT" >> "$GITHUB_OUTPUT"
+
+      - name: Audit the seeded fixture (fail-on none — must succeed and count findings)
+        id: audit
+        uses: ./packages/aegov-audit/action
+        with:
+          url: packages/aegov-audit/test/fixtures/seeded-a11y.html
+          fail-on: none
+          install-spec: ${{ steps.pack.outputs.spec }}
+          artifact-name: mizan-selftest-report
+          out: mizan-selftest-report
+
+      - name: Outputs must carry the seeded defects
+        env:
+          CRITICAL: ${{ steps.audit.outputs.critical }}
+          TOTAL: ${{ steps.audit.outputs.finding-count }}
+          CODE: ${{ steps.audit.outputs.exit-code }}
+        run: |
+          echo "exit-code=$CODE total=$TOTAL critical=$CRITICAL"
+          [ "$CODE" = "0" ] || { echo "::error::fail-on none must exit 0"; exit 1; }
+          [ "${CRITICAL:-0}" -ge 1 ] || { echo "::error::the seeded image-alt critical was not counted"; exit 1; }
+          [ "${TOTAL:-0}" -ge 4 ] || { echo "::error::expected the seeded defects in finding-count"; exit 1; }
+
+      - name: Audit again (fail-on critical — must fail the step)
+        id: gate
+        continue-on-error: true
+        uses: ./packages/aegov-audit/action
+        with:
+          url: packages/aegov-audit/test/fixtures/seeded-a11y.html
+          fail-on: critical
+          install-spec: ${{ steps.pack.outputs.spec }}
+          artifact-name: "" # first run already uploaded the report
+          summary: "false"
+          out: mizan-selftest-gate
+
+      - name: The gate run must have failed on the seeded critical
+        env:
+          OUTCOME: ${{ steps.gate.outcome }}
+          CODE: ${{ steps.gate.outputs.exit-code }}
+        run: |
+          echo "outcome=$OUTCOME exit-code=$CODE"
+          [ "$OUTCOME" = "failure" ] || { echo "::error::fail-on critical did not fail the build"; exit 1; }
+          [ "$CODE" = "1" ] || { echo "::error::expected audit exit code 1, got $CODE"; exit 1; }

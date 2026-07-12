@@ -1,0 +1,189 @@
+# Mizan — reusable GitHub Action wrapper (STAGE2-HANDOFF §6 step 6).
+# Consume from another repo as:
+#   uses: dlsforge/aegov-dls-mcp/packages/aegov-audit/action@<ref>
+# Community project. Not affiliated with or endorsed by TDRA.
+name: "Mizan — AEGOV DLS compliance audit"
+description: >-
+  Audit a UAE government web page against the AEGOV Design Language System and
+  the TDRA assessment criteria: axe-core (WCAG), Lighthouse (TDRA's four
+  categories + LCP/FCP under documented local run conditions), and the shared
+  DLS rules engine. Fails the build on findings at or above the fail-on
+  severity, annotates the rest as warnings. Community project — not affiliated
+  with or endorsed by TDRA. A clean automated run is NOT compliance.
+author: "Alam Khan Durrani"
+branding:
+  icon: "check-square"
+  color: "green"
+
+inputs:
+  url:
+    description: >-
+      What to audit: an http(s) URL, or a path (relative to the workspace) to a
+      built HTML file — auditing the built output in CI is the intended use.
+    required: true
+  fail-on:
+    description: >-
+      Fail the build when any finding is at or above this severity:
+      critical | serious | moderate | minor | none.
+    required: false
+    default: "critical"
+  lighthouse:
+    description: >-
+      "true" to also run Lighthouse (needs an http(s) url; slower — two full
+      page loads). Scores are evaluated against the verified TDRA thresholds
+      under the runner's LOCAL conditions, which are recorded in the report and
+      are not comparable to TDRA's environment.
+    required: false
+    default: "false"
+  parity:
+    description: >-
+      Arabic/RTL parity check: "" (off), "auto" (discover the other-language
+      variant via <link hreflang>), or the variant's URL. Parity findings are
+      flags for native-speaker review, never assertions.
+    required: false
+    default: ""
+  out:
+    description: "Directory (relative to the workspace) for report.json + report.md."
+    required: false
+    default: "mizan-report"
+  artifact-name:
+    description: "Name for the uploaded report artifact; empty string to skip the upload."
+    required: false
+    default: "mizan-report"
+  summary:
+    description: '"true" to append report.md to the job summary.'
+    required: false
+    default: "true"
+  version:
+    description: >-
+      @dlsforge/aegov-audit version to install from npm. Pin this in real
+      pipelines; "latest" is only a convenient default.
+    required: false
+    default: "latest"
+  install-spec:
+    description: >-
+      Advanced: space-separated npm install spec(s) that replace the default
+      "@dlsforge/aegov-audit@<version>" — e.g. local tarballs. Used by this
+      repo's own self-test.
+    required: false
+    default: ""
+  node-version:
+    description: "Node.js version for setup-node (Mizan needs >=22.19)."
+    required: false
+    default: "22"
+
+outputs:
+  exit-code:
+    description: "The audit CLI's exit code (0 clean/below threshold, 1 threshold exceeded, 2 usage error)."
+    value: ${{ steps.run.outputs.exit-code }}
+  finding-count:
+    description: "Total findings across all engines."
+    value: ${{ steps.annotate.outputs.finding-count }}
+  critical:
+    description: "Critical finding count."
+    value: ${{ steps.annotate.outputs.critical }}
+  serious:
+    description: "Serious finding count."
+    value: ${{ steps.annotate.outputs.serious }}
+  moderate:
+    description: "Moderate finding count."
+    value: ${{ steps.annotate.outputs.moderate }}
+  minor:
+    description: "Minor finding count."
+    value: ${{ steps.annotate.outputs.minor }}
+  report-json:
+    description: "Absolute path to report.json."
+    value: ${{ steps.annotate.outputs.report-json }}
+  report-md:
+    description: "Absolute path to report.md."
+    value: ${{ steps.annotate.outputs.report-md }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install Mizan
+      shell: bash
+      env:
+        MIZAN_VERSION: ${{ inputs.version }}
+        MIZAN_INSTALL_SPEC: ${{ inputs.install-spec }}
+      run: |
+        MIZAN_DIR="$RUNNER_TEMP/mizan"
+        mkdir -p "$MIZAN_DIR"
+        cd "$MIZAN_DIR"
+        [ -f package.json ] || npm init -y > /dev/null
+        if [ -n "$MIZAN_INSTALL_SPEC" ]; then
+          # shellcheck disable=SC2086 — deliberate word-split: multiple specs
+          npm install --no-fund --no-audit $MIZAN_INSTALL_SPEC
+        else
+          npm install --no-fund --no-audit "@dlsforge/aegov-audit@$MIZAN_VERSION"
+        fi
+        # Browsers for the pinned Playwright this install resolved.
+        npx playwright install --with-deps chromium
+        echo "MIZAN_DIR=$MIZAN_DIR" >> "$GITHUB_ENV"
+
+    - name: Run Mizan audit
+      id: run
+      shell: bash
+      env:
+        MIZAN_TARGET: ${{ inputs.url }}
+        MIZAN_FAIL_ON: ${{ inputs.fail-on }}
+        MIZAN_LIGHTHOUSE: ${{ inputs.lighthouse }}
+        MIZAN_PARITY: ${{ inputs.parity }}
+        MIZAN_OUT: ${{ inputs.out }}
+      run: |
+        ARGS=("$MIZAN_TARGET" --out "$MIZAN_OUT" --fail-on "$MIZAN_FAIL_ON")
+        [ "$MIZAN_LIGHTHOUSE" = "true" ] && ARGS+=(--lighthouse)
+        if [ "$MIZAN_PARITY" = "auto" ]; then
+          ARGS+=(--parity)
+        elif [ -n "$MIZAN_PARITY" ]; then
+          ARGS+=(--parity "$MIZAN_PARITY")
+        fi
+        set +e
+        "$MIZAN_DIR/node_modules/.bin/aegov-audit" "${ARGS[@]}"
+        CODE=$?
+        set -e
+        echo "exit-code=$CODE" >> "$GITHUB_OUTPUT"
+        # Deferred: annotations, summary and the artifact still run; the
+        # "Enforce fail-on" step fails the job with this code at the end.
+
+    - name: Annotations and outputs
+      id: annotate
+      shell: bash
+      env:
+        MIZAN_REPORT_DIR: ${{ inputs.out }}
+        MIZAN_FAIL_ON: ${{ inputs.fail-on }}
+      run: node "${{ github.action_path }}/annotate.mjs"
+
+    - name: Job summary
+      if: ${{ inputs.summary == 'true' }}
+      shell: bash
+      env:
+        MIZAN_OUT: ${{ inputs.out }}
+      run: |
+        if [ -f "$MIZAN_OUT/report.md" ]; then
+          cat "$MIZAN_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+    - name: Upload report artifact
+      if: ${{ inputs.artifact-name != '' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ${{ inputs.out }}
+        if-no-files-found: ignore
+
+    - name: Enforce fail-on
+      shell: bash
+      env:
+        CODE: ${{ steps.run.outputs.exit-code }}
+        MIZAN_FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        if [ "$CODE" != "0" ]; then
+          echo "::error::Mizan audit failed (exit $CODE, --fail-on $MIZAN_FAIL_ON) — see the annotations, job summary and report artifact."
+          exit "$CODE"
+        fi

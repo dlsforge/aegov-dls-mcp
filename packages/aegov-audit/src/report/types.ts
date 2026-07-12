@@ -28,6 +28,29 @@ export type AuditFinding = {
   nodeCount: number;
 };
 
+/** Most severe first — the order --fail-on thresholds cut along. */
+export const SEVERITY_ORDER: readonly AuditSeverity[] = [
+  "critical",
+  "serious",
+  "moderate",
+  "minor",
+];
+
+export type FailOn = AuditSeverity | "none";
+
+export function isFailOn(v: string): v is FailOn {
+  return v === "none" || (SEVERITY_ORDER as readonly string[]).includes(v);
+}
+
+/** How many findings sit at or above the threshold severity. */
+export function countAtOrAbove(
+  counts: Record<AuditSeverity, number>,
+  threshold: AuditSeverity,
+): number {
+  const cut = SEVERITY_ORDER.indexOf(threshold);
+  return SEVERITY_ORDER.slice(0, cut + 1).reduce((n, s) => n + counts[s], 0);
+}
+
 export function countBySeverity(findings: AuditFinding[]): Record<AuditSeverity, number> {
   const counts: Record<AuditSeverity, number> = {
     critical: 0,

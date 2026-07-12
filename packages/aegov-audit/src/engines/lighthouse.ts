@@ -46,6 +46,7 @@ export type LighthouseScores = {
     throttling: string;
     screenEmulation: string;
     chromePath: string;
+    chromeFlags: string;
     note: string;
   };
 };
@@ -59,11 +60,18 @@ export async function runLighthouse(
   url: string,
   formFactor: FormFactor,
 ): Promise<LighthouseScores> {
-  const chromePath = chromium.executablePath();
-  const chrome = await launchChrome({
-    chromePath,
-    chromeFlags: ["--headless=new", "--no-first-run"],
-  });
+  // CHROME_PATH lets CI point at a system Chrome; default stays Playwright's
+  // pinned Chromium so local runs are reproducible.
+  const chromePath = process.env.CHROME_PATH || chromium.executablePath();
+  const chromeFlags = ["--headless=new", "--no-first-run"];
+  if (process.platform === "linux" && process.env.CI) {
+    // Linux CI runners (GitHub's ubuntu-24.04+) restrict unprivileged user
+    // namespaces, which kills the raw Chromium sandbox before the debug port
+    // opens (ECONNREFUSED). Disable it only there — and it is recorded in the
+    // report's run conditions.
+    chromeFlags.push("--no-sandbox");
+  }
+  const chrome = await launchChrome({ chromePath, chromeFlags });
   try {
     const result = await lighthouse(
       url,
@@ -103,6 +111,7 @@ export async function runLighthouse(
           ? "disabled"
           : `${screen.width}x${screen.height}@${screen.deviceScaleFactor}${screen.mobile ? " mobile" : ""}`,
         chromePath,
+        chromeFlags: chromeFlags.join(" "),
         note:
           "Local run under Lighthouse default simulated throttling — comparable across " +
           "local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; " +

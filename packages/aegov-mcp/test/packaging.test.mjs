@@ -13,10 +13,10 @@ import { mkdtempSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { connectServer } from "./helpers/mcp.mjs";
-import { npm, coreRoot, mcpRoot, installBoth } from "./helpers/tarballs.mjs";
+import { coreRoot, mcpRoot, installBoth, packDryRunFiles } from "./helpers/tarballs.mjs";
 
 describe("pack contents (G1)", () => {
-  const entries = JSON.parse(npm(["pack", "--dry-run", "--json"]))[0].files.map((f) => f.path);
+  const entries = packDryRunFiles();
 
   test("only dist/ and package metadata ship (catalog comes via @dlsforge/aegov-rules-core)", () => {
     const allowed = /^(dist\/|package\.json$|README(\.md)?$|LICENSE(\.md|\.txt)?$)/i;
@@ -36,9 +36,7 @@ describe("pack contents (G1)", () => {
 });
 
 describe("pack contents of the shared core (G1b)", () => {
-  const entries = JSON.parse(npm(["pack", "--dry-run", "--json"], coreRoot))[0].files.map(
-    (f) => f.path,
-  );
+  const entries = packDryRunFiles(coreRoot);
 
   test("rules-core ships dist/, catalog/ and package metadata only", () => {
     const allowed = /^(dist\/|catalog\/|package\.json$|README(\.md)?$|LICENSE(\.md|\.txt)?$)/i;

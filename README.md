@@ -6,9 +6,9 @@ npm-workspaces monorepo holding the public, MIT-licensed DLSForge packages:
 
 | Package | What it is | Status |
 |---|---|---|
-| [`@dlsforge/aegov-rules-core`](packages/aegov-rules-core/) | Machine-readable model of the AEGOV DLS: component schemas, resolved design tokens, catalogue loader, and the DLS rule engine shared by every DLSForge tool. | `0.1.0` — ready to publish |
-| [`@dlsforge/aegov-mcp`](packages/aegov-mcp/) | MCP server exposing the core to AI coding assistants — `listComponents`, `getComponent`, `getTokens`, `scaffoldUaePass`, `scaffoldEmiratesId`, `validate_snippet`. | published: `0.1.0` on npm (`0.1.1` shared-core release deferred) |
-| [`@dlsforge/aegov-audit`](packages/aegov-audit/) (Mizan) | Compliance & accessibility auditor for UAE government sites (axe-core + Lighthouse + DLS rules over the rendered DOM), consuming the same core. Ships a CLI and a reusable GitHub Action. | `0.0.1` — ready to publish |
+| [`@dlsforge/aegov-rules-core`](packages/aegov-rules-core/) | Machine-readable model of the AEGOV DLS: component schemas, resolved design tokens, catalogue loader, and the DLS rule engine shared by every DLSForge tool. | published: [`0.1.0` on npm](https://www.npmjs.com/package/@dlsforge/aegov-rules-core) |
+| [`@dlsforge/aegov-mcp`](packages/aegov-mcp/) | MCP server exposing the core to AI coding assistants — `listComponents`, `getComponent`, `getTokens`, `scaffoldUaePass`, `scaffoldEmiratesId`, `validate_snippet`. | published: [`0.1.0` on npm](https://www.npmjs.com/package/@dlsforge/aegov-mcp) (`0.1.1` shared-core release deferred) |
+| [`@dlsforge/aegov-audit`](packages/aegov-audit/) (Mizan) | Compliance & accessibility auditor for UAE government sites (axe-core + Lighthouse + DLS rules over the rendered DOM), consuming the same core. Ships a CLI and a reusable GitHub Action. | published: [`0.0.1` on npm](https://www.npmjs.com/package/@dlsforge/aegov-audit) |
 
 The two tools mirror each other: the **MCP server generates** on-standard government UI, **Mizan audits** it — both enforcing the same rules from the shared core, so the standard is defined once.
 

@@ -167,7 +167,10 @@ export function renderMarkdown(r: AuditReport): string {
     }
     lines.push("");
     for (const rc of r.runConditions.lighthouse ?? [])
-      lines.push(`- ${rc.formFactor}: ${rc.throttling}; screen ${rc.screenEmulation}`);
+      lines.push(
+        `- ${rc.formFactor}: ${rc.throttling}; screen ${rc.screenEmulation}` +
+          (rc.chromeFlags ? `; chrome flags: ${rc.chromeFlags}` : ""),
+      );
     lines.push("");
   }
 

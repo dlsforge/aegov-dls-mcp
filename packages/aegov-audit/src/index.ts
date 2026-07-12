@@ -2,10 +2,12 @@
 /**
  * @dlsforge/aegov-audit — Mizan (ميزان), the AEGOV DLS compliance auditor.
  *
- * Build state (STAGE2-HANDOFF §6): step 1 (Playwright loads the rendered
- * page) and step 2 (axe-core → normalized WCAG findings) are wired.
- * Lighthouse scores and the DLS rules engine from @dlsforge/aegov-rules-core
- * attach next.
+ * All engines are wired (STAGE2-HANDOFF §6 steps 1–5): Playwright renders the
+ * page; axe-core, Lighthouse, the shared DLS rules from
+ * @dlsforge/aegov-rules-core, token fidelity, structure, UAE Pass, document
+ * meta and Arabic/RTL parity feed one normalized finding stream; the report
+ * layer mirrors the official TDRA assessment checklist v2.0. --fail-on gives
+ * CI (the GitHub Action wrapper, step 6) its exit-code gate.
  *
  * Community project. Not affiliated with or endorsed by TDRA.
  */
@@ -22,12 +24,19 @@ import { runUaePassCheck } from "./engines/uaepass.js";
 import { runMetaChecks } from "./engines/meta.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
-import { countBySeverity, type AuditFinding } from "./report/types.js";
+import {
+  countAtOrAbove,
+  countBySeverity,
+  isFailOn,
+  type AuditFinding,
+  type FailOn,
+} from "./report/types.js";
 import { buildReport, renderMarkdown } from "./report/report.js";
 
-const USAGE = `Mizan — AEGOV DLS compliance auditor (early scaffold)
+const USAGE = `Mizan — AEGOV DLS compliance auditor
 
 Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <dir>]
+                   [--fail-on <critical|serious|moderate|minor|none>]
 
   <url|path>     A http(s):// URL or a local HTML file to audit.
   --json         Emit the full machine report as JSON on stdout.
@@ -39,14 +48,17 @@ Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <d
                  differences for human review.
   --out <dir>    Write report.json + report.md (shaped to mirror the official
                  TDRA assessment checklist v2.0) into <dir>.
+  --fail-on <s>  Exit 1 when any finding is at or above severity <s>
+                 (critical > serious > moderate > minor). Default: none —
+                 report only. This is what CI (the GitHub Action) keys off.
 
 Loads the target in headless Chromium and runs axe-core (WCAG) plus the
 AEGOV DLS rules — the shared rules-core checks, token fidelity, component
 structure, and UAE Pass presence — over the rendered DOM. A clean run is
 NOT full compliance: automated checks cover a machine-checkable subset,
 and Arabic parity is always flagged for native-speaker review, never
-asserted. Lighthouse scores are reported without thresholds until the
-current TDRA assessment criteria are verified.`;
+asserted. Lighthouse scores are evaluated against the verified TDRA
+thresholds strictly under the local-run caveat.`;
 
 function targetToUrl(arg: string): string {
   if (/^https?:\/\//i.test(arg)) return arg;
@@ -68,6 +80,17 @@ let parityUrl: string | null = null;
 if (withParity && args[parityIdx + 1] && !args[parityIdx + 1].startsWith("--")) {
   parityUrl = args[parityIdx + 1];
   consumed.add(parityIdx + 1);
+}
+const failIdx = args.indexOf("--fail-on");
+let failOn: FailOn = "none";
+if (failIdx !== -1) {
+  const v = args[failIdx + 1];
+  if (!v || !isFailOn(v)) {
+    console.error("aegov-audit: --fail-on needs one of critical|serious|moderate|minor|none");
+    process.exit(2);
+  }
+  failOn = v;
+  consumed.add(failIdx + 1);
 }
 const outIdx = args.indexOf("--out");
 let outDir: string | null = null;
@@ -204,7 +227,16 @@ try {
         "a clean run is not compliance.",
     );
   }
-  if (status >= 400) process.exit(1);
+  if (failOn !== "none") {
+    const above = countAtOrAbove(report.summary.bySeverity, failOn);
+    if (above > 0) {
+      console.error(
+        `aegov-audit: FAIL — ${above} finding(s) at or above "${failOn}" (--fail-on ${failOn})`,
+      );
+      process.exitCode = 1;
+    }
+  }
+  if (status >= 400) process.exitCode = 1;
 } finally {
   await browser.close();
 }

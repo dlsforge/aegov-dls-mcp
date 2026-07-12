@@ -1,0 +1,86 @@
+# @dlsforge/aegov-audit — Mizan (ميزان)
+
+**Compliance & accessibility auditor for UAE government websites.** Mizan loads a rendered page in a real browser and checks it against the AEGOV Design Language System and the TDRA assessment criteria — WCAG accessibility, Lighthouse scores, and the DLS-specific rules generic tools cannot do — then produces a machine-readable report plus a human report shaped to mirror the official TDRA assessment checklist.
+
+> **Community project. Not affiliated with or endorsed by TDRA.**
+>
+> **A clean automated run is NOT compliance.** Automated checks cover only a machine-checkable subset of the standard; the report always states which items still need human review. Arabic/RTL parity findings are flags for a native speaker to confirm — Mizan never asserts parity as settled fact.
+
+Mizan (ميزان — *scale/balance*) is the verification counterpart to [`@dlsforge/aegov-mcp`](https://www.npmjs.com/package/@dlsforge/aegov-mcp), which helps assistants *generate* correct government UI. Same standard, opposite direction: the MCP server writes it, Mizan checks it — both enforcing the exact same rules from the shared [`@dlsforge/aegov-rules-core`](https://www.npmjs.com/package/@dlsforge/aegov-rules-core).
+
+## What it checks
+
+Over the **rendered DOM** (post-JavaScript, with computed styles — so it sees what `validate_snippet` never could):
+
+- **axe-core** — WCAG 2.2 AA machine-checkable success criteria.
+- **Lighthouse** — Performance / Accessibility / SEO / Best-Practices, plus LCP/FCP, evaluated against the verified TDRA thresholds **under documented local run conditions** (see below).
+- **DLS rules** (the differentiator) — official-component usage vs hand-rolled markup, design-token fidelity, component structure, mandatory **UAE Pass** on any login, **Emirates ID** format `784-NNNN-NNNNNNN-N` with masking + pattern validation, DMY dates, document metadata, and **Arabic/RTL parity** between language variants.
+
+Every finding carries a severity, the rule, its provenance/confidence tier (`package | docs | heuristic | external`), and a fix.
+
+## Requirements
+
+- **Node.js ≥ 22.19** (Lighthouse 13 needs it).
+- A Chromium browser. Playwright's is used by default; `npx playwright install chromium` fetches it. Set `CHROME_PATH` to point at a system Chrome instead.
+
+## CLI
+
+```sh
+npx @dlsforge/aegov-audit <url|path> [options]
+```
+
+```
+<url|path>     An http(s):// URL or a local HTML file to audit.
+--json         Emit the full machine report as JSON on stdout.
+--lighthouse   Also run Lighthouse (http(s) only; slower — two full page loads).
+--parity [url] Also load the other-language variant (given URL, or discovered via
+               <link hreflang>) and flag structural differences for human review.
+--out <dir>    Write report.json + report.md (mirroring the TDRA checklist) into <dir>.
+--fail-on <s>  Exit 1 when any finding is at or above severity <s>
+               (critical > serious > moderate > minor). Default: none — report only.
+```
+
+**Examples**
+
+```sh
+# Quick console audit of a built page
+npx @dlsforge/aegov-audit ./dist/index.html
+
+# Full reviewer-ready report with Lighthouse and Arabic parity
+npx @dlsforge/aegov-audit https://example.gov.ae/en/service \
+  --lighthouse --parity https://example.gov.ae/ar/service --out ./mizan-report
+
+# CI gate: fail the build on any critical finding
+npx @dlsforge/aegov-audit ./dist/index.html --fail-on critical
+```
+
+## GitHub Action — audit on every change
+
+A reusable composite action lives in this package. Point it at a built HTML file or a deployed URL; it fails the build on findings at or above `fail-on` (default critical), annotates the rest as warnings, and uploads the full report as an artifact.
+
+```yaml
+- uses: dlsforge/aegov-dls-mcp/packages/aegov-audit/action@main # pin a tag/SHA in real pipelines
+  with:
+    url: dist/index.html # or a deployed http(s) URL
+    fail-on: critical
+    lighthouse: "true" # optional; http(s) only
+    parity: auto # optional; hreflang discovery, or an explicit URL
+```
+
+Full inputs/outputs: [`action/README.md`](action/README.md).
+
+## Lighthouse run conditions matter
+
+Lighthouse scores depend on machine, network throttling, and device emulation. Mizan runs Lighthouse under its **default simulated throttling on the local machine** and records the exact conditions in every report. Those numbers are comparable across your own local runs, **not** to TDRA's environment — so the report evaluates them against the TDRA thresholds only under that explicit local-run caveat. On Linux CI runners it adds `--no-sandbox` (recorded in the run conditions) because unprivileged user namespaces are typically restricted there.
+
+## TDRA thresholds (verified 2026-07-12)
+
+Stated on the [assessment-criteria page](https://designsystem.gov.ae/resources/assessment-criteria) (not inside the workbook): Lighthouse **Accessibility / Performance / SEO ≥ 90; Best Practices ≥ 80** on both desktop and mobile; **LCP ≤ 2.5 s, FCP ≤ 1.8 s**. The workbook's own accessibility baseline is **WCAG 2.1 AA** (Mizan reports against 2.2 AA and 2.1 both). The committed extraction is `reference/tdra-assessment-criteria.json` (checklist v2.0, published 2023-09-26, 125 items); re-check per release with `npm run tdra:fetch && npm run tdra:extract`.
+
+## Reports are private
+
+Mizan produces a **private report for the site's own team**. It does not rank or score government sites publicly — there is no scoreboard, by design.
+
+## License
+
+MIT — see [LICENSE](../../LICENSE). Community project. Not affiliated with or endorsed by TDRA.

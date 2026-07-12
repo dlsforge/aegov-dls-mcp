@@ -53,6 +53,7 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // DLS engines
   "dls-uaepass-missing": ["3.24"],
   "dls-class-identity": ["3.6"],
+  "dls-not-used": ["3.6"],
   "dls-structure-check-item": ["3.6"],
   "dls-structure-modal": ["3.6"],
   "dls-structure-accordion": ["3.6"],
@@ -60,6 +61,7 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   "dls-token-inline-style": ["3.2"],
   "dls-token-color": ["3.2"],
   "dls-img-alt": ["3.48"],
+  "dls-img-alt-placeholder": ["3.48"],
   "dls-arabic-rtl": ["3.33"],
   "dls-parity-rtl": ["3.33"],
   "dls-parity-lang": ["3.34"],
@@ -70,6 +72,7 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   "meta-canonical": ["3.32"],
   "meta-dir": ["3.33"],
   "meta-lang": ["3.34"],
+  "meta-lang-mismatch": ["3.34"],
   "meta-alternate": ["3.35"],
   // axe rules with a specific checklist home
   "heading-order": ["3.4"],

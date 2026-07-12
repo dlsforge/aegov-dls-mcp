@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded DLS defects</title>
+  <link rel="canonical" href="https://example.gov.ae/seeded-dls">
+  <link rel="alternate" hreflang="en" href="https://example.gov.ae/seeded-dls">
+  <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/seeded-dls">
+  <style>
+    body { color: oklch(0.169 0.006 271.0); margin: 0; font-family: system-ui, sans-serif; }
+    .aegov-btn {
+      display: inline-block; padding: 0.75rem 1.5rem; border: 0;
+      color: oklch(1.000 0.000 0.0);
+      background-color: oklch(0.238 0.040 151.6);
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Page with seeded DLS violations</h1></header>
+  <main>
+    <!-- SEED 1: docs-drift class — the live docs typo the catalogue rejects -->
+    <span class="aegov-newslette">Newsletter box</span>
+
+    <!-- SEED 2: unknown aegov-* class (should draw a did-you-mean) -->
+    <span class="aegov-buton">Mistyped component</span>
+
+    <!-- SEED 3: hard-coded design value inline on a DLS component
+         (dls-token-inline-style; the computed background also resolves to no
+         token, so dls-token-color flags it for review) -->
+    <div class="aegov-card" style="background-color:#ff0000;height:8px" aria-hidden="true"></div>
+
+    <!-- SEED 4: button without an explicit type (dls-button-type) -->
+    <button class="aegov-btn">Subscribe</button>
+
+    <!-- SEED 5: check-item missing its <input> (dls-structure-check-item, docs-tier) -->
+    <div class="aegov-check-item"><label for="never-exists">I agree</label></div>
+  </main>
+  <footer><p>Ministry of Example.</p></footer>
+</body>
+</html>

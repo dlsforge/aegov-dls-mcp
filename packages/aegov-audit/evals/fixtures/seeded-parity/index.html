@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service catalogue</title>
+  <link rel="canonical" href="https://example.gov.ae/catalogue">
+  <link rel="alternate" hreflang="en" href="https://example.gov.ae/catalogue">
+  <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/catalogue">
+  <style>
+    body { color: oklch(0.169 0.006 271.0); margin: 0; font-family: system-ui, sans-serif; }
+    .aegov-btn {
+      display: inline-block; padding: 0.75rem 1.5rem; border: 0;
+      color: oklch(1.000 0.000 0.0);
+      background-color: oklch(0.238 0.040 151.6);
+      border-radius: 0.5rem; text-decoration: none;
+    }
+    .aegov-card { border: 1px solid oklch(0.230 0.008 264.4); border-radius: 0.5rem; padding: 1rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <header><h1>All services</h1></header>
+  <main>
+    <!-- The English catalogue is complete: 12 service links and a card the
+         Arabic variant is missing. The parity engine must FLAG (never assert)
+         the drift: missing dir=rtl on ar, missing aegov-card, link-count
+         drift beyond tolerance. -->
+    <div class="aegov-card">
+      <h2>Featured service</h2>
+      <p>Renew your commercial licence entirely online.</p>
+      <a class="aegov-btn" href="/services/renew-licence">Start</a>
+    </div>
+    <h2>Browse</h2>
+    <nav aria-label="Service catalogue">
+      <a href="/services/1">Birth certificate</a>
+      <a href="/services/2">Marriage certificate</a>
+      <a href="/services/3">Trade name reservation</a>
+      <a href="/services/4">Commercial licence renewal</a>
+      <a href="/services/5">Vehicle registration</a>
+      <a href="/services/6">Driving licence renewal</a>
+      <a href="/services/7">Visa status enquiry</a>
+      <a href="/services/8">Establishment card</a>
+      <a href="/services/9">Labour contract copy</a>
+      <a href="/services/10">Health card issuance</a>
+      <a href="/services/11">School enrolment transfer</a>
+      <a href="/services/12">Utility connection</a>
+    </nav>
+  </main>
+  <footer><p>Ministry of Example.</p></footer>
+</body>
+</html>

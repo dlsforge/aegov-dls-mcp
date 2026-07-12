@@ -11,6 +11,7 @@
  */
 import type { Page, Browser } from "playwright";
 import type { AuditFinding } from "../report/types.js";
+import { settleNavigation } from "./settle.js";
 
 type StructureProfile = {
   lang: string;
@@ -72,6 +73,7 @@ export async function runParityCheck(
   let alt: StructureProfile;
   try {
     await altPage.goto(alternateUrl, { waitUntil: "load", timeout: 60_000 });
+    if (/^https?:/i.test(alternateUrl)) await settleNavigation(altPage);
     alt = await profileOf(altPage);
   } finally {
     await altPage.close();

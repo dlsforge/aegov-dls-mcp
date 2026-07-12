@@ -1,0 +1,1876 @@
+{
+  "tool": {
+    "name": "@dlsforge/aegov-audit",
+    "version": "0.0.1"
+  },
+  "target": "https://fnrc.gov.ae",
+  "generatedAt": "2026-07-12T12:29:59.159Z",
+  "page": {
+    "status": 200,
+    "loadMs": 3036,
+    "nodes": 1395,
+    "title": "مؤسسة الفجيرة للموارد الطبيعية",
+    "lang": "en",
+    "dir": "(unset)",
+    "finalUrl": "https://fnrc.gov.ae/portal/home/index"
+  },
+  "engines": {
+    "axe": "4.12.1",
+    "dls": "@aegov/design-system@3.0.7"
+  },
+  "runConditions": {
+    "machine": "win32 x64, node v24.16.0",
+    "note": "Local run — see the disclaimers before comparing numbers across environments.",
+    "lighthouse": [
+      {
+        "lighthouseVersion": "13.4.0",
+        "formFactor": "mobile",
+        "throttling": "simulate (Lighthouse default for mobile)",
+        "screenEmulation": "412x823@1.75 mobile",
+        "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "chromeFlags": "--headless=new --no-first-run",
+        "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+      },
+      {
+        "lighthouseVersion": "13.4.0",
+        "formFactor": "desktop",
+        "throttling": "simulate (Lighthouse default for desktop)",
+        "screenEmulation": "1350x940@1",
+        "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "chromeFlags": "--headless=new --no-first-run",
+        "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+      }
+    ]
+  },
+  "summary": {
+    "findingCount": 42,
+    "bySeverity": {
+      "critical": 1,
+      "serious": 17,
+      "moderate": 21,
+      "minor": 3
+    },
+    "byEngine": {
+      "axe": 8,
+      "dls": 34
+    }
+  },
+  "lighthouse": {
+    "runs": [
+      {
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 26,
+          "accessibility": 87,
+          "bestPractices": 65,
+          "seo": 82
+        },
+        "metrics": {
+          "largestContentfulPaintMs": 24402.437000000013,
+          "firstContentfulPaintMs": 5492.545499999999
+        },
+        "runConditions": {
+          "lighthouseVersion": "13.4.0",
+          "formFactor": "mobile",
+          "throttling": "simulate (Lighthouse default for mobile)",
+          "screenEmulation": "412x823@1.75 mobile",
+          "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+          "chromeFlags": "--headless=new --no-first-run",
+          "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+        }
+      },
+      {
+        "formFactor": "desktop",
+        "scores": {
+          "performance": 23,
+          "accessibility": 77,
+          "bestPractices": 65,
+          "seo": 82
+        },
+        "metrics": {
+          "largestContentfulPaintMs": 6084.9961,
+          "firstContentfulPaintMs": 1912.8472999999997
+        },
+        "runConditions": {
+          "lighthouseVersion": "13.4.0",
+          "formFactor": "desktop",
+          "throttling": "simulate (Lighthouse default for desktop)",
+          "screenEmulation": "1350x940@1",
+          "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+          "chromeFlags": "--headless=new --no-first-run",
+          "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+        }
+      }
+    ],
+    "thresholds": [
+      {
+        "measure": "accessibility",
+        "formFactor": "mobile",
+        "value": 87,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "performance",
+        "formFactor": "mobile",
+        "value": 26,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "seo",
+        "formFactor": "mobile",
+        "value": 82,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "bestPractices",
+        "formFactor": "mobile",
+        "value": 65,
+        "threshold": ">=80 (preferably >=90)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "largestContentfulPaint",
+        "formFactor": "mobile",
+        "value": 24402,
+        "threshold": "<=2.5s (2500 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "firstContentfulPaint",
+        "formFactor": "mobile",
+        "value": 5493,
+        "threshold": "<=1.8s (1800 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "accessibility",
+        "formFactor": "desktop",
+        "value": 77,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "performance",
+        "formFactor": "desktop",
+        "value": 23,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "seo",
+        "formFactor": "desktop",
+        "value": 82,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "bestPractices",
+        "formFactor": "desktop",
+        "value": 65,
+        "threshold": ">=80 (preferably >=90)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "largestContentfulPaint",
+        "formFactor": "desktop",
+        "value": 6085,
+        "threshold": "<=2.5s (2500 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "firstContentfulPaint",
+        "formFactor": "desktop",
+        "value": 1913,
+        "threshold": "<=1.8s (1800 ms)",
+        "meetsUnderLocalConditions": false
+      }
+    ],
+    "thresholdSource": {
+      "tier": "docs",
+      "sourceUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+      "retrievedOn": "2026-07-11"
+    }
+  },
+  "tdraChecklist": {
+    "source": {
+      "version": "2.0",
+      "published": "2023-09-26",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://designsystem.gov.ae/assets/files/tdra_dls-assessmentcriteria-2023_version2_0.xlsx",
+        "pageUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+        "retrievedOn": "2026-07-11",
+        "trust": "docs-sourced from designsystem.gov.ae — provisional, needs revalidation against the live page before each release; TDRA updates the checklist with design-system releases"
+      },
+      "wcagBaseline": "WCAG 2.1 AA (workbook item 3.12)"
+    },
+    "machineCheckedItems": [
+      {
+        "id": "3.2",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Have you built your frontend using TailwindCSS classes?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.4",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Is your frontend code structurally hierarchical using the accurate placement of <h1> to <h6> tags?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "heading-order",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Heading levels should only increase by one",
+            "fix": "Fix any of the following:\n  Heading order invalid",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=axeAPI",
+            "tags": [
+              "cat.semantics",
+              "best-practice"
+            ],
+            "targets": [
+              ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt > h5",
+              ".swiper-slide-next > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5"
+            ],
+            "nodeCount": 5
+          },
+          {
+            "engine": "axe",
+            "ruleId": "page-has-heading-one",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Page should contain a level-one heading",
+            "fix": "Fix all of the following:\n  Page must have a level-one heading",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=axeAPI",
+            "tags": [
+              "cat.semantics",
+              "best-practice"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.6",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Are you using components and block code as mentioned in the design system?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dls-class-identity",
+            "severity": "minor",
+            "confidence": "docs",
+            "message": "Classes not seen in any official docs example (cannot verify — may be valid Tailwind/DLS token utilities): Hide, JobBackgroundImage, JobBackgroundImageAr, M-T, Mediaimg, MediaimgAr, Miningimg, MiningimgAr, MrBotLogo, MrHeaderCloseBtn, MrMUIHeaderDiv, MrMUIIconsNoInvert, MrMUIUlContainer, MrMuiprevent-select, MrResetToolsBtn, MrleftRightBtn, NMm5M, RIGHT_BOTTOM, Shake-Icon, VIpgJd-ZVi9od-ORHb-OEVmcd, VIpgJd-ZVi9od-aZ2wEe, VIpgJd-ZVi9od-aZ2wEe-Jt5cK, VIpgJd-ZVi9od-aZ2wEe-OiiCO, VIpgJd-ZVi9od-aZ2wE… (truncated)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-primary\" id=\"continueBtn\" style=\"\n    background: #b5986b",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-danger\" style=\"background-color: #c3b7b7;\" id=\"cancelBtn\"",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnAccept\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnReject\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"ib-button-messaging\" class=\"lc-widget-button RIGHT_BOTTOM lc-visible",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-not-used",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "No AEGOV Design Language System components detected on this page (zero aegov-* classes) — the UI appears hand-rolled or built on a third-party framework. The standard requires official DLS components and tokens over hand-rolled equivalents. Review whether this page is in scope for the DLS.",
+            "fix": "Adopt @aegov/design-system components and tokens for the page's UI.",
+            "helpUrl": "https://designsystem.gov.ae/",
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.10",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Are you adding accurate aria attributes to form elements and labels?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.12",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Have you tested your frontend code to be AA Level compliant with WCAG 2.1",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "color-contrast",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fix": "Fix any of the following:\n  Element has insufficient color contrast of 2.88 (foreground color: #9e978f, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "targets": [
+              "#english",
+              "#slick-slide00 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+              "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .heading",
+              "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+              "#slick-slide02 > .card > .item > .blog-entry > .text.border.border-top-0 > p",
+              "#slick-slide02 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+              ".btn-learn-head.mt-3[href$=\"News\"]",
+              "a[href$=\"sitemap\"] > .ft-span",
+              "a[href$=\"Contactus\"] > .ft-span",
+              "a[href$=\"help\"] > .ft-span"
+            ],
+            "nodeCount": 16
+          },
+          {
+            "engine": "axe",
+            "ruleId": "image-alt",
+            "severity": "critical",
+            "confidence": "external",
+            "message": "Images must have alternative text",
+            "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+            "tags": [
+              "cat.text-alternatives",
+              "wcag2a",
+              "wcag111",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT7.a",
+              "TT7.b",
+              "EN-301-549",
+              "EN-9.1.1.1",
+              "ACT",
+              "RGAAv4",
+              "RGAA-1.1.1"
+            ],
+            "targets": [
+              ".ar-logo-1",
+              "a[title=\"\"] > img",
+              ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+              "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+              "#myBtn2 > .bx-icons",
+              ".slider > img",
+              "#slick-slide00 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+              "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+            ],
+            "nodeCount": 35
+          },
+          {
+            "engine": "axe",
+            "ruleId": "link-name",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Links must have discernible text",
+            "fix": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-name?application=axeAPI",
+            "tags": [
+              "cat.name-role-value",
+              "wcag2a",
+              "wcag244",
+              "wcag412",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT6.a",
+              "EN-301-549",
+              "EN-9.2.4.4",
+              "EN-9.4.1.2",
+              "ACT",
+              "RGAAv4",
+              "RGAA-6.2.1"
+            ],
+            "targets": [
+              "a[title=\"\"]",
+              "a[href$=\"#popup1\"]",
+              "#myBtn2",
+              ".wtsapp-btn",
+              "a[href$=\"en#/\"]"
+            ],
+            "nodeCount": 5
+          },
+          {
+            "engine": "axe",
+            "ruleId": "scrollable-region-focusable",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Scrollable region must have keyboard access",
+            "fix": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=axeAPI",
+            "tags": [
+              "cat.keyboard",
+              "wcag2a",
+              "wcag211",
+              "wcag213",
+              "TTv5",
+              "TT4.a",
+              "EN-301-549",
+              "EN-9.2.1.1",
+              "EN-9.2.1.3",
+              "RGAAv4",
+              "RGAA-7.3.2"
+            ],
+            "targets": [
+              ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt"
+            ],
+            "nodeCount": 4
+          }
+        ]
+      },
+      {
+        "id": "3.24",
+        "category": "Frontend",
+        "subCategory": "Blocks",
+        "question": "Have you used the login block as described with UAE Pass as the primary login method?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.26",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the Doctype HTML5 on the top of all pages?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.27",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the charset declared as UTF-8?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.28",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the viewport declared accurately?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.32",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Are you using \"rel=canonical\" to avoid duplicate content page indexing?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-canonical",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "No rel=canonical link — review whether duplicate-content indexing is possible on this page.",
+            "fix": "Add <link rel=\"canonical\" href=\"…\"> when the same content is reachable under several URLs.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.33",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured adding the \"direction\" attribute to your body tag according to your language?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات الشركات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"ستكشف مجموعة خدمات الشركة المقدمة من قبل منظمتنا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات النقليات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"اختر الخيار المخصص لاستكشاف خدمات النقل الشاملة لدينا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"دليل الخدمات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"نتقل إلى دليل خدماتنا واختر الخدمة التي تناسب احتياجاتك بشكل\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات للأفراد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "meta-dir",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "No direction attribute on the document although Arabic content/language is present — RTL is first-class in the standard.",
+            "fix": "Set dir=\"rtl\" on the Arabic version and dir=\"ltr\" on the English version.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.34",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured added the \"lang\" attribute to your HTML tag based on your language?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-lang-mismatch",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "The document declares lang=\"en\" but the visible text is predominantly Arabic (82% Arabic script) — the declared language must match the content.",
+            "fix": "Serve the Arabic variant with <html lang=\"ar\" dir=\"rtl\"> (and the English variant with lang=\"en\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.35",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured all pages list the alternate language tag?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-alternate",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "No alternate-language link tags (<link rel=\"alternate\" hreflang=…>) — pages should list their other-language version.",
+            "fix": "Add hreflang alternate links on every page of both language versions.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.48",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Are all images dynamically adding an alt tag that is meaningful to the image?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "image-alt",
+            "severity": "critical",
+            "confidence": "external",
+            "message": "Images must have alternative text",
+            "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+            "tags": [
+              "cat.text-alternatives",
+              "wcag2a",
+              "wcag111",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT7.a",
+              "TT7.b",
+              "EN-301-549",
+              "EN-9.1.1.1",
+              "ACT",
+              "RGAAv4",
+              "RGAA-1.1.1"
+            ],
+            "targets": [
+              ".ar-logo-1",
+              "a[title=\"\"] > img",
+              ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+              "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+              "#myBtn2 > .bx-icons",
+              ".slider > img",
+              "#slick-slide00 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+              "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+            ],
+            "nodeCount": 35
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"ar-logo-1\" src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo f",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo-right.png\" style=\"w",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"plub-icon\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Gro (×2 occurrences)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/A-.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/Aplus.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/tab new.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Path",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Grou (×2 occurrences)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/manara.png\" style=\"wi",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/icon/Group 11901.svg\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "…and 67 more occurrence(s) of this rule across 27 further distinct instance(s) — the 10 above are a sample, not the full extent.",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 67
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt-placeholder",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "alt=\"Image Placeholder\" on 16 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+            "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "img-alt"
+            ],
+            "targets": [
+              "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+            ],
+            "nodeCount": 16
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt-placeholder",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "alt=\"Alternate Text\" on 6 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+            "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "img-alt"
+            ],
+            "targets": [
+              "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+            ],
+            "nodeCount": 6
+          }
+        ]
+      }
+    ],
+    "humanReviewCount": 111,
+    "totalItems": 125,
+    "note": "Mizan machine-checks 14 of 125 checklist items (fully or partially). \"No automated findings\" covers the machine-checkable subset only — it is NOT a pass; the remaining items are process/design questions a human answers."
+  },
+  "findings": [
+    {
+      "engine": "axe",
+      "ruleId": "color-contrast",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Elements must meet minimum color contrast ratio thresholds",
+      "fix": "Fix any of the following:\n  Element has insufficient color contrast of 2.88 (foreground color: #9e978f, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "targets": [
+        "#english",
+        "#slick-slide00 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+        "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .heading",
+        "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+        "#slick-slide02 > .card > .item > .blog-entry > .text.border.border-top-0 > p",
+        "#slick-slide02 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+        ".btn-learn-head.mt-3[href$=\"News\"]",
+        "a[href$=\"sitemap\"] > .ft-span",
+        "a[href$=\"Contactus\"] > .ft-span",
+        "a[href$=\"help\"] > .ft-span"
+      ],
+      "nodeCount": 16
+    },
+    {
+      "engine": "axe",
+      "ruleId": "heading-order",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Heading levels should only increase by one",
+      "fix": "Fix any of the following:\n  Heading order invalid",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt > h5",
+        ".swiper-slide-next > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "image-alt",
+      "severity": "critical",
+      "confidence": "external",
+      "message": "Images must have alternative text",
+      "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "TT7.b",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "targets": [
+        ".ar-logo-1",
+        "a[title=\"\"] > img",
+        ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+        ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+        ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+        "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+        "#myBtn2 > .bx-icons",
+        ".slider > img",
+        "#slick-slide00 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+        "#slick-slide01 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+      ],
+      "nodeCount": 35
+    },
+    {
+      "engine": "axe",
+      "ruleId": "landmark-unique",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "fix": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-unique?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        ".ftco_navbar"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "axe",
+      "ruleId": "link-name",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Links must have discernible text",
+      "fix": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-name?application=axeAPI",
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-6.2.1"
+      ],
+      "targets": [
+        "a[title=\"\"]",
+        "a[href$=\"#popup1\"]",
+        "#myBtn2",
+        ".wtsapp-btn",
+        "a[href$=\"en#/\"]"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "page-has-heading-one",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Page should contain a level-one heading",
+      "fix": "Fix all of the following:\n  Page must have a level-one heading",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "axe",
+      "ruleId": "region",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "All page content should be contained by landmarks",
+      "fix": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=axeAPI",
+      "tags": [
+        "cat.keyboard",
+        "best-practice",
+        "RGAAv4",
+        "RGAA-9.2.1"
+      ],
+      "targets": [
+        ".box",
+        ".fix-icon",
+        ".cookie-text > p",
+        "#MrAccessInHand",
+        ".lc-eye-catcher-message-bubble"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "scrollable-region-focusable",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Scrollable region must have keyboard access",
+      "fix": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=axeAPI",
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag211",
+        "wcag213",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "EN-9.2.1.3",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "targets": [
+        ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt"
+      ],
+      "nodeCount": 4
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-class-identity",
+      "severity": "minor",
+      "confidence": "docs",
+      "message": "Classes not seen in any official docs example (cannot verify — may be valid Tailwind/DLS token utilities): Hide, JobBackgroundImage, JobBackgroundImageAr, M-T, Mediaimg, MediaimgAr, Miningimg, MiningimgAr, MrBotLogo, MrHeaderCloseBtn, MrMUIHeaderDiv, MrMUIIconsNoInvert, MrMUIUlContainer, MrMuiprevent-select, MrResetToolsBtn, MrleftRightBtn, NMm5M, RIGHT_BOTTOM, Shake-Icon, VIpgJd-ZVi9od-ORHb-OEVmcd, VIpgJd-ZVi9od-aZ2wEe, VIpgJd-ZVi9od-aZ2wEe-Jt5cK, VIpgJd-ZVi9od-aZ2wEe-OiiCO, VIpgJd-ZVi9od-aZ2wE… (truncated)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"ar-logo-1\" src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo f",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo-right.png\" style=\"w",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"plub-icon\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Gro (×2 occurrences)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/A-.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/Aplus.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/tab new.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Path",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Grou (×2 occurrences)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/manara.png\" style=\"wi",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/icon/Group 11901.svg\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "…and 67 more occurrence(s) of this rule across 27 further distinct instance(s) — the 10 above are a sample, not the full extent.",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 67
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-primary\" id=\"continueBtn\" style=\"\n    background: #b5986b",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-danger\" style=\"background-color: #c3b7b7;\" id=\"cancelBtn\"",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnAccept\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnReject\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"ib-button-messaging\" class=\"lc-widget-button RIGHT_BOTTOM lc-visible",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-not-used",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "No AEGOV Design Language System components detected on this page (zero aegov-* classes) — the UI appears hand-rolled or built on a third-party framework. The standard requires official DLS components and tokens over hand-rolled equivalents. Review whether this page is in scope for the DLS.",
+      "fix": "Adopt @aegov/design-system components and tokens for the page's UI.",
+      "helpUrl": "https://designsystem.gov.ae/",
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات الشركات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"ستكشف مجموعة خدمات الشركة المقدمة من قبل منظمتنا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات النقليات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"اختر الخيار المخصص لاستكشاف خدمات النقل الشاملة لدينا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"دليل الخدمات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"نتقل إلى دليل خدماتنا واختر الخدمة التي تناسب احتياجاتك بشكل\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات للأفراد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt-placeholder",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "alt=\"Image Placeholder\" on 16 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+      "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "img-alt"
+      ],
+      "targets": [
+        "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+      ],
+      "nodeCount": 16
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt-placeholder",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "alt=\"Alternate Text\" on 6 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+      "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "img-alt"
+      ],
+      "targets": [
+        "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+      ],
+      "nodeCount": 6
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-canonical",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "No rel=canonical link — review whether duplicate-content indexing is possible on this page.",
+      "fix": "Add <link rel=\"canonical\" href=\"…\"> when the same content is reachable under several URLs.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-dir",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "No direction attribute on the document although Arabic content/language is present — RTL is first-class in the standard.",
+      "fix": "Set dir=\"rtl\" on the Arabic version and dir=\"ltr\" on the English version.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-lang-mismatch",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "The document declares lang=\"en\" but the visible text is predominantly Arabic (82% Arabic script) — the declared language must match the content.",
+      "fix": "Serve the Arabic variant with <html lang=\"ar\" dir=\"rtl\"> (and the English variant with lang=\"en\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-alternate",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "No alternate-language link tags (<link rel=\"alternate\" hreflang=…>) — pages should list their other-language version.",
+      "fix": "Add hreflang alternate links on every page of both language versions.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    }
+  ],
+  "disclaimers": [
+    "Community tool. Not affiliated with or endorsed by TDRA.",
+    "Automated checks cover only a machine-checkable subset of the standard — a clean automated run is NOT compliance and NOT WCAG 2.1/2.2 AA conformance.",
+    "Arabic/RTL parity findings are flags for native-speaker review; Mizan never asserts parity as settled.",
+    "Lighthouse numbers were produced under the run conditions recorded in this report (local machine, simulated throttling) — they are comparable across local runs, not to TDRA's environment.",
+    "This is a private report for the site's own team."
+  ]
+}

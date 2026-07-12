@@ -1,0 +1,44 @@
+{
+  "description": "Five seeded DLS violations: the live docs-drift class, an unknown aegov-* class, a hard-coded inline design value on a component (which also computes to a non-token colour), a button without explicit type, and a check-item missing its input. Accessibility and meta rules must stay quiet.",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "dls-class-identity",
+      "severity": "serious",
+      "minCount": 2
+    },
+    {
+      "ruleId": "dls-token-inline-style",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-token-color",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "dls-button-type",
+      "severity": "moderate"
+    },
+    {
+      "ruleId": "dls-structure-check-item",
+      "severity": "moderate"
+    }
+  ],
+  "forbidden": [
+    "image-alt",
+    "label",
+    "color-contrast",
+    "html-has-lang",
+    "meta-lang",
+    "meta-dir",
+    "meta-viewport",
+    "meta-charset",
+    "meta-doctype",
+    "dls-img-alt",
+    "dls-uaepass-missing",
+    "dls-eid-unmasked",
+    "dls-eid-pattern",
+    "dls-dmy-dates",
+    "dls-not-used"
+  ]
+}

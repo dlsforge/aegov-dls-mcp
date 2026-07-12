@@ -1,0 +1,34 @@
+{
+  "description": "The high-stakes Emirates ID rules plus DMY dates: an unmasked full EID on display, an EID input without the exact validation pattern, and a provably month-first date. Labels are correct, so axe must stay quiet; meta is complete.",
+  "target": "index.html",
+  "expected": [
+    {
+      "ruleId": "dls-eid-unmasked",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-eid-pattern",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-dmy-dates",
+      "severity": "serious"
+    },
+    {
+      "ruleId": "dls-not-used",
+      "severity": "serious"
+    }
+  ],
+  "forbidden": [
+    "label",
+    "image-alt",
+    "color-contrast",
+    "html-has-lang",
+    "meta-lang",
+    "meta-viewport",
+    "meta-charset",
+    "dls-uaepass-missing",
+    "dls-class-identity",
+    "dls-img-alt"
+  ]
+}

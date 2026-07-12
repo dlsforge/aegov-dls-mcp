@@ -40,6 +40,7 @@
     "watch": "tsc --watch",
     "start": "node dist/index.js",
     "test": "node --test \"test/**/*.test.mjs\"",
+    "evals": "node evals/run-evals.mjs",
     "tdra:fetch": "node scripts/fetch-tdra-criteria.mjs",
     "tdra:extract": "node scripts/extract-tdra-criteria.mjs"
   },

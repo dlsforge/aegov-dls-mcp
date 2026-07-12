@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal sign-in</title>
+  <link rel="canonical" href="https://example.gov.ae/login">
+  <link rel="alternate" hreflang="en" href="https://example.gov.ae/login">
+  <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/login">
+</head>
+<body>
+  <header><h1>Sign in to the portal</h1></header>
+  <main>
+    <!-- SEED: a real login surface (password input + sign-in control) with no
+         UAE Pass signal anywhere on the page (dls-uaepass-missing). -->
+    <form action="/session" method="post">
+      <p>
+        <label for="user">Username</label>
+        <input id="user" name="user" type="text" autocomplete="username">
+      </p>
+      <p>
+        <label for="pass">Password</label>
+        <input id="pass" name="pass" type="password" autocomplete="current-password">
+      </p>
+      <button type="submit">Sign in</button>
+    </form>
+  </main>
+  <footer><p>Ministry of Example.</p></footer>
+</body>
+</html>

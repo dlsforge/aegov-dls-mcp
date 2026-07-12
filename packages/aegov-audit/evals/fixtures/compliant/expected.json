@@ -1,0 +1,8 @@
+{
+  "description": "Fully compliant bilingual page pair — token colours only, official classes only, UAE Pass on the login, masked Emirates ID + exact pattern, complete document meta, structural parity. Mizan must stay COMPLETELY quiet: zero findings including the parity pass (no fabricated failures).",
+  "target": "index.html",
+  "parity": "ar.html",
+  "expected": [],
+  "forbidden": [],
+  "maxFindings": 0
+}

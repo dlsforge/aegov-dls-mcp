@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded accessibility defects</title>
+  <link rel="canonical" href="https://example.gov.ae/seeded-a11y">
+  <link rel="alternate" hreflang="en" href="https://example.gov.ae/seeded-a11y">
+  <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/seeded-a11y">
+</head>
+<body>
+  <header><h1>Service page with seeded accessibility defects</h1></header>
+  <main>
+    <!-- SEED 1: image without alternative text (axe image-alt critical + dls-img-alt) -->
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40">
+
+    <!-- SEED 2: CMS-placeholder alt text — passes plain alt checks while
+         conveying nothing (dls-img-alt-placeholder; found live in the
+         step-7 recorded run) -->
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="Alternate Text">
+
+    <!-- SEED 3: form field without any label (axe label critical) -->
+    <form action="/search" method="get">
+      <input type="text" name="q">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- SEED 4: insufficient colour contrast (axe color-contrast serious).
+         Plain element (no aegov class) so the token engine correctly stays out. -->
+    <p style="color:#999999;background-color:#aaaaaa;">Low-contrast supplementary note.</p>
+
+    <p>This page is otherwise well-formed: the checks that should stay quiet, stay quiet.</p>
+  </main>
+  <footer><p>Ministry of Example.</p></footer>
+</body>
+</html>

@@ -27,7 +27,16 @@ export type AuditReport = {
   tool: { name: string; version: string };
   target: string;
   generatedAt: string;
-  page: { status: number; loadMs: number; nodes: number; title: string; lang: string; dir: string };
+  page: {
+    status: number;
+    loadMs: number;
+    nodes: number;
+    title: string;
+    lang: string;
+    dir: string;
+    /** URL after any redirects — differs from target when the site client-redirects. */
+    finalUrl?: string;
+  };
   engines: Record<string, string>;
   runConditions: {
     machine: string;
@@ -145,6 +154,8 @@ export function renderMarkdown(r: AuditReport): string {
   lines.push("");
   lines.push(`> ${r.tool.name}@${r.tool.version} · ${r.generatedAt} · ${r.runConditions.machine}`);
   lines.push(`> Page: HTTP ${r.page.status}, ${r.page.nodes} nodes in ${r.page.loadMs} ms — "${r.page.title}" (lang=${r.page.lang || "unset"} dir=${r.page.dir || "unset"})`);
+  if (r.page.finalUrl && r.page.finalUrl !== r.target)
+    lines.push(`> Final URL after redirects: ${r.page.finalUrl}`);
   lines.push("");
   lines.push(
     `**${r.summary.findingCount} finding(s)** — ${s.critical} critical, ${s.serious} serious, ` +

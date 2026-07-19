@@ -5,3 +5,5 @@ dist/
 .uaepass-cache/
 .claude/settings.local.json
 .tdra-cache/
+# Filled copies of TDRA's workbook embed TDRA's own file — never redistribute
+report.xlsx

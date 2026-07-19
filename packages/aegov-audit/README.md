@@ -13,8 +13,13 @@ Mizan (ميزان — *scale/balance*) is the verification counterpart to [`@dls
 Over the **rendered DOM** (post-JavaScript, with computed styles — so it sees what `validate_snippet` never could):
 
 - **axe-core** — WCAG 2.2 AA machine-checkable success criteria.
-- **Lighthouse** — Performance / Accessibility / SEO / Best-Practices, plus LCP/FCP, evaluated against the verified TDRA thresholds **under documented local run conditions** (see below).
+- **Lighthouse** — Performance / Accessibility / SEO / Best-Practices, plus LCP/FCP, evaluated against the verified TDRA thresholds **under documented local run conditions** (see below). Specific audits also become checklist evidence: render-blocking CSS, unminified CSS/JS, cache policy, third-party impact, and the checklist's own page-weight budgets (≤ 500 KB excluding images, ≤ 4 MB total).
+- **Document & asset checks** — skip-to-content link, favicon variants, theme-colour meta, Open Graph tags, semantic HTML5 landmarks, `rel="noopener"`, icon `aria-hidden`/supporting text, font sourcing, script placement, cookie banner.
+- **Media checks** — `srcset`/`<picture>` responsive images (incl. the hero block), lazy loading, WebP-first delivery, adaptive video hosting.
+- **Origin probes** (http(s) targets) — `sitemap.xml` (robots.txt-aware) and designed 404 error pages (soft-404 and bare-server-default detection).
 - **DLS rules** (the differentiator) — official-component usage vs hand-rolled markup, design-token fidelity, component structure, mandatory **UAE Pass** on any login, **Emirates ID** format `784-NNNN-NNNNNNN-N` with masking + pattern validation, DMY dates, document metadata, and **Arabic/RTL parity** between language variants.
+
+Together these attach direct evidence to **39 of the 125 TDRA checklist items** (fully or partially). The report says exactly which — and marks the rest as needing a human answer; items whose evidence engine didn't run in a given invocation (e.g. Lighthouse without `--lighthouse`) read **"not checked"**, never "no findings".
 
 Every finding carries a severity, the rule, its provenance/confidence tier (`package | docs | heuristic | external`), and a fix.
 
@@ -36,6 +41,14 @@ npx @dlsforge/aegov-audit <url|path> [options]
 --parity [url] Also load the other-language variant (given URL, or discovered via
                <link hreflang>) and flag structural differences for human review.
 --out <dir>    Write report.json + report.md (mirroring the TDRA checklist) into <dir>.
+--format xlsx  Additionally write report.xlsx into --out <dir>: a COPY of TDRA's own
+               assessment workbook with the "Reason" column pre-filled with Mizan's
+               evidence. The "Validate" column is never touched — that self-assessment
+               belongs to the entity, and Mizan never writes "Completed" anywhere.
+--xlsx-template <path>
+               Use a local copy of the TDRA workbook as the template (default: the
+               cached copy, else a fresh download from designsystem.gov.ae — the
+               workbook is TDRA's file and is never shipped inside this package).
 --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                (critical > serious > moderate > minor). Default: none — report only.
 ```
@@ -49,6 +62,10 @@ npx @dlsforge/aegov-audit ./dist/index.html
 # Full reviewer-ready report with Lighthouse and Arabic parity
 npx @dlsforge/aegov-audit https://example.gov.ae/en/service \
   --lighthouse --parity https://example.gov.ae/ar/service --out ./mizan-report
+
+# The same, plus TDRA's own workbook pre-filled with the evidence
+npx @dlsforge/aegov-audit https://example.gov.ae/en/service \
+  --lighthouse --out ./mizan-report --format xlsx
 
 # CI gate: fail the build on any critical finding
 npx @dlsforge/aegov-audit ./dist/index.html --fail-on critical

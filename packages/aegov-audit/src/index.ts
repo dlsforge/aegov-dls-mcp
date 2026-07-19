@@ -37,10 +37,12 @@ import {
   type FailOn,
 } from "./report/types.js";
 import { buildReport, renderMarkdown } from "./report/report.js";
+import { fillWorkbook, resolveTemplate } from "./report/xlsx.js";
 
 const USAGE = `Mizan — AEGOV DLS compliance auditor
 
 Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <dir>]
+                   [--format xlsx [--xlsx-template <path>]]
                    [--fail-on <critical|serious|moderate|minor|none>]
 
   <url|path>     A http(s):// URL or a local HTML file to audit.
@@ -53,6 +55,13 @@ Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <d
                  differences for human review.
   --out <dir>    Write report.json + report.md (shaped to mirror the official
                  TDRA assessment checklist v2.0) into <dir>.
+  --format xlsx  Additionally write report.xlsx into --out <dir>: a COPY of
+                 TDRA's own assessment workbook with the "Reason" column
+                 pre-filled with Mizan's evidence. The "Validate" column is
+                 never touched — that answer belongs to the entity.
+  --xlsx-template <path>
+                 Use a local copy of the TDRA workbook as the template
+                 (default: the cached copy, else a fresh download).
   --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                  (critical > serious > moderate > minor). Default: none —
                  report only. This is what CI (the GitHub Action) keys off.
@@ -106,6 +115,31 @@ if (outIdx !== -1) {
   }
   outDir = args[outIdx + 1];
   consumed.add(outIdx + 1);
+}
+const formatIdx = args.indexOf("--format");
+let wantXlsx = false;
+if (formatIdx !== -1) {
+  const v = args[formatIdx + 1];
+  if (v !== "xlsx") {
+    console.error('aegov-audit: --format supports only "xlsx" (json/md always write with --out)');
+    process.exit(2);
+  }
+  wantXlsx = true;
+  consumed.add(formatIdx + 1);
+  if (outIdx === -1) {
+    console.error("aegov-audit: --format xlsx needs --out <dir> for the output file");
+    process.exit(2);
+  }
+}
+const tplIdx = args.indexOf("--xlsx-template");
+let xlsxTemplate: string | null = null;
+if (tplIdx !== -1) {
+  if (!args[tplIdx + 1] || args[tplIdx + 1].startsWith("--")) {
+    console.error("aegov-audit: --xlsx-template needs a file path");
+    process.exit(2);
+  }
+  xlsxTemplate = args[tplIdx + 1];
+  consumed.add(tplIdx + 1);
 }
 const target = args.find((a, i) => !a.startsWith("--") && !consumed.has(i));
 if (!target || args.includes("--help") || args.includes("-h")) {
@@ -183,6 +217,14 @@ try {
     writeFileSync(resolve(outDir, "report.json"), JSON.stringify(report, null, 2) + "\n");
     writeFileSync(resolve(outDir, "report.md"), renderMarkdown(report));
     console.error(`aegov-audit: wrote ${resolve(outDir, "report.json")} and report.md`);
+    if (wantXlsx) {
+      const template = await resolveTemplate(xlsxTemplate);
+      writeFileSync(resolve(outDir, "report.xlsx"), fillWorkbook(template, report));
+      console.error(
+        `aegov-audit: wrote ${resolve(outDir, "report.xlsx")} — TDRA workbook copy, ` +
+          `"Reason" column pre-filled; "Validate" column untouched (the entity answers it)`,
+      );
+    }
   }
 
   if (json) {

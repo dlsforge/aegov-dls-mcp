@@ -41,9 +41,14 @@ function isXmlSitemap(body: string, contentType: string): boolean {
   );
 }
 
-/** Default server error pages we can recognize as "not designed". */
+/**
+ * Default server error pages we can recognize as "not designed". The IIS
+ * patterns match the real static-404 served by fnrc.gov.ae (found by a blind
+ * cross-check review of the 2026-07-20 recorded run — the earlier signature
+ * list missed IIS's actual wording).
+ */
 const BARE_ERROR_SIGNS =
-  /<center>\s*nginx|<title>\s*404 Not Found\s*<\/title>|Apache\/[\d.]+ (Server )?at |<title>\s*IIS\b|This error page might contain sensitive information/i;
+  /<center>\s*nginx|<title>\s*404 Not Found\s*<\/title>|Apache\/[\d.]+ (Server )?at |<title>\s*IIS\b|This error page might contain sensitive information|404 - File or directory not found|<h1>Server Error<\/h1>|<title>\s*4\d\d - /i;
 
 export async function runHttpChecks(finalUrl: string): Promise<AuditFinding[]> {
   if (!/^https?:/i.test(finalUrl)) return [];

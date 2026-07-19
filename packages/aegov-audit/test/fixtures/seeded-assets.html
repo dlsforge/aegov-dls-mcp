@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded asset/media defects — every Tier B DOM rule should fire</title>
+  <!-- no favicon link, no theme-color, no og:* tags -->
+  <script src="blocking-lib.js"></script>
+  <style>
+    @font-face { font-family: "SelfHosted"; src: url("./fonts/selfhosted.woff2") format("woff2"); }
+    body { font-family: SelfHosted, sans-serif; }
+  </style>
+</head>
+<body>
+  <!-- no skip link, no semantic elements (divs only), no cookie banner -->
+  <div class="topbar">
+    <a href="https://example.org" target="_blank">External (no noopener)</a>
+    <!-- icon-only button, no aria-label / sr-only text -->
+    <button class="search-toggle"><svg viewBox="0 0 24 24"><path d="M0 0h24v24H0z"/></svg></button>
+    <!-- decorative icon, not aria-hidden, no title -->
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M8 5l8 7-8 7z"/></svg>
+  </div>
+  <div class="aegov-hero">
+    <img src="hero.jpg" alt="Hero without picture/srcset">
+  </div>
+  <div class="grid">
+    <img src="one.jpg" alt="one">
+    <img src="two.png" alt="two">
+    <img src="three.jpg" alt="three">
+    <img src="four.png" alt="four">
+  </div>
+  <div class="player">
+    <video controls src="movie.mp4"></video>
+  </div>
+</body>
+</html>

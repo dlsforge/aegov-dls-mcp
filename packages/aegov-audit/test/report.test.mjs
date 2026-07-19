@@ -78,10 +78,25 @@ describe("TDRA checklist mirror", () => {
     const view = buildChecklistView([]);
     assert.deepEqual(
       view.machineCheckedItems.map((i) => i.id),
-      ["3.2", "3.4", "3.6", "3.10", "3.12", "3.24", "3.26", "3.27", "3.28", "3.32", "3.33", "3.34", "3.35", "3.48"],
+      // prettier-ignore
+      ["2.35", "2.42", "3.2", "3.4", "3.6", "3.8", "3.9", "3.10", "3.12", "3.23", "3.24", "3.26", "3.27",
+       "3.28", "3.30", "3.31", "3.32", "3.33", "3.34", "3.35", "3.36", "3.37", "3.38", "3.39", "3.41",
+       "3.43", "3.46", "3.47", "3.48", "3.49", "3.50", "3.51", "3.52", "3.53", "3.54", "3.57", "3.58",
+       "3.59", "3.64"],
       "the curated machine-checkable set — update deliberately when a new engine lands",
     );
-    assert.ok(view.machineCheckedItems.every((i) => i.status === "no-automated-findings"));
+    // Without a Lighthouse run or an http(s) target, the items evidenced only
+    // by those engines are "not-checked"; everything else ran and reads
+    // "no-automated-findings". Neither is a pass.
+    const notRun = new Set([
+      "3.43", "3.46", "3.47", "3.53", "3.54", "3.58", // lighthouse-only
+      "2.42", "3.38", "3.64", // http-probe-only
+    ]);
+    assert.ok(
+      view.machineCheckedItems.every(
+        (i) => i.status === (notRun.has(i.id) ? "not-checked" : "no-automated-findings"),
+      ),
+    );
     assert.match(view.note, /NOT a pass/);
     assert.equal(view.totalItems, 125);
     assert.equal(view.humanReviewCount + view.machineCheckedItems.length, 125);

@@ -26,6 +26,33 @@ export const LIGHTHOUSE_VERSION: string = lhPkg.version;
 
 export type FormFactor = "mobile" | "desktop";
 
+/**
+ * The audit ids Stage 2B reads for TDRA checklist evidence (items 3.43, 3.46,
+ * 3.47, 3.53, 3.54, 3.58). Verified against the INSTALLED Lighthouse — v13
+ * replaced the legacy audits (render-blocking-resources, uses-long-cache-ttl,
+ * third-party-summary) with *-insight ids, and dropped offscreen-images
+ * entirely (3.50 is a DOM check instead). Re-verify on every Lighthouse bump.
+ */
+export const PICKED_AUDIT_IDS = [
+  "render-blocking-insight",
+  "unminified-css",
+  "unminified-javascript",
+  "cache-insight",
+  "total-byte-weight",
+  "resource-summary",
+  "third-parties-insight",
+] as const;
+
+export type PickedAudit = {
+  id: string;
+  score: number | null;
+  scoreDisplayMode: string;
+  numericValue: number | null;
+  displayValue: string | null;
+  /** resource-summary only: resourceType → transferSize (bytes). */
+  resourceSizes?: Record<string, number>;
+};
+
 export type LighthouseScores = {
   formFactor: FormFactor;
   /** 0-100 per category, null when Lighthouse could not score it. */
@@ -40,6 +67,8 @@ export type LighthouseScores = {
     largestContentfulPaintMs: number | null;
     firstContentfulPaintMs: number | null;
   };
+  /** Subset of lhr.audits used for checklist evidence (keyed by audit id). */
+  audits: Record<string, PickedAudit>;
   runConditions: {
     lighthouseVersion: string;
     formFactor: FormFactor;
@@ -87,6 +116,29 @@ export async function runLighthouse(
     const cats = result.lhr.categories;
     const throttling = result.lhr.configSettings.throttlingMethod;
     const screen = result.lhr.configSettings.screenEmulation;
+    const audits: Record<string, PickedAudit> = {};
+    for (const id of PICKED_AUDIT_IDS) {
+      const a = result.lhr.audits[id];
+      if (!a) continue; // absent audit = no evidence, never a guess
+      const picked: PickedAudit = {
+        id,
+        score: typeof a.score === "number" ? a.score : null,
+        scoreDisplayMode: a.scoreDisplayMode,
+        numericValue: typeof a.numericValue === "number" ? a.numericValue : null,
+        displayValue: a.displayValue ?? null,
+      };
+      if (id === "resource-summary") {
+        const items = (a.details as { items?: Array<Record<string, unknown>> } | undefined)?.items;
+        if (Array.isArray(items)) {
+          picked.resourceSizes = {};
+          for (const row of items) {
+            if (typeof row.resourceType === "string" && typeof row.transferSize === "number")
+              picked.resourceSizes[row.resourceType] = row.transferSize;
+          }
+        }
+      }
+      audits[id] = picked;
+    }
     return {
       formFactor,
       scores: {
@@ -103,6 +155,7 @@ export async function runLighthouse(
           (result.lhr.audits["first-contentful-paint"]?.numericValue as number | undefined) ??
           null,
       },
+      audits,
       runConditions: {
         lighthouseVersion: LIGHTHOUSE_VERSION,
         formFactor,

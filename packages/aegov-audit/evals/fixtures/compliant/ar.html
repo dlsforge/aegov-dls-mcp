@@ -10,6 +10,12 @@
   <link rel="canonical" href="https://example.gov.ae/ar/services">
   <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/services">
   <link rel="alternate" hreflang="en" href="https://example.gov.ae/services">
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACw=" sizes="any">
+  <link rel="apple-touch-icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+  <meta name="theme-color" content="#0a2540">
+  <meta property="og:title" content="وزارة المثال — الخدمات">
+  <meta property="og:description" content="قدّم طلب شهادة الخدمة عبر الإنترنت.">
+  <meta property="og:image" content="https://example.gov.ae/share.webp">
   <style>
     body { color: oklch(0.169 0.006 271.0); margin: 0; font-family: system-ui, sans-serif; }
     header, main, footer { padding: 1rem 2rem; }
@@ -21,9 +27,12 @@
     }
     .aegov-card { border: 1px solid oklch(0.230 0.008 264.4); border-radius: 0.5rem; padding: 1rem; margin: 1rem 0; }
     .aegov-check-item { display: flex; gap: 0.5rem; margin: 1rem 0; }
+    body > a[href="#main"] { position: absolute; inset-inline-start: -9999px; }
+    body > a[href="#main"]:focus { inset-inline-start: 1rem; }
   </style>
 </head>
 <body>
+  <a href="#main">تخطي إلى المحتوى</a>
   <header>
     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="شعار وزارة المثال">
     <nav aria-label="رئيسي">
@@ -34,7 +43,7 @@
     </nav>
     <a class="aegov-btn" href="https://id.uaepass.ae/authorize">تسجيل الدخول بالهوية الرقمية UAE PASS</a>
   </header>
-  <main>
+  <main id="main">
     <h1>طلب شهادة خدمة</h1>
     <p>قدّم طلبك عبر الإنترنت. تكتمل المعالجة خلال 3 أيام عمل.
        يُغلق باب التقديم في 25/12/2026.</p>
@@ -58,6 +67,10 @@
   <footer>
     <h2>وزارة المثال</h2>
     <p>جهة حكومية اتحادية في دولة الإمارات العربية المتحدة.</p>
+    <div id="cookie-banner" role="region" aria-label="إشعار ملفات تعريف الارتباط">
+      <p>نستخدم ملفات تعريف الارتباط لتحسين هذه الخدمة.</p>
+      <button class="aegov-btn" type="button">قبول ملفات تعريف الارتباط</button>
+    </div>
   </footer>
 </body>
 </html>

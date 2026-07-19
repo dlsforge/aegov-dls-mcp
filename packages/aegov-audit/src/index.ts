@@ -22,9 +22,13 @@ import { runTokenFidelity } from "./engines/tokens.js";
 import { runStructureChecks } from "./engines/structure.js";
 import { runUaePassCheck } from "./engines/uaepass.js";
 import { runMetaChecks } from "./engines/meta.js";
+import { runAssetChecks } from "./engines/assets.js";
+import { runMediaChecks } from "./engines/media.js";
+import { runHttpChecks } from "./engines/http.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { settleNavigation } from "./engines/settle.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
+import { deriveLighthouseFindings } from "./engines/lighthouse-findings.js";
 import {
   countAtOrAbove,
   countBySeverity,
@@ -141,6 +145,9 @@ try {
     ...(await runStructureChecks(page)),
     ...(await runUaePassCheck(page)),
     ...(await runMetaChecks(page)),
+    ...(await runAssetChecks(page)),
+    ...(await runMediaChecks(page)),
+    ...(await runHttpChecks(finalUrl)),
   ];
   if (withParity) {
     const alternate = parityUrl ?? (await discoverAlternate(page));
@@ -152,8 +159,6 @@ try {
       dlsFindings.push(...(await runParityCheck(browser, page, targetToUrl(alternate))));
     }
   }
-  const findings = [...axeFindings, ...dlsFindings];
-
   let lighthouse: LighthouseScores[] | null = null;
   if (withLighthouse) {
     if (!/^https?:/.test(url)) {
@@ -162,6 +167,8 @@ try {
       lighthouse = await runLighthouseBoth(url);
     }
   }
+  const lighthouseFindings = lighthouse ? deriveLighthouseFindings(lighthouse) : [];
+  const findings = [...axeFindings, ...dlsFindings, ...lighthouseFindings];
 
   const report = buildReport({
     target: url,
@@ -224,6 +231,12 @@ try {
         "  Scores are evaluated against the verified TDRA thresholds under LOCAL run " +
           "conditions (see the report) — not comparable to TDRA's environment.",
       );
+      if (lighthouseFindings.length) {
+        console.log(`  ${lighthouseFindings.length} checklist finding(s) derived from audits:`);
+        for (const f of lighthouseFindings) {
+          console.log(`  [${f.severity}|${f.confidence}] ${f.ruleId} — ${f.message}`);
+        }
+      }
     }
     const c = report.tdraChecklist;
     const flagged = c.machineCheckedItems.filter((i) => i.status === "findings");

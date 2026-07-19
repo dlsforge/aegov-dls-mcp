@@ -7,7 +7,7 @@
       "tier": "docs",
       "sourceUrl": "https://designsystem.gov.ae/assets/files/tdra_dls-assessmentcriteria-2023_version2_0.xlsx",
       "pageUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
-      "retrievedOn": "2026-07-11",
+      "retrievedOn": "2026-07-19",
       "trust": "docs-sourced from designsystem.gov.ae — provisional, needs revalidation against the live page before each release; TDRA updates the checklist with design-system releases"
     },
     "pageStatedThresholds": {
@@ -28,7 +28,7 @@
       "provenance": {
         "tier": "docs",
         "sourceUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
-        "retrievedOn": "2026-07-11"
+        "retrievedOn": "2026-07-19"
       }
     },
     "wcagBaseline": "WCAG 2.1 AA (workbook item 3.12)"

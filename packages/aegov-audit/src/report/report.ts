@@ -114,6 +114,8 @@ export function buildReport(input: {
   engines: Record<string, string>;
   findings: AuditFinding[];
   lighthouse: LighthouseScores[] | null;
+  /** Whether the origin HTTP probes ran (http(s) targets only). Default: from the target scheme. */
+  httpRan?: boolean;
 }): AuditReport {
   const byEngine: Record<string, number> = {};
   for (const f of input.findings) byEngine[f.engine] = (byEngine[f.engine] ?? 0) + 1;
@@ -140,7 +142,10 @@ export function buildReport(input: {
           thresholdSource: loadTdraCriteria().meta.pageStatedThresholds.provenance,
         }
       : null,
-    tdraChecklist: buildChecklistView(input.findings),
+    tdraChecklist: buildChecklistView(input.findings, {
+      lighthouseRan: input.lighthouse !== null,
+      httpRan: input.httpRan ?? /^https?:/i.test(input.target),
+    }),
     findings: input.findings,
     disclaimers: DISCLAIMERS,
   };
@@ -198,11 +203,13 @@ export function renderMarkdown(r: AuditReport): string {
       lines.push(`### ${section}`);
       lines.push("");
     }
-    const mark = item.status === "findings" ? "✗" : "•";
+    const mark = item.status === "findings" ? "✗" : item.status === "not-checked" ? "○" : "•";
     const status =
       item.status === "findings"
         ? `${item.findings.length} finding(s)`
-        : "no automated findings (subset only — not a pass)";
+        : item.status === "not-checked"
+          ? "not checked in this run (needs --lighthouse and/or an http(s) target)"
+          : "no automated findings (subset only — not a pass)";
     lines.push(`- **${mark} ${item.id}** ${item.question}`);
     lines.push(`  - ${status}`);
     for (const f of item.findings.slice(0, 5)) {

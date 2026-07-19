@@ -7,6 +7,12 @@
   <link rel="canonical" href="https://example.gov.ae/services">
   <link rel="alternate" hreflang="en" href="https://example.gov.ae/services">
   <link rel="alternate" hreflang="ar" href="https://example.gov.ae/ar/services">
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACw=" sizes="any">
+  <link rel="apple-touch-icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+  <meta name="theme-color" content="#0a2540">
+  <meta property="og:title" content="Ministry of Example — Services">
+  <meta property="og:description" content="Apply for a service certificate online.">
+  <meta property="og:image" content="https://example.gov.ae/share.webp">
   <style>
     /* Every colour below is an exact DLS token value (catalog.json) — the
        token-fidelity engine must stay silent on this page. */
@@ -20,9 +26,12 @@
     }
     .aegov-card { border: 1px solid oklch(0.230 0.008 264.4); border-radius: 0.5rem; padding: 1rem; margin: 1rem 0; }
     .aegov-check-item { display: flex; gap: 0.5rem; margin: 1rem 0; }
+    body > a[href="#main"] { position: absolute; inset-inline-start: -9999px; }
+    body > a[href="#main"]:focus { inset-inline-start: 1rem; }
   </style>
 </head>
 <body>
+  <a href="#main">Skip to content</a>
   <header>
     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="Emblem of the Ministry of Example">
     <nav aria-label="Main">
@@ -33,7 +42,7 @@
     </nav>
     <a class="aegov-btn" href="https://id.uaepass.ae/authorize">Log in with UAE PASS</a>
   </header>
-  <main>
+  <main id="main">
     <h1>Apply for a service certificate</h1>
     <p>Submit your application online. Processing completes within 3 working days.
        Applications close on 25/12/2026.</p>
@@ -57,6 +66,10 @@
   <footer>
     <h2>Ministry of Example</h2>
     <p>Federal government entity of the United Arab Emirates.</p>
+    <div id="cookie-banner" role="region" aria-label="Cookie notice">
+      <p>We use cookies to improve this service.</p>
+      <button class="aegov-btn" type="button">Accept cookies</button>
+    </div>
   </footer>
 </body>
 </html>

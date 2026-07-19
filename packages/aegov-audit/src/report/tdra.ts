@@ -83,7 +83,52 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   "image-alt": ["3.48"],
   "html-has-lang": ["3.34"],
   "html-lang-valid": ["3.34"],
+  // Lighthouse-derived rules (Stage 2B Tier A) — evidence exists only when
+  // --lighthouse ran; buildChecklistView marks these "not-checked" otherwise.
+  "lh-render-blocking": ["3.43"],
+  "lh-unminified-css": ["3.46"],
+  "lh-unminified-javascript": ["3.46"],
+  "lh-cache-policy": ["3.47"],
+  "lh-page-weight-no-images": ["3.53"],
+  "lh-page-weight-total": ["3.54"],
+  "lh-third-party": ["3.58"],
+  // Document/asset DOM rules (Stage 2B Tier B)
+  "dom-skip-link": ["2.35"],
+  "dom-icon-aria-hidden": ["3.8"],
+  "dom-icon-no-text": ["3.9"],
+  "dom-favicon": ["3.30"],
+  "dom-theme-color": ["3.31"],
+  "dom-og-tags": ["3.36"],
+  "dom-semantic-tags": ["3.37"],
+  "dom-noopener": ["3.39"],
+  "dom-selfhosted-fonts": ["3.41"],
+  "dom-blocking-script-head": ["3.57"],
+  "dom-cookie-banner": ["3.59"],
+  // Media DOM rules (Stage 2B Tier B)
+  "dom-hero-no-picture": ["3.23"],
+  "dom-no-srcset": ["3.49"],
+  "dom-no-lazy-loading": ["3.50"],
+  "dom-no-webp": ["3.51"],
+  "dom-selfhosted-video": ["3.52"],
+  // Origin HTTP probes (Stage 2B Tier B) — evidence exists only for http(s)
+  // targets; buildChecklistView marks these "not-checked" for local files.
+  "http-error-page": ["2.42", "3.38"],
+  "http-sitemap": ["3.64"],
 };
+
+/**
+ * Items whose ONLY evidence source carries the given rule-id prefix — these
+ * flip to "not-checked" when that evidence engine did not run.
+ */
+function itemsOnlyEvidencedBy(prefix: string): Set<string> {
+  const prefixed = new Set<string>();
+  const other = new Set<string>();
+  for (const [rule, items] of Object.entries(RULE_TO_ITEMS)) {
+    for (const id of items) (rule.startsWith(prefix) ? prefixed : other).add(id);
+  }
+  other.add("3.12"); // axe WCAG gate
+  return new Set([...prefixed].filter((id) => !other.has(id)));
+}
 
 /** Every WCAG-tagged axe finding also evidences item 3.12 (WCAG AA gate). */
 function itemsForFinding(f: AuditFinding): string[] {
@@ -97,7 +142,12 @@ export type ChecklistItemView = {
   category: string | null;
   subCategory: string | null;
   question: string;
-  status: "findings" | "no-automated-findings";
+  /**
+   * "not-checked" = the item's only evidence engine did not run this time
+   * (today: Lighthouse-only items without --lighthouse). Never conflate with
+   * "no-automated-findings", which means the engine ran and found nothing.
+   */
+  status: "findings" | "no-automated-findings" | "not-checked";
   findings: AuditFinding[];
 };
 
@@ -121,7 +171,10 @@ export function machineCheckableIds(): Set<string> {
   return ids;
 }
 
-export function buildChecklistView(findings: AuditFinding[]): ChecklistView {
+export function buildChecklistView(
+  findings: AuditFinding[],
+  opts: { lighthouseRan?: boolean; httpRan?: boolean } = {},
+): ChecklistView {
   const criteria = loadTdraCriteria();
   const byItem = new Map<string, AuditFinding[]>();
   for (const f of findings) {
@@ -130,6 +183,10 @@ export function buildChecklistView(findings: AuditFinding[]): ChecklistView {
     }
   }
   const checkable = machineCheckableIds();
+  const notChecked = new Set<string>([
+    ...(opts.lighthouseRan ? [] : itemsOnlyEvidencedBy("lh-")),
+    ...(opts.httpRan ? [] : itemsOnlyEvidencedBy("http-")),
+  ]);
   const machineCheckedItems: ChecklistItemView[] = criteria.items
     .filter((i) => checkable.has(i.id))
     .map((i) => ({
@@ -137,7 +194,11 @@ export function buildChecklistView(findings: AuditFinding[]): ChecklistView {
       category: i.category,
       subCategory: i.subCategory,
       question: i.question,
-      status: byItem.has(i.id) ? ("findings" as const) : ("no-automated-findings" as const),
+      status: byItem.has(i.id)
+        ? ("findings" as const)
+        : notChecked.has(i.id)
+          ? ("not-checked" as const)
+          : ("no-automated-findings" as const),
       findings: byItem.get(i.id) ?? [],
     }));
   return {
@@ -153,6 +214,8 @@ export function buildChecklistView(findings: AuditFinding[]): ChecklistView {
     note:
       `Mizan machine-checks ${machineCheckedItems.length} of ${criteria.items.length} checklist ` +
       `items (fully or partially). "No automated findings" covers the machine-checkable subset ` +
-      `only — it is NOT a pass; the remaining items are process/design questions a human answers.`,
+      `only — it is NOT a pass; the remaining items are process/design questions a human answers. ` +
+      `Items marked "not checked" had no evidence engine in this run (they need --lighthouse ` +
+      `and/or an http(s) target for the origin probes).`,
   };
 }

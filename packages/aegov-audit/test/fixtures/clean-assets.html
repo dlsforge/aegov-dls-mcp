@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clean asset/media fixture — no Tier B DOM rule may fire (false-positive gate)</title>
+  <link rel="icon" href="favicon.svg" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#092f4e">
+  <meta property="og:title" content="Clean fixture">
+  <meta property="og:description" content="A model page">
+  <meta property="og:image" content="share.webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to content</a>
+  <header>
+    <nav aria-label="Main">
+      <a href="https://example.org" target="_blank" rel="noopener">External</a>
+      <button class="search-toggle" aria-label="Search">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M0 0h24v24H0z"/></svg>
+      </button>
+    </nav>
+  </header>
+  <main id="main">
+    <picture>
+      <source srcset="hero.webp" type="image/webp">
+      <img src="hero.webp" srcset="hero.webp 1x" alt="A calm skyline" loading="lazy">
+    </picture>
+    <img src="chart.webp" srcset="chart.webp 1x" alt="Service statistics" loading="lazy">
+    <iframe src="https://www.youtube.com/embed/xyz" title="Explainer video"></iframe>
+  </main>
+  <footer>
+    <div id="cookieBanner" role="region" aria-label="Cookie notice">
+      We use cookies to improve the service. <button type="button" aria-label="Accept cookies">Accept</button>
+    </div>
+  </footer>
+</body>
+</html>

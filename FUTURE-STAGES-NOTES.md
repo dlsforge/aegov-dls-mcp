@@ -45,6 +45,12 @@ Roughly **80–140 effort-hours** — larger than Stage 1 because it integrates 
 
 ---
 
+## Stage 2B — Mizan Coverage Expansion + TDRA Excel Output (added 2026-07-20)
+
+> Drafted as a full build brief in `STAGE2B-HANDOFF.md` (DRAFT, awaiting Alam's go); that file wins over this note. Intent: grow Mizan's machine-checked TDRA items from 14/125 to ≥50 with deterministic rules only (no LLM — judgment items stay in Studio's lane), and add `--format xlsx` output that fills a copy of TDRA's own assessment workbook with evidence. Exists to strengthen Stage 3's demo package.
+
+---
+
 ## Stage 3 — Recognition & Adoption (not an engineering task)
 
 ### Intent

@@ -137,6 +137,35 @@ describe("origin HTTP probes (local throwaway servers)", () => {
     }
   });
 
+  test("IIS default 404 (as served live by fnrc.gov.ae) flags even above the size threshold", async () => {
+    // Real-world shape: styled-ish IIS default page, > 512 bytes, matched by
+    // signature, not size. Added after a blind review caught the miss.
+    const IIS_404 =
+      '<!DOCTYPE html><html><head><title>404 - File or directory not found.</title>' +
+      "<style>body{font-family:Arial}</style></head><body><div id=\"header\"><h1>Server Error</h1></div>" +
+      '<div id="content"><div class="content-container"><fieldset>' +
+      "<h2>404 - File or directory not found.</h2>" +
+      "<h3>The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.</h3>" +
+      `</fieldset></div></div>${"<!-- pad -->".repeat(30)}</body></html>`;
+    assert.ok(IIS_404.length > 512, "fixture must exceed the bare-size threshold");
+    const srv = await serve((req, resp) => {
+      if (req.url === "/sitemap.xml") {
+        resp.writeHead(200, { "content-type": "application/xml" });
+        resp.end('<?xml version="1.0"?><urlset></urlset>');
+      } else {
+        resp.writeHead(404, { "content-type": "text/html" });
+        resp.end(IIS_404);
+      }
+    });
+    try {
+      const findings = await runHttpChecks(`http://127.0.0.1:${srv.address().port}/`);
+      assert.deepEqual(findings.map((f) => f.ruleId), ["http-error-page"]);
+      assert.match(findings[0].message, /bare server default/);
+    } finally {
+      srv.close();
+    }
+  });
+
   test("bare default 404 page flags as not designed", async () => {
     const srv = await serve((req, resp) => {
       if (req.url === "/sitemap.xml") {

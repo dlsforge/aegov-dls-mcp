@@ -5,6 +5,7 @@
     { "ruleId": "kbd-focus-indicator" },
     { "ruleId": "kbd-region-unreachable" },
     { "ruleId": "ix-zoom-overflow" },
+    { "ruleId": "ix-breakpoint-overflow" },
     { "ruleId": "style-action-gold" }
   ],
   "forbidden": [

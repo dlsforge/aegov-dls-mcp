@@ -23,6 +23,22 @@ import type { AuditFinding } from "../report/types.js";
 const ZOOM_FACTOR = 1.75;
 const MAX_STEPS = 300;
 
+/**
+ * The responsive breakpoints the design system compiles against (checklist
+ * 3.42). Verified 2026-07-22 from the installed toolchain: the DLS plugin
+ * (@aegov/design-system 3.0.7) defines NO screen overrides anywhere in the
+ * package, so the effective breakpoints are Tailwind's — read from
+ * tailwindcss@4.3.1 theme.css (--breakpoint-sm…2xl, rem×16). A drift test
+ * re-checks these against the installed tailwindcss when present.
+ */
+export const DLS_BREAKPOINTS: ReadonlyArray<{ name: string; width: number }> = [
+  { name: "sm", width: 640 },
+  { name: "md", width: 768 },
+  { name: "lg", width: 1024 },
+  { name: "xl", width: 1280 },
+  { name: "2xl", width: 1536 },
+];
+
 export async function runZoomCheck(page: Page): Promise<AuditFinding[]> {
   const vp = page.viewportSize();
   if (!vp) return [];
@@ -60,6 +76,57 @@ export async function runZoomCheck(page: Page): Promise<AuditFinding[]> {
       ];
     }
     return [];
+  } catch {
+    try {
+      await page.setViewportSize(vp);
+    } catch {
+      /* page gone — nothing to restore */
+    }
+    return [];
+  }
+}
+
+/**
+ * Stage 2C — 3.42 (+ partial 3.15): render the page at each design-system
+ * breakpoint and flag clear horizontal overflow. Same conservative overflow
+ * test as the zoom check (>8px), so a fluid layout can never be flagged.
+ */
+export async function runBreakpointCheck(page: Page): Promise<AuditFinding[]> {
+  const vp = page.viewportSize();
+  if (!vp) return [];
+  try {
+    const overflowing: Array<{ name: string; width: number; overflow: number }> = [];
+    for (const bp of DLS_BREAKPOINTS) {
+      await page.setViewportSize({ width: bp.width, height: vp.height });
+      await page.waitForTimeout(350);
+      const overflow = await page.evaluate(() => {
+        const d = document.documentElement;
+        return d.scrollWidth - d.clientWidth;
+      });
+      if (overflow > 8) overflowing.push({ name: bp.name, width: bp.width, overflow });
+    }
+    await page.setViewportSize(vp);
+    await page.waitForTimeout(100);
+    if (!overflowing.length) return [];
+    return [
+      {
+        engine: "dls",
+        ruleId: "ix-breakpoint-overflow",
+        severity: "moderate",
+        confidence: "heuristic",
+        message:
+          `The layout overflows horizontally at ${overflowing.length} of ${DLS_BREAKPOINTS.length} ` +
+          `design-system breakpoints: ` +
+          overflowing.map((o) => `${o.name} (${o.width}px: +${o.overflow}px)`).join(", ") +
+          `. The checklist asks for testing at the design system's responsive breakpoints; ` +
+          `overflow forces two-dimensional scrolling on those screens.`,
+        fix: "Make the layout reflow at every breakpoint (fluid containers, wrapping grids, max-width: 100% media).",
+        helpUrl: null,
+        tags: ["aegov-dls", "interaction", "tier-2c"],
+        targets: overflowing.map((o) => `${o.width}px`),
+        nodeCount: overflowing.length,
+      },
+    ];
   } catch {
     try {
       await page.setViewportSize(vp);

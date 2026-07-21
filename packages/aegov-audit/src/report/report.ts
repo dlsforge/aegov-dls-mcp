@@ -122,6 +122,8 @@ export function buildReport(input: {
   kbdRan?: boolean;
   /** Whether --entity-type ministry was passed (item 2.12). Default false. */
   ministryChecked?: boolean;
+  /** Whether the offline HTML validation obtained the raw source (item 3.40). Default false. */
+  htmlValidateRan?: boolean;
 }): AuditReport {
   const byEngine: Record<string, number> = {};
   for (const f of input.findings) byEngine[f.engine] = (byEngine[f.engine] ?? 0) + 1;
@@ -154,6 +156,7 @@ export function buildReport(input: {
       crawlRan: input.crawlRan ?? false,
       kbdRan: input.kbdRan ?? true,
       ministryChecked: input.ministryChecked ?? false,
+      htmlValidateRan: input.htmlValidateRan ?? false,
     }),
     findings: input.findings,
     disclaimers: DISCLAIMERS,

@@ -1,6 +1,6 @@
 # Stage 2B Handoff — Mizan Coverage Expansion + TDRA Excel Output
 
-> **Status: DRAFT — awaiting Alam's go.**
+> **Status: BUILT.** Tiers A+B + the xlsx writer shipped 2026-07-20 (commits `1c8c4e2`, `914fb51`, coverage 14 → 39). Tiers C+D landed 2026-07-21: coverage is now **53 of 125** (12 Tier C items incl. 2.12 behind `--entity-type ministry`, plus 3.25/3.29 from the Tier D crawl and the 3.35 all-pages upgrade). The §4 stretch items are DEFERRED (see step 4). Remaining: publish `@dlsforge/aegov-audit@0.1.0` (step 7, Alam's credentials).
 >
 > Numbering note: the project's Stage 3 (`FUTURE-STAGES-NOTES.md`) is **Recognition & Adoption** — outreach, not code. This stage is new engineering work that sits between Stage 2 (Mizan v0.0.1, shipped) and Stage 3, so it is named **2B**. It exists to make the Stage-3 demo package dramatically stronger: "Mizan machine-checks 50+ of TDRA's 125 items and hands you back TDRA's own Excel workbook, pre-filled with evidence."
 
@@ -51,6 +51,8 @@ Attach already-collected Lighthouse audits to items: 3.43 (render-blocking), 3.4
 
 **Step 4 — Tier D: small multi-page crawl (~2 new items + upgrades).**
 Crawl a bounded page set (home + linked same-origin pages, capped, polite). 3.29 unique titles/descriptions · 3.35 upgraded from single-page to all-crawled-pages · 3.25 Page Rating block presence (partial: heuristic page classification; full classification is Studio's). **Stretch (may defer):** 3.19–3.22/2.40 header/footer conformance — gated on the docs-sourced block-markup path in rules-core, which does not exist yet. If deferred, say so here and move on; do not hand-wave a weaker check into these items.
+
+> **DEFERRED (2026-07-21):** 3.19–3.22 and 2.40 are NOT in this stage. The docs-sourced block-markup path in rules-core still does not exist, so there is no trustworthy header/footer contract to check against — and per the rule above, no weaker heuristic was substituted. These five items remain human-review rows until that rules-core work lands.
 
 **Step 5 — the Excel writer.**
 `--format xlsx`: take TDRA's workbook (from `--xlsx-template <path>`, else the cached copy, else fresh download), write into a **copy**: per row, finding summaries + evidence for machine-checked items, "No automated findings (checked: …)" for clean machine-checked items, "requires human answer" markers elsewhere. Locate the answer/comment columns by reading the actual workbook at build time (the extract script knows the layout) — do not assume column letters. Warn loudly on version drift vs the reference JSON. **Never ship TDRA's workbook inside the npm package** — fetch or accept it; the cache stays gitignored.

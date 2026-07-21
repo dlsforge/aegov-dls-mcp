@@ -1,0 +1,15 @@
+{
+  "description": "Tier C interaction violations — focus outlines removed with no replacement, a footer whose only control is out of the tab order, and a fixed-width element that overflows at 175% zoom. All three interaction rules must fire through the real CLI.",
+  "target": "index.html",
+  "expected": [
+    { "ruleId": "kbd-focus-indicator" },
+    { "ruleId": "kbd-region-unreachable" },
+    { "ruleId": "ix-zoom-overflow" },
+    { "ruleId": "style-action-gold" }
+  ],
+  "forbidden": [
+    "style-font-family",
+    "style-text-primary",
+    "ministry-palette"
+  ]
+}

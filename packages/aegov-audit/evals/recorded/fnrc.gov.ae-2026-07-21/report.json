@@ -1,0 +1,3974 @@
+{
+  "tool": {
+    "name": "@dlsforge/aegov-audit",
+    "version": "0.0.1"
+  },
+  "target": "https://fnrc.gov.ae",
+  "generatedAt": "2026-07-21T19:05:51.937Z",
+  "page": {
+    "status": 200,
+    "loadMs": 271,
+    "nodes": 1395,
+    "title": "مؤسسة الفجيرة للموارد الطبيعية",
+    "lang": "en",
+    "dir": "(unset)",
+    "finalUrl": "https://fnrc.gov.ae/portal/home/index"
+  },
+  "engines": {
+    "axe": "4.12.1",
+    "dls": "@aegov/design-system@3.0.7"
+  },
+  "runConditions": {
+    "machine": "win32 x64, node v24.16.0",
+    "note": "Local run — see the disclaimers before comparing numbers across environments.",
+    "lighthouse": [
+      {
+        "lighthouseVersion": "13.4.0",
+        "formFactor": "mobile",
+        "throttling": "simulate (Lighthouse default for mobile)",
+        "screenEmulation": "412x823@1.75 mobile",
+        "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "chromeFlags": "--headless=new --no-first-run",
+        "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+      },
+      {
+        "lighthouseVersion": "13.4.0",
+        "formFactor": "desktop",
+        "throttling": "simulate (Lighthouse default for desktop)",
+        "screenEmulation": "1350x940@1",
+        "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "chromeFlags": "--headless=new --no-first-run",
+        "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+      }
+    ]
+  },
+  "summary": {
+    "findingCount": 85,
+    "bySeverity": {
+      "critical": 1,
+      "serious": 20,
+      "moderate": 57,
+      "minor": 7
+    },
+    "byEngine": {
+      "axe": 8,
+      "dls": 73,
+      "lighthouse": 4
+    }
+  },
+  "lighthouse": {
+    "runs": [
+      {
+        "formFactor": "mobile",
+        "scores": {
+          "performance": 27,
+          "accessibility": 87,
+          "bestPractices": 65,
+          "seo": 82
+        },
+        "metrics": {
+          "largestContentfulPaintMs": 19086.154249999985,
+          "firstContentfulPaintMs": 5330.476999999998
+        },
+        "audits": {
+          "render-blocking-insight": {
+            "id": "render-blocking-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          },
+          "unminified-css": {
+            "id": "unminified-css",
+            "score": 0,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 0,
+            "displayValue": "Est savings of 27 KiB"
+          },
+          "unminified-javascript": {
+            "id": "unminified-javascript",
+            "score": 0.5,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 0,
+            "displayValue": "Est savings of 54 KiB"
+          },
+          "cache-insight": {
+            "id": "cache-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          },
+          "total-byte-weight": {
+            "id": "total-byte-weight",
+            "score": 0.5,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 2791249,
+            "displayValue": "Total size was 2,726 KiB"
+          },
+          "resource-summary": {
+            "id": "resource-summary",
+            "score": 1,
+            "scoreDisplayMode": "informative",
+            "numericValue": null,
+            "displayValue": null,
+            "resourceSizes": {
+              "total": 2791249,
+              "image": 1720842,
+              "script": 624352,
+              "font": 247794,
+              "stylesheet": 157558,
+              "document": 39891,
+              "other": 812,
+              "media": 0,
+              "third-party": 526870
+            }
+          },
+          "third-parties-insight": {
+            "id": "third-parties-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          }
+        },
+        "runConditions": {
+          "lighthouseVersion": "13.4.0",
+          "formFactor": "mobile",
+          "throttling": "simulate (Lighthouse default for mobile)",
+          "screenEmulation": "412x823@1.75 mobile",
+          "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+          "chromeFlags": "--headless=new --no-first-run",
+          "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+        }
+      },
+      {
+        "formFactor": "desktop",
+        "scores": {
+          "performance": 21,
+          "accessibility": 77,
+          "bestPractices": 65,
+          "seo": 82
+        },
+        "metrics": {
+          "largestContentfulPaintMs": 5306.235500000001,
+          "firstContentfulPaintMs": 2145.4629999999997
+        },
+        "audits": {
+          "render-blocking-insight": {
+            "id": "render-blocking-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          },
+          "unminified-css": {
+            "id": "unminified-css",
+            "score": 0.5,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 0,
+            "displayValue": "Est savings of 27 KiB"
+          },
+          "unminified-javascript": {
+            "id": "unminified-javascript",
+            "score": 0.5,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 0,
+            "displayValue": "Est savings of 54 KiB"
+          },
+          "cache-insight": {
+            "id": "cache-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          },
+          "total-byte-weight": {
+            "id": "total-byte-weight",
+            "score": 0.5,
+            "scoreDisplayMode": "metricSavings",
+            "numericValue": 5822426,
+            "displayValue": "Total size was 5,686 KiB"
+          },
+          "resource-summary": {
+            "id": "resource-summary",
+            "score": 1,
+            "scoreDisplayMode": "informative",
+            "numericValue": null,
+            "displayValue": null,
+            "resourceSizes": {
+              "total": 5822426,
+              "image": 4350681,
+              "script": 1002340,
+              "font": 232282,
+              "stylesheet": 157903,
+              "document": 68258,
+              "other": 10962,
+              "media": 0,
+              "third-party": 937429
+            }
+          },
+          "third-parties-insight": {
+            "id": "third-parties-insight",
+            "score": 1,
+            "scoreDisplayMode": "numeric",
+            "numericValue": null,
+            "displayValue": null
+          }
+        },
+        "runConditions": {
+          "lighthouseVersion": "13.4.0",
+          "formFactor": "desktop",
+          "throttling": "simulate (Lighthouse default for desktop)",
+          "screenEmulation": "1350x940@1",
+          "chromePath": "C:\\Users\\user\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+          "chromeFlags": "--headless=new --no-first-run",
+          "note": "Local run under Lighthouse default simulated throttling — comparable across local runs, NOT to TDRA's environment. TDRA thresholds are not asserted; verify the current assessment criteria before claiming alignment."
+        }
+      }
+    ],
+    "thresholds": [
+      {
+        "measure": "accessibility",
+        "formFactor": "mobile",
+        "value": 87,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "performance",
+        "formFactor": "mobile",
+        "value": 27,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "seo",
+        "formFactor": "mobile",
+        "value": 82,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "bestPractices",
+        "formFactor": "mobile",
+        "value": 65,
+        "threshold": ">=80 (preferably >=90)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "largestContentfulPaint",
+        "formFactor": "mobile",
+        "value": 19086,
+        "threshold": "<=2.5s (2500 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "firstContentfulPaint",
+        "formFactor": "mobile",
+        "value": 5330,
+        "threshold": "<=1.8s (1800 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "accessibility",
+        "formFactor": "desktop",
+        "value": 77,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "performance",
+        "formFactor": "desktop",
+        "value": 21,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "seo",
+        "formFactor": "desktop",
+        "value": 82,
+        "threshold": ">=90",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "bestPractices",
+        "formFactor": "desktop",
+        "value": 65,
+        "threshold": ">=80 (preferably >=90)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "largestContentfulPaint",
+        "formFactor": "desktop",
+        "value": 5306,
+        "threshold": "<=2.5s (2500 ms)",
+        "meetsUnderLocalConditions": false
+      },
+      {
+        "measure": "firstContentfulPaint",
+        "formFactor": "desktop",
+        "value": 2145,
+        "threshold": "<=1.8s (1800 ms)",
+        "meetsUnderLocalConditions": false
+      }
+    ],
+    "thresholdSource": {
+      "tier": "docs",
+      "sourceUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+      "retrievedOn": "2026-07-19"
+    }
+  },
+  "tdraChecklist": {
+    "source": {
+      "version": "2.0",
+      "published": "2023-09-26",
+      "provenance": {
+        "tier": "docs",
+        "sourceUrl": "https://designsystem.gov.ae/assets/files/tdra_dls-assessmentcriteria-2023_version2_0.xlsx",
+        "pageUrl": "https://designsystem.gov.ae/resources/assessment-criteria",
+        "retrievedOn": "2026-07-19",
+        "trust": "docs-sourced from designsystem.gov.ae — provisional, needs revalidation against the live page before each release; TDRA updates the checklist with design-system releases"
+      },
+      "wcagBaseline": "WCAG 2.1 AA (workbook item 3.12)"
+    },
+    "machineCheckedItems": [
+      {
+        "id": "2.2",
+        "category": "Guidelines",
+        "subCategory": "Typography",
+        "question": "Has your design process included the approved font mentioned in the design system?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-font-family",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "The dominant body-text font family is \"droid arabic kufi regular\" (100% of sampled text) — not one of the DLS font tokens (inter, roboto, noto kufi arabic, alexandria).",
+            "fix": "Use the DLS font tokens (Inter/Roboto for Latin, Noto Kufi Arabic/Alexandria for Arabic).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.3",
+        "category": "Guidelines",
+        "subCategory": "Typography",
+        "question": "Has the design process added the the approved fonts for headings in the mentioned font weight?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-heading-typography",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "Headings deviate from the DLS typography tokens: h2 (3/3 rendered at weight 400, family \"droid arabic kufi regular\"; token says weight 800); h3 (25/25 rendered at weight 800, family \"droid arabic kufi regular\"; token says weight 800); h4 (4/4 rendered at weight 600, family \"droid arabic kufi regular\"; token says weight 700); h5 (5/5 rendered at weight 500, family \"droid arabic kufi regular\"; token says weight 700). The heading tokens specify weights h1=800 h2=800 h3=800 h4=700 h5=700 h6=600 in the heading font family.",
+            "fix": "Style headings with the DLS heading utilities so family and weight come from the tokens.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "h2",
+              "h3",
+              "h4",
+              "h5"
+            ],
+            "nodeCount": 37
+          }
+        ]
+      },
+      {
+        "id": "2.6",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "Has the design team adhered to the neutral colour palette for background colour?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "2.7",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "Has the design team adhered to the primary text colour of AEBLACK-800?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-text-primary",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "The dominant body-text colour computes to rgb(158, 151, 143) (no DLS token match) across 63% of sampled text — the checklist asks for AEBLACK-800 as the primary text colour.",
+            "fix": "Set primary body text to the aeblack-800 token.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "body"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.8",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "Has the design team adhered to the use of the primary colour of AEGOLD-600 for actions?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-action-gold",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "None of the 48 action element(s) on the page use AEGOLD-600 (or any aegold-scale token) for background, border or text — the checklist asks for AEGOLD-600 as the primary action colour. Observed action colours: rgb(182, 153, 108), rgb(158, 151, 143), --color-whitely-50, rgb(181, 152, 107), rgb(153, 112, 50), rgb(0, 0, 0).",
+            "fix": "Style primary actions (buttons, CTAs) with the aegold-600 token.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.9",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "Have you tested sections of your website's background and foreground colour usage to be 3:1?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "span.ft-span"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "span.ft-span"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "span.ft-span"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "span.ft-span"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-section-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+            "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "footer.text-center.text-lg-start.text-white",
+              "a.hov"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.10",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "Have you tested contrast ratio of action elements background and foreground to be 4.5:1?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "a.txt-cnter.myBtn2"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "a.txt-cnter.myBtn2"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "a.txt-cnter.myBtn2"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "a.txt-cnter.myBtn2"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn.active> has a 2.74:1 text/background contrast ratio (rgb(181, 152, 107) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn.active"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "style-action-contrast",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+            "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+            "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+            "tags": [
+              "aegov-dls",
+              "styles",
+              "tier-c"
+            ],
+            "targets": [
+              "button.slide-btn"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.12",
+        "category": "Guidelines",
+        "subCategory": "Colour System",
+        "question": "FOR MINISTRIES ONLY: Are you following the primary colour palette only using AEGOLD and AEBLACK as your primary colours?",
+        "status": "not-checked",
+        "findings": []
+      },
+      {
+        "id": "2.23",
+        "category": "Guidelines",
+        "subCategory": "Iconography",
+        "question": "Has the design process ensured that all icons are a minimum of 24px in width and height?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "2.35",
+        "category": "Guidelines",
+        "subCategory": "Accessibility",
+        "question": "Has the design team created hidden design elements such as \"Skip to content\"",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-skip-link",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "No \"skip to content\" link detected among in-page anchors (heuristic — checked link text/class/target in English and Arabic).",
+            "fix": "Add a (visually hidden, focus-visible) <a href=\"#main\">Skip to content</a> as the first focusable element.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "2.38",
+        "category": "Guidelines",
+        "subCategory": "Accessibility",
+        "question": "Has the design team tested the layout when zoomed in to a browser at 175%?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "2.42",
+        "category": "General design",
+        "subCategory": null,
+        "question": "Have you created user-friendly error pages for 404, 403, 500",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "http-error-page",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "The 404 response for an unknown URL looks like a bare server default (1245 bytes) — not the user-friendly designed error page the checklist asks for (404/403/500).",
+            "fix": "Serve the designed 404 page (site navigation, bilingual message, link home); do the same for 403/500.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "http"
+            ],
+            "targets": [
+              "https://fnrc.gov.ae/__mizan-404-probe__/this-page-must-not-exist"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.2",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Have you built your frontend using TailwindCSS classes?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.4",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Is your frontend code structurally hierarchical using the accurate placement of <h1> to <h6> tags?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "heading-order",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Heading levels should only increase by one",
+            "fix": "Fix any of the following:\n  Heading order invalid",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=axeAPI",
+            "tags": [
+              "cat.semantics",
+              "best-practice"
+            ],
+            "targets": [
+              ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt > h5",
+              ".swiper-slide-next > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+              "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5"
+            ],
+            "nodeCount": 5
+          },
+          {
+            "engine": "axe",
+            "ruleId": "page-has-heading-one",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Page should contain a level-one heading",
+            "fix": "Fix all of the following:\n  Page must have a level-one heading",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=axeAPI",
+            "tags": [
+              "cat.semantics",
+              "best-practice"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.6",
+        "category": "Frontend",
+        "subCategory": "UI",
+        "question": "Are you using components and block code as mentioned in the design system?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dls-class-identity",
+            "severity": "minor",
+            "confidence": "docs",
+            "message": "Classes not seen in any official docs example (cannot verify — may be valid Tailwind/DLS token utilities): Hide, JobBackgroundImage, JobBackgroundImageAr, M-T, Mediaimg, MediaimgAr, Miningimg, MiningimgAr, MrBotLogo, MrHeaderCloseBtn, MrMUIHeaderDiv, MrMUIIconsNoInvert, MrMUIUlContainer, MrMuiprevent-select, MrResetToolsBtn, MrleftRightBtn, NMm5M, RIGHT_BOTTOM, Shake-Icon, VIpgJd-ZVi9od-ORHb-OEVmcd, VIpgJd-ZVi9od-aZ2wEe, VIpgJd-ZVi9od-aZ2wEe-Jt5cK, VIpgJd-ZVi9od-aZ2wEe-OiiCO, VIpgJd-ZVi9od-aZ2wE… (truncated)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-primary\" id=\"continueBtn\" style=\"\n    background: #b5986b",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-danger\" style=\"background-color: #c3b7b7;\" id=\"cancelBtn\"",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnAccept\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnReject\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-button-type",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"ib-button-messaging\" class=\"lc-widget-button RIGHT_BOTTOM lc-visible",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-not-used",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "No AEGOV Design Language System components detected on this page (zero aegov-* classes) — the UI appears hand-rolled or built on a third-party framework. The standard requires official DLS components and tokens over hand-rolled equivalents. Review whether this page is in scope for the DLS.",
+            "fix": "Adopt @aegov/design-system components and tokens for the page's UI.",
+            "helpUrl": "https://designsystem.gov.ae/",
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.8",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Have you added the \"aria-hidden=\"true\" attribute to icons that must not be read by screen readers?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-icon-aria-hidden",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "10 icon element(s) are neither aria-hidden=\"true\" nor given an accessible name — screen readers may announce them meaninglessly.",
+            "fix": "Add aria-hidden=\"true\" to decorative icons; give meaningful icons an accessible name.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "svg.circular",
+              "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+              "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+              "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+              "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+              "svg.VIpgJd-ZVi9od-aZ2wEe",
+              "svg",
+              "svg",
+              "i.fa.fa-eye",
+              "i.fa.fa-eye-slash"
+            ],
+            "nodeCount": 10
+          }
+        ]
+      },
+      {
+        "id": "3.9",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Have you ensured all icons have a supporting text - either visible or wrapped in the \"sr-only\" class?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-icon-no-text",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "10 icon-only link(s)/button(s) carry no supporting text — neither visible, sr-only, nor aria-label.",
+            "fix": "Add visible text, a .sr-only span, or an aria-label to every icon-only control.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "a.navbar-brand",
+              "a.nav-link.pl-0",
+              "button.font-button.ext-fontsize",
+              "button.font-button.ext-fontsize",
+              "a#listenButton2",
+              "a#myBtn2.txt-cnter.myBtn2",
+              "a#button",
+              "a.wtsapp-btn",
+              "a#myBtn3.txt-cnter1",
+              "a.myBtn"
+            ],
+            "nodeCount": 10
+          }
+        ]
+      },
+      {
+        "id": "3.10",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Are you adding accurate aria attributes to form elements and labels?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.12",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Have you tested your frontend code to be AA Level compliant with WCAG 2.1",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "color-contrast",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Elements must meet minimum color contrast ratio thresholds",
+            "fix": "Fix any of the following:\n  Element has insufficient color contrast of 2.88 (foreground color: #9e978f, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "targets": [
+              "#english",
+              "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > p",
+              "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3[href$=\"Services\"]",
+              "#slick-slide04 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+              "#slick-slide05 > .card > .item > .blog-entry > .text.border.border-top-0 > .heading",
+              "#slick-slide05 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+              ".btn-learn-head.mt-3[href$=\"News\"]",
+              "a[href$=\"sitemap\"] > .ft-span",
+              "a[href$=\"Contactus\"] > .ft-span",
+              "a[href$=\"help\"] > .ft-span"
+            ],
+            "nodeCount": 16
+          },
+          {
+            "engine": "axe",
+            "ruleId": "image-alt",
+            "severity": "critical",
+            "confidence": "external",
+            "message": "Images must have alternative text",
+            "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+            "tags": [
+              "cat.text-alternatives",
+              "wcag2a",
+              "wcag111",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT7.a",
+              "TT7.b",
+              "EN-301-549",
+              "EN-9.1.1.1",
+              "ACT",
+              "RGAAv4",
+              "RGAA-1.1.1"
+            ],
+            "targets": [
+              ".ar-logo-1",
+              "a[title=\"\"] > img",
+              ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+              "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+              "#myBtn2 > .bx-icons",
+              ".slider > img",
+              "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+              "#slick-slide04 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+            ],
+            "nodeCount": 35
+          },
+          {
+            "engine": "axe",
+            "ruleId": "link-name",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Links must have discernible text",
+            "fix": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-name?application=axeAPI",
+            "tags": [
+              "cat.name-role-value",
+              "wcag2a",
+              "wcag244",
+              "wcag412",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT6.a",
+              "EN-301-549",
+              "EN-9.2.4.4",
+              "EN-9.4.1.2",
+              "ACT",
+              "RGAAv4",
+              "RGAA-6.2.1"
+            ],
+            "targets": [
+              "a[title=\"\"]",
+              "a[href$=\"#popup1\"]",
+              "#myBtn2",
+              ".wtsapp-btn",
+              "a[href$=\"en#/\"]"
+            ],
+            "nodeCount": 5
+          },
+          {
+            "engine": "axe",
+            "ruleId": "scrollable-region-focusable",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Scrollable region must have keyboard access",
+            "fix": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=axeAPI",
+            "tags": [
+              "cat.keyboard",
+              "wcag2a",
+              "wcag211",
+              "wcag213",
+              "TTv5",
+              "TT4.a",
+              "EN-301-549",
+              "EN-9.2.1.1",
+              "EN-9.2.1.3",
+              "RGAAv4",
+              "RGAA-7.3.2"
+            ],
+            "targets": [
+              ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+              "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt"
+            ],
+            "nodeCount": 4
+          }
+        ]
+      },
+      {
+        "id": "3.13",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Can you navigate your entire website using only a keyboard - without the use of a trackpad or a mouse?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.14",
+        "category": "Frontend",
+        "subCategory": "Accessibility",
+        "question": "Have you added a focus state to every action element? Have you tested your website for focus states?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "kbd-focus-indicator",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "10 of 75 keyboard-focused element(s) show no visible focus indication (no outline and no focused-vs-blurred style change, including ::before/::after): <a.navbar-brand> in header/nav, <a.navbar-brand> in header/nav, <button.navbar-toggler> in header/nav, <a#english.nav-link> in header/nav, <a.nav-link.pl-0> in header/nav. The checklist requires a focus state on every action element.",
+            "fix": "Never remove outlines without a replacement — style :focus-visible on all interactive elements.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "interaction",
+              "tier-c"
+            ],
+            "targets": [
+              "a.navbar-brand",
+              "a.navbar-brand",
+              "button.navbar-toggler",
+              "a#english.nav-link",
+              "a.nav-link.pl-0",
+              "a.ad.adbox",
+              "a.ad1.adbox",
+              "a.ad2.adbox",
+              "a.ad3.adbox",
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 10
+          }
+        ]
+      },
+      {
+        "id": "3.23",
+        "category": "Frontend",
+        "subCategory": "Blocks",
+        "question": "Is your hero block using <picture> with srcset to add a different image for mobile and desktop?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.24",
+        "category": "Frontend",
+        "subCategory": "Blocks",
+        "question": "Have you used the login block as described with UAE Pass as the primary login method?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.25",
+        "category": "Frontend",
+        "subCategory": "Blocks",
+        "question": "Have you added the Page Rating block to all service card pages?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.26",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the Doctype HTML5 on the top of all pages?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.27",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the charset declared as UTF-8?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.28",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Is the viewport declared accurately?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.29",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Are all meta title and description tags unique? Have you ensured unique dynamic content when required?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "crawl-title-duplicate",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "2 pages share the identical <title> \"نبذة عن المؤسسة\" across 7 crawled page(s) (home + 6, cap 6) — the checklist asks for unique meta titles per page.",
+            "fix": "Give every page a unique, descriptive title (CMS templates should interpolate the page name).",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "crawl",
+              "tier-d"
+            ],
+            "targets": [
+              "https://fnrc.gov.ae/portal/aboutFnrc",
+              "https://fnrc.gov.ae/portal/about"
+            ],
+            "nodeCount": 2
+          }
+        ]
+      },
+      {
+        "id": "3.30",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Has a favicon been included with variations for bookmarking sizes?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.31",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Are you using the Apple-meta tags to control the colour of your website's pre header?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-theme-color",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "No theme-color / Apple status-bar meta tag — the browser pre-header colour is not controlled.",
+            "fix": "Add <meta name=\"theme-color\" content=\"…\"> (and the Apple status-bar variant).",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.32",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Are you using \"rel=canonical\" to avoid duplicate content page indexing?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-canonical",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "No rel=canonical link — review whether duplicate-content indexing is possible on this page.",
+            "fix": "Add <link rel=\"canonical\" href=\"…\"> when the same content is reachable under several URLs.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.33",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured adding the \"direction\" attribute to your body tag according to your language?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات الشركات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"ستكشف مجموعة خدمات الشركة المقدمة من قبل منظمتنا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات النقليات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"اختر الخيار المخصص لاستكشاف خدمات النقل الشاملة لدينا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"دليل الخدمات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<p> \"نتقل إلى دليل خدماتنا واختر الخدمة التي تناسب احتياجاتك بشكل\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "p"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "a.btn-learn-head.mt-3"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-arabic-rtl",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات للأفراد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+            "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "arabic-rtl"
+            ],
+            "targets": [
+              "h3.heading"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "meta-dir",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "No direction attribute on the document although Arabic content/language is present — RTL is first-class in the standard.",
+            "fix": "Set dir=\"rtl\" on the Arabic version and dir=\"ltr\" on the English version.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.34",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured added the \"lang\" attribute to your HTML tag based on your language?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-lang-mismatch",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "The document declares lang=\"en\" but the visible text is predominantly Arabic (82% Arabic script) — the declared language must match the content.",
+            "fix": "Serve the Arabic variant with <html lang=\"ar\" dir=\"rtl\"> (and the English variant with lang=\"en\").",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.35",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured all pages list the alternate language tag?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "meta-alternate",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "No alternate-language link tags (<link rel=\"alternate\" hreflang=…>) — pages should list their other-language version.",
+            "fix": "Add hreflang alternate links on every page of both language versions.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "html-meta"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "crawl-alternate-missing",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "6 of 6 crawled subpage(s) list no <link rel=\"alternate\" hreflang=\"…\"> — every page should point to its other-language version.",
+            "fix": "Emit alternate hreflang links on every page of both language versions.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "crawl",
+              "tier-d"
+            ],
+            "targets": [
+              "https://fnrc.gov.ae/portal/aboutFnrc",
+              "https://fnrc.gov.ae/portal/chairmanmessage",
+              "https://fnrc.gov.ae/portal/about",
+              "https://fnrc.gov.ae/portal/objective",
+              "https://fnrc.gov.ae/portal/rules",
+              "https://fnrc.gov.ae/portal/Services/Services"
+            ],
+            "nodeCount": 6
+          }
+        ]
+      },
+      {
+        "id": "3.36",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured you have the facility to generate open meta tags for social media?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-og-tags",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "No Open Graph meta tags (og:*) on the page — social-media shares will not carry controlled title/image.",
+            "fix": "Emit og:title, og:description and og:image per page (the CMS should generate them).",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "html"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.37",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you structured your HTML using HTML5 semantic tags (such as <header>, <footer>, <section>, <main>)",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.38",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you created the Error pages - 404, 403, 500",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "http-error-page",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "The 404 response for an unknown URL looks like a bare server default (1245 bytes) — not the user-friendly designed error page the checklist asks for (404/403/500).",
+            "fix": "Serve the designed 404 page (site navigation, bilingual message, link home); do the same for 403/500.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "http"
+            ],
+            "targets": [
+              "https://fnrc.gov.ae/__mizan-404-probe__/this-page-must-not-exist"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.39",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured you are following the design system guideline on use of hyperlinks to add \"rel=noopener\" where required?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-noopener",
+            "severity": "minor",
+            "confidence": "heuristic",
+            "message": "17 link(s) with target=\"_blank\" lack rel=\"noopener\" — modern browsers imply it, but the design-system guideline asks for it explicitly.",
+            "fix": "Add rel=\"noopener\" (or \"noopener noreferrer\") to links opening new tabs.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "a",
+              "a.VIpgJd-ZVi9od-l4eHX-hSRGPd",
+              "a.txt-cnter.myBtn2",
+              "a.txt-cnter.myBtn2",
+              "a.wtsapp-btn",
+              "a.hov",
+              "a.myBtn",
+              "a.myBtn",
+              "a.myBtn",
+              "a.myBtn"
+            ],
+            "nodeCount": 17
+          }
+        ]
+      },
+      {
+        "id": "3.41",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured the use of Google Fonts and not loading fonts from your server?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.43",
+        "category": "HTML",
+        "subCategory": null,
+        "question": "Have you ensured that CSS is NON-Blocking?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.46",
+        "category": "Optimisation",
+        "subCategory": null,
+        "question": "Are you minifying your rendered CSS and JavaScript for a production environment?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "lighthouse",
+            "ruleId": "lh-unminified-css",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Unminified CSS shipped to production (Lighthouse unminified-css; mobile: Est savings of 27 KiB; desktop: Est savings of 27 KiB).",
+            "fix": "Minify rendered CSS in the production build pipeline.",
+            "helpUrl": null,
+            "tags": [
+              "lighthouse",
+              "mobile",
+              "desktop"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          },
+          {
+            "engine": "lighthouse",
+            "ruleId": "lh-unminified-javascript",
+            "severity": "moderate",
+            "confidence": "external",
+            "message": "Unminified JavaScript shipped to production (Lighthouse unminified-javascript; mobile: Est savings of 54 KiB; desktop: Est savings of 54 KiB).",
+            "fix": "Minify rendered JavaScript in the production build pipeline.",
+            "helpUrl": null,
+            "tags": [
+              "lighthouse",
+              "mobile",
+              "desktop"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          }
+        ]
+      },
+      {
+        "id": "3.47",
+        "category": "Optimisation",
+        "subCategory": null,
+        "question": "Are you implementing a cache system for faster page load?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.48",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Are all images dynamically adding an alt tag that is meaningful to the image?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "axe",
+            "ruleId": "image-alt",
+            "severity": "critical",
+            "confidence": "external",
+            "message": "Images must have alternative text",
+            "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+            "tags": [
+              "cat.text-alternatives",
+              "wcag2a",
+              "wcag111",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT7.a",
+              "TT7.b",
+              "EN-301-549",
+              "EN-9.1.1.1",
+              "ACT",
+              "RGAAv4",
+              "RGAA-1.1.1"
+            ],
+            "targets": [
+              ".ar-logo-1",
+              "a[title=\"\"] > img",
+              ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+              ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+              "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+              "#myBtn2 > .bx-icons",
+              ".slider > img",
+              "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+              "#slick-slide04 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+            ],
+            "nodeCount": 35
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"ar-logo-1\" src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo f",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo-right.png\" style=\"w",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"plub-icon\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Gro (×2 occurrences)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/A-.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/Aplus.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/tab new.png\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Path",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Grou (×2 occurrences)",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/manara.png\" style=\"wi",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/icon/Group 11901.svg\">",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt",
+            "severity": "serious",
+            "confidence": "heuristic",
+            "message": "…and 67 more occurrence(s) of this rule across 27 further distinct instance(s) — the 10 above are a sample, not the full extent.",
+            "fix": null,
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7"
+            ],
+            "targets": [],
+            "nodeCount": 67
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt-placeholder",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "alt=\"Image Placeholder\" on 16 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+            "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "img-alt"
+            ],
+            "targets": [
+              "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+            ],
+            "nodeCount": 16
+          },
+          {
+            "engine": "dls",
+            "ruleId": "dls-img-alt-placeholder",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "alt=\"Alternate Text\" on 6 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+            "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "@aegov/design-system@3.0.7",
+              "img-alt"
+            ],
+            "targets": [
+              "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+            ],
+            "nodeCount": 6
+          }
+        ]
+      },
+      {
+        "id": "3.49",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Are you using Picture/Srcset for images as described in the design system?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-no-srcset",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "None of the 120 images use srcset or <picture> — no responsive image delivery as the design system describes.",
+            "fix": "Serve size-appropriate variants via srcset/sizes or <picture>.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "media"
+            ],
+            "targets": [
+              "img"
+            ],
+            "nodeCount": 120
+          }
+        ]
+      },
+      {
+        "id": "3.50",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Have you enabled lazy loading for images?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-no-lazy-loading",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "None of the 120 images use loading=\"lazy\" — below-the-fold images all load eagerly.",
+            "fix": "Add loading=\"lazy\" to images below the fold (keep the LCP/hero image eager).",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "media"
+            ],
+            "targets": [
+              "img"
+            ],
+            "nodeCount": 120
+          }
+        ]
+      },
+      {
+        "id": "3.51",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Are you using WebP as your image format primarily?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-no-webp",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "78 images resolve to JPEG/PNG/GIF by URL and none to WebP/AVIF (extension-based check — a CDN content-negotiating formats would not show here; verify the actual response types).",
+            "fix": "Serve WebP (with fallbacks via <picture>) as the primary image format.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "media"
+            ],
+            "targets": [
+              "img"
+            ],
+            "nodeCount": 78
+          }
+        ]
+      },
+      {
+        "id": "3.52",
+        "category": "Media",
+        "subCategory": null,
+        "question": "Are you videos being loaded based on user's device and internet speed? This would happen by default if you are hosting public videos on Youtube or Vimeo",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.53",
+        "category": "Performance",
+        "subCategory": null,
+        "question": "Eliminating all images on the page, is your page weight below 500KB while loading?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "lighthouse",
+            "ruleId": "lh-page-weight-no-images",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Page weight excluding images exceeds the TDRA budget of 500 KB (checklist 3.53): mobile 1.02 MB, desktop 1.40 MB. Transfer size of this local load, images subtracted.",
+            "fix": "Trim non-image payload: split/defer JavaScript, remove unused CSS, subset fonts, enable text compression.",
+            "helpUrl": null,
+            "tags": [
+              "lighthouse",
+              "mobile",
+              "desktop"
+            ],
+            "targets": [],
+            "nodeCount": 2
+          }
+        ]
+      },
+      {
+        "id": "3.54",
+        "category": "Performance",
+        "subCategory": null,
+        "question": "With all images on your page, is your page weight below 4MB while loading?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "lighthouse",
+            "ruleId": "lh-page-weight-total",
+            "severity": "serious",
+            "confidence": "external",
+            "message": "Total page weight exceeds the TDRA budget of 4 MB (checklist 3.54, read as 4.00 MB): desktop 5.55 MB. Transfer size of this local load.",
+            "fix": "Reduce transferred bytes: compress/resize images, remove unused scripts and styles, enable text compression.",
+            "helpUrl": null,
+            "tags": [
+              "lighthouse",
+              "desktop"
+            ],
+            "targets": [],
+            "nodeCount": 1
+          }
+        ]
+      },
+      {
+        "id": "3.57",
+        "category": "Performance",
+        "subCategory": null,
+        "question": "Have you ensured JavaScript is placed at the end of your website?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "dom-blocking-script-head",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "3 script(s) load synchronously in <head> (no defer/async/module): https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js, https://www.google.com/recaptcha/enterprise.js?render=6LeMlEAoAAAAAPWFzJoe5ZKrykUPurUORg17zOMH, https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.ar.yynihLpqmzs.O/am=BIAABw/d=1/exm=el_conf/ed=1/rs=AN8SPfr6FEdDM2sE9sIsjYMhT_7Q24btWg/m=el_main — the checklist asks for JavaScript at the end of the page.",
+            "fix": "Move scripts before </body> or mark them defer/async.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "assets"
+            ],
+            "targets": [
+              "https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js",
+              "https://www.google.com/recaptcha/enterprise.js?render=6LeMlEAoAAAAAPWFzJoe5ZKrykUPurUORg17zOMH",
+              "https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.ar.yynihLpqmzs.O/am=BIAABw/d=1/exm=el_conf/ed=1/rs=AN8SPfr6FEdDM2sE9sIsjYMhT_7Q24btWg/m=el_main"
+            ],
+            "nodeCount": 3
+          }
+        ]
+      },
+      {
+        "id": "3.58",
+        "category": "Performance",
+        "subCategory": null,
+        "question": "Have you taken into account third party scripts and software that will affect your load time in a production environment?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.59",
+        "category": "Compliance",
+        "subCategory": null,
+        "question": "Have you added a cookie banner?",
+        "status": "no-automated-findings",
+        "findings": []
+      },
+      {
+        "id": "3.64",
+        "category": "Content management",
+        "subCategory": null,
+        "question": "Does your content management system generate a Sitemap.xml file?",
+        "status": "findings",
+        "findings": [
+          {
+            "engine": "dls",
+            "ruleId": "http-sitemap",
+            "severity": "moderate",
+            "confidence": "heuristic",
+            "message": "No sitemap found: https://fnrc.gov.ae/sitemap.xml answers HTTP 404 and robots.txt declares no Sitemap",
+            "fix": "Generate sitemap.xml from the CMS and declare it in robots.txt.",
+            "helpUrl": null,
+            "tags": [
+              "aegov-dls",
+              "http"
+            ],
+            "targets": [
+              "https://fnrc.gov.ae/sitemap.xml"
+            ],
+            "nodeCount": 1
+          }
+        ]
+      }
+    ],
+    "humanReviewCount": 72,
+    "totalItems": 125,
+    "note": "Mizan machine-checks 53 of 125 checklist items (fully or partially). \"No automated findings\" covers the machine-checkable subset only — it is NOT a pass; the remaining items are process/design questions a human answers. Items marked \"not checked\" had no evidence engine in this run: they need --lighthouse, an http(s) target (origin probes and the bounded crawl), --entity-type ministry (item 2.12), or a keyboard walk that completed without aborting."
+  },
+  "findings": [
+    {
+      "engine": "axe",
+      "ruleId": "color-contrast",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Elements must meet minimum color contrast ratio thresholds",
+      "fix": "Fix any of the following:\n  Element has insufficient color contrast of 2.88 (foreground color: #9e978f, background color: #ffffff, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "targets": [
+        "#english",
+        "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > p",
+        "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3[href$=\"Services\"]",
+        "#slick-slide04 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+        "#slick-slide05 > .card > .item > .blog-entry > .text.border.border-top-0 > .heading",
+        "#slick-slide05 > .card > .item > .blog-entry > .text.border.border-top-0 > .btn-learn-head.mt-3",
+        ".btn-learn-head.mt-3[href$=\"News\"]",
+        "a[href$=\"sitemap\"] > .ft-span",
+        "a[href$=\"Contactus\"] > .ft-span",
+        "a[href$=\"help\"] > .ft-span"
+      ],
+      "nodeCount": 16
+    },
+    {
+      "engine": "axe",
+      "ruleId": "heading-order",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Heading levels should only increase by one",
+      "fix": "Fix any of the following:\n  Heading order invalid",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt > h5",
+        ".swiper-slide-next > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5",
+        "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt > h5"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "image-alt",
+      "severity": "critical",
+      "confidence": "external",
+      "message": "Images must have alternative text",
+      "fix": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+      "tags": [
+        "cat.text-alternatives",
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "TT7.b",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "targets": [
+        ".ar-logo-1",
+        "a[title=\"\"] > img",
+        ".txt-cnter.myBtn2[href$=\"investmentguid\"] > .bx-icons",
+        ".txt-cnter.myBtn2[href$=\"directory\"] > .bx-icons",
+        ".txt-cnter.myBtn2[href$=\"forum\"] > .bx-icons",
+        "a[href$=\"manara.fnrc.gov.ae/\"] > img",
+        "#myBtn2 > .bx-icons",
+        ".slider > img",
+        "#slick-slide03 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img",
+        "#slick-slide04 > .card > .item > .blog-entry > .text.border.border-top-0 > .slider-img > img"
+      ],
+      "nodeCount": 35
+    },
+    {
+      "engine": "axe",
+      "ruleId": "landmark-unique",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "fix": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-unique?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        ".ftco_navbar"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "axe",
+      "ruleId": "link-name",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Links must have discernible text",
+      "fix": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has an empty title attribute",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-name?application=axeAPI",
+      "tags": [
+        "cat.name-role-value",
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-6.2.1"
+      ],
+      "targets": [
+        "a[title=\"\"]",
+        "a[href$=\"#popup1\"]",
+        "#myBtn2",
+        ".wtsapp-btn",
+        "a[href$=\"en#/\"]"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "page-has-heading-one",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Page should contain a level-one heading",
+      "fix": "Fix all of the following:\n  Page must have a level-one heading",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/page-has-heading-one?application=axeAPI",
+      "tags": [
+        "cat.semantics",
+        "best-practice"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "axe",
+      "ruleId": "region",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "All page content should be contained by landmarks",
+      "fix": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=axeAPI",
+      "tags": [
+        "cat.keyboard",
+        "best-practice",
+        "RGAAv4",
+        "RGAA-9.2.1"
+      ],
+      "targets": [
+        ".box",
+        ".fix-icon",
+        ".cookie-text > p",
+        "#MrAccessInHand",
+        ".lc-eye-catcher-message-bubble"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "engine": "axe",
+      "ruleId": "scrollable-region-focusable",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Scrollable region must have keyboard access",
+      "fix": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=axeAPI",
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag211",
+        "wcag213",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "EN-9.2.1.3",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "targets": [
+        ".swiper-slide-active > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"3 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"4 / 5\"] > .box-line1 > .inner-bx > .bx-txt",
+        "div[aria-label=\"5 / 5\"] > .box-line1 > .inner-bx > .bx-txt"
+      ],
+      "nodeCount": 4
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-class-identity",
+      "severity": "minor",
+      "confidence": "docs",
+      "message": "Classes not seen in any official docs example (cannot verify — may be valid Tailwind/DLS token utilities): Hide, JobBackgroundImage, JobBackgroundImageAr, M-T, Mediaimg, MediaimgAr, Miningimg, MiningimgAr, MrBotLogo, MrHeaderCloseBtn, MrMUIHeaderDiv, MrMUIIconsNoInvert, MrMUIUlContainer, MrMuiprevent-select, MrResetToolsBtn, MrleftRightBtn, NMm5M, RIGHT_BOTTOM, Shake-Icon, VIpgJd-ZVi9od-ORHb-OEVmcd, VIpgJd-ZVi9od-aZ2wEe, VIpgJd-ZVi9od-aZ2wEe-Jt5cK, VIpgJd-ZVi9od-aZ2wEe-OiiCO, VIpgJd-ZVi9od-aZ2wE… (truncated)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"ar-logo-1\" src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo f",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/logo-right.png\" style=\"w",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"plub-icon\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Gro (×2 occurrences)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/A-.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/Aplus.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/fnrcimages/tab new.png\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Path",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/Grou (×2 occurrences)",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img src=\"/portal/Content/images/fnrc/assets/FNRC ASSETS 2/manara.png\" style=\"wi",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "<img> without alt attribute (WCAG 2.2 AA 1.1.1): <img class=\"bx-icons\" src=\"/portal/Content/images/icon/Group 11901.svg\">",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "…and 67 more occurrence(s) of this rule across 27 further distinct instance(s) — the 10 above are a sample, not the full extent.",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 67
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-primary\" id=\"continueBtn\" style=\"\n    background: #b5986b",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button class=\"btn btn-danger\" style=\"background-color: #c3b7b7;\" id=\"cancelBtn\"",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnAccept\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"btnReject\" class=\"btn-learn-head mt-3\" style=\"width: 100px; text-ali",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-button-type",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "<button> without explicit type (defaults to submit inside forms): <button id=\"ib-button-messaging\" class=\"lc-widget-button RIGHT_BOTTOM lc-visible",
+      "fix": null,
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-not-used",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "No AEGOV Design Language System components detected on this page (zero aegov-* classes) — the UI appears hand-rolled or built on a third-party framework. The standard requires official DLS components and tokens over hand-rolled equivalents. Review whether this page is in scope for the DLS.",
+      "fix": "Adopt @aegov/design-system components and tokens for the page's UI.",
+      "helpUrl": "https://designsystem.gov.ae/",
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات الشركات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"ستكشف مجموعة خدمات الشركة المقدمة من قبل منظمتنا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات النقليات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"اختر الخيار المخصص لاستكشاف خدمات النقل الشاملة لدينا.\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"دليل الخدمات\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<p> \"نتقل إلى دليل خدماتنا واختر الخدمة التي تناسب احتياجاتك بشكل\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "p"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<a.btn-learn-head.mt-3> \"اعرف المزيد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-arabic-rtl",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Arabic text renders in an LTR context (<h3.heading> \"خدمات للأفراد\") with no dir=\"rtl\" in scope and no explicit lang=\"ar\" inline tagging — RTL is first-class in the standard; review the direction handling.",
+      "fix": "Establish dir=\"rtl\" on the Arabic content (or tag a short inline island with lang=\"ar\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "arabic-rtl"
+      ],
+      "targets": [
+        "h3.heading"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt-placeholder",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "alt=\"Image Placeholder\" on 16 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+      "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "img-alt"
+      ],
+      "targets": [
+        "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+      ],
+      "nodeCount": 16
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dls-img-alt-placeholder",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "alt=\"Alternate Text\" on 6 image(s) (e.g. src=\"https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image\") looks like a CMS placeholder or filename, not a description — it passes automated alt checks while conveying nothing (WCAG 1.1.1). Review and replace with real alternative text.",
+      "fix": "Write alternative text that describes the image's content or function; use alt=\"\" only for purely decorative images.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "@aegov/design-system@3.0.7",
+        "img-alt"
+      ],
+      "targets": [
+        "https://apps.fnrc.gov.ae/website_AdminPanel/Content/Dynamic-Content/Banner-Image"
+      ],
+      "nodeCount": 6
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-canonical",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "No rel=canonical link — review whether duplicate-content indexing is possible on this page.",
+      "fix": "Add <link rel=\"canonical\" href=\"…\"> when the same content is reachable under several URLs.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-dir",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "No direction attribute on the document although Arabic content/language is present — RTL is first-class in the standard.",
+      "fix": "Set dir=\"rtl\" on the Arabic version and dir=\"ltr\" on the English version.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-lang-mismatch",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "The document declares lang=\"en\" but the visible text is predominantly Arabic (82% Arabic script) — the declared language must match the content.",
+      "fix": "Serve the Arabic variant with <html lang=\"ar\" dir=\"rtl\"> (and the English variant with lang=\"en\").",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "meta-alternate",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "No alternate-language link tags (<link rel=\"alternate\" hreflang=…>) — pages should list their other-language version.",
+      "fix": "Add hreflang alternate links on every page of both language versions.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "html-meta"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-theme-color",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "No theme-color / Apple status-bar meta tag — the browser pre-header colour is not controlled.",
+      "fix": "Add <meta name=\"theme-color\" content=\"…\"> (and the Apple status-bar variant).",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-og-tags",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "No Open Graph meta tags (og:*) on the page — social-media shares will not carry controlled title/image.",
+      "fix": "Emit og:title, og:description and og:image per page (the CMS should generate them).",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-noopener",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "17 link(s) with target=\"_blank\" lack rel=\"noopener\" — modern browsers imply it, but the design-system guideline asks for it explicitly.",
+      "fix": "Add rel=\"noopener\" (or \"noopener noreferrer\") to links opening new tabs.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "a",
+        "a.VIpgJd-ZVi9od-l4eHX-hSRGPd",
+        "a.txt-cnter.myBtn2",
+        "a.txt-cnter.myBtn2",
+        "a.wtsapp-btn",
+        "a.hov",
+        "a.myBtn",
+        "a.myBtn",
+        "a.myBtn",
+        "a.myBtn"
+      ],
+      "nodeCount": 17
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-blocking-script-head",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "3 script(s) load synchronously in <head> (no defer/async/module): https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js, https://www.google.com/recaptcha/enterprise.js?render=6LeMlEAoAAAAAPWFzJoe5ZKrykUPurUORg17zOMH, https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.ar.yynihLpqmzs.O/am=BIAABw/d=1/exm=el_conf/ed=1/rs=AN8SPfr6FEdDM2sE9sIsjYMhT_7Q24btWg/m=el_main — the checklist asks for JavaScript at the end of the page.",
+      "fix": "Move scripts before </body> or mark them defer/async.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js",
+        "https://www.google.com/recaptcha/enterprise.js?render=6LeMlEAoAAAAAPWFzJoe5ZKrykUPurUORg17zOMH",
+        "https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.ar.yynihLpqmzs.O/am=BIAABw/d=1/exm=el_conf/ed=1/rs=AN8SPfr6FEdDM2sE9sIsjYMhT_7Q24btWg/m=el_main"
+      ],
+      "nodeCount": 3
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-skip-link",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "No \"skip to content\" link detected among in-page anchors (heuristic — checked link text/class/target in English and Arabic).",
+      "fix": "Add a (visually hidden, focus-visible) <a href=\"#main\">Skip to content</a> as the first focusable element.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-icon-aria-hidden",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "10 icon element(s) are neither aria-hidden=\"true\" nor given an accessible name — screen readers may announce them meaninglessly.",
+      "fix": "Add aria-hidden=\"true\" to decorative icons; give meaningful icons an accessible name.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "svg.circular",
+        "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+        "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+        "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+        "svg.VIpgJd-yAWNEb-hvhgNd-THI6Vb.NMm5M",
+        "svg.VIpgJd-ZVi9od-aZ2wEe",
+        "svg",
+        "svg",
+        "i.fa.fa-eye",
+        "i.fa.fa-eye-slash"
+      ],
+      "nodeCount": 10
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-icon-no-text",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "10 icon-only link(s)/button(s) carry no supporting text — neither visible, sr-only, nor aria-label.",
+      "fix": "Add visible text, a .sr-only span, or an aria-label to every icon-only control.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "assets"
+      ],
+      "targets": [
+        "a.navbar-brand",
+        "a.nav-link.pl-0",
+        "button.font-button.ext-fontsize",
+        "button.font-button.ext-fontsize",
+        "a#listenButton2",
+        "a#myBtn2.txt-cnter.myBtn2",
+        "a#button",
+        "a.wtsapp-btn",
+        "a#myBtn3.txt-cnter1",
+        "a.myBtn"
+      ],
+      "nodeCount": 10
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-no-srcset",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "None of the 120 images use srcset or <picture> — no responsive image delivery as the design system describes.",
+      "fix": "Serve size-appropriate variants via srcset/sizes or <picture>.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "media"
+      ],
+      "targets": [
+        "img"
+      ],
+      "nodeCount": 120
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-no-lazy-loading",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "None of the 120 images use loading=\"lazy\" — below-the-fold images all load eagerly.",
+      "fix": "Add loading=\"lazy\" to images below the fold (keep the LCP/hero image eager).",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "media"
+      ],
+      "targets": [
+        "img"
+      ],
+      "nodeCount": 120
+    },
+    {
+      "engine": "dls",
+      "ruleId": "dom-no-webp",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "78 images resolve to JPEG/PNG/GIF by URL and none to WebP/AVIF (extension-based check — a CDN content-negotiating formats would not show here; verify the actual response types).",
+      "fix": "Serve WebP (with fallbacks via <picture>) as the primary image format.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "media"
+      ],
+      "targets": [
+        "img"
+      ],
+      "nodeCount": 78
+    },
+    {
+      "engine": "dls",
+      "ruleId": "http-sitemap",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "No sitemap found: https://fnrc.gov.ae/sitemap.xml answers HTTP 404 and robots.txt declares no Sitemap",
+      "fix": "Generate sitemap.xml from the CMS and declare it in robots.txt.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "http"
+      ],
+      "targets": [
+        "https://fnrc.gov.ae/sitemap.xml"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "http-error-page",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "The 404 response for an unknown URL looks like a bare server default (1245 bytes) — not the user-friendly designed error page the checklist asks for (404/403/500).",
+      "fix": "Serve the designed 404 page (site navigation, bilingual message, link home); do the same for 403/500.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "http"
+      ],
+      "targets": [
+        "https://fnrc.gov.ae/__mizan-404-probe__/this-page-must-not-exist"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-font-family",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "The dominant body-text font family is \"droid arabic kufi regular\" (100% of sampled text) — not one of the DLS font tokens (inter, roboto, noto kufi arabic, alexandria).",
+      "fix": "Use the DLS font tokens (Inter/Roboto for Latin, Noto Kufi Arabic/Alexandria for Arabic).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-heading-typography",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "Headings deviate from the DLS typography tokens: h2 (3/3 rendered at weight 400, family \"droid arabic kufi regular\"; token says weight 800); h3 (25/25 rendered at weight 800, family \"droid arabic kufi regular\"; token says weight 800); h4 (4/4 rendered at weight 600, family \"droid arabic kufi regular\"; token says weight 700); h5 (5/5 rendered at weight 500, family \"droid arabic kufi regular\"; token says weight 700). The heading tokens specify weights h1=800 h2=800 h3=800 h4=700 h5=700 h6=600 in the heading font family.",
+      "fix": "Style headings with the DLS heading utilities so family and weight come from the tokens.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "h2",
+        "h3",
+        "h4",
+        "h5"
+      ],
+      "nodeCount": 37
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-text-primary",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "The dominant body-text colour computes to rgb(158, 151, 143) (no DLS token match) across 63% of sampled text — the checklist asks for AEBLACK-800 as the primary text colour.",
+      "fix": "Set primary body text to the aeblack-800 token.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "body"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-gold",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "None of the 48 action element(s) on the page use AEGOLD-600 (or any aegold-scale token) for background, border or text — the checklist asks for AEGOLD-600 as the primary action colour. Observed action colours: rgb(182, 153, 108), rgb(158, 151, 143), --color-whitely-50, rgb(181, 152, 107), rgb(153, 112, 50), rgb(0, 0, 0).",
+      "fix": "Style primary actions (buttons, CTAs) with the aegold-600 token.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "html"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "span.ft-span"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "span.ft-span"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "span.ft-span"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <span.ft-span>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "span.ft-span"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-section-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Text in <footer.text-center.text-lg-start.text-white> has a 2.61:1 contrast ratio against the section background (rgb(158, 151, 143) on rgb(247, 243, 237), e.g. <a.hov>) — below the checklist's 3:1 requirement for section background/foreground usage.",
+      "fix": "Raise the contrast between the section background and its foreground content to at least 3:1.",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "footer.text-center.text-lg-start.text-white",
+        "a.hov"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "a.txt-cnter.myBtn2"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "a.txt-cnter.myBtn2"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "a.txt-cnter.myBtn2"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <a.txt-cnter.myBtn2> has a 2.89:1 text/background contrast ratio (rgb(158, 151, 143) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "a.txt-cnter.myBtn2"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn.active> has a 2.74:1 text/background contrast ratio (rgb(181, 152, 107) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn.active"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "style-action-contrast",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "Action element <button.slide-btn> has a 1:1 text/background contrast ratio (rgb(255, 255, 255) on rgb(255, 255, 255)) — below the checklist's 4.5:1 requirement for action elements.",
+      "fix": "Adjust the action element's colours to reach 4.5:1 (the DLS token pairs meet this).",
+      "helpUrl": "https://designsystem.gov.ae/docs/getting-started/design-tokens",
+      "tags": [
+        "aegov-dls",
+        "styles",
+        "tier-c"
+      ],
+      "targets": [
+        "button.slide-btn"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "engine": "dls",
+      "ruleId": "kbd-focus-indicator",
+      "severity": "serious",
+      "confidence": "heuristic",
+      "message": "10 of 75 keyboard-focused element(s) show no visible focus indication (no outline and no focused-vs-blurred style change, including ::before/::after): <a.navbar-brand> in header/nav, <a.navbar-brand> in header/nav, <button.navbar-toggler> in header/nav, <a#english.nav-link> in header/nav, <a.nav-link.pl-0> in header/nav. The checklist requires a focus state on every action element.",
+      "fix": "Never remove outlines without a replacement — style :focus-visible on all interactive elements.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "interaction",
+        "tier-c"
+      ],
+      "targets": [
+        "a.navbar-brand",
+        "a.navbar-brand",
+        "button.navbar-toggler",
+        "a#english.nav-link",
+        "a.nav-link.pl-0",
+        "a.ad.adbox",
+        "a.ad1.adbox",
+        "a.ad2.adbox",
+        "a.ad3.adbox",
+        "a.btn-learn-head.mt-3"
+      ],
+      "nodeCount": 10
+    },
+    {
+      "engine": "dls",
+      "ruleId": "crawl-title-duplicate",
+      "severity": "moderate",
+      "confidence": "heuristic",
+      "message": "2 pages share the identical <title> \"نبذة عن المؤسسة\" across 7 crawled page(s) (home + 6, cap 6) — the checklist asks for unique meta titles per page.",
+      "fix": "Give every page a unique, descriptive title (CMS templates should interpolate the page name).",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "crawl",
+        "tier-d"
+      ],
+      "targets": [
+        "https://fnrc.gov.ae/portal/aboutFnrc",
+        "https://fnrc.gov.ae/portal/about"
+      ],
+      "nodeCount": 2
+    },
+    {
+      "engine": "dls",
+      "ruleId": "crawl-alternate-missing",
+      "severity": "minor",
+      "confidence": "heuristic",
+      "message": "6 of 6 crawled subpage(s) list no <link rel=\"alternate\" hreflang=\"…\"> — every page should point to its other-language version.",
+      "fix": "Emit alternate hreflang links on every page of both language versions.",
+      "helpUrl": null,
+      "tags": [
+        "aegov-dls",
+        "crawl",
+        "tier-d"
+      ],
+      "targets": [
+        "https://fnrc.gov.ae/portal/aboutFnrc",
+        "https://fnrc.gov.ae/portal/chairmanmessage",
+        "https://fnrc.gov.ae/portal/about",
+        "https://fnrc.gov.ae/portal/objective",
+        "https://fnrc.gov.ae/portal/rules",
+        "https://fnrc.gov.ae/portal/Services/Services"
+      ],
+      "nodeCount": 6
+    },
+    {
+      "engine": "lighthouse",
+      "ruleId": "lh-page-weight-total",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Total page weight exceeds the TDRA budget of 4 MB (checklist 3.54, read as 4.00 MB): desktop 5.55 MB. Transfer size of this local load.",
+      "fix": "Reduce transferred bytes: compress/resize images, remove unused scripts and styles, enable text compression.",
+      "helpUrl": null,
+      "tags": [
+        "lighthouse",
+        "desktop"
+      ],
+      "targets": [],
+      "nodeCount": 1
+    },
+    {
+      "engine": "lighthouse",
+      "ruleId": "lh-page-weight-no-images",
+      "severity": "serious",
+      "confidence": "external",
+      "message": "Page weight excluding images exceeds the TDRA budget of 500 KB (checklist 3.53): mobile 1.02 MB, desktop 1.40 MB. Transfer size of this local load, images subtracted.",
+      "fix": "Trim non-image payload: split/defer JavaScript, remove unused CSS, subset fonts, enable text compression.",
+      "helpUrl": null,
+      "tags": [
+        "lighthouse",
+        "mobile",
+        "desktop"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "lighthouse",
+      "ruleId": "lh-unminified-css",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Unminified CSS shipped to production (Lighthouse unminified-css; mobile: Est savings of 27 KiB; desktop: Est savings of 27 KiB).",
+      "fix": "Minify rendered CSS in the production build pipeline.",
+      "helpUrl": null,
+      "tags": [
+        "lighthouse",
+        "mobile",
+        "desktop"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    },
+    {
+      "engine": "lighthouse",
+      "ruleId": "lh-unminified-javascript",
+      "severity": "moderate",
+      "confidence": "external",
+      "message": "Unminified JavaScript shipped to production (Lighthouse unminified-javascript; mobile: Est savings of 54 KiB; desktop: Est savings of 54 KiB).",
+      "fix": "Minify rendered JavaScript in the production build pipeline.",
+      "helpUrl": null,
+      "tags": [
+        "lighthouse",
+        "mobile",
+        "desktop"
+      ],
+      "targets": [],
+      "nodeCount": 2
+    }
+  ],
+  "disclaimers": [
+    "Community tool. Not affiliated with or endorsed by TDRA.",
+    "Automated checks cover only a machine-checkable subset of the standard — a clean automated run is NOT compliance and NOT WCAG 2.1/2.2 AA conformance.",
+    "Arabic/RTL parity findings are flags for native-speaker review; Mizan never asserts parity as settled.",
+    "Lighthouse numbers were produced under the run conditions recorded in this report (local machine, simulated throttling) — they are comparable across local runs, not to TDRA's environment.",
+    "This is a private report for the site's own team."
+  ]
+}

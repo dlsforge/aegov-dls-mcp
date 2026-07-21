@@ -1,0 +1,22 @@
+{
+  "description": "Tier C style violations — serif fonts, light h1, arbitrary pink background, grey body text, no gold on actions, low-contrast section and button, sub-24px icons. Every style rule must fire through the real CLI; the interaction rules and the ministry rule (no --entity-type) must stay quiet.",
+  "target": "index.html",
+  "expected": [
+    { "ruleId": "style-font-family" },
+    { "ruleId": "style-heading-typography" },
+    { "ruleId": "style-background-neutral" },
+    { "ruleId": "style-text-primary" },
+    { "ruleId": "style-action-gold" },
+    { "ruleId": "style-section-contrast" },
+    { "ruleId": "style-action-contrast" },
+    { "ruleId": "style-icon-size" }
+  ],
+  "forbidden": [
+    "ministry-palette",
+    "kbd-focus-indicator",
+    "kbd-region-unreachable",
+    "ix-zoom-overflow",
+    "crawl-title-duplicate",
+    "crawl-alternate-missing"
+  ]
+}

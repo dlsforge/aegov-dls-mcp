@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clean Tier C fixture — no style/interaction rule may fire (false-positive gate)</title>
+  <style>
+    /* Colour values are exact DLS token values: text aeblack-800, action
+       background aegold-600; fonts and heading weights follow the tokens. */
+    body { font-family: 'Roboto', ui-sans-serif, system-ui, sans-serif;
+           color: oklch(0.264 0.006 258.4); margin: 0; }
+    h1, h2 { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 800; }
+    .aegov-btn { background: oklch(0.570 0.097 84.4); color: #ffffff;
+                 border: 0; padding: 0.75rem 1.5rem; }
+    .icon-ok { display: inline-block; width: 24px; height: 24px; background: currentColor; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main"><a href="/services">Services</a> <a href="/contact">Contact</a></nav>
+  </header>
+  <main id="main">
+    <h1>A compliant page heading</h1>
+    <p>This paragraph provides enough sampled body text in the approved font family and the
+       approved primary text colour for the dominance calculations to have real evidence.</p>
+    <p>A second paragraph keeps the sampled character count comfortably above the threshold
+       while staying entirely within the token palette used by the design system.</p>
+    <button class="aegov-btn" type="submit">Submit application</button>
+    <span class="icon-ok" aria-hidden="true"></span>
+  </main>
+  <footer><p>Federal government entity of the United Arab Emirates.</p></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded Tier C fixture — every style rule must fire</title>
+  <style>
+    /* Deliberate violations: serif fonts, arbitrary pink background, grey
+       body text (not AEBLACK-800), light h1, no gold anywhere on actions,
+       low-contrast section and button, sub-24px icons. */
+    body { font-family: Georgia, serif; color: #444444; background: #fdf2f8; margin: 0; }
+    h1 { font-weight: 400; font-family: Georgia, serif; }
+    .low-section { background: #eeeeee; padding: 1rem; }
+    .low-section p { color: #cccccc; }
+    .btn-blue { background: #3b82f6; color: #ffffff; border: 0; padding: 0.6rem 1.2rem; }
+    .icon-star { display: inline-block; width: 12px; height: 12px; background: #444; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main"><a href="/one">One</a> <a href="/two">Two</a></nav>
+  </header>
+  <main id="main">
+    <h1>A heading rendered light and serif</h1>
+    <p>This paragraph carries enough plain body text to establish a dominant sampled font family
+       and a dominant computed text colour across the fixture page as a whole.</p>
+    <p>More filler prose follows here so that the sampled text comfortably clears the minimum
+       character threshold that the conservative style engine requires before it speaks.</p>
+    <p>The third paragraph keeps the dominant share of the grey colour and the serif family well
+       above the sixty percent dominance line used by the engine.</p>
+    <section class="low-section">
+      <p>Low contrast text inside this section.</p>
+    </section>
+    <button class="btn-blue" type="button">Primary action</button>
+    <svg width="16" height="16" aria-hidden="true"></svg>
+    <i class="icon-star" aria-hidden="true"></i>
+  </main>
+  <footer><p>Footer text for the fixture page, long enough to be sampled.</p></footer>
+</body>
+</html>

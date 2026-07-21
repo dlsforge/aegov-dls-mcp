@@ -114,6 +114,30 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // targets; buildChecklistView marks these "not-checked" for local files.
   "http-error-page": ["2.42", "3.38"],
   "http-sitemap": ["3.64"],
+  // Computed-style rules against rules-core tokens (Stage 2B Tier C)
+  "style-font-family": ["2.2"],
+  "style-heading-typography": ["2.3"],
+  "style-background-neutral": ["2.6"],
+  "style-text-primary": ["2.7"],
+  "style-action-gold": ["2.8"],
+  "style-section-contrast": ["2.9"],
+  "style-action-contrast": ["2.10"],
+  "style-icon-size": ["2.23"],
+  // Ministries-only palette (Stage 2B Tier C) — evidence exists only when
+  // --entity-type ministry was passed; "not-checked" otherwise.
+  "ministry-palette": ["2.12"],
+  // Interaction rules (Stage 2B Tier C). The keyboard walk is fail-soft:
+  // kbd- items flip to "not-checked" when the walk could not complete.
+  "ix-zoom-overflow": ["2.38"],
+  "kbd-region-unreachable": ["3.13"],
+  "kbd-focus-indicator": ["3.14"],
+  // Bounded same-origin crawl (Stage 2B Tier D) — http(s) targets with at
+  // least one crawled subpage; "not-checked" otherwise. crawl-alternate also
+  // upgrades 3.35 from home-only to all crawled pages.
+  "crawl-title-duplicate": ["3.29"],
+  "crawl-description-duplicate": ["3.29"],
+  "crawl-alternate-missing": ["3.35"],
+  "crawl-page-rating": ["3.25"],
 };
 
 /**
@@ -144,8 +168,10 @@ export type ChecklistItemView = {
   question: string;
   /**
    * "not-checked" = the item's only evidence engine did not run this time
-   * (today: Lighthouse-only items without --lighthouse). Never conflate with
-   * "no-automated-findings", which means the engine ran and found nothing.
+   * (Lighthouse without --lighthouse, origin probes/crawl without an http(s)
+   * target, item 2.12 without --entity-type ministry, an aborted keyboard
+   * walk). Never conflate with "no-automated-findings", which means the
+   * engine ran and found nothing.
    */
   status: "findings" | "no-automated-findings" | "not-checked";
   findings: AuditFinding[];
@@ -173,7 +199,16 @@ export function machineCheckableIds(): Set<string> {
 
 export function buildChecklistView(
   findings: AuditFinding[],
-  opts: { lighthouseRan?: boolean; httpRan?: boolean } = {},
+  opts: {
+    lighthouseRan?: boolean;
+    httpRan?: boolean;
+    /** At least one subpage was crawled (Tier D). Default false. */
+    crawlRan?: boolean;
+    /** The keyboard walk completed without aborting (Tier C). Default true. */
+    kbdRan?: boolean;
+    /** --entity-type ministry was passed (item 2.12). Default false. */
+    ministryChecked?: boolean;
+  } = {},
 ): ChecklistView {
   const criteria = loadTdraCriteria();
   const byItem = new Map<string, AuditFinding[]>();
@@ -186,6 +221,9 @@ export function buildChecklistView(
   const notChecked = new Set<string>([
     ...(opts.lighthouseRan ? [] : itemsOnlyEvidencedBy("lh-")),
     ...(opts.httpRan ? [] : itemsOnlyEvidencedBy("http-")),
+    ...(opts.crawlRan ? [] : itemsOnlyEvidencedBy("crawl-")),
+    ...((opts.kbdRan ?? true) ? [] : itemsOnlyEvidencedBy("kbd-")),
+    ...(opts.ministryChecked ? [] : itemsOnlyEvidencedBy("ministry-")),
   ]);
   const machineCheckedItems: ChecklistItemView[] = criteria.items
     .filter((i) => checkable.has(i.id))
@@ -215,7 +253,8 @@ export function buildChecklistView(
       `Mizan machine-checks ${machineCheckedItems.length} of ${criteria.items.length} checklist ` +
       `items (fully or partially). "No automated findings" covers the machine-checkable subset ` +
       `only — it is NOT a pass; the remaining items are process/design questions a human answers. ` +
-      `Items marked "not checked" had no evidence engine in this run (they need --lighthouse ` +
-      `and/or an http(s) target for the origin probes).`,
+      `Items marked "not checked" had no evidence engine in this run: they need --lighthouse, an ` +
+      `http(s) target (origin probes and the bounded crawl), --entity-type ministry (item 2.12), ` +
+      `or a keyboard walk that completed without aborting.`,
   };
 }

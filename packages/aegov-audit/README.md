@@ -17,9 +17,12 @@ Over the **rendered DOM** (post-JavaScript, with computed styles — so it sees 
 - **Document & asset checks** — skip-to-content link, favicon variants, theme-colour meta, Open Graph tags, semantic HTML5 landmarks, `rel="noopener"`, icon `aria-hidden`/supporting text, font sourcing, script placement, cookie banner.
 - **Media checks** — `srcset`/`<picture>` responsive images (incl. the hero block), lazy loading, WebP-first delivery, adaptive video hosting.
 - **Origin probes** (http(s) targets) — `sitemap.xml` (robots.txt-aware) and designed 404 error pages (soft-404 and bare-server-default detection).
+- **Computed-style checks against the resolved DLS tokens** — approved font families and heading weights, neutral background palette, AEBLACK-800 primary text, AEGOLD-600 on action elements, section (3:1) and action-element (4.5:1) contrast sweeps, 24px minimum rendered icon size, and — with `--entity-type ministry` — the ministries-only AEGOLD/AEBLACK primary palette. Colour comparison happens in canonical sRGB against the token values from `rules-core`; nothing is hard-coded.
+- **Interaction checks** — layout reflow at 175% zoom (horizontal-overflow detection), a bounded real-keyboard tab walk (regions whose controls are never reachable), and visible focus indication on every element the walk visits (fail-soft: an aborted walk reports "not checked", never a guess).
+- **Bounded same-origin crawl** (http(s) targets; home + up to 6 linked pages, robots.txt honoured, self-identifying User-Agent; `--no-crawl` to skip) — unique per-page titles/descriptions, alternate-hreflang on every crawled page, and a heuristic Page-Rating-block presence check on service-looking pages.
 - **DLS rules** (the differentiator) — official-component usage vs hand-rolled markup, design-token fidelity, component structure, mandatory **UAE Pass** on any login, **Emirates ID** format `784-NNNN-NNNNNNN-N` with masking + pattern validation, DMY dates, document metadata, and **Arabic/RTL parity** between language variants.
 
-Together these attach direct evidence to **39 of the 125 TDRA checklist items** (fully or partially). The report says exactly which — and marks the rest as needing a human answer; items whose evidence engine didn't run in a given invocation (e.g. Lighthouse without `--lighthouse`) read **"not checked"**, never "no findings".
+Together these attach direct evidence to **53 of the 125 TDRA checklist items** (fully or partially). The report says exactly which — and marks the rest as needing a human answer; items whose evidence engine didn't run in a given invocation (e.g. Lighthouse without `--lighthouse`, the crawl on a local file, item 2.12 without `--entity-type ministry`) read **"not checked"**, never "no findings".
 
 Every finding carries a severity, the rule, its provenance/confidence tier (`package | docs | heuristic | external`), and a fix.
 
@@ -49,6 +52,11 @@ npx @dlsforge/aegov-audit <url|path> [options]
                Use a local copy of the TDRA workbook as the template (default: the
                cached copy, else a fresh download from designsystem.gov.ae — the
                workbook is TDRA's file and is never shipped inside this package).
+--no-crawl     Skip the bounded same-origin crawl (on by default for http(s)
+               targets; answers the multi-page checklist items).
+--entity-type <type>
+               The audited entity's type. "ministry" additionally enables the
+               ministries-only AEGOLD/AEBLACK palette check (checklist 2.12).
 --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                (critical > serious > moderate > minor). Default: none — report only.
 ```

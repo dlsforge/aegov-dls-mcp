@@ -25,6 +25,9 @@ import { runMetaChecks } from "./engines/meta.js";
 import { runAssetChecks } from "./engines/assets.js";
 import { runMediaChecks } from "./engines/media.js";
 import { runHttpChecks } from "./engines/http.js";
+import { runStyleChecks } from "./engines/styles.js";
+import { runZoomCheck, runKeyboardChecks } from "./engines/interaction.js";
+import { runCrawlChecks, CRAWL_CAP } from "./engines/crawl.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { settleNavigation } from "./engines/settle.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
@@ -42,7 +45,8 @@ import { fillWorkbook, resolveTemplate } from "./report/xlsx.js";
 const USAGE = `Mizan — AEGOV DLS compliance auditor
 
 Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <dir>]
-                   [--format xlsx [--xlsx-template <path>]]
+                   [--format xlsx [--xlsx-template <path>]] [--no-crawl]
+                   [--entity-type <type>]
                    [--fail-on <critical|serious|moderate|minor|none>]
 
   <url|path>     A http(s):// URL or a local HTML file to audit.
@@ -62,6 +66,15 @@ Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <d
   --xlsx-template <path>
                  Use a local copy of the TDRA workbook as the template
                  (default: the cached copy, else a fresh download).
+  --no-crawl     Skip the bounded same-origin crawl (home + up to ${CRAWL_CAP}
+                 linked pages; on by default for http(s) targets). The crawl
+                 answers the multi-page checklist items (unique titles,
+                 per-page hreflang, Page Rating presence) and honours
+                 robots.txt.
+  --entity-type <type>
+                 The audited entity's type. "ministry" additionally enables
+                 checklist item 2.12 (ministries-only AEGOLD/AEBLACK primary
+                 palette); other values change nothing yet.
   --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                  (critical > serious > moderate > minor). Default: none —
                  report only. This is what CI (the GitHub Action) keys off.
@@ -131,6 +144,22 @@ if (formatIdx !== -1) {
     process.exit(2);
   }
 }
+const noCrawl = args.includes("--no-crawl");
+const entityIdx = args.indexOf("--entity-type");
+let entityType: string | null = null;
+if (entityIdx !== -1) {
+  const v = args[entityIdx + 1];
+  if (!v || v.startsWith("--")) {
+    console.error("aegov-audit: --entity-type needs a value (e.g. ministry)");
+    process.exit(2);
+  }
+  entityType = v.toLowerCase();
+  consumed.add(entityIdx + 1);
+  if (entityType !== "ministry")
+    console.error(
+      `aegov-audit: --entity-type ${entityType}: only "ministry" changes behaviour today (checklist 2.12)`,
+    );
+}
 const tplIdx = args.indexOf("--xlsx-template");
 let xlsxTemplate: string | null = null;
 if (tplIdx !== -1) {
@@ -182,7 +211,22 @@ try {
     ...(await runAssetChecks(page)),
     ...(await runMediaChecks(page)),
     ...(await runHttpChecks(finalUrl)),
+    ...(await runStyleChecks(page, { entityType })),
   ];
+  // Keyboard walk and zoom emulation mutate focus/viewport — run them after
+  // the DOM-reading engines, then the crawl (which opens its own pages).
+  const kbd = await runKeyboardChecks(page);
+  dlsFindings.push(...kbd.findings);
+  dlsFindings.push(...(await runZoomCheck(page)));
+  let crawl: { findings: AuditFinding[]; pagesCrawled: number } = { findings: [], pagesCrawled: 0 };
+  if (!noCrawl && /^https?:/i.test(finalUrl)) {
+    crawl = await runCrawlChecks(browser, page, finalUrl);
+    console.error(
+      `aegov-audit: crawl covered ${crawl.pagesCrawled} subpage(s) (cap ${CRAWL_CAP}, robots.txt honoured)` +
+        (crawl.pagesCrawled === 0 ? " — multi-page items will show as not checked" : ""),
+    );
+    dlsFindings.push(...crawl.findings);
+  }
   if (withParity) {
     const alternate = parityUrl ?? (await discoverAlternate(page));
     if (!alternate) {
@@ -210,6 +254,9 @@ try {
     engines: { axe: AXE_VERSION, dls: dlsPackageRef() },
     findings,
     lighthouse,
+    crawlRan: crawl.pagesCrawled > 0,
+    kbdRan: kbd.ran,
+    ministryChecked: entityType === "ministry",
   });
 
   if (outDir) {

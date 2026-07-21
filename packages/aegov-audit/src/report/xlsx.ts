@@ -247,7 +247,7 @@ export function reasonText(report: AuditReport, itemId: string): string {
   const tag = `Mizan ${own.version}`;
   if (!item) return `${tag}: requires human answer — outside the automated scope.`;
   if (item.status === "not-checked")
-    return `${tag}: not checked in this run (needs --lighthouse and/or an http(s) target).`;
+    return `${tag}: not checked in this run — its evidence engine did not run (e.g. needs --lighthouse, an http(s) target for origin/crawl probes, or --entity-type ministry).`;
   if (item.status === "no-automated-findings")
     return `${tag}: no automated findings in the machine-checkable subset — NOT a pass; human validation still required.`;
   const lines = item.findings.slice(0, 5).map((f) => `[${f.severity}] ${f.ruleId}: ${f.message}`);

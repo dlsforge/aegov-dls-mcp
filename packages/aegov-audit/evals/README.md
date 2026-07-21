@@ -26,6 +26,8 @@ Each directory under `fixtures/` holds a small site plus an `expected.json`:
 - **seeded-meta** — legacy doctype and missing charset/viewport/canonical/lang/dir/alternates (TDRA items 3.26–3.35).
 - **seeded-langmix** — Arabic page served under `lang="en"` in an LTR context — modeled on a defect found live during the recorded real-site run.
 - **seeded-parity** — degraded Arabic variant: no `dir="rtl"`, missing component, link-count drift. All parity findings are review flags, never assertions.
+- **seeded-styles** (Tier C) — serif fonts, light h1, arbitrary background, grey body text instead of AEBLACK-800, no AEGOLD-600 on actions, low-contrast section and button, sub-24px icons. Every computed-style rule must fire; interaction and ministry rules must stay quiet.
+- **seeded-interaction** (Tier C) — focus outlines removed with no replacement, a footer control pulled out of the tab order, a fixed-width element that overflows at 175% zoom.
 
 Arabic strings in fixtures are machine-generated and marked for **native-speaker review** — do not treat them as approved government copy.
 

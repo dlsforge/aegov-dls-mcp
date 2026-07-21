@@ -59,6 +59,12 @@ npx @dlsforge/aegov-audit <url|path> [options]
 --entity-type <type>
                The audited entity's type. "ministry" additionally enables the
                ministries-only AEGOLD/AEBLACK palette check (checklist 2.12).
+--artifacts <dir>
+               Write a deterministic evidence bundle into <dir>: full-page
+               screenshots at the default viewport and every design-system
+               breakpoint, extracted page copy (copy.json), an image inventory
+               (images.json) and a self-describing manifest. Evidence input for
+               downstream review tooling — never a compliance verdict.
 --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                (critical > serious > moderate > minor). Default: none — report only.
 ```
@@ -80,6 +86,21 @@ npx @dlsforge/aegov-audit https://example.gov.ae/en/service \
 # CI gate: fail the build on any critical finding
 npx @dlsforge/aegov-audit ./dist/index.html --fail-on critical
 ```
+
+## Use as a library
+
+The CLI is the `aegov-audit` bin; importing the package loads the **library surface** instead (no side effects — nothing runs until you call it). Engines take a Playwright `Page`/`Browser` you own; the report layer turns findings into the TDRA-checklist-shaped report:
+
+```ts
+import {
+  runParityCheck, discoverAlternate, // Arabic/RTL parity (flag, never assert)
+  runStyleChecks, runAxe,            // any engine can be driven standalone
+  buildReport, fillWorkbook,         // report + TDRA workbook writer
+  writeArtifacts,                    // the --artifacts evidence bundle
+} from "@dlsforge/aegov-audit";
+```
+
+Additions to this surface are non-breaking; renames/removals are semver-major. Deep `dist/` imports used by earlier consumers keep resolving via a passthrough export for migration room.
 
 ## GitHub Action — audit on every change
 

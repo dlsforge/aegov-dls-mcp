@@ -30,6 +30,7 @@ import { runZoomCheck, runKeyboardChecks, runBreakpointCheck } from "./engines/i
 import { runCrawlChecks, CRAWL_CAP } from "./engines/crawl.js";
 import { runStackChecks } from "./engines/stack.js";
 import { runHtmlValidation } from "./engines/validate-html.js";
+import { writeArtifacts } from "./artifacts.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { settleNavigation } from "./engines/settle.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
@@ -77,6 +78,12 @@ Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <d
                  The audited entity's type. "ministry" additionally enables
                  checklist item 2.12 (ministries-only AEGOLD/AEBLACK primary
                  palette); other values change nothing yet.
+  --artifacts <dir>
+                 Write a deterministic evidence bundle into <dir>: full-page
+                 screenshots at the default viewport and every design-system
+                 breakpoint, the extracted page copy (copy.json), an image
+                 inventory (images.json) and a manifest. Evidence input for
+                 downstream review tooling — never a compliance verdict.
   --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                  (critical > serious > moderate > minor). Default: none —
                  report only. This is what CI (the GitHub Action) keys off.
@@ -162,6 +169,16 @@ if (entityIdx !== -1) {
       `aegov-audit: --entity-type ${entityType}: only "ministry" changes behaviour today (checklist 2.12)`,
     );
 }
+const artifactsIdx = args.indexOf("--artifacts");
+let artifactsDir: string | null = null;
+if (artifactsIdx !== -1) {
+  if (!args[artifactsIdx + 1] || args[artifactsIdx + 1].startsWith("--")) {
+    console.error("aegov-audit: --artifacts needs a directory argument");
+    process.exit(2);
+  }
+  artifactsDir = args[artifactsIdx + 1];
+  consumed.add(artifactsIdx + 1);
+}
 const tplIdx = args.indexOf("--xlsx-template");
 let xlsxTemplate: string | null = null;
 if (tplIdx !== -1) {
@@ -232,6 +249,13 @@ try {
         (crawl.pagesCrawled === 0 ? " — multi-page items will show as not checked" : ""),
     );
     dlsFindings.push(...crawl.findings);
+  }
+  if (artifactsDir) {
+    const manifest = await writeArtifacts(page, artifactsDir, { target: url, finalUrl });
+    console.error(
+      `aegov-audit: wrote evidence bundle to ${resolve(artifactsDir)} ` +
+        `(${manifest.screenshots.length} screenshot(s), copy.json, images.json, manifest.json)`,
+    );
   }
   if (withParity) {
     const alternate = parityUrl ?? (await discoverAlternate(page));

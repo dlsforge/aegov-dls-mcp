@@ -28,6 +28,10 @@ after(async () => await browser.close());
 async function withPage(fixture, fn) {
   const p = await browser.newPage();
   try {
+    // Hermetic: fixtures may reference external assets (clean-assets.html
+    // loads Google Fonts for the Tier B font-source gate) — these checks
+    // read the DOM, not fetched CSS, and real network makes the suite flaky.
+    await p.route(/^https?:/, (route) => route.abort());
     await p.goto(fx(fixture));
     return await fn(p);
   } finally {

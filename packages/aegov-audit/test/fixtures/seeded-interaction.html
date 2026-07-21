@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded interaction fixture — kbd + zoom rules must fire</title>
+  <style>
+    /* Deliberate violations: focus outlines removed with no replacement, a
+       fixed-width element wider than the 175%-zoom viewport, and a footer
+       whose only interactive element is pulled out of the tab order. */
+    a:focus, button:focus { outline: none; }
+    .too-wide { width: 1200px; height: 12px; background: #eee; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main"><a href="/one">One</a> <a href="/two">Two</a></nav>
+  </header>
+  <main id="main">
+    <p>Body copy for the interaction fixture page.</p>
+    <button type="button">Do the thing</button>
+    <div class="too-wide"></div>
+  </main>
+  <footer>
+    <a href="/legal" tabindex="-1">Legal notice</a>
+  </footer>
+</body>
+</html>

@@ -79,18 +79,22 @@ describe("TDRA checklist mirror", () => {
     assert.deepEqual(
       view.machineCheckedItems.map((i) => i.id),
       // prettier-ignore
-      ["2.35", "2.42", "3.2", "3.4", "3.6", "3.8", "3.9", "3.10", "3.12", "3.23", "3.24", "3.26", "3.27",
-       "3.28", "3.30", "3.31", "3.32", "3.33", "3.34", "3.35", "3.36", "3.37", "3.38", "3.39", "3.41",
-       "3.43", "3.46", "3.47", "3.48", "3.49", "3.50", "3.51", "3.52", "3.53", "3.54", "3.57", "3.58",
-       "3.59", "3.64"],
+      ["2.2", "2.3", "2.6", "2.7", "2.8", "2.9", "2.10", "2.12", "2.23", "2.35", "2.38", "2.42",
+       "3.2", "3.4", "3.6", "3.8", "3.9", "3.10", "3.12", "3.13", "3.14", "3.23", "3.24", "3.25",
+       "3.26", "3.27", "3.28", "3.29", "3.30", "3.31", "3.32", "3.33", "3.34", "3.35", "3.36",
+       "3.37", "3.38", "3.39", "3.41", "3.43", "3.46", "3.47", "3.48", "3.49", "3.50", "3.51",
+       "3.52", "3.53", "3.54", "3.57", "3.58", "3.59", "3.64"],
       "the curated machine-checkable set — update deliberately when a new engine lands",
     );
-    // Without a Lighthouse run or an http(s) target, the items evidenced only
-    // by those engines are "not-checked"; everything else ran and reads
-    // "no-automated-findings". Neither is a pass.
+    // Without a Lighthouse run, an http(s) target (origin probes + crawl) or
+    // --entity-type ministry, the items evidenced only by those engines are
+    // "not-checked"; everything else ran and reads "no-automated-findings".
+    // Neither is a pass.
     const notRun = new Set([
       "3.43", "3.46", "3.47", "3.53", "3.54", "3.58", // lighthouse-only
       "2.42", "3.38", "3.64", // http-probe-only
+      "3.25", "3.29", // crawl-only (Tier D)
+      "2.12", // --entity-type ministry only (Tier C)
     ]);
     assert.ok(
       view.machineCheckedItems.every(

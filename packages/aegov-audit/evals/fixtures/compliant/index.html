@@ -15,13 +15,17 @@
   <meta property="og:image" content="https://example.gov.ae/share.webp">
   <style>
     /* Every colour below is an exact DLS token value (catalog.json) — the
-       token-fidelity engine must stay silent on this page. */
-    body { color: oklch(0.169 0.006 271.0); margin: 0; font-family: system-ui, sans-serif; }
+       token-fidelity engine must stay silent on this page. Text is
+       aeblack-800, actions are aegold-600, fonts/weights follow the font and
+       typography tokens, so the Tier C style engine must stay silent too. */
+    body { color: oklch(0.264 0.006 258.4); margin: 0;
+           font-family: 'Roboto', ui-sans-serif, system-ui, sans-serif; }
+    h1, h2 { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 800; }
     header, main, footer { padding: 1rem 2rem; }
     .aegov-btn {
       display: inline-block; padding: 0.75rem 1.5rem; border: 0;
       color: oklch(1.000 0.000 0.0);
-      background-color: oklch(0.238 0.040 151.6);
+      background-color: oklch(0.570 0.097 84.4);
       border-radius: 0.5rem; text-decoration: none; font-size: 1rem;
     }
     .aegov-card { border: 1px solid oklch(0.230 0.008 264.4); border-radius: 0.5rem; padding: 1rem; margin: 1rem 0; }

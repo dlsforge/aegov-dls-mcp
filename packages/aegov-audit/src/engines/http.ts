@@ -14,7 +14,7 @@ import type { AuditFinding, AuditSeverity } from "../report/types.js";
 const require = createRequire(import.meta.url);
 const own = require("../../package.json") as { version: string };
 
-const UA = `aegov-audit/${own.version} (Mizan; +https://github.com/dlsforge/aegov-dls-mcp)`;
+export const UA = `aegov-audit/${own.version} (Mizan; +https://github.com/dlsforge/aegov-dls-mcp)`;
 /** Fixed, deterministic probe path — improbable by construction, reproducible across runs. */
 export const NOT_FOUND_PROBE_PATH = "/__mizan-404-probe__/this-page-must-not-exist";
 

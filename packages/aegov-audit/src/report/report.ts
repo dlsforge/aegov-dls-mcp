@@ -116,6 +116,12 @@ export function buildReport(input: {
   lighthouse: LighthouseScores[] | null;
   /** Whether the origin HTTP probes ran (http(s) targets only). Default: from the target scheme. */
   httpRan?: boolean;
+  /** Whether the Tier D crawl reached at least one subpage. Default false. */
+  crawlRan?: boolean;
+  /** Whether the Tier C keyboard walk completed without aborting. Default true. */
+  kbdRan?: boolean;
+  /** Whether --entity-type ministry was passed (item 2.12). Default false. */
+  ministryChecked?: boolean;
 }): AuditReport {
   const byEngine: Record<string, number> = {};
   for (const f of input.findings) byEngine[f.engine] = (byEngine[f.engine] ?? 0) + 1;
@@ -145,6 +151,9 @@ export function buildReport(input: {
     tdraChecklist: buildChecklistView(input.findings, {
       lighthouseRan: input.lighthouse !== null,
       httpRan: input.httpRan ?? /^https?:/i.test(input.target),
+      crawlRan: input.crawlRan ?? false,
+      kbdRan: input.kbdRan ?? true,
+      ministryChecked: input.ministryChecked ?? false,
     }),
     findings: input.findings,
     disclaimers: DISCLAIMERS,
@@ -208,7 +217,7 @@ export function renderMarkdown(r: AuditReport): string {
       item.status === "findings"
         ? `${item.findings.length} finding(s)`
         : item.status === "not-checked"
-          ? "not checked in this run (needs --lighthouse and/or an http(s) target)"
+          ? "not checked in this run — its evidence engine did not run (see the checklist note)"
           : "no automated findings (subset only — not a pass)";
     lines.push(`- **${mark} ${item.id}** ${item.question}`);
     lines.push(`  - ${status}`);

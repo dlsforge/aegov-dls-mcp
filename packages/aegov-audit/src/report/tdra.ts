@@ -53,7 +53,11 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // DLS engines
   "dls-uaepass-missing": ["3.24"],
   "dls-class-identity": ["3.6"],
-  "dls-not-used": ["3.6"],
+  // Zero aegov-* classes on a rendered page is direct evidence for 3.6 (DLS
+  // markup in use) and equally for 1.1/3.1 (design system implemented /
+  // installed): non-use is decisive; the version half of those questions
+  // stays with the human reviewer (Stage 2C mapping decision).
+  "dls-not-used": ["1.1", "3.1", "3.6"],
   "dls-structure-check-item": ["3.6"],
   "dls-structure-modal": ["3.6"],
   "dls-structure-accordion": ["3.6"],
@@ -138,6 +142,18 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   "crawl-description-duplicate": ["3.29"],
   "crawl-alternate-missing": ["3.35"],
   "crawl-page-rating": ["3.25"],
+  // Stage 2C zero-false-positive slice.
+  // Offline W3C-style validation of the raw page source; "not-checked" when
+  // the source could not be fetched.
+  "w3c-invalid-html": ["3.40"],
+  // Overflow at the design-system breakpoints — direct rendered evidence for
+  // 3.42 and partial evidence for 3.15 (mobile responsiveness outcome).
+  "ix-breakpoint-overflow": ["3.15", "3.42"],
+  // Hard technology fingerprints (self-declared generator meta / core asset
+  // paths; approved-library contrast is docs-sourced). Fire on detection
+  // only — absence of a signal is never a finding.
+  "stack-monolithic-cms": ["3.60", "3.61"],
+  "stack-icon-library": ["2.21"],
 };
 
 /**
@@ -208,6 +224,8 @@ export function buildChecklistView(
     kbdRan?: boolean;
     /** --entity-type ministry was passed (item 2.12). Default false. */
     ministryChecked?: boolean;
+    /** The offline HTML validation obtained the raw source (item 3.40). Default false. */
+    htmlValidateRan?: boolean;
   } = {},
 ): ChecklistView {
   const criteria = loadTdraCriteria();
@@ -224,6 +242,7 @@ export function buildChecklistView(
     ...(opts.crawlRan ? [] : itemsOnlyEvidencedBy("crawl-")),
     ...((opts.kbdRan ?? true) ? [] : itemsOnlyEvidencedBy("kbd-")),
     ...(opts.ministryChecked ? [] : itemsOnlyEvidencedBy("ministry-")),
+    ...(opts.htmlValidateRan ? [] : itemsOnlyEvidencedBy("w3c-")),
   ]);
   const machineCheckedItems: ChecklistItemView[] = criteria.items
     .filter((i) => checkable.has(i.id))

@@ -26,8 +26,10 @@ import { runAssetChecks } from "./engines/assets.js";
 import { runMediaChecks } from "./engines/media.js";
 import { runHttpChecks } from "./engines/http.js";
 import { runStyleChecks } from "./engines/styles.js";
-import { runZoomCheck, runKeyboardChecks } from "./engines/interaction.js";
+import { runZoomCheck, runKeyboardChecks, runBreakpointCheck } from "./engines/interaction.js";
 import { runCrawlChecks, CRAWL_CAP } from "./engines/crawl.js";
+import { runStackChecks } from "./engines/stack.js";
+import { runHtmlValidation } from "./engines/validate-html.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
 import { settleNavigation } from "./engines/settle.js";
 import { runLighthouseBoth, type LighthouseScores } from "./engines/lighthouse.js";
@@ -212,12 +214,16 @@ try {
     ...(await runMediaChecks(page)),
     ...(await runHttpChecks(finalUrl)),
     ...(await runStyleChecks(page, { entityType })),
+    ...(await runStackChecks(page)),
   ];
-  // Keyboard walk and zoom emulation mutate focus/viewport — run them after
-  // the DOM-reading engines, then the crawl (which opens its own pages).
+  const htmlValidation = await runHtmlValidation(finalUrl);
+  dlsFindings.push(...htmlValidation.findings);
+  // Keyboard walk and viewport emulation mutate focus/viewport — run them
+  // after the DOM-reading engines, then the crawl (which opens its own pages).
   const kbd = await runKeyboardChecks(page);
   dlsFindings.push(...kbd.findings);
   dlsFindings.push(...(await runZoomCheck(page)));
+  dlsFindings.push(...(await runBreakpointCheck(page)));
   let crawl: { findings: AuditFinding[]; pagesCrawled: number } = { findings: [], pagesCrawled: 0 };
   if (!noCrawl && /^https?:/i.test(finalUrl)) {
     crawl = await runCrawlChecks(browser, page, finalUrl);
@@ -257,6 +263,7 @@ try {
     crawlRan: crawl.pagesCrawled > 0,
     kbdRan: kbd.ran,
     ministryChecked: entityType === "ministry",
+    htmlValidateRan: htmlValidation.ran,
   });
 
   if (outDir) {

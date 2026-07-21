@@ -1,0 +1,15 @@
+{
+  "description": "Stage 2C fixture — WordPress generator meta (monolithic CMS, items 3.60/3.61), Font Awesome in use vs the approved Phosphor library (2.21, docs-tier), and deliberate HTML source errors (3.40). All three rules must fire through the real CLI; the interaction rules must stay quiet on this fluid page.",
+  "target": "index.html",
+  "expected": [
+    { "ruleId": "stack-monolithic-cms" },
+    { "ruleId": "stack-icon-library" },
+    { "ruleId": "w3c-invalid-html" }
+  ],
+  "forbidden": [
+    "ix-zoom-overflow",
+    "ix-breakpoint-overflow",
+    "kbd-region-unreachable",
+    "ministry-palette"
+  ]
+}

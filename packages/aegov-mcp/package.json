@@ -1,6 +1,7 @@
 {
   "name": "@dlsforge/aegov-mcp",
   "version": "0.1.1",
+  "mcpName": "io.github.dlsforge/aegov-mcp",
   "description": "MCP server exposing the UAE Design System (AEGOV DLS) to AI coding assistants. Community project. Not affiliated with or endorsed by TDRA.",
   "license": "MIT",
   "author": "Alam Khan Durrani",

@@ -1,6 +1,8 @@
 # Publishing runbook — Stage 2 step 8
 
 > **DONE 2026-07-13.** Both packages are live: [`@dlsforge/aegov-rules-core@0.1.0`](https://www.npmjs.com/package/@dlsforge/aegov-rules-core) and [`@dlsforge/aegov-audit@0.0.1`](https://www.npmjs.com/package/@dlsforge/aegov-audit), published by Alam (`alamkhanak`), verified by a clean registry install + functional run (`--fail-on critical` → exit 1 on the seeded fixture). Post-publish cleanups landed: single-tarball G2 flow restored, action README caveat dropped, releases tagged. This file stays as the runbook for future releases.
+>
+> **`@dlsforge/aegov-audit@0.1.0` PUBLISHED 2026-07-22** (Stage 2B/2C release: coverage 14 → 61, xlsx output, artifacts bundle, library exports surface; new pinned dep `html-validate@11.5.6`). Published by Alam with a granular access token — note: plain `npm publish` after a browser `npm login` 403s ("Two-factor authentication … required"); either pass `--otp=<code>` or use a granular token with **Bypass 2FA** enabled, then `npm config delete //registry.npmjs.org/:_authToken` and revoke the token. Verified: clean registry install, bin runs, library + deep-dist imports resolve, seeded fixture → `--fail-on moderate` exit 1. Tagged `aegov-audit-v0.1.0`.
 
 The exact sequence to publish the packages to npm under `@dlsforge`.
 

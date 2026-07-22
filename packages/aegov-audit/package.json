@@ -1,6 +1,6 @@
 {
   "name": "@dlsforge/aegov-audit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Mizan — compliance & accessibility auditor for UAE government websites against the AEGOV DLS and TDRA assessment criteria. Community project. Not affiliated with or endorsed by TDRA.",
   "license": "MIT",
   "author": "Alam Khan Durrani",

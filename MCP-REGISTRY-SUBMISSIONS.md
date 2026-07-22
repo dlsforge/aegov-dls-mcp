@@ -78,7 +78,7 @@ Per directory (verified 2026-07-22; UIs change):
 
 ## Status
 
-- [ ] `@dlsforge/aegov-mcp@0.1.1` published to npm (prerequisite, Alam)
+- [x] `@dlsforge/aegov-mcp@0.1.1` published to npm — DONE 2026-07-22, verified (clean install; MCP client connects; all 7 tools; `mcpName` present in the published manifest); tagged `aegov-mcp-v0.1.1`
 - [ ] Official MCP Registry published (`mcp-publisher publish`, Alam's GitHub login)
 - [ ] mcp.so submitted
 - [ ] PulseMCP submitted

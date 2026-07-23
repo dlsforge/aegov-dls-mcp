@@ -48,6 +48,12 @@ Notes:
 - If `publish` complains about the description length or schema drift, run `mcp-publisher init` in the package directory and port our fields onto the freshly generated template.
 - Re-publish to the registry on every future npm release (bump both `version` fields in server.json). Registry publishing can later be automated in GitHub Actions (official docs: registry → github-actions).
 
+**Lessons from the 2026-07-23 publish (what actually worked):**
+- `description` in server.json is capped at **≤100 chars** by the registry (422 otherwise). Ours is now the short form; the long copy lives in §2 below and the README.
+- The org namespace `io.github.dlsforge/*` is granted **only to org Owners** (role `admin`), checked via `GET /user/memberships/orgs` — public org membership is neither necessary nor sufficient.
+- `mcp-publisher login github` (device flow) **cannot see org role**: the registry's login app is a GitHub App, which GitHub won't show org memberships for unless installed on the org. OAuth-app policy settings ("Remove restrictions") don't apply to it and don't help.
+- **Working path:** classic PAT with only the `read:org` scope, then `mcp-publisher login github --token <PAT>`, then `mcp-publisher publish` from `packages/aegov-mcp`. Use this for every future release; the PAT can be short-lived and deleted right after.
+
 ## 2. Community directories (after #1)
 
 Ready-to-paste copy for all of them:
@@ -79,7 +85,7 @@ Per directory (verified 2026-07-22; UIs change):
 ## Status
 
 - [x] `@dlsforge/aegov-mcp@0.1.1` published to npm — DONE 2026-07-22, verified (clean install; MCP client connects; all 7 tools; `mcpName` present in the published manifest); tagged `aegov-mcp-v0.1.1`
-- [ ] Official MCP Registry published (`mcp-publisher publish`, Alam's GitHub login)
+- [x] Official MCP Registry published — DONE 2026-07-23, verified live via API (`io.github.dlsforge/aegov-mcp` v0.1.1, status active)
 - [ ] mcp.so submitted
 - [ ] PulseMCP submitted
 - [ ] Glama claimed

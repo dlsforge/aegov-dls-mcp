@@ -86,7 +86,7 @@ Per directory (verified 2026-07-22; UIs change):
 
 - [x] `@dlsforge/aegov-mcp@0.1.1` published to npm — DONE 2026-07-22, verified (clean install; MCP client connects; all 7 tools; `mcpName` present in the published manifest); tagged `aegov-mcp-v0.1.1`
 - [x] Official MCP Registry published — DONE 2026-07-23, verified live via API (`io.github.dlsforge/aegov-mcp` v0.1.1, status active)
-- [ ] mcp.so submitted
-- [ ] PulseMCP submitted
+- [x] mcp.so submitted — DONE 2026-07-24 (free tier, queued for review; category Developer Tools, author dlsforge, full overview + npx config filled; account: Alam's GitHub login)
+- [x] PulseMCP — no manual submission anymore (checked 2026-07-24): they ingest the Official MCP Registry daily, process weekly → listing arrives automatically. FOLLOW-UP: if not visible on pulsemcp.com by ~2026-07-31, email hello@pulsemcp.com
 - [ ] Glama claimed
 - [ ] Smithery listed

@@ -75,7 +75,7 @@ Per directory (verified 2026-07-22; UIs change):
 | **mcp.so** | "Submit" button on mcp.so (or their GitHub submission issue) | Paste the copy above + repo URL. |
 | **PulseMCP** | "Submit" in the nav at pulsemcp.com | They also crawl automatically; submitting speeds it up and lets you claim the listing. |
 | **Glama** | Auto-indexes GitHub; visit glama.ai/mcp/servers and claim/verify the listing once it appears | Claiming may involve a `glama.json` in the repo or account verification — follow their current docs. |
-| **Smithery** | smithery.ai → "Add Server" (account needed) | Smithery is hosted-first; list the npm/stdio server as a local server. Skip their hosting — this server is local-only by design (no telemetry, no network). |
+| **Smithery** | smithery.ai → "Add Server" (account needed) | **Re-verified 2026-07-24: the web form only takes remote HTTP servers now — do NOT fill it.** Local stdio servers are published as an **MCPB bundle** (`.mcpb`, Anthropic's packaged-MCP format): build the bundle, then `smithery mcp publish ./server.mcpb -n <org>/<server>` (or UI upload). Docs: smithery.ai/docs/build/publish.md. Bonus: the same .mcpb gives Claude Desktop one-click install. Alam's Smithery account exists (GitHub login done). |
 
 ## 3. What NOT to claim anywhere
 
@@ -88,5 +88,5 @@ Per directory (verified 2026-07-22; UIs change):
 - [x] Official MCP Registry published — DONE 2026-07-23, verified live via API (`io.github.dlsforge/aegov-mcp` v0.1.1, status active)
 - [x] mcp.so submitted — DONE 2026-07-24 (free tier, queued for review; category Developer Tools, author dlsforge, full overview + npx config filled; account: Alam's GitHub login)
 - [x] PulseMCP — no manual submission anymore (checked 2026-07-24): they ingest the Official MCP Registry daily, process weekly → listing arrives automatically. FOLLOW-UP: if not visible on pulsemcp.com by ~2026-07-31, email hello@pulsemcp.com
-- [ ] Glama claimed
-- [ ] Smithery listed
+- [x] Glama submitted — DONE 2026-07-24 (Add Server with repo URL, Alam's GitHub login; `glama.json` with maintainer AlamKhanAk committed at repo root, commit e6f8831). FOLLOW-UP: indexing not instant — check `https://glama.ai/api/mcp/v1/servers?query=dlsforge` in a few days, verify listing shows claimed/maintained
+- [ ] Smithery listed — DEFERRED to next session (2026-07-24): needs an MCPB bundle build first (see table note); plan = build .mcpb from packages/aegov-mcp, verify install in a real client, then `smithery mcp publish`

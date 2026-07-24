@@ -7,3 +7,6 @@ dist/
 .tdra-cache/
 # Filled copies of TDRA's workbook embed TDRA's own file — never redistribute
 report.xlsx
+
+mcpb-build/
+mcpb-dist/

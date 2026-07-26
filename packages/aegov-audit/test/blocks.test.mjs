@@ -15,6 +15,7 @@ import assert from "node:assert/strict";
 import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
+import { loadCatalog } from "@dlsforge/aegov-rules-core";
 import { runBlockChecks, blockRuleId } from "../dist/engines/blocks.js";
 import { buildChecklistView } from "../dist/report/tdra.js";
 
@@ -103,6 +104,81 @@ describe("a page not using the DLS blocks at all", () => {
     // would read as a pass.
     assert.equal(status(view, "3.20"), "not-checked");
     assert.equal(status(view, "3.22"), "not-checked");
+  });
+});
+
+describe("the design system's own documented markup", () => {
+  // The sharpest test available: build a page out of the catalogue's captured
+  // header and footer examples and check them against the contracts derived
+  // from those very pages. If the docs' own markup fails its own contract, the
+  // contract is wrong — not the site under audit.
+  async function checkDocsMarkup(headerVariantIndex) {
+    const catalog = loadCatalog();
+    const header = catalog.blocks.find((b) => b.id === "header");
+    const footer = catalog.blocks.find((b) => b.id === "footer");
+    const headerExamples = [header.markup, ...header.examples].filter(Boolean);
+    const html =
+      `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>docs markup</title></head><body>` +
+      headerExamples[headerVariantIndex].html +
+      `<main><h1>Docs markup</h1></main>` +
+      footer.markup.html +
+      `</body></html>`;
+
+    const p = await browser.newPage();
+    try {
+      await p.route(/^https?:/, (route) => route.abort());
+      await p.setContent(html, { waitUntil: "domcontentloaded" });
+      return await runBlockChecks(p);
+    } finally {
+      await p.close();
+    }
+  }
+
+  // The one requirement a static code sample CANNOT demonstrate: the docs
+  // mandate a copyright year that "auto change[s] every year", and their own
+  // example hardcodes "© 2023". The rule is right and the sample is simply
+  // illustrative — but an entity copying it verbatim does inherit a stale year,
+  // which is precisely what the rule exists to catch. Pinned rather than
+  // excluded so that if the docs ever ship a dynamic year, this test tells us.
+  const STATIC_SAMPLE_ONLY = ["blk-footer-copyright-year"];
+
+  test("the Ministries header + footer satisfy every structural contract", async () => {
+    const r = await checkDocsMarkup(0);
+    assert.deepEqual(
+      ruleIds(r),
+      STATIC_SAMPLE_ONLY,
+      "the docs' own markup must not violate its own structural contract",
+    );
+    assert.deepEqual(r.notApplicableRules, [], "every anchor should be present in the docs markup");
+  });
+
+  test("the Authorities header variant satisfies every structural contract", async () => {
+    const r = await checkDocsMarkup(1);
+    assert.deepEqual(ruleIds(r), STATIC_SAMPLE_ONLY);
+    assert.deepEqual(r.notApplicableRules, []);
+  });
+
+  test("the hardcoded year in the docs sample is what trips it, nothing else", async () => {
+    const r = await checkDocsMarkup(0);
+    const f = r.findings.find((x) => x.ruleId === "blk-footer-copyright-year");
+    assert.match(f.message, /2023/, "the docs sample's hardcoded year should be named");
+  });
+});
+
+describe("a catalogue with no block contracts", () => {
+  test("every block item reads not-checked, never a silent pass", () => {
+    // Regression: runBlockChecks returned no findings and no not-applicable
+    // rules when the catalogue carried no contracts, so all five items read
+    // "no automated findings" — a pass for something nothing had looked at.
+    const view = buildChecklistView([], { blocksRan: false });
+    for (const id of ["3.19", "3.20", "3.21", "3.22", "2.40"]) {
+      assert.equal(status(view, id), "not-checked", id);
+    }
+  });
+
+  test("the shipped catalogue does carry them, so a real run reports ran:true", async () => {
+    const r = await check("blocks-compliant.html");
+    assert.equal(r.ran, true);
   });
 });
 

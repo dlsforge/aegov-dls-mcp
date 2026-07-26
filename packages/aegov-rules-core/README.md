@@ -56,7 +56,12 @@ EID_PATTERN; // "^784-\\d{4}-\\d{7}-\\d$"
 
 ### Block conformance contracts
 
-`catalog.blockContracts` holds the invariants the docs actually mandate for the header and footer blocks — the block roots, the mobile menu and footer accordion, the documented 7-item limit on a primary navigation, a copyright year that changes. They are curated rather than derived: the docs header example is ~50 KB of one entity's menu content, so "does this page match the example" is not a question any real site passes. Each requirement cites the docs sentence or markup that mandates it (verified verbatim when the catalogue is built) and is pinned to that page's `contentHash`, so `staleBlockContracts()` reports any contract whose source page has moved.
+`catalog.blockContracts` holds the invariants the docs actually mandate for the header and footer blocks — the block roots, the mobile menu and footer accordion, the documented 7-item limit on a primary navigation, a copyright year that changes. They are curated rather than derived: the docs header example is ~50 KB of one entity's menu content, so "does this page match the example" is not a question any real site passes.
+
+Two guards keep a curated artifact honest, both enforced when the catalogue is built:
+
+- **Citations** — each requirement quotes the docs sentence or markup that mandates it, and the build fails if that quote is not verbatim on the page. A contract cannot claim a mandate the docs do not contain.
+- **Staleness** — each contract carries the page `contentHash` *a human last reviewed it against*, held as a literal in `scripts/block-contracts.mjs` so it can disagree with the live page. The build refuses to emit when they differ, forcing a re-read. `staleBlockContracts()` re-checks the same invariant at runtime, for consumers evaluating catalogue data they did not build.
 
 Unlike the string-level checks, these are containment questions, so the library does not parse HTML for them: `blockProbeSpec()` returns a flat list of selector queries, the consumer runs them against whatever DOM it has, and `checkBlockContracts()` turns the results into `satisfied` / `violated` / `not-applicable`. Every requirement is gated — a missing anchor yields `not-applicable`, never a silent pass.
 

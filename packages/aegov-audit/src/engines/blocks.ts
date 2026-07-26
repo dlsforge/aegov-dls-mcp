@@ -40,6 +40,13 @@ export type BlockCheckResult = {
    * these as "not-checked" — never "no automated findings".
    */
   notApplicableRules: string[];
+  /**
+   * False when the catalogue carried no contracts to evaluate at all. The
+   * checklist must then treat every block item as "not-checked": with no
+   * contracts there is no evidence, and "no automated findings" would read as a
+   * pass for five items nothing looked at.
+   */
+  ran: boolean;
 };
 
 export async function runBlockChecks(
@@ -47,7 +54,7 @@ export async function runBlockChecks(
   opts: { now?: Date } = {},
 ): Promise<BlockCheckResult> {
   const contracts = loadCatalog().blockContracts;
-  if (!contracts?.length) return { findings: [], notApplicableRules: [] };
+  if (!contracts?.length) return { findings: [], notApplicableRules: [], ran: false };
 
   // Docs tier is provisional: if the source page moved since a contract was
   // authored, the catalogue is stale and its verdicts are not trustworthy.
@@ -58,6 +65,7 @@ export async function runBlockChecks(
     return {
       findings: [],
       notApplicableRules: contracts.flatMap((c) => c.requirements.map((r) => blockRuleId(r.id))),
+      ran: true,
     };
   }
 
@@ -111,6 +119,10 @@ export async function runBlockChecks(
     counts: collected.counts,
     groupCounts: collected.groupCounts,
     texts: collected.texts,
+    // Selectors this browser rejected — the library turns the requirements that
+    // depend on them into "not-applicable" rather than reading a missing count
+    // as zero and reporting a violation the page may not have.
+    unavailable: collected.failed,
     // The audit date, passed in explicitly so the library never reads a clock
     // and recorded runs stay reproducible.
     currentYear: (opts.now ?? new Date()).getFullYear(),
@@ -134,8 +146,14 @@ export async function runBlockChecks(
   for (const c of stale) {
     for (const req of c.requirements) notApplicableRules.push(blockRuleId(req.id));
   }
+  if (collected.failed.length) {
+    console.error(
+      `aegov-audit: ${collected.failed.length} block selector(s) could not be evaluated by this ` +
+        `browser — the requirements depending on them are reported as not checked.`,
+    );
+  }
 
-  return { findings, notApplicableRules };
+  return { findings, notApplicableRules, ran: true };
 }
 
 function toFinding(r: BlockResult, ruleId: string): AuditFinding {

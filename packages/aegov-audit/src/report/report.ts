@@ -126,6 +126,8 @@ export function buildReport(input: {
   htmlValidateRan?: boolean;
   /** Block-contract rules with no anchor on this page (items 3.19–3.22, 2.40). */
   notApplicableRules?: string[];
+  /** Whether the catalogue carried block contracts to evaluate. Default true. */
+  blocksRan?: boolean;
 }): AuditReport {
   const byEngine: Record<string, number> = {};
   for (const f of input.findings) byEngine[f.engine] = (byEngine[f.engine] ?? 0) + 1;
@@ -160,6 +162,7 @@ export function buildReport(input: {
       ministryChecked: input.ministryChecked ?? false,
       htmlValidateRan: input.htmlValidateRan ?? false,
     notApplicableRules: input.notApplicableRules ?? [],
+    blocksRan: input.blocksRan ?? true,
     }),
     findings: input.findings,
     disclaimers: DISCLAIMERS,

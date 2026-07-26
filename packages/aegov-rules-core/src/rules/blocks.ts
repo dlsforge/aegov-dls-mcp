@@ -36,6 +36,14 @@ export interface BlockProbe {
   /** selector -> concatenated textContent. */
   texts: Record<string, string>;
   /**
+   * Queries the consumer could not evaluate (a selector its engine rejected).
+   * A requirement that depends on one is "not-applicable": an unaskable
+   * question has no answer, and treating a missing count as zero would report a
+   * violation the page may not have. Keys are selectors, and for group checks
+   * the `groupKey()` string.
+   */
+  unavailable?: string[];
+  /**
    * The year to judge a dynamic copyright against — the consumer's audit date,
    * never a clock read inside this library (callers pin it for reproducibility).
    */
@@ -106,10 +114,18 @@ function evaluate(
     sourceUrl,
   };
 
+  // Anything the consumer could not ask about is unanswerable, not failing.
+  const unavailable = new Set(probe.unavailable ?? []);
+  const queryOf = (c: BlockRequirement["check"]): string =>
+    c.kind === "count-max" ? groupKey(c.groupSelector, c.childSelector) : c.selector;
+  if ((req.gate && unavailable.has(req.gate)) || unavailable.has(queryOf(req.check))) {
+    return { ...base, status: "not-applicable" };
+  }
+
   // A gate that does not match means the block (or the anchor the requirement
   // needs) is not on this page: report not-applicable so the consumer can say
   // "not checked" rather than pass or fail something it never saw.
-  if (req.gate && (probe.counts[req.gate] ?? 0) === 0) {
+  if (req.gate && (probe.counts?.[req.gate] ?? 0) === 0) {
     return { ...base, status: "not-applicable" };
   }
 
@@ -123,11 +139,11 @@ function evaluate(
   const check = req.check;
   switch (check.kind) {
     case "present": {
-      const n = probe.counts[check.selector] ?? 0;
+      const n = probe.counts?.[check.selector] ?? 0;
       return n > 0 ? { ...base, status: "satisfied" } : violated(req.statement);
     }
     case "count-max": {
-      const counts = probe.groupCounts[groupKey(check.groupSelector, check.childSelector)];
+      const counts = probe.groupCounts?.[groupKey(check.groupSelector, check.childSelector)];
       if (!counts || counts.length === 0) return { ...base, status: "not-applicable" };
       const over = counts.filter((c) => c > check.max);
       return over.length === 0
@@ -137,7 +153,7 @@ function evaluate(
           );
     }
     case "text-current-year": {
-      const text = probe.texts[check.selector] ?? "";
+      const text = probe.texts?.[check.selector] ?? "";
       const years = text.match(YEAR_RE);
       // No year at all: the copyright line may be absent or rendered as an
       // image — not evidence of a stale year, so do not assert either way.
@@ -162,9 +178,13 @@ export function checkBlockContracts(
 }
 
 /**
- * Contracts whose source docs page has changed since the contract was authored.
- * Non-empty means the curated invariants must be re-reviewed against the page
- * before their results are trusted (docs tier is provisional by construction).
+ * Contracts whose source docs page has changed since a human last reviewed the
+ * invariants. Non-empty means they must be re-read before their verdicts are
+ * trusted (docs tier is provisional by construction).
+ *
+ * The primary guard is at build time — build-catalog refuses to emit a stale
+ * catalogue at all — so on a catalogue this repo produced, this returns []. It
+ * exists for consumers evaluating catalogue data they did not build themselves.
  */
 export function staleBlockContracts(contracts: BlockContract[]): BlockContract[] {
   return contracts.filter((c) => c.sourceContentHash !== c.provenance.contentHash);

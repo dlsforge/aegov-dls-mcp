@@ -91,6 +91,21 @@ describe("contract integrity", () => {
     for (const c of contracts) assert.equal(c.sourceContentHash, c.provenance.contentHash);
   });
 
+  test("the staleness check can actually fail (it is not a tautology)", () => {
+    // Regression: sourceContentHash used to be copied out of the extraction at
+    // build time, so it moved with the page and could never disagree. The
+    // reviewer's hash is now a literal in scripts/block-contracts.mjs and the
+    // BUILD fails on mismatch; this pins that the runtime check still detects a
+    // catalogue where they diverge.
+    const drifted = contracts.map((c, i) =>
+      i === 0 ? { ...c, provenance: { ...c.provenance, contentHash: "0".repeat(64) } } : c,
+    );
+    assert.deepEqual(
+      staleBlockContracts(drifted).map((c) => c.blockId),
+      [contracts[0].blockId],
+    );
+  });
+
   test("the 7-item navigation limit matches the sentence it cites", () => {
     const req = byId("header.nav-max-items");
     assert.equal(req.check.max, 7);
@@ -164,6 +179,42 @@ describe("evaluation", () => {
     assert.equal(r.status, "violated");
   });
 
+  describe("a query the consumer could not run", () => {
+    test("is not-applicable, not a violation", () => {
+      // Regression: a selector the browser rejected left its key absent from
+      // the probe, which read as a count of zero and reported the requirement
+      // VIOLATED — asserting a defect on a page nothing had looked at.
+      const probe = conformingProbe();
+      const sel = byId("header.mobile-menu").check.selector;
+      delete probe.counts[sel];
+      probe.unavailable = [sel];
+      assert.equal(
+        resultFor(checkBlockContracts(contracts, probe), "header.mobile-menu").status,
+        "not-applicable",
+      );
+    });
+
+    test("an unavailable gate takes the whole requirement out of play", () => {
+      const probe = conformingProbe();
+      probe.unavailable = ["header.aegov-header ul.nav-menu"];
+      assert.equal(
+        resultFor(checkBlockContracts(contracts, probe), "header.nav-max-items").status,
+        "not-applicable",
+      );
+    });
+
+    test("an unavailable group query is not-applicable", () => {
+      const probe = conformingProbe();
+      const key = groupKey("header.aegov-header ul.nav-menu", ":scope > li");
+      probe.groupCounts[key] = [99];
+      probe.unavailable = [key];
+      assert.equal(
+        resultFor(checkBlockContracts(contracts, probe), "header.nav-max-items").status,
+        "not-applicable",
+      );
+    });
+  });
+
   describe("copyright year", () => {
     test("a stale year is a violation naming both years", () => {
       const probe = conformingProbe(2026);
@@ -180,6 +231,17 @@ describe("evaluation", () => {
       assert.equal(
         resultFor(checkBlockContracts(contracts, probe), "footer.copyright-year").status,
         "satisfied",
+      );
+    });
+
+    test("a year in Arabic-Indic digits is not-applicable, never a violation", () => {
+      // An Arabic page may render the year as ٢٠٢٦. The check reads ASCII
+      // years only, so it must decline to judge rather than call it stale.
+      const probe = conformingProbe(2026);
+      probe.texts["footer.aegov-footer"] = "© ٢٠٢٦ وزارة المثال. جميع الحقوق محفوظة.";
+      assert.equal(
+        resultFor(checkBlockContracts(contracts, probe), "footer.copyright-year").status,
+        "not-applicable",
       );
     });
 

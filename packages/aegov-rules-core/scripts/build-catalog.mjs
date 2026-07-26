@@ -347,8 +347,11 @@ const docsOnlyComponents = componentPages
 //   1. every `guidance` citation must occur verbatim in that page's extracted
 //      text, and every `markup` citation in its canonical example — a contract
 //      cannot claim a mandate the docs do not contain;
-//   2. the page's contentHash is recorded as sourceContentHash, so a later docs
-//      change makes the staleness visible instead of silently invalidating it.
+//   2. the reviewer's `authoredAgainstContentHash` must still match the freshly
+//      extracted page. That constant is a literal in the curated source
+//      precisely so it CAN disagree; reading the hash out of the extraction
+//      here would make the check a tautology, since both sides would move
+//      together on every docs change.
 
 const blockById = new Map(blocks.map((b) => [b.id, b]));
 const blockPageBySlug = new Map(blockPages.map((p) => [p.slug, p]));
@@ -374,12 +377,26 @@ const blockContracts = BLOCK_CONTRACTS.map((contract) => {
     }
   }
 
+  if (contract.authoredAgainstContentHash !== page.contentHash) {
+    fail(
+      `block contract "${contract.blockId}" is STALE: ${page.url} has changed since its ` +
+        `invariants were reviewed.\n` +
+        `  reviewed against: ${contract.authoredAgainstContentHash}\n` +
+        `  page now        : ${page.contentHash}\n` +
+        `  Re-read the page, confirm each requirement still reflects it, then update\n` +
+        `  authoredAgainstContentHash in scripts/block-contracts.mjs.`,
+    );
+  }
+
   return {
     blockId: contract.blockId,
     name: block.name,
     requirements: contract.requirements.map((r) => ({ ...r, blockId: contract.blockId })),
     provenance: docsProvenance(page),
-    sourceContentHash: page.contentHash,
+    // Equal to provenance.contentHash by construction — the build refuses to
+    // emit otherwise (see the staleness gate above). Carried into the catalogue
+    // so a consumer can re-check the invariant on data it did not build.
+    sourceContentHash: contract.authoredAgainstContentHash,
   };
 });
 

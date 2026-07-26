@@ -260,6 +260,13 @@ export function buildChecklistView(
      * "not-checked" — the block was not there to be judged.
      */
     notApplicableRules?: string[];
+    /**
+     * Whether the block engine had contracts to evaluate at all. Default true.
+     * False (a catalogue built without them) makes every block item
+     * "not-checked": no contracts means no evidence, and the alternative reads
+     * as a pass for five items nothing looked at.
+     */
+    blocksRan?: boolean;
   } = {},
 ): ChecklistView {
   const criteria = loadTdraCriteria();
@@ -277,6 +284,7 @@ export function buildChecklistView(
     ...((opts.kbdRan ?? true) ? [] : itemsOnlyEvidencedBy("kbd-")),
     ...(opts.ministryChecked ? [] : itemsOnlyEvidencedBy("ministry-")),
     ...(opts.htmlValidateRan ? [] : itemsOnlyEvidencedBy("w3c-")),
+    ...((opts.blocksRan ?? true) ? [] : itemsOnlyEvidencedBy("blk-")),
     ...itemsOnlyEvidencedByRules(new Set(opts.notApplicableRules ?? [])),
   ]);
   const machineCheckedItems: ChecklistItemView[] = criteria.items

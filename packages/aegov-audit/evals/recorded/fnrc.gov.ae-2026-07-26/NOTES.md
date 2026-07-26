@@ -39,6 +39,11 @@ Considered while authoring the contracts and **not** written, because no anchor 
 - *The secondary-navigation icon set* (login / accessibility / language) — entities localize labels and ids, so absence is not distinguishable from renaming.
 - *"The first element must be a link to the homepage"* — locale roots (`/`, `/en`, `/ar`, culture-cookie sites) make "is this the homepage" unreliable.
 
-## Incidental observation worth carrying forward
+## Incidental observations worth carrying forward
 
-The design system's own footer block markup gives its accordion panels `aria-labelledby` on a bare `<div>`, which `html-validate`'s `aria-label-misuse` rule (item 3.40) rejects — an element with no role may not carry it. The compliant eval fixture adds `role="region"` to those panels, which is both valid and the correct accordion-panel role. Not a Mizan defect; a defect in the documented markup, worth reporting upstream.
+Both surfaced by running the contracts against the design system's **own** captured markup (pinned as a test — if the docs' example fails its own contract, the contract is wrong, not the site under audit):
+
+1. **`aria-labelledby` on a bare `<div>`.** The documented footer gives its accordion panels `aria-labelledby` with no role, which `html-validate`'s `aria-label-misuse` rule (item 3.40) rejects. The compliant eval fixture uses `role="region"` instead — valid, and the correct accordion-panel role.
+2. **A hardcoded copyright year.** The documented footer sample ships `© 2023 … All rights reserved.` against the same page's instruction that the year "must be a dynamic element and auto change every year". An entity copying the sample verbatim inherits a stale year — exactly the defect `blk-footer-copyright-year` catches. The docs' own markup therefore satisfies every *structural* requirement but trips this one; that is pinned in the test suite rather than excluded, so it will tell us if the docs ever ship a dynamic year.
+
+Neither is a Mizan defect; both are worth reporting upstream.

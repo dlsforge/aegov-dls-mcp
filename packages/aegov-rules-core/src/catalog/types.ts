@@ -155,8 +155,12 @@ export interface DocsArtifact {
 // docs sentence (or the canonical markup) it comes from.
 //
 // Contracts are curated, not mechanically derived, so they are only as fresh as
-// the page they were authored against: `sourceContentHash` pins that page's
-// extracted content, and validate-catalog fails when the docs move underneath.
+// the page a human last read. `sourceContentHash` is the reviewer's hash, held
+// as a literal in scripts/block-contracts.mjs so it CAN disagree with the live
+// page; build-catalog compares the two and refuses to emit a catalogue when
+// they differ, forcing a re-read before the contract ships again. (Copying the
+// hash out of the extraction at build time would make it a tautology — both
+// sides would move together on every docs change and never disagree.)
 // Deliberately NOT modelled (identification is ambiguous, and a wrong assertion
 // against a government site is worse than a missing one):
 //   - "logo must be an SVG … must not exceed 110px" — a skip link commonly

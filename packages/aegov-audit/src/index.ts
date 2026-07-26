@@ -292,6 +292,7 @@ try {
     ministryChecked: entityType === "ministry",
     htmlValidateRan: htmlValidation.ran,
     notApplicableRules: blocks.notApplicableRules,
+    blocksRan: blocks.ran,
   });
 
   if (outDir) {

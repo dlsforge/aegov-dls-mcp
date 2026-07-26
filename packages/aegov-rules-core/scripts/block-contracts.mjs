@@ -21,10 +21,24 @@
 //     /index.html, culture-cookie sites) make "is this the homepage" unreliable.
 // Add them only if a zero-false-positive anchor is found.
 
-/** @type {Array<{blockId: string, requirements: Array<object>}>} */
+// STALENESS: `authoredAgainstContentHash` is the docs page's extracted-content
+// hash AT THE TIME A HUMAN REVIEWED THESE INVARIANTS. It is a literal on
+// purpose — it must be able to disagree with the live page. build-catalog.mjs
+// compares it to the freshly extracted page and FAILS when they differ, which
+// forces a re-read of the changed page before the contract can ship again.
+// (Copying the hash out of the extraction at build time would make the check a
+// tautology: both sides would move together and never disagree.)
+// To update: re-read the page, confirm each requirement still reflects it, then
+// paste the new hash from `inventory/docs.json`.
+
+/** @type {Array<{blockId: string, authoredAgainstContentHash: string, requirements: Array<object>}>} */
 export const BLOCK_CONTRACTS = [
   {
     blockId: "header",
+    // Reviewed 2026-07-26 against the 2026-07-25 snapshot (content unchanged
+    // since the 2026-07-07 capture).
+    authoredAgainstContentHash:
+      "8dfcb9fb103e2a68a2fa584d836d010b2903edeeb4bc3035c38518eccf3fabda",
     requirements: [
       {
         id: "header.root",
@@ -74,6 +88,10 @@ export const BLOCK_CONTRACTS = [
   },
   {
     blockId: "footer",
+    // Reviewed 2026-07-26 against the 2026-07-25 snapshot (content unchanged
+    // since the 2026-07-07 capture).
+    authoredAgainstContentHash:
+      "66e57240c49b5e995f23517b0cb6923a321879d1c78930f154f18218bca9696d",
     requirements: [
       {
         id: "footer.root",

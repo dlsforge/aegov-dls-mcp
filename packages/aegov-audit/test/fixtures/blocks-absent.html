@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>No DLS blocks — hand-rolled header and footer</title>
+</head>
+<body>
+  <!--
+    A perfectly ordinary site that simply does not use the design system's
+    header and footer blocks (the common real-world case: fnrc.gov.ae is
+    Bootstrap end to end). The two root requirements are genuine violations;
+    everything gated behind those roots must come back not-applicable, because
+    there is no DLS header to judge a mobile menu against. Reporting "no
+    findings" for those rows would read as a pass.
+  -->
+  <header class="site-header">
+    <a href="/" class="brand">Example Entity</a>
+    <nav class="navbar" aria-label="Main">
+      <ul class="navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main"><h1>Hand-rolled page</h1></main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Example Entity. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -36,14 +36,31 @@
 </head>
 <body>
   <a href="#main">Skip to content</a>
-  <header>
+  <!-- Header block (designsystem.gov.ae/docs/blocks/header): the aegov-header
+       root, a primary navigation inside the documented 7-item limit, and the
+       mobile menu affordance the block contract asks for. -->
+  <header class="aegov-header">
     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="Emblem of the Ministry of Example">
-    <nav aria-label="Main">
-      <a href="/services">Services</a>
-      <a href="/about">About the ministry</a>
-      <a href="/contact">Contact us</a>
-      <a href="/ar/services" hreflang="ar" lang="ar">العربية</a>
+    <nav class="main-navigation" aria-label="Main">
+      <div class="menu-main-menu-container">
+        <ul class="menu nav-menu">
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about">About the ministry</a></li>
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href="/ar/services" hreflang="ar" lang="ar">العربية</a></li>
+        </ul>
+      </div>
     </nav>
+    <button type="button" aria-label="Open main menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </button>
+    <div id="mobile-menu" hidden>
+      <nav aria-label="Main (mobile)">
+        <a href="/services">Services</a>
+        <a href="/about">About the ministry</a>
+        <a href="/contact">Contact us</a>
+      </nav>
+    </div>
     <a class="aegov-btn" href="https://id.uaepass.ae/authorize">Log in with UAE PASS</a>
   </header>
   <main id="main">
@@ -67,13 +84,40 @@
       </form>
     </div>
   </main>
-  <footer>
+  <!-- Footer block (designsystem.gov.ae/docs/blocks/footer): the aegov-footer
+       root, link groups in the documented mobile accordion (accordion-item
+       entries, as the docs markup nests them), and a copyright year rendered
+       dynamically — the docs require it to "auto change every year". -->
+  <footer class="aegov-footer">
     <h2>Ministry of Example</h2>
     <p>Federal government entity of the United Arab Emirates.</p>
+    <nav class="aegov-accordion aegov-mobile-accordion" aria-label="Footer navigation" id="footer-accordion" data-accordion="collapse">
+      <ul>
+        <li class="accordion-item">
+          <div class="accordion-title" id="footer-accordion-heading-1">
+            <button type="button" data-accordion-target="#footer-accordion-body-1" aria-expanded="true" aria-controls="footer-accordion-body-1">Services</button>
+          </div>
+          <div id="footer-accordion-body-1" role="region" aria-labelledby="footer-accordion-heading-1">
+            <a href="/services">All services</a>
+            <a href="/contact">Contact us</a>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <div class="accordion-title" id="footer-accordion-heading-2">
+            <button type="button" data-accordion-target="#footer-accordion-body-2" aria-expanded="false" aria-controls="footer-accordion-body-2">About</button>
+          </div>
+          <div id="footer-accordion-body-2" role="region" aria-labelledby="footer-accordion-heading-2">
+            <a href="/about">About the ministry</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <p>&copy; <span id="copyright-year"></span> Ministry of Example. All rights reserved.</p>
     <div id="cookie-banner" role="region" aria-label="Cookie notice">
       <p>We use cookies to improve this service.</p>
       <button class="aegov-btn" type="button">Accept cookies</button>
     </div>
   </footer>
+  <script>document.getElementById("copyright-year").textContent = String(new Date().getFullYear());</script>
 </body>
 </html>

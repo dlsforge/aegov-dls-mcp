@@ -6,7 +6,7 @@
 
 ## What's inside
 
-- **The catalogue** — components, blocks, patterns and docs-only artifacts of the AEGOV DLS, plus resolved design tokens, as versioned JSON with a typed loader.
+- **The catalogue** — components, blocks, patterns and docs-only artifacts of the AEGOV DLS, plus resolved design tokens and the header/footer **block conformance contracts**, as versioned JSON with a typed loader.
 - **Two provenance tiers, kept honestly apart.** Components and tokens are introspected from the pinned [`@aegov/design-system`](https://www.npmjs.com/package/@aegov/design-system) npm package (**3.0.7** — authoritative, version-pinned). Blocks and patterns do **not** ship as code; they exist only in the [designsystem.gov.ae](https://designsystem.gov.ae) docs, so every docs-sourced record carries a source URL, a retrieved-on date, and a `needs-revalidation` trust flag. Findings grounded in docs-tier records carry docs-tier confidence, never package-tier certainty.
 - **The DLS rule engine** — pure, unit-tested functions over an HTML string: class identity vs the pinned package (with did-you-mean suggestions), docs-tier class-evidence checks, drift-class rejection, Emirates ID format/masking/pattern validation, `img` alt, `<button>` type, Arabic-without-RTL, and DMY dates.
 
@@ -51,7 +51,21 @@ EID_PATTERN; // "^784-\\d{4}-\\d{7}-\\d$"
 - `buildClassIndex(catalog)` → `ClassIndex` — the catalogue-derived truth the class checks run against (build once, reuse).
 - `validateHtml(html, index)` — run every DLS check in order; returns `{ findings, classes }`.
 - Individual checks as pure functions: `checkClassIdentity`, `checkImgAlt`, `checkButtonType`, `checkFullEidValue`, `checkEmiratesIdInputs`, `checkMdyDates`, `checkArabicRtl`, plus `classTokens` and `EID_PATTERN`.
+- `blockProbeSpec(contracts)`, `checkBlockContracts(contracts, probe)`, `staleBlockContracts(contracts)` — block conformance (see below).
 - All catalogue/schema types are re-exported (`Finding`, `ClassIndex`, `ClassBuckets`, …).
+
+### Block conformance contracts
+
+`catalog.blockContracts` holds the invariants the docs actually mandate for the header and footer blocks — the block roots, the mobile menu and footer accordion, the documented 7-item limit on a primary navigation, a copyright year that changes. They are curated rather than derived: the docs header example is ~50 KB of one entity's menu content, so "does this page match the example" is not a question any real site passes. Each requirement cites the docs sentence or markup that mandates it (verified verbatim when the catalogue is built) and is pinned to that page's `contentHash`, so `staleBlockContracts()` reports any contract whose source page has moved.
+
+Unlike the string-level checks, these are containment questions, so the library does not parse HTML for them: `blockProbeSpec()` returns a flat list of selector queries, the consumer runs them against whatever DOM it has, and `checkBlockContracts()` turns the results into `satisfied` / `violated` / `not-applicable`. Every requirement is gated — a missing anchor yields `not-applicable`, never a silent pass.
+
+```ts
+const contracts = loadCatalog().blockContracts;
+const spec = blockProbeSpec(contracts);
+// …run spec.present / spec.groups / spec.texts against your DOM…
+const results = checkBlockContracts(contracts, probe);
+```
 
 ## Keeping the catalogue honest
 

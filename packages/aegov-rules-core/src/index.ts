@@ -22,3 +22,13 @@ export {
   checkArabicRtl,
   validateHtml,
 } from "./rules/engine.js";
+export {
+  type BlockProbeSpec,
+  type BlockProbe,
+  type BlockResult,
+  type BlockRequirementStatus,
+  groupKey,
+  blockProbeSpec,
+  checkBlockContracts,
+  staleBlockContracts,
+} from "./rules/blocks.js";

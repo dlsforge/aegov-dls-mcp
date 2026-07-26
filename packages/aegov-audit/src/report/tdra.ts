@@ -154,6 +154,17 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // only — absence of a signal is never a finding.
   "stack-monolithic-cms": ["3.60", "3.61"],
   "stack-icon-library": ["2.21"],
+  // Block conformance against the docs-sourced contracts in rules-core. Each
+  // rule maps to the checklist row that asks the same question; 2.40 ("approved
+  // header and footer elements without change") is the roll-up of both block
+  // roots. Requirements whose anchor is absent report not-applicable and flip
+  // their item to "not-checked" via notApplicableRules.
+  "blk-header-root": ["3.19", "2.40"],
+  "blk-header-nav-max-items": ["3.19"],
+  "blk-header-mobile-menu": ["3.20"],
+  "blk-footer-root": ["3.21", "2.40"],
+  "blk-footer-copyright-year": ["3.21"],
+  "blk-footer-mobile-accordion": ["3.22"],
 };
 
 /**
@@ -168,6 +179,23 @@ function itemsOnlyEvidencedBy(prefix: string): Set<string> {
   }
   other.add("3.12"); // axe WCAG gate
   return new Set([...prefixed].filter((id) => !other.has(id)));
+}
+
+/**
+ * Items whose every evidence rule is in `rules` — nothing else in this run can
+ * speak to them. The engine-prefix version above answers "did this engine run";
+ * this one answers "did this particular check have an anchor on this page",
+ * which for block contracts is decided per page rather than per run.
+ */
+function itemsOnlyEvidencedByRules(rules: Set<string>): Set<string> {
+  if (!rules.size) return new Set();
+  const inSet = new Set<string>();
+  const other = new Set<string>();
+  for (const [rule, items] of Object.entries(RULE_TO_ITEMS)) {
+    for (const id of items) (rules.has(rule) ? inSet : other).add(id);
+  }
+  other.add("3.12"); // axe WCAG gate
+  return new Set([...inSet].filter((id) => !other.has(id)));
 }
 
 /** Every WCAG-tagged axe finding also evidences item 3.12 (WCAG AA gate). */
@@ -226,6 +254,12 @@ export function buildChecklistView(
     ministryChecked?: boolean;
     /** The offline HTML validation obtained the raw source (item 3.40). Default false. */
     htmlValidateRan?: boolean;
+    /**
+     * Block-contract rule ids whose requirement had no anchor on this page
+     * (runBlockChecks reports these). Items evidenced only by them are
+     * "not-checked" — the block was not there to be judged.
+     */
+    notApplicableRules?: string[];
   } = {},
 ): ChecklistView {
   const criteria = loadTdraCriteria();
@@ -243,6 +277,7 @@ export function buildChecklistView(
     ...((opts.kbdRan ?? true) ? [] : itemsOnlyEvidencedBy("kbd-")),
     ...(opts.ministryChecked ? [] : itemsOnlyEvidencedBy("ministry-")),
     ...(opts.htmlValidateRan ? [] : itemsOnlyEvidencedBy("w3c-")),
+    ...itemsOnlyEvidencedByRules(new Set(opts.notApplicableRules ?? [])),
   ]);
   const machineCheckedItems: ChecklistItemView[] = criteria.items
     .filter((i) => checkable.has(i.id))
@@ -274,6 +309,7 @@ export function buildChecklistView(
       `only — it is NOT a pass; the remaining items are process/design questions a human answers. ` +
       `Items marked "not checked" had no evidence engine in this run: they need --lighthouse, an ` +
       `http(s) target (origin probes and the bounded crawl), --entity-type ministry (item 2.12), ` +
-      `or a keyboard walk that completed without aborting.`,
+      `a keyboard walk that completed without aborting, or — for the header/footer block items — ` +
+      `the block itself present on the page to be judged against its documented contract.`,
   };
 }

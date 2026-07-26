@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded: primary navigation over the documented 7-item limit</title>
+</head>
+<body>
+  <!--
+    Everything conforms EXCEPT the navigation, which carries 8 top-level items
+    against the docs' "There cannot be more than 7 elements added to a
+    navigation." Only blk-header-nav-max-items may fire.
+  -->
+  <header class="aegov-header">
+    <a href="/" class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z"/></svg></a>
+    <nav class="main-navigation" aria-label="Main navigation">
+      <div class="menu-main-menu-container">
+        <ul class="menu nav-menu">
+          <li class="menu-item"><a href="/">Home</a></li>
+          <li class="menu-item"><a href="/services">Services</a></li>
+          <li class="menu-item"><a href="/digital-participation">Digital participation</a></li>
+          <li class="menu-item"><a href="/open-data">Open data</a></li>
+          <li class="menu-item"><a href="/about">About</a></li>
+          <li class="menu-item"><a href="/media">Media centre</a></li>
+          <li class="menu-item"><a href="/careers">Careers</a></li>
+          <li class="menu-item"><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <button type="button" data-modal-toggle="openMenu" aria-controls="openMenu">
+      <span class="sr-only">Toggle main menu</span>
+    </button>
+    <div id="openMenu" tabindex="-1" aria-hidden="true"></div>
+  </header>
+
+  <main id="main"><h1>Seeded navigation fixture</h1></main>
+
+  <footer class="aegov-footer">
+    <nav aria-label="footer navigation" class="aegov-accordion aegov-mobile-accordion" data-accordion="collapse">
+      <h2><button type="button" aria-expanded="true" aria-controls="fb1" data-accordion-target="#fb1">Services</button></h2>
+      <div id="fb1"><a href="/services">All services</a></div>
+    </nav>
+    <p>&copy; <span id="year"></span> Example Federal Entity. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById("year").textContent = String(new Date().getFullYear());</script>
+</body>
+</html>

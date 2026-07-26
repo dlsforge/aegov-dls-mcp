@@ -51,6 +51,12 @@ function lintString(file, path, key, value) {
     return;
   }
   if (CODE_KEYS.has(key)) return;
+  // Block contracts are the one place markup belongs in a text field: a `fix`
+  // that cannot show the correct element is not a fix, and a markup-tier
+  // citation IS an element. Scoped by path so the guard stays strict elsewhere.
+  // (Guidance-tier quotes still cannot contain markup — the builder matches them
+  // against tag-stripped page text, which no tag would survive.)
+  if (/^\$\.blockContracts\b/.test(path) && (key === "fix" || key === "quote")) return;
 
   // Plain-text fields: no leaked markup or markdown/escape residue. Bare tag
   // mentions like "<label>" are legitimate docs prose; a tag WITH attributes
@@ -98,7 +104,7 @@ function validateCatalog() {
   const cat = JSON.parse(readFileSync(join(repoRoot, "catalog", "catalog.json"), "utf8"));
   walk(file, cat, "$");
 
-  if (cat.meta.schemaVersion !== 3) bad(file, "$.meta.schemaVersion", `expected 3, got ${cat.meta.schemaVersion}`);
+  if (cat.meta.schemaVersion !== 4) bad(file, "$.meta.schemaVersion", `expected 4, got ${cat.meta.schemaVersion}`);
   if (!cat.meta.generatedFrom?.version) bad(file, "$.meta.generatedFrom", "missing pinned version");
 
   const roots = cat.components.map((c) => c.classRoot);
@@ -142,6 +148,48 @@ function validateCatalog() {
       if (!rootSet.has(r)) bad(file, p, `packageClassRoots references unknown root '${r}'`);
     });
     a.rules.forEach((r, j) => checkRule(file, `${p}.rules[${j}]`, r));
+  });
+
+  // Block contracts: curated, so they get the strictest shape checks in the file.
+  // The point is that a contract can never assert more than the docs say and can
+  // never outlive the page it was authored against.
+  const blockIds = new Set(cat.blocks.map((b) => b.id));
+  const contracts = cat.blockContracts ?? [];
+  if (!contracts.length) bad(file, "$.blockContracts", "missing/empty");
+  const seenReq = new Set();
+  contracts.forEach((c) => {
+    const p = `$.blockContracts(${c.blockId})`;
+    if (!blockIds.has(c.blockId)) bad(file, p, `no docs block with id '${c.blockId}'`);
+    checkDocsProvenance(file, `${p}.provenance`, c.provenance);
+    if (!SHA256.test(c.sourceContentHash ?? "")) bad(file, p, "sourceContentHash is not sha256 hex");
+    // Staleness is a build-time fact here: the builder copies both from the same
+    // page, so a mismatch means the file was hand-edited.
+    if (c.sourceContentHash !== c.provenance.contentHash)
+      bad(file, p, "sourceContentHash != provenance.contentHash (stale or hand-edited contract)");
+    if (!c.requirements?.length) bad(file, p, "contract has no requirements");
+    c.requirements.forEach((r) => {
+      const rp = `${p}.${r.id}`;
+      if (seenReq.has(r.id)) bad(file, rp, "duplicate requirement id");
+      seenReq.add(r.id);
+      if (r.blockId !== c.blockId) bad(file, rp, `blockId '${r.blockId}' != contract '${c.blockId}'`);
+      if (!["error", "warning"].includes(r.severity)) bad(file, rp, `bad severity '${r.severity}'`);
+      if (!r.statement?.trim()) bad(file, rp, "empty statement");
+      if (!r.fix?.trim()) bad(file, rp, "empty fix");
+      if (!["markup", "guidance"].includes(r.evidence?.kind)) bad(file, rp, "evidence.kind must be markup|guidance");
+      if (!r.evidence?.quote?.trim()) bad(file, rp, "empty evidence quote");
+      const k = r.check?.kind;
+      if (k === "present") {
+        if (!r.check.selector?.trim()) bad(file, rp, "present check has no selector");
+      } else if (k === "count-max") {
+        if (!r.check.groupSelector?.trim()) bad(file, rp, "count-max check has no groupSelector");
+        if (!r.check.childSelector?.trim()) bad(file, rp, "count-max check has no childSelector");
+        if (!Number.isInteger(r.check.max) || r.check.max < 1) bad(file, rp, "count-max needs a positive integer max");
+      } else if (k === "text-current-year") {
+        if (!r.check.selector?.trim()) bad(file, rp, "text-current-year check has no selector");
+      } else {
+        bad(file, rp, `unknown check kind '${k}'`);
+      }
+    });
   });
 
   // High-stakes: the Emirates ID pattern record must exist and keep its core content.

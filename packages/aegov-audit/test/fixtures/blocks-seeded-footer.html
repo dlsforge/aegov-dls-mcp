@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seeded: footer with a hardcoded year and no mobile accordion</title>
+</head>
+<body>
+  <!--
+    The footer block root is present and correct, so blk-footer-root must NOT
+    fire. Two things are wrong inside it:
+      - the link groups are plain lists, not the documented
+        aegov-mobile-accordion navigation (3.22);
+      - the copyright year is hardcoded to 2019, where the docs require "a
+        dynamic element and auto change every year" (3.21).
+  -->
+  <header class="aegov-header">
+    <a href="/" class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z"/></svg></a>
+    <nav class="main-navigation" aria-label="Main navigation">
+      <div class="menu-main-menu-container">
+        <ul class="menu nav-menu">
+          <li class="menu-item"><a href="/">Home</a></li>
+          <li class="menu-item"><a href="/services">Services</a></li>
+        </ul>
+      </div>
+    </nav>
+    <button type="button" data-modal-toggle="openMenu" aria-controls="openMenu">
+      <span class="sr-only">Toggle main menu</span>
+    </button>
+    <div id="openMenu" tabindex="-1" aria-hidden="true"></div>
+  </header>
+
+  <main id="main"><h1>Seeded footer fixture</h1></main>
+
+  <footer class="aegov-footer">
+    <div class="footer-top">
+      <ul class="plain-links">
+        <li><a href="/about">About us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2019 Example Federal Entity. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -36,6 +36,7 @@ const docs = JSON.parse(readFileSync(join(repoRoot, "inventory", "docs.json"), "
 const docsMap = JSON.parse(
   readFileSync(join(repoRoot, "inventory", "docs-map.json"), "utf8"),
 );
+const { BLOCK_CONTRACTS } = await import("./block-contracts.mjs");
 
 const EXTRACTED_FROM = "dist/plugin.js";
 
@@ -339,11 +340,54 @@ const docsOnlyComponents = componentPages
   .filter((p) => docsMap.componentPages[p.slug].root === null)
   .map((p) => docsArtifact(p, "component"));
 
+// --- block conformance contracts ---------------------------------------------
+//
+// Curated invariants (scripts/block-contracts.mjs) bound to the docs page they
+// were authored against. Two integrity gates run here, both fatal:
+//   1. every `guidance` citation must occur verbatim in that page's extracted
+//      text, and every `markup` citation in its canonical example — a contract
+//      cannot claim a mandate the docs do not contain;
+//   2. the page's contentHash is recorded as sourceContentHash, so a later docs
+//      change makes the staleness visible instead of silently invalidating it.
+
+const blockById = new Map(blocks.map((b) => [b.id, b]));
+const blockPageBySlug = new Map(blockPages.map((p) => [p.slug, p]));
+
+const blockContracts = BLOCK_CONTRACTS.map((contract) => {
+  const page = blockPageBySlug.get(contract.blockId);
+  const block = blockById.get(contract.blockId);
+  if (!page || !block) fail(`block contract "${contract.blockId}" has no docs block page`);
+
+  const pageText = page.sections.map((s) => s.text).join(" ");
+  const pageMarkup = [block.markup, ...block.examples]
+    .filter(Boolean)
+    .map((m) => m.html)
+    .join("\n");
+
+  for (const req of contract.requirements) {
+    const { kind, quote } = req.evidence;
+    const haystack = kind === "guidance" ? pageText : pageMarkup;
+    if (!haystack.includes(quote)) {
+      fail(
+        `block contract "${req.id}": ${kind} evidence not found verbatim on ${page.url}\n  quote: ${quote}`,
+      );
+    }
+  }
+
+  return {
+    blockId: contract.blockId,
+    name: block.name,
+    requirements: contract.requirements.map((r) => ({ ...r, blockId: contract.blockId })),
+    provenance: docsProvenance(page),
+    sourceContentHash: page.contentHash,
+  };
+});
+
 // --- assemble + write --------------------------------------------------------
 
 const catalog = {
   meta: {
-    schemaVersion: 3,
+    schemaVersion: 4,
     generatedFrom: { package: pkg.name, version: pkg.version },
     // Docs↔package drift, baked in so validate_snippet can flag these classes
     // at runtime without the (unshipped) inventory/ directory.
@@ -354,6 +398,7 @@ const catalog = {
   blocks,
   patterns,
   docsOnlyComponents,
+  blockContracts,
 };
 
 mkdirSync(join(repoRoot, "catalog"), { recursive: true });
@@ -381,5 +426,9 @@ console.log(`Components (package tier): ${components.length} (${named} docs-name
 console.log(`Tokens (package tier)    : ${tokens.length} ${JSON.stringify(byCategory)}`);
 console.log(`Blocks / patterns / docs-only components: ${blocks.length} / ${patterns.length} / ${docsOnlyComponents.length}`);
 console.log(`Rules: ${ruleCount}   Markup examples: ${exampleCount}`);
+console.log(
+  `Block contracts (docs tier): ${blockContracts.length} ` +
+    `(${blockContracts.reduce((n, c) => n + c.requirements.length, 0)} requirements, all citations verified verbatim)`,
+);
 console.log(`Known docs-only classes acknowledged: ${Object.keys(docsMap.knownDocsOnlyClasses).length}`);
 console.log(`Written: catalog/catalog.json`);

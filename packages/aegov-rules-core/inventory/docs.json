@@ -1,12 +1,12 @@
 {
   "origin": "https://designsystem.gov.ae",
-  "retrievedOn": "2026-07-07",
+  "retrievedOn": "2026-07-25",
   "pages": [
     {
       "section": "blocks",
       "slug": "content",
       "url": "https://designsystem.gov.ae/docs/blocks/content",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Content",
       "docsVersion": null,
       "sections": [
@@ -120,7 +120,7 @@
       "section": "blocks",
       "slug": "filter",
       "url": "https://designsystem.gov.ae/docs/blocks/filter",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Filter",
       "docsVersion": null,
       "sections": [
@@ -147,7 +147,7 @@
       "section": "blocks",
       "slug": "footer",
       "url": "https://designsystem.gov.ae/docs/blocks/footer",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Footer",
       "docsVersion": null,
       "sections": [
@@ -182,7 +182,7 @@
       "section": "blocks",
       "slug": "header",
       "url": "https://designsystem.gov.ae/docs/blocks/header",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Header",
       "docsVersion": null,
       "sections": [
@@ -241,7 +241,7 @@
       "section": "blocks",
       "slug": "hero",
       "url": "https://designsystem.gov.ae/docs/blocks/hero",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Hero",
       "docsVersion": null,
       "sections": [
@@ -364,7 +364,7 @@
       "section": "blocks",
       "slug": "newsletter",
       "url": "https://designsystem.gov.ae/docs/blocks/newsletter",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Newsletter",
       "docsVersion": null,
       "sections": [
@@ -403,7 +403,7 @@
       "section": "blocks",
       "slug": "page-rating",
       "url": "https://designsystem.gov.ae/docs/blocks/page-rating",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Page rating",
       "docsVersion": null,
       "sections": [
@@ -429,7 +429,7 @@
       "section": "blocks",
       "slug": "team",
       "url": "https://designsystem.gov.ae/docs/blocks/team",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Team",
       "docsVersion": null,
       "sections": [
@@ -479,7 +479,7 @@
       "section": "components",
       "slug": "accordion",
       "url": "https://designsystem.gov.ae/docs/components/accordion",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Accordion",
       "docsVersion": null,
       "sections": [
@@ -650,7 +650,7 @@
       "section": "components",
       "slug": "alert",
       "url": "https://designsystem.gov.ae/docs/components/alert",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Alert",
       "docsVersion": null,
       "sections": [
@@ -882,7 +882,7 @@
       "section": "components",
       "slug": "avatar",
       "url": "https://designsystem.gov.ae/docs/components/avatar",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Avatar",
       "docsVersion": null,
       "sections": [
@@ -1063,7 +1063,7 @@
       "section": "components",
       "slug": "badge",
       "url": "https://designsystem.gov.ae/docs/components/badge",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Badge",
       "docsVersion": null,
       "sections": [
@@ -1224,7 +1224,7 @@
       "section": "components",
       "slug": "banner",
       "url": "https://designsystem.gov.ae/docs/components/banner",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Banner",
       "docsVersion": null,
       "sections": [
@@ -1410,7 +1410,7 @@
       "section": "components",
       "slug": "blockquote",
       "url": "https://designsystem.gov.ae/docs/components/blockquote",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Blockquote",
       "docsVersion": null,
       "sections": [
@@ -1557,7 +1557,7 @@
       "section": "components",
       "slug": "breadcrumbs",
       "url": "https://designsystem.gov.ae/docs/components/breadcrumbs",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Breadcrumbs",
       "docsVersion": "2.0",
       "sections": [
@@ -1715,7 +1715,7 @@
       "section": "components",
       "slug": "button",
       "url": "https://designsystem.gov.ae/docs/components/button",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Button",
       "docsVersion": "2.0",
       "sections": [
@@ -1946,7 +1946,7 @@
       "section": "components",
       "slug": "card",
       "url": "https://designsystem.gov.ae/docs/components/card",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Card",
       "docsVersion": null,
       "sections": [
@@ -2176,7 +2176,7 @@
       "section": "components",
       "slug": "checkbox",
       "url": "https://designsystem.gov.ae/docs/components/checkbox",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Checkbox",
       "docsVersion": null,
       "sections": [
@@ -2369,7 +2369,7 @@
       "section": "components",
       "slug": "dropdown",
       "url": "https://designsystem.gov.ae/docs/components/dropdown",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Dropdown",
       "docsVersion": null,
       "sections": [
@@ -2593,7 +2593,7 @@
       "section": "components",
       "slug": "file-input",
       "url": "https://designsystem.gov.ae/docs/components/file-input",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "File Input",
       "docsVersion": null,
       "sections": [
@@ -2771,7 +2771,7 @@
       "section": "components",
       "slug": "hyperlink",
       "url": "https://designsystem.gov.ae/docs/components/hyperlink",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Hyperlink",
       "docsVersion": null,
       "sections": [
@@ -2927,7 +2927,7 @@
       "section": "components",
       "slug": "input",
       "url": "https://designsystem.gov.ae/docs/components/input",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Text Input",
       "docsVersion": null,
       "sections": [
@@ -3147,7 +3147,7 @@
       "section": "components",
       "slug": "modal",
       "url": "https://designsystem.gov.ae/docs/components/modal",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Modal",
       "docsVersion": null,
       "sections": [
@@ -3365,7 +3365,7 @@
       "section": "components",
       "slug": "navigation",
       "url": "https://designsystem.gov.ae/docs/components/navigation",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Navigation",
       "docsVersion": null,
       "sections": [
@@ -3502,7 +3502,7 @@
       "section": "components",
       "slug": "pagination",
       "url": "https://designsystem.gov.ae/docs/components/pagination",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Pagination",
       "docsVersion": null,
       "sections": [
@@ -3644,7 +3644,7 @@
       "section": "components",
       "slug": "popover",
       "url": "https://designsystem.gov.ae/docs/components/popover",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Popover",
       "docsVersion": null,
       "sections": [
@@ -3780,7 +3780,7 @@
       "section": "components",
       "slug": "radio",
       "url": "https://designsystem.gov.ae/docs/components/radio",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Radio",
       "docsVersion": null,
       "sections": [
@@ -3965,7 +3965,7 @@
       "section": "components",
       "slug": "range-slider",
       "url": "https://designsystem.gov.ae/docs/components/range-slider",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Range Slider",
       "docsVersion": null,
       "sections": [
@@ -4078,7 +4078,7 @@
       "section": "components",
       "slug": "select",
       "url": "https://designsystem.gov.ae/docs/components/select",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Select",
       "docsVersion": null,
       "sections": [
@@ -4262,7 +4262,7 @@
       "section": "components",
       "slug": "slider",
       "url": "https://designsystem.gov.ae/docs/components/slider",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Slider",
       "docsVersion": null,
       "sections": [
@@ -4334,7 +4334,7 @@
       "section": "components",
       "slug": "steps",
       "url": "https://designsystem.gov.ae/docs/components/steps",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Steps",
       "docsVersion": null,
       "sections": [
@@ -4515,7 +4515,7 @@
       "section": "components",
       "slug": "tabs",
       "url": "https://designsystem.gov.ae/docs/components/tabs",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Tabs",
       "docsVersion": null,
       "sections": [
@@ -4669,7 +4669,7 @@
       "section": "components",
       "slug": "textarea",
       "url": "https://designsystem.gov.ae/docs/components/textarea",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Textarea",
       "docsVersion": null,
       "sections": [
@@ -4841,7 +4841,7 @@
       "section": "components",
       "slug": "toast",
       "url": "https://designsystem.gov.ae/docs/components/toast",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Toast",
       "docsVersion": null,
       "sections": [
@@ -4963,7 +4963,7 @@
       "section": "components",
       "slug": "toggle",
       "url": "https://designsystem.gov.ae/docs/components/toggle",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Toggle",
       "docsVersion": null,
       "sections": [
@@ -5145,7 +5145,7 @@
       "section": "components",
       "slug": "tooltip",
       "url": "https://designsystem.gov.ae/docs/components/tooltip",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Tooltip",
       "docsVersion": null,
       "sections": [
@@ -5284,7 +5284,7 @@
       "section": "patterns",
       "slug": "address",
       "url": "https://designsystem.gov.ae/docs/patterns/address",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Address",
       "docsVersion": null,
       "sections": [
@@ -5359,7 +5359,7 @@
       "section": "patterns",
       "slug": "contact-number",
       "url": "https://designsystem.gov.ae/docs/patterns/contact-number",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Contact number",
       "docsVersion": null,
       "sections": [
@@ -5392,7 +5392,7 @@
       "section": "patterns",
       "slug": "currency-symbol",
       "url": "https://designsystem.gov.ae/docs/patterns/currency-symbol",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Currency symbol",
       "docsVersion": null,
       "sections": [
@@ -5418,7 +5418,7 @@
       "section": "patterns",
       "slug": "date",
       "url": "https://designsystem.gov.ae/docs/patterns/date",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Date",
       "docsVersion": null,
       "sections": [
@@ -5458,7 +5458,7 @@
       "section": "patterns",
       "slug": "emirates-id-input",
       "url": "https://designsystem.gov.ae/docs/patterns/emirates-id-input",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Emirates ID",
       "docsVersion": null,
       "sections": [
@@ -5484,7 +5484,7 @@
       "section": "patterns",
       "slug": "name",
       "url": "https://designsystem.gov.ae/docs/patterns/name",
-      "retrievedOn": "2026-07-07",
+      "retrievedOn": "2026-07-25",
       "name": "Name",
       "docsVersion": null,
       "sections": [

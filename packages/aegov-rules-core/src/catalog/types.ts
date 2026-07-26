@@ -146,6 +146,74 @@ export interface DocsArtifact {
   provenance: DocsProvenance;
 }
 
+// --- block conformance contracts ----------------------------------------------
+//
+// A docs markup example is not, by itself, a checkable standard: the docs header
+// example is ~50 KB of one entity's menu content, and asserting a rendered page
+// matches it would fail every real site. A *contract* is the small set of
+// invariants that page genuinely must satisfy — each one carrying the verbatim
+// docs sentence (or the canonical markup) it comes from.
+//
+// Contracts are curated, not mechanically derived, so they are only as fresh as
+// the page they were authored against: `sourceContentHash` pins that page's
+// extracted content, and validate-catalog fails when the docs move underneath.
+// Deliberately NOT modelled (identification is ambiguous, and a wrong assertion
+// against a government site is worse than a missing one):
+//   - "logo must be an SVG … must not exceed 110px" — a skip link commonly
+//     precedes the logo anchor, so "the logo" cannot be pinned reliably, and the
+//     docs themselves hedge the height for authorities ("you must aim not to").
+//   - the secondary-navigation icon set (login / accessibility / language) —
+//     entities localize labels and ids; presence cannot be told from absence.
+
+/** How one requirement is evaluated against a DOM. */
+export type BlockCheck =
+  /** `selector` must match at least once. */
+  | { kind: "present"; selector: string }
+  /**
+   * No element matching `groupSelector` may contain more than `max` elements
+   * matching `childSelector`. Counted PER GROUP, never document-wide: the docs
+   * header ships two `ul.nav-menu` lists (desktop + mobile) of 7 items each, so
+   * a document-wide count would read 14 and fail the docs' own example.
+   */
+  | { kind: "count-max"; groupSelector: string; childSelector: string; max: number }
+  /** The text under `selector` must contain the current (audit-time) year. */
+  | { kind: "text-current-year"; selector: string };
+
+/** One invariant of a docs block, with the source sentence that mandates it. */
+export interface BlockRequirement {
+  /** Stable id, e.g. "header.nav-max-items". */
+  id: string;
+  blockId: string;
+  /** The invariant in plain language. */
+  statement: string;
+  severity: "error" | "warning";
+  check: BlockCheck;
+  /**
+   * Selector that must match for the requirement to apply at all; null = always.
+   * A gate that does not match yields "not-applicable" — never a silent pass.
+   */
+  gate: string | null;
+  /**
+   * Where the requirement comes from: `guidance` quotes the docs page verbatim
+   * (validate-catalog asserts the quote really occurs on that page), `markup`
+   * means it is read off the canonical code example.
+   */
+  evidence: { kind: "markup" | "guidance"; quote: string };
+  /** Remediation shown to the consumer. */
+  fix: string;
+}
+
+/** The conformance contract for one docs block. */
+export interface BlockContract {
+  blockId: string;
+  name: string;
+  requirements: BlockRequirement[];
+  /** Provenance of the docs block page the contract was authored against. */
+  provenance: DocsProvenance;
+  /** The page contentHash at authoring time — drift guard, see above. */
+  sourceContentHash: string;
+}
+
 /** The full catalogue. */
 export interface Catalog {
   meta: {
@@ -172,6 +240,11 @@ export interface Catalog {
   patterns: DocsArtifact[];
   /** Docs component pages with no package class-root (navigation, slider). */
   docsOnlyComponents: DocsArtifact[];
+  /**
+   * Conformance contracts for the blocks that carry them (header, footer).
+   * Blocks without a normative structural contract simply have no entry.
+   */
+  blockContracts: BlockContract[];
 }
 
 // --- UAE Pass guidance (catalog/uaepass.json) ---------------------------------------

@@ -124,6 +124,8 @@ export function buildReport(input: {
   ministryChecked?: boolean;
   /** Whether the offline HTML validation obtained the raw source (item 3.40). Default false. */
   htmlValidateRan?: boolean;
+  /** Block-contract rules with no anchor on this page (items 3.19–3.22, 2.40). */
+  notApplicableRules?: string[];
 }): AuditReport {
   const byEngine: Record<string, number> = {};
   for (const f of input.findings) byEngine[f.engine] = (byEngine[f.engine] ?? 0) + 1;
@@ -157,6 +159,7 @@ export function buildReport(input: {
       kbdRan: input.kbdRan ?? true,
       ministryChecked: input.ministryChecked ?? false,
       htmlValidateRan: input.htmlValidateRan ?? false,
+    notApplicableRules: input.notApplicableRules ?? [],
     }),
     findings: input.findings,
     disclaimers: DISCLAIMERS,

@@ -35,14 +35,31 @@
 </head>
 <body>
   <a href="#main">تخطي إلى المحتوى</a>
-  <header>
+  <!-- Header block — mirrors index.html so the parity pass sees the same
+       structure in both languages. NEW Arabic strings here are pending native
+       review (ARABIC-REVIEW-PACK.md): "فتح القائمة الرئيسية". -->
+  <header class="aegov-header">
     <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="40" height="40" alt="شعار وزارة المثال">
-    <nav aria-label="رئيسي">
-      <a href="/ar/services">الخدمات</a>
-      <a href="/ar/about">عن الوزارة</a>
-      <a href="/ar/contact">اتصل بنا</a>
-      <a href="/services" hreflang="en" lang="en">English</a>
+    <nav class="main-navigation" aria-label="رئيسي">
+      <div class="menu-main-menu-container">
+        <ul class="menu nav-menu">
+          <li><a href="/ar/services">الخدمات</a></li>
+          <li><a href="/ar/about">عن الوزارة</a></li>
+          <li><a href="/ar/contact">اتصل بنا</a></li>
+          <li><a href="/services" hreflang="en" lang="en">English</a></li>
+        </ul>
+      </div>
     </nav>
+    <button type="button" aria-label="فتح القائمة الرئيسية" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </button>
+    <div id="mobile-menu" hidden>
+      <nav aria-label="القائمة الرئيسية للجوال">
+        <a href="/ar/services">الخدمات</a>
+        <a href="/ar/about">عن الوزارة</a>
+        <a href="/ar/contact">اتصل بنا</a>
+      </nav>
+    </div>
     <a class="aegov-btn" href="https://id.uaepass.ae/authorize">تسجيل الدخول بالهوية الرقمية UAE PASS</a>
   </header>
   <main id="main">
@@ -66,13 +83,38 @@
       </form>
     </div>
   </main>
-  <footer>
+  <!-- Footer block — mirrors index.html. NEW Arabic strings pending native
+       review (ARABIC-REVIEW-PACK.md): "روابط التذييل", "جميع الحقوق محفوظة". -->
+  <footer class="aegov-footer">
     <h2>وزارة المثال</h2>
     <p>جهة حكومية اتحادية في دولة الإمارات العربية المتحدة.</p>
+    <nav class="aegov-accordion aegov-mobile-accordion" aria-label="روابط التذييل" id="footer-accordion" data-accordion="collapse">
+      <ul>
+        <li class="accordion-item">
+          <div class="accordion-title" id="footer-accordion-heading-1">
+            <button type="button" data-accordion-target="#footer-accordion-body-1" aria-expanded="true" aria-controls="footer-accordion-body-1">الخدمات</button>
+          </div>
+          <div id="footer-accordion-body-1" role="region" aria-labelledby="footer-accordion-heading-1">
+            <a href="/ar/services">جميع الخدمات</a>
+            <a href="/ar/contact">اتصل بنا</a>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <div class="accordion-title" id="footer-accordion-heading-2">
+            <button type="button" data-accordion-target="#footer-accordion-body-2" aria-expanded="false" aria-controls="footer-accordion-body-2">عن الوزارة</button>
+          </div>
+          <div id="footer-accordion-body-2" role="region" aria-labelledby="footer-accordion-heading-2">
+            <a href="/ar/about">عن الوزارة</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <p>&copy; <span id="copyright-year"></span> وزارة المثال. جميع الحقوق محفوظة.</p>
     <div id="cookie-banner" role="region" aria-label="إشعار ملفات تعريف الارتباط">
       <p>نستخدم ملفات تعريف الارتباط لتحسين هذه الخدمة.</p>
       <button class="aegov-btn" type="button">قبول ملفات تعريف الارتباط</button>
     </div>
   </footer>
+  <script>document.getElementById("copyright-year").textContent = String(new Date().getFullYear());</script>
 </body>
 </html>

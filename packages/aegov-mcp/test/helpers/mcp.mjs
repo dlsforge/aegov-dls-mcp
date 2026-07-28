@@ -38,5 +38,11 @@ export async function connectServer(serverPath = "dist/index.js", cwd = process.
     }
   };
 
-  return { client, call, close: () => client.close() };
+  // What the server told the client about itself in the initialize handshake.
+  return {
+    client,
+    call,
+    serverInfo: client.getServerVersion() ?? {},
+    close: () => client.close(),
+  };
 }

@@ -17,6 +17,10 @@ npm package (currently **3.0.7**) plus clearly-marked documentation snapshots fr
 The package runs over stdio via `npx` — no install step needed beyond registering it
 with your assistant.
 
+**Claude Desktop** — download the `.mcpb` bundle from the
+[latest release](https://github.com/dlsforge/aegov-dls-mcp/releases/latest) and open it.
+One click; no Node setup, no JSON editing.
+
 **Claude Code**
 
 ```sh
@@ -61,7 +65,7 @@ application form, a login — and it will discover and use the tools below.
 | `getTokens` | The design system's resolved design tokens (223 CSS custom properties: OKLCH colour palettes, typography, shadows, containers) — the only values generated UI should use. |
 | `scaffoldUaePass` | Official-guideline UAE Pass button markup (UAE Pass is the mandatory national digital identity for government login): documented wording variants, permitted appearances, OAuth2 authorize template with staging/production endpoints, official asset links. |
 | `scaffoldEmiratesId` | The standard Emirates ID form control: accepts 15 raw digits, auto-formats to `784-XXXX-XXXXXXX-X`, validates the mandatory pattern, bilingual labels, masked display with explicit reveal. |
-| `validate_snippet` | Validate generated HTML against the standard: every `aegov-*` class verified against the pinned package (certain), other classes checked against official docs usage (best-effort), plus UAE-specific checks — Emirates ID pattern + masking, `img` alt, Arabic RTL handling, DMY dates. |
+| `validate_snippet` | Validate generated HTML against the standard: every `aegov-*` class verified against the pinned package (certain), other classes checked against official docs usage (best-effort), plus UAE-specific checks — Emirates ID pattern + masking, `img` alt, Arabic RTL handling, DMY dates. A snippet carrying `aegov-header` or `aegov-footer` is additionally checked against that block's documented conformance contract (mobile menu affordance, footer mobile accordion); requirements that need a rendered page are listed as *not checked* rather than passed. |
 | `ping` | Health check. |
 
 ## What the assistant is held to

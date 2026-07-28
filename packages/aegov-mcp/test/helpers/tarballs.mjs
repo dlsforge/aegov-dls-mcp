@@ -1,12 +1,20 @@
 /**
  * Tarball machinery for the packaging suites.
  *
- * Single-tarball flow (restored 2026-07-13): @dlsforge/aegov-rules-core@0.1.0
- * is PUBLISHED, so the install probe packs only the mcp tarball and lets npm
- * resolve the exact-pinned core dependency from the registry — the same path
- * a real `npm install @dlsforge/aegov-mcp` takes. (While the core was
- * unpublished, this fed npm both tarballs via file: specifiers — see git
- * history and STAGE2-HANDOFF §11 if that flow is ever needed again.)
+ * TWO-TARBALL FLOW (re-restored 2026-07-29). The probe packs BOTH workspaces and
+ * forces the local core via an npm `overrides` entry.
+ *
+ * Why, and when to go back: this package now calls core APIs added after
+ * @dlsforge/aegov-rules-core@0.1.0 (`checkBlockSnippet` and the `blockContracts`
+ * catalogue), and the version it pins — 0.2.0 — is not on the registry yet. A
+ * single-tarball probe would resolve the core from the registry, get 0.1.0, and
+ * fail at import with "does not provide an export named 'checkBlockSnippet'" —
+ * which is the truth about publishing, not a test defect: **the core must ship
+ * before this package can.** Testing against the registry copy here would only
+ * measure a stale dependency, so the probe tests the code this repo actually
+ * contains. Once the pinned core version is published, dropping `overrides` and
+ * `packCore` restores the single-tarball flow, which additionally proves the
+ * real `npm install @dlsforge/aegov-mcp` path.
  */
 import { execFileSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
@@ -37,9 +45,15 @@ export function packMcp(workDir) {
   return npm(["pack", "--pack-destination", workDir]).trim().split(/\r?\n/).pop();
 }
 
-/** Pack + install the mcp tarball into workDir as a clean install probe. */
+/** Pack the core workspace tarball into workDir; returns its file name. */
+export function packCore(workDir) {
+  return npm(["pack", "--pack-destination", workDir], coreRoot).trim().split(/\r?\n/).pop();
+}
+
+/** Pack + install both tarballs into workDir as a clean install probe. */
 export function installBoth(workDir) {
   const mcpTar = packMcp(workDir);
+  const coreTar = packCore(workDir);
   writeFileSync(
     join(workDir, "package.json"),
     JSON.stringify({
@@ -48,6 +62,12 @@ export function installBoth(workDir) {
       version: "0.0.0",
       dependencies: {
         "@dlsforge/aegov-mcp": `file:./${mcpTar}`,
+      },
+      // The mcp tarball pins the core exactly, so a plain dependency entry
+      // would not displace it — npm would still fetch the pinned version from
+      // the registry. `overrides` is what forces the workspace build in.
+      overrides: {
+        "@dlsforge/aegov-rules-core": `file:./${coreTar}`,
       },
     }),
   );

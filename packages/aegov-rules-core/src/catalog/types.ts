@@ -183,6 +183,23 @@ export type BlockCheck =
   /** The text under `selector` must contain the current (audit-time) year. */
   | { kind: "text-current-year"; selector: string };
 
+/**
+ * How a requirement is recognised in a bare HTML snippet — no DOM, no page.
+ *
+ * A snippet handed to validate_snippet is normally the block ITSELF, so a
+ * selector scoped to the block root collapses to "does this token appear
+ * anywhere in the snippet". That approximation can only ever MISS a defect
+ * (e.g. an `aria-controls` belonging to something else in a pasted page), never
+ * invent one — the safe direction. Requirements that genuinely need structure
+ * (counting a list's direct children) carry no signal and are reported as not
+ * checkable in a snippet rather than guessed at.
+ */
+export type SnippetSignal =
+  /** A class token that must appear somewhere in the snippet. */
+  | { kind: "class"; value: string }
+  /** At least one of these attribute names must appear on some element. */
+  | { kind: "attribute"; anyOf: string[] };
+
 /** One invariant of a docs block, with the source sentence that mandates it. */
 export interface BlockRequirement {
   /** Stable id, e.g. "header.nav-max-items". */
@@ -205,12 +222,22 @@ export interface BlockRequirement {
   evidence: { kind: "markup" | "guidance"; quote: string };
   /** Remediation shown to the consumer. */
   fix: string;
+  /**
+   * How to recognise this requirement in a snippet (see SnippetSignal). Absent
+   * means it cannot be judged without a real DOM.
+   */
+  snippetSignal?: SnippetSignal;
 }
 
 /** The conformance contract for one docs block. */
 export interface BlockContract {
   blockId: string;
   name: string;
+  /**
+   * The class that identifies the block. Its presence in a snippet is what
+   * makes this contract apply at all.
+   */
+  rootClass: string;
   requirements: BlockRequirement[];
   /** Provenance of the docs block page the contract was authored against. */
   provenance: DocsProvenance;

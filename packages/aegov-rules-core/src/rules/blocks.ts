@@ -16,6 +16,7 @@
  *   const results = checkBlockContracts(catalog.blockContracts, probe);
  */
 import type { BlockContract, BlockRequirement } from "../catalog/types.js";
+import { classTokens, type Finding } from "./engine.js";
 
 /** The selector queries a consumer must run to evaluate the contracts. */
 export interface BlockProbeSpec {
@@ -175,6 +176,97 @@ export function checkBlockContracts(
   return contracts.flatMap((contract) =>
     contract.requirements.map((req) => evaluate(req, probe, contract.provenance.sourceUrl)),
   );
+}
+
+// --- snippet path (no DOM) ----------------------------------------------------
+//
+// validate_snippet is handed a fragment, not a page, so the DOM path above does
+// not apply. What makes a fragment tractable is that it is normally the block
+// ITSELF: a selector scoped to the block root collapses to "does this token
+// appear anywhere in the snippet". See SnippetSignal for why that approximation
+// is safe in one direction only — it can miss a defect, never invent one.
+
+/** What a snippet check concluded about one block. */
+export interface BlockSnippetResult {
+  blockId: string;
+  name: string;
+  sourceUrl: string;
+  findings: Finding[];
+  /**
+   * Requirements a fragment genuinely cannot answer (counting a navigation's
+   * direct children, judging a copyright year), with the reason. Surfaced so
+   * the caller can say what was NOT looked at instead of implying a pass.
+   */
+  notCheckable: Array<{ requirementId: string; statement: string; reason: string }>;
+}
+
+/** Does an attribute name appear on some element in the snippet? */
+function hasAttribute(html: string, name: string): boolean {
+  return new RegExp(`\\s${name.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}(?=[\\s=>/])`, "i").test(html);
+}
+
+/**
+ * Check a snippet against the contracts of whichever blocks it contains.
+ *
+ * A contract applies only when its `rootClass` is present — an arbitrary
+ * fragment is not judged against the header block just for existing. Returns
+ * one result per block found; an empty array means the snippet is not
+ * (claiming to be) a documented block at all.
+ */
+export function checkBlockSnippet(
+  html: string,
+  contracts: BlockContract[],
+): BlockSnippetResult[] {
+  const tokens = new Set(classTokens(html));
+  const results: BlockSnippetResult[] = [];
+
+  for (const contract of contracts) {
+    if (!tokens.has(contract.rootClass)) continue;
+
+    const findings: Finding[] = [];
+    const notCheckable: BlockSnippetResult["notCheckable"] = [];
+
+    for (const req of contract.requirements) {
+      const signal = req.snippetSignal;
+      // The root requirement is what made this contract apply; re-reporting it
+      // would be noise.
+      if (signal?.kind === "class" && signal.value === contract.rootClass) continue;
+
+      if (!signal) {
+        notCheckable.push({
+          requirementId: req.id,
+          statement: req.statement,
+          reason:
+            req.check.kind === "count-max"
+              ? "needs the rendered element tree to count a list's direct children"
+              : "needs the rendered page (and the audit date) to judge",
+        });
+        continue;
+      }
+
+      const satisfied =
+        signal.kind === "class"
+          ? tokens.has(signal.value)
+          : signal.anyOf.some((a) => hasAttribute(html, a));
+      if (satisfied) continue;
+
+      findings.push({
+        level: req.severity === "error" ? "error" : "warning",
+        // Blocks live only in the docs, never in the npm package.
+        confidence: "docs",
+        message: `${contract.name} block: ${req.statement} ${req.fix} (${contract.provenance.sourceUrl})`,
+      });
+    }
+
+    results.push({
+      blockId: contract.blockId,
+      name: contract.name,
+      sourceUrl: contract.provenance.sourceUrl,
+      findings,
+      notCheckable,
+    });
+  }
+  return results;
 }
 
 /**

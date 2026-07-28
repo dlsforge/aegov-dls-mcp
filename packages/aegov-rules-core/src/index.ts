@@ -27,6 +27,8 @@ export {
   type BlockProbe,
   type BlockResult,
   type BlockRequirementStatus,
+  type BlockSnippetResult,
+  checkBlockSnippet,
   groupKey,
   blockProbeSpec,
   checkBlockContracts,

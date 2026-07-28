@@ -9,6 +9,22 @@
 The exact sequence to publish the packages to npm under `@dlsforge`.
 
 > **Order is not optional.** `@dlsforge/aegov-rules-core` must publish **first** — `@dlsforge/aegov-audit` depends on it at `0.1.0` and will not resolve from a clean install until the core is on the registry.
+
+> ## Pending release — 0.2.0 across all three (added 2026-07-29)
+>
+> The repo is ahead of the registry and the three packages are now **coupled**: both dependents call core APIs added after `0.1.0`.
+>
+> | Package | Registry | Repo | Why it moves |
+> |---|---|---|---|
+> | `@dlsforge/aegov-rules-core` | 0.1.0 | **0.2.0** | Block conformance contracts; catalogue `schemaVersion` 3 → 4; new exports (`blockProbeSpec`, `checkBlockContracts`, `checkBlockSnippet`, `staleBlockContracts`) |
+> | `@dlsforge/aegov-audit` | 0.1.0 | **0.2.0** | Machine-checked items 61 → 66 (TDRA 3.19–3.22, 2.40) |
+> | `@dlsforge/aegov-mcp` | 0.1.1 | **0.2.0** | `validate_snippet` checks block contracts |
+>
+> **Core first, as always** — the dependents pin it exactly at `0.2.0`, so neither installs from a clean registry until it lands.
+>
+> While the core is unpublished, the mcp packaging probe installs BOTH workspace tarballs (`test/helpers/tarballs.mjs`, npm `overrides`). **After the core publishes, drop `overrides` + `packCore` there** to restore the single-tarball flow, which additionally proves the real `npm install @dlsforge/aegov-mcp` path.
+>
+> Also after publishing mcp: rebuild the `.mcpb` (`node packages/aegov-mcp/scripts/build-mcpb.mjs`, it stages the published artifact) and attach it to a fresh GitHub release, as done for [aegov-mcp-v0.1.1](https://github.com/dlsforge/aegov-dls-mcp/releases/tag/aegov-mcp-v0.1.1).
 >
 > **Deferred (Alam's decision, locked):** `@dlsforge/aegov-mcp@0.1.1` (the shared-core version) does **not** publish now. The live `0.1.0` keeps serving existing users untouched.
 

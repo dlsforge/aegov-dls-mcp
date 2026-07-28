@@ -35,6 +35,7 @@
 export const BLOCK_CONTRACTS = [
   {
     blockId: "header",
+    rootClass: "aegov-header",
     // Reviewed 2026-07-26 against the 2026-07-25 snapshot (content unchanged
     // since the 2026-07-07 capture).
     authoredAgainstContentHash:
@@ -49,6 +50,7 @@ export const BLOCK_CONTRACTS = [
         gate: null,
         evidence: { kind: "markup", quote: '<header class="aegov-header">' },
         fix: 'Use the DLS header block: <header class="aegov-header"> … </header> (designsystem.gov.ae/docs/blocks/header).',
+        snippetSignal: { kind: "class", value: "aegov-header" },
       },
       {
         id: "header.mobile-menu",
@@ -66,6 +68,10 @@ export const BLOCK_CONTRACTS = [
           quote: "we have crafted two distinct headers - one for mobile and one for desktop",
         },
         fix: "Add the documented mobile header: a toggle control inside the header wired to the mobile menu container (aria-controls / data-modal-toggle).",
+        snippetSignal: {
+          kind: "attribute",
+          anyOf: ["data-modal-toggle", "data-collapse-toggle", "aria-controls", "aria-expanded"],
+        },
       },
       {
         id: "header.nav-max-items",
@@ -88,6 +94,7 @@ export const BLOCK_CONTRACTS = [
   },
   {
     blockId: "footer",
+    rootClass: "aegov-footer",
     // Reviewed 2026-07-26 against the 2026-07-25 snapshot (content unchanged
     // since the 2026-07-07 capture).
     authoredAgainstContentHash:
@@ -102,6 +109,7 @@ export const BLOCK_CONTRACTS = [
         gate: null,
         evidence: { kind: "markup", quote: '<footer class="aegov-footer">' },
         fix: 'Use the DLS footer block: <footer class="aegov-footer"> … </footer> (designsystem.gov.ae/docs/blocks/footer).',
+        snippetSignal: { kind: "class", value: "aegov-footer" },
       },
       {
         id: "footer.mobile-accordion",
@@ -118,6 +126,7 @@ export const BLOCK_CONTRACTS = [
           quote: "adapting gracefully into an accordion layout on mobile devices",
         },
         fix: 'Wrap the footer link groups in the documented accordion navigation: <nav class="aegov-accordion aegov-mobile-accordion" data-accordion="collapse">.',
+        snippetSignal: { kind: "class", value: "aegov-mobile-accordion" },
       },
       {
         id: "footer.copyright-year",

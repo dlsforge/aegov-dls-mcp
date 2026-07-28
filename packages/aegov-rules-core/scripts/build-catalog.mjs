@@ -388,9 +388,16 @@ const blockContracts = BLOCK_CONTRACTS.map((contract) => {
     );
   }
 
+  if (!classToRoot[contract.rootClass]) {
+    fail(
+      `block contract "${contract.blockId}": rootClass '${contract.rootClass}' is not a class that ships in the pinned package`,
+    );
+  }
+
   return {
     blockId: contract.blockId,
     name: block.name,
+    rootClass: contract.rootClass,
     requirements: contract.requirements.map((r) => ({ ...r, blockId: contract.blockId })),
     provenance: docsProvenance(page),
     // Equal to provenance.contentHash by construction — the build refuses to

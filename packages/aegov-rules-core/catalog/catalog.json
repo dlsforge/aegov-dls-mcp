@@ -7394,6 +7394,7 @@
     {
       "blockId": "header",
       "name": "Header",
+      "rootClass": "aegov-header",
       "requirements": [
         {
           "id": "header.root",
@@ -7409,6 +7410,10 @@
             "quote": "<header class=\"aegov-header\">"
           },
           "fix": "Use the DLS header block: <header class=\"aegov-header\"> … </header> (designsystem.gov.ae/docs/blocks/header).",
+          "snippetSignal": {
+            "kind": "class",
+            "value": "aegov-header"
+          },
           "blockId": "header"
         },
         {
@@ -7425,6 +7430,15 @@
             "quote": "we have crafted two distinct headers - one for mobile and one for desktop"
           },
           "fix": "Add the documented mobile header: a toggle control inside the header wired to the mobile menu container (aria-controls / data-modal-toggle).",
+          "snippetSignal": {
+            "kind": "attribute",
+            "anyOf": [
+              "data-modal-toggle",
+              "data-collapse-toggle",
+              "aria-controls",
+              "aria-expanded"
+            ]
+          },
           "blockId": "header"
         },
         {
@@ -7458,6 +7472,7 @@
     {
       "blockId": "footer",
       "name": "Footer",
+      "rootClass": "aegov-footer",
       "requirements": [
         {
           "id": "footer.root",
@@ -7473,6 +7488,10 @@
             "quote": "<footer class=\"aegov-footer\">"
           },
           "fix": "Use the DLS footer block: <footer class=\"aegov-footer\"> … </footer> (designsystem.gov.ae/docs/blocks/footer).",
+          "snippetSignal": {
+            "kind": "class",
+            "value": "aegov-footer"
+          },
           "blockId": "footer"
         },
         {
@@ -7489,6 +7508,10 @@
             "quote": "adapting gracefully into an accordion layout on mobile devices"
           },
           "fix": "Wrap the footer link groups in the documented accordion navigation: <nav class=\"aegov-accordion aegov-mobile-accordion\" data-accordion=\"collapse\">.",
+          "snippetSignal": {
+            "kind": "class",
+            "value": "aegov-mobile-accordion"
+          },
           "blockId": "footer"
         },
         {

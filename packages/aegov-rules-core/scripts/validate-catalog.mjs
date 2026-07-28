@@ -167,6 +167,10 @@ function validateCatalog() {
     if (c.sourceContentHash !== c.provenance.contentHash)
       bad(file, p, "sourceContentHash != provenance.contentHash (stale or hand-edited contract)");
     if (!c.requirements?.length) bad(file, p, "contract has no requirements");
+    if (!/^aegov-[a-z0-9-]+$/.test(c.rootClass ?? ""))
+      bad(file, p, `rootClass '${c.rootClass}' is not an aegov-* slug`);
+    if (!packageClasses.has(c.rootClass))
+      bad(file, p, `rootClass '${c.rootClass}' does not ship in the pinned package`);
     c.requirements.forEach((r) => {
       const rp = `${p}.${r.id}`;
       if (seenReq.has(r.id)) bad(file, rp, "duplicate requirement id");
@@ -188,6 +192,25 @@ function validateCatalog() {
         if (!r.check.selector?.trim()) bad(file, rp, "text-current-year check has no selector");
       } else {
         bad(file, rp, `unknown check kind '${k}'`);
+      }
+      // A snippet signal must be derivable from the selector it stands in for —
+      // otherwise the no-DOM path could drift away from the DOM path silently.
+      const sig = r.snippetSignal;
+      if (sig) {
+        const selector = k === "count-max" ? r.check.groupSelector : r.check.selector;
+        if (sig.kind === "class") {
+          if (!sig.value?.trim()) bad(file, rp, "snippetSignal.class has no value");
+          else if (!selector.includes(`.${sig.value}`))
+            bad(file, rp, `snippetSignal class '${sig.value}' does not appear in its selector`);
+        } else if (sig.kind === "attribute") {
+          if (!sig.anyOf?.length) bad(file, rp, "snippetSignal.attribute has no names");
+          for (const a of sig.anyOf ?? []) {
+            if (!selector.includes(`[${a}]`))
+              bad(file, rp, `snippetSignal attribute '${a}' does not appear in its selector`);
+          }
+        } else {
+          bad(file, rp, `unknown snippetSignal kind '${sig.kind}'`);
+        }
       }
     });
   });

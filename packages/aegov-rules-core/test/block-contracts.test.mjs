@@ -21,6 +21,7 @@ import {
   loadCatalog,
   blockProbeSpec,
   checkBlockContracts,
+  checkBlockSnippet,
   staleBlockContracts,
   groupKey,
 } from "../dist/index.js";
@@ -122,6 +123,92 @@ describe("probe spec", () => {
     assert.equal(spec.groups.length, 1);
     assert.equal(spec.groups[0].groupSelector, "header.aegov-header ul.nav-menu");
     assert.equal(new Set(spec.present).size, spec.present.length, "present selectors not deduplicated");
+  });
+});
+
+describe("snippet path (no DOM)", () => {
+  const snippet = (html) => checkBlockSnippet(html, contracts);
+
+  test("a fragment that is not a documented block is not judged as one", () => {
+    assert.deepEqual(snippet(`<button class="aegov-btn" type="submit">Send</button>`), []);
+    assert.deepEqual(snippet(`<div class="card"><p>hello</p></div>`), []);
+  });
+
+  test("a header without any mobile affordance is flagged", () => {
+    const [header] = snippet(
+      `<header class="aegov-header"><nav><ul class="nav-menu"><li><a href="/">Home</a></li></ul></nav></header>`,
+    );
+    assert.equal(header.blockId, "header");
+    assert.equal(header.findings.length, 1);
+    assert.equal(header.findings[0].confidence, "docs", "blocks are docs-tier, never package-tier");
+    assert.match(header.findings[0].message, /mobile menu affordance/);
+    assert.match(header.findings[0].message, /designsystem\.gov\.ae/, "the docs URL should travel with the finding");
+  });
+
+  test("any one of the documented toggle attributes satisfies it", () => {
+    for (const attr of ['data-modal-toggle="m"', 'aria-controls="m"', 'aria-expanded="false"']) {
+      const [header] = snippet(`<header class="aegov-header"><button type="button" ${attr}>Menu</button></header>`);
+      assert.deepEqual(header.findings, [], attr);
+    }
+  });
+
+  test("a footer without the mobile accordion is flagged, with it is clean", () => {
+    const [bare] = snippet(`<footer class="aegov-footer"><a href="/a">A</a></footer>`);
+    assert.equal(bare.findings.length, 1);
+    assert.match(bare.findings[0].message, /accordion/);
+
+    const [ok] = snippet(
+      `<footer class="aegov-footer"><nav class="aegov-accordion aegov-mobile-accordion" data-accordion="collapse"></nav></footer>`,
+    );
+    assert.deepEqual(ok.findings, []);
+  });
+
+  test("the root requirement is not re-reported as a finding", () => {
+    // Its presence is what made the contract apply; repeating it is noise.
+    const [header] = snippet(`<header class="aegov-header" data-modal-toggle="m"></header>`);
+    assert.deepEqual(header.findings, []);
+  });
+
+  test("what a fragment cannot answer is named, not silently passed", () => {
+    const [header] = snippet(`<header class="aegov-header" aria-controls="m"></header>`);
+    assert.deepEqual(
+      header.notCheckable.map((n) => n.requirementId),
+      ["header.nav-max-items"],
+    );
+    assert.match(header.notCheckable[0].reason, /rendered/);
+
+    const [footer] = snippet(
+      `<footer class="aegov-footer"><nav class="aegov-mobile-accordion"></nav></footer>`,
+    );
+    assert.deepEqual(
+      footer.notCheckable.map((n) => n.requirementId),
+      ["footer.copyright-year"],
+    );
+  });
+
+  test("both blocks in one snippet are reported separately", () => {
+    const res = snippet(
+      `<header class="aegov-header" aria-controls="m"></header><footer class="aegov-footer"></footer>`,
+    );
+    assert.deepEqual(res.map((r) => r.blockId), ["header", "footer"]);
+  });
+
+  test("every snippet signal names something its own selector asks for", () => {
+    // Guards the two paths against drifting apart: the no-DOM signal must be
+    // derivable from the selector the DOM path evaluates.
+    for (const c of contracts) {
+      for (const r of c.requirements) {
+        if (!r.snippetSignal) continue;
+        const selector = r.check.kind === "count-max" ? r.check.groupSelector : r.check.selector;
+        if (r.snippetSignal.kind === "class") {
+          assert.ok(selector.includes(`.${r.snippetSignal.value}`), `${r.id}: ${r.snippetSignal.value}`);
+        } else {
+          for (const a of r.snippetSignal.anyOf) {
+            assert.ok(selector.includes(`[${a}]`), `${r.id}: ${a}`);
+          }
+        }
+      }
+    }
   });
 });
 

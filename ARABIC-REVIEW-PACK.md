@@ -1,8 +1,6 @@
 # Arabic Native-Speaker Review Pack — dlsforge (aegov-dls-mcp)
 
-> Prepared 2026-07-22 from the repository at tag `aegov-audit-v0.1.0`. Community project — not affiliated with or endorsed by TDRA.
->
-> **Revision 2 — 2026-07-26.** One new string (**C39**) and three existing rows (**D15, D60, D83**) that now also appear in a hand-authored fixture. If you already have Revision 1, you do **not** need this whole file — the four rows are in `ARABIC-REVIEW-SUPPLEMENT-2.md`, which you can fill in and return alongside it. See the note at the top of Group C about labels that now repeat within one page.
+> Prepared 2026-07-28 from the repository at commit `323e983`. Complete and self-contained — this is the only file you need. Community project — not affiliated with or endorsed by TDRA.
 
 ## Dear reviewer — what this is and how to respond
 
@@ -15,6 +13,13 @@ For each row, please mark the **Verdict** column:
 - ⚠️ — understandable but unnatural/wrong register → note what would be better
 
 Notes are welcome in Arabic or English. Please **don't skip Group B** — there the question is different (it's about what real websites say, not about our wording). Group E is quoted from official sources and needs no correction. When done, send this file back.
+
+Two things worth knowing before you start:
+
+- **Some strings are never seen — only heard.** Rows described as an *accessible name* (`aria-label`) are invisible on screen; a screen reader announces them to a blind user. Judge those on how they sound **spoken aloud**, not just on whether they read correctly.
+- **Where the English is the odd one, say so.** Several strings were translated from English and may carry habits that do not belong in Arabic at all. If the natural UAE government wording would drop a distinction the English makes — or phrase the whole thing differently — that is exactly the kind of correction worth writing down.
+
+If your time is limited, **Group A matters most** (those strings ship inside every page the tool generates), then Group C, then the rest.
 
 ---
 
@@ -53,7 +58,9 @@ Mizan (the auditor) uses these words/stems to **recognize things on real website
 
 Small fake government pages used for testing and demos (a fictional "Ministry of Example"). They are visible in the public repository, so they should read like real, well-written government pages.
 
-> **Updated 2026-07-26.** The compliant fixture pair gained a full DLS header and footer block, so several nav labels (`الخدمات`, `عن الوزارة`, `اتصل بنا`, `رئيسي`) now appear **more than once** in `compliant/ar.html` — desktop navigation, mobile menu, and the footer accordion. One correction covers every occurrence; you only need to mark the row once. Line numbers for that file shifted at the same time and have been re-pointed where a string occurs exactly once; where it now occurs several times the old number is kept as an approximate locator. **The Arabic text, not the line number, identifies the string.**
+> **A note on repeated labels.** The main fixture page (`compliant/ar.html`) has a full site header and footer, so several navigation labels — `الخدمات`, `عن الوزارة`, `اتصل بنا`, `رئيسي` — appear **three times each**: in the desktop navigation, in the mobile menu, and in the footer. **Mark the row once**; one correction covers every occurrence. The reason for mentioning it: a wording that reads well in a top navigation sometimes reads wrong as a footer heading. If anything jars when you picture the whole page, please note it on that row.
+>
+> Line numbers are a convenience for us, not for you — **the Arabic text identifies the string**. Where a label repeats, the line number points at just one of its occurrences.
 
 | # | Arabic | Intended meaning / role | Where | Verdict | Correction |
 |---|---|---|---|---|---|
@@ -95,7 +102,7 @@ Small fake government pages used for testing and demos (a fictional "Ministry of
 | C36 | تقديم طلب خدمة | Submit a service application | packages/aegov-audit/test/fixtures/parity-ar.html:9 |  |  |
 | C37 | قدّم طلبك الآن | Submit your application now (CTA on a seeded-defect fixture) | packages/aegov-audit/test/fixtures/seeded-dls.html:29 |  |  |
 | C38 | الصفحة غير موجودة | Page not found (bilingual designed-404 test page) | packages/aegov-audit/test/tier-b.test.mjs:90 |  |  |
-| C39 | القائمة الرئيسية للجوال | "Main menu (mobile)" — accessible name for the collapsed mobile navigation, read aloud by screen readers. **Added 2026-07-26; not in the original pack.** | packages/aegov-audit/evals/fixtures/compliant/ar.html:57 |  |  |
+| C39 | القائمة الرئيسية للجوال | **Accessible name** (heard, not seen) for the site navigation in its mobile/collapsed form. English side: "Main (mobile)". *Would a UAE government site distinguish "mobile" here at all, or simply say القائمة الرئيسية?* | packages/aegov-audit/evals/fixtures/compliant/ar.html:57 |  |  |
 
 ## Group D — AI-generated demo pages (eval outputs)
 
@@ -117,7 +124,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D12 | عن الهيئة | 10-emirates-id-form-rtl.html |  |  |
 | D13 | إمكانية الوصول | 10-emirates-id-form-rtl.html |  |  |
 | D14 | تبديل اللغة | 10-emirates-id-form-rtl.html |  |  |
-| D15 | فتح القائمة الرئيسية | 10-emirates-id-form-rtl.html<br>**also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:53 (mobile-menu button label) — one verdict covers both |  |  |
+| D15 | فتح القائمة الرئيسية | "Open main menu" — **accessible name** (heard, not seen) on the button that opens the mobile menu.<br>10-emirates-id-form-rtl.html + packages/aegov-audit/evals/fixtures/compliant/ar.html:53 — one verdict covers both |  |  |
 | D16 | تخطّي إلى المحتوى الرئيسي | 10-emirates-id-form-rtl.html |  |  |
 | D17 | إغلاق القائمة الرئيسية | 10-emirates-id-form-rtl.html |  |  |
 | D18 | إغلاق النافذة | 10-emirates-id-form-rtl.html |  |  |
@@ -162,7 +169,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D57 | نعم | 10-emirates-id-form-rtl.html |  |  |
 | D58 | لا، لم يكن المحتوى مفيدًا | 10-emirates-id-form-rtl.html |  |  |
 | D59 | لا | 10-emirates-id-form-rtl.html |  |  |
-| D60 | روابط التذييل | 10-emirates-id-form-rtl.html<br>**also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:91 (footer navigation label) — one verdict covers both |  |  |
+| D60 | روابط التذييل | "Footer links" — **accessible name** (heard, not seen) of the footer's navigation.<br>10-emirates-id-form-rtl.html + packages/aegov-audit/evals/fixtures/compliant/ar.html:91 — one verdict covers both |  |  |
 | D61 | عنوان | 10-emirates-id-form-rtl.html |  |  |
 | D62 | نبذة عن الهيئة | 10-emirates-id-form-rtl.html |  |  |
 | D63 | الرؤية والرسالة | 10-emirates-id-form-rtl.html |  |  |
@@ -185,7 +192,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D80 | المصطلحات والاختصارات | 10-emirates-id-form-rtl.html |  |  |
 | D81 | تواصل | 10-emirates-id-form-rtl.html |  |  |
 | D82 | الرقم المجاني | 10-emirates-id-form-rtl.html |  |  |
-| D83 | الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ. جميع الحقوق محفوظة | 10-emirates-id-form-rtl.html<br>the closing phrase **جميع الحقوق محفوظة** is **also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:112 — please judge that phrase as well as the entity name |  |  |
+| D83 | الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ. جميع الحقوق محفوظة | Footer copyright line.<br>10-emirates-id-form-rtl.html + the closing phrase **جميع الحقوق محفوظة** also in packages/aegov-audit/evals/fixtures/compliant/ar.html:112 — *is this the wording a UAE federal entity uses in its footer?* |  |  |
 | D84 | آخر تحديث في 07/07/2026 الساعة | 10-emirates-id-form-rtl.html |  |  |
 | D85 | تابعنا على | 10-emirates-id-form-rtl.html |  |  |
 | D86 | فيسبوك | 10-emirates-id-form-rtl.html |  |  |

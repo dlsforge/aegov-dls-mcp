@@ -15,6 +15,22 @@ import { join } from "node:path";
 import { connectServer } from "./helpers/mcp.mjs";
 import { coreRoot, mcpRoot, installBoth, packDryRunFiles } from "./helpers/tarballs.mjs";
 
+describe("the version a client is told", () => {
+  test("matches package.json exactly", async () => {
+    // Regression: this was a hardcoded literal and drifted — 0.2.0 shipped to
+    // npm while every connecting client was told "0.1.1". It is now read from
+    // package.json, and this pins that it stays that way.
+    const pkg = JSON.parse(readFileSync(join(mcpRoot, "package.json"), "utf8"));
+    const srv = await connectServer();
+    try {
+      assert.equal(srv.serverInfo.version, pkg.version);
+      assert.equal(srv.serverInfo.name, "aegov-dls");
+    } finally {
+      await srv.close();
+    }
+  });
+});
+
 describe("pack contents (G1)", () => {
   const entries = packDryRunFiles();
 

@@ -191,9 +191,13 @@ if (tplIdx !== -1) {
   consumed.add(tplIdx + 1);
 }
 const target = args.find((a, i) => !a.startsWith("--") && !consumed.has(i));
-if (!target || args.includes("--help") || args.includes("-h")) {
+// Asking for help is a success; being given no target is a usage error. The
+// exit code keyed off the target instead, so `aegov-audit --help` — the most
+// ordinary invocation there is — exited 2 and read as a failure in scripts.
+const helpRequested = args.includes("--help") || args.includes("-h");
+if (!target || helpRequested) {
   console.log(USAGE);
-  process.exit(target ? 0 : 2);
+  process.exit(helpRequested ? 0 : 2);
 }
 
 const url = targetToUrl(target);

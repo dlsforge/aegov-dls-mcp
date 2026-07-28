@@ -41,6 +41,25 @@ describe("severity threshold (pure)", () => {
   });
 });
 
+describe("help and usage exit codes", () => {
+  test("--help is a success (exit 0), with or without a target", () => {
+    // Regression: the exit code keyed off whether a target was present, so the
+    // most ordinary invocation — `aegov-audit --help` — exited 2 and read as a
+    // failure to any script or Makefile running it.
+    for (const args of [["--help"], ["-h"], ["--help", FIXTURE]]) {
+      const r = runCli(...args);
+      assert.equal(r.status, 0, `${args.join(" ")} → ${r.status}`);
+      assert.match(r.stdout, /Usage: aegov-audit/);
+    }
+  });
+
+  test("no target at all is still a usage error: exit 2", () => {
+    const r = runCli();
+    assert.equal(r.status, 2);
+    assert.match(r.stdout, /Usage: aegov-audit/);
+  });
+});
+
 describe("--fail-on exit codes (CLI subprocess)", () => {
   test("an invalid threshold is a usage error: exit 2, before any browser work", () => {
     const r = runCli(FIXTURE, "--fail-on", "bogus");

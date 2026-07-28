@@ -8,6 +8,7 @@
  *
  * stdout is the JSON-RPC channel — never write logs there; use stderr.
  */
+import { createRequire } from "node:module";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -22,9 +23,17 @@ import { registerValidateSnippet } from "./tools/validateSnippet.js";
 const catalog = loadCatalog();
 const uaePass = loadUaePass();
 
+// Read from package.json rather than repeating the version here: a hardcoded
+// string silently drifted to 0.1.1 while the package shipped 0.2.0, so every
+// client saw the wrong version. dist/index.js sits one level under the package
+// root, and npm always includes package.json in the tarball.
+const { version: VERSION } = createRequire(import.meta.url)("../package.json") as {
+  version: string;
+};
+
 const server = new McpServer({
   name: "aegov-dls",
-  version: "0.1.1",
+  version: VERSION,
 });
 
 server.registerTool(

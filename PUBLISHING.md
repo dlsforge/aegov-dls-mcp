@@ -81,10 +81,38 @@ npm publish -w @dlsforge/aegov-audit
 - **MCP-registry listings** — Stage 1 post-publish TODO, still open.
 - **`@dlsforge/aegov-mcp@0.1.1`** — republish whenever Alam decides; bump is already staged locally.
 
-## Verify live (after publish)
+## Verify live (after publish) — MANDATORY, from a clean room
+
+A green monorepo says nothing about the published artifact. On 2026-07-29 this
+step caught two defects with passing tests behind them: the MCP server reported
+a stale hardcoded `0.1.1` to every client while shipping 0.2.0, and
+`aegov-audit --help` exited 2. Both were invisible in the workspace and obvious
+the moment a user installed the thing.
+
+**Never verify from the workspace.** Install from the registry into an empty
+directory and exercise it as a user would.
 
 ```sh
-npm view @dlsforge/aegov-rules-core
-npm view @dlsforge/aegov-audit
-npx @dlsforge/aegov-audit --help     # exercises the published bin
+npm view @dlsforge/aegov-rules-core version
+npm view @dlsforge/aegov-mcp version
+npm view @dlsforge/aegov-audit version
+
+# clean room — an empty dir, nothing linked
+mkdir /tmp/verify && cd /tmp/verify && echo '{"private":true}' > package.json
+
+npm install @dlsforge/aegov-mcp
+node -e "console.log(require('@dlsforge/aegov-rules-core/package.json').version)"  # resolved dep
+node -e "const c=require('@dlsforge/aegov-rules-core/catalog/catalog.json');console.log(c.meta.schemaVersion, c.blockContracts?.length)"
+
+npm install @dlsforge/aegov-audit
+npx aegov-audit --help ; echo "exit=$?"     # must be 0
+npx aegov-audit        ; echo "exit=$?"     # no target: must be 2
 ```
+
+Then connect a **real MCP client** to the installed server and check what it is
+actually told — `serverInfo.version` must match the published version, and
+`tools/list` must return all seven. Calling one tool that exercises the release's
+headline change is worth the extra minute.
+
+Check what the user sees, not just that it starts: **reported version, exit
+codes, resolved dependency versions, tool inventory.**

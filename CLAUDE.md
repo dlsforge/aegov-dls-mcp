@@ -16,7 +16,8 @@ The proprietary layer (AEGOV AI Studio, Arabic/RTL parity engine, service-protot
 ## Hard rules
 
 - **Verify live, never from memory:** the installed `@aegov/design-system` version, its file structure, the MCP SDK API, and TDRA thresholds. If docs and package disagree, the installed package wins; flag the discrepancy.
-- **Pin dependencies.** Bump deliberately, never silently.
+- **Clean-room verify after every publish — no exceptions.** Install the published package from the registry into an empty directory and exercise it the way a user does: run the real entry point, connect a real MCP client, run the CLI. Never verify a release from the workspace. A green monorepo says nothing about the artifact: on 2026-07-29 this caught two defects that were invisible in-repo — the MCP server reporting a stale hardcoded version to every client, and `aegov-audit --help` exiting 2. Both had passing tests. Check what the user actually sees (reported version, exit codes, resolved dependency versions), not just that it starts.
+- **Pin dependencies.** Bump deliberately, never silently. Dependents pin the core **exactly**, so the core publishes **first** — and a test probe must never paper over an unpublished dependency with an override, because then it stops testing what users get.
 - **Tokens only:** generated/scaffolded markup must use DLS tokens and official component classes — never arbitrary values, never hand-rolled equivalents of existing components.
 - **Non-negotiables in all output:** WCAG 2.2 AA; UAE Pass for any login; Emirates ID format `784-NNNN-NNNNNNN-N` with masking + pattern validation; Arabic/RTL first-class (correct `dir`, bilingual-ready structure); DMY dates.
 - **Arabic content:** generate it, but mark it for native-speaker review. Never silently "improve" Arabic text.

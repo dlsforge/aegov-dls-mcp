@@ -1,6 +1,8 @@
 # Arabic Native-Speaker Review Pack — dlsforge (aegov-dls-mcp)
 
 > Prepared 2026-07-22 from the repository at tag `aegov-audit-v0.1.0`. Community project — not affiliated with or endorsed by TDRA.
+>
+> **Revision 2 — 2026-07-26.** One new string (**C39**) and three existing rows (**D15, D60, D83**) that now also appear in a hand-authored fixture. If you already have Revision 1, you do **not** need this whole file — the four rows are in `ARABIC-REVIEW-SUPPLEMENT-2.md`, which you can fill in and return alongside it. See the note at the top of Group C about labels that now repeat within one page.
 
 ## Dear reviewer — what this is and how to respond
 
@@ -22,8 +24,8 @@ These are emitted by the code generators (`scaffoldUaePass`, `scaffoldEmiratesId
 
 | # | Arabic | Intended meaning / role | Where | Verdict | Correction |
 |---|---|---|---|---|---|
-| A1 | تسجيل الدخول بالهوية الرقمية | Sign in with the UAE PASS digital identity | packages/aegov-audit/evals/fixtures/compliant/ar.html:46<br>packages/aegov-mcp/evals/outputs/09-uaepass-login.html:345 (+2) |  |  |
-| A2 | رقم الهوية الإماراتية | Emirates ID number (form label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:57<br>packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:301 (+1) |  |  |
+| A1 | تسجيل الدخول بالهوية الرقمية | Sign in with the UAE PASS digital identity | packages/aegov-audit/evals/fixtures/compliant/ar.html:63<br>packages/aegov-mcp/evals/outputs/09-uaepass-login.html:345 (+2) |  |  |
+| A2 | رقم الهوية الإماراتية | Emirates ID number (form label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:74<br>packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:301 (+1) |  |  |
 | A3 | الهوية الرقمية | the (national) digital identity — UAE PASS | packages/aegov-mcp/evals/outputs/09-uaepass-login.html:325<br>packages/aegov-mcp/evals/outputs/09-uaepass-login.html:358 (+1) |  |  |
 | A4 | أدخل الأرقام الخمسة عشر لهويتك الإماراتية — تُضاف الشرطات تلقائيًا | Enter the 15 digits of your Emirates ID — dashes are added automatically (hint text) | packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:317<br>packages/aegov-mcp/src/tools/scaffoldEmiratesId.ts:30 |  |  |
 | A5 | أدخل رقم هوية إماراتية صحيحًا بالصيغة | Enter a valid Emirates ID number in the format … (error message; format sample follows) | packages/aegov-mcp/src/tools/scaffoldEmiratesId.ts:34 |  |  |
@@ -51,29 +53,31 @@ Mizan (the auditor) uses these words/stems to **recognize things on real website
 
 Small fake government pages used for testing and demos (a fictional "Ministry of Example"). They are visible in the public repository, so they should read like real, well-written government pages.
 
+> **Updated 2026-07-26.** The compliant fixture pair gained a full DLS header and footer block, so several nav labels (`الخدمات`, `عن الوزارة`, `اتصل بنا`, `رئيسي`) now appear **more than once** in `compliant/ar.html` — desktop navigation, mobile menu, and the footer accordion. One correction covers every occurrence; you only need to mark the row once. Line numbers for that file shifted at the same time and have been re-pointed where a string occurs exactly once; where it now occurs several times the old number is kept as an approximate locator. **The Arabic text, not the line number, identifies the string.**
+
 | # | Arabic | Intended meaning / role | Where | Verdict | Correction |
 |---|---|---|---|---|---|
 | C1 | قدّم طلب شهادة الخدمة عبر الإنترنت | Apply for the service certificate online (og:description) | packages/aegov-audit/evals/fixtures/compliant/ar.html:17 |  |  |
 | C2 | تخطي إلى المحتوى | Skip to content (skip link) | packages/aegov-audit/evals/fixtures/compliant/ar.html:37 |  |  |
-| C3 | شعار وزارة المثال | Emblem of the Ministry of Example (image alt) | packages/aegov-audit/evals/fixtures/compliant/ar.html:39 |  |  |
+| C3 | شعار وزارة المثال | Emblem of the Ministry of Example (image alt) | packages/aegov-audit/evals/fixtures/compliant/ar.html:42 |  |  |
 | C4 | رئيسي | Main (navigation aria-label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:40 |  |  |
 | C5 | الخدمات | Services (nav link) | packages/aegov-audit/evals/fixtures/compliant/ar.html:41<br>packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:71 (+3) |  |  |
 | C6 | عن الوزارة | About the ministry (nav link) | packages/aegov-audit/evals/fixtures/compliant/ar.html:42 |  |  |
 | C7 | اتصل بنا | Contact us (nav link) | packages/aegov-audit/evals/fixtures/compliant/ar.html:43<br>packages/aegov-audit/test/fixtures/parity-ar.html:12 (+1) |  |  |
-| C8 | طلب شهادة خدمة | Apply for a service certificate (page h1) | packages/aegov-audit/evals/fixtures/compliant/ar.html:49 |  |  |
-| C9 | قدّم طلبك عبر الإنترنت. تكتمل المعالجة خلال 3 أيام عمل | Submit your application online. Processing completes within 3 working days. | packages/aegov-audit/evals/fixtures/compliant/ar.html:50 |  |  |
-| C10 | يُغلق باب التقديم في | Applications close on … (a DMY date follows) | packages/aegov-audit/evals/fixtures/compliant/ar.html:51 |  |  |
-| C11 | بياناتك | Your details (section heading) | packages/aegov-audit/evals/fixtures/compliant/ar.html:53 |  |  |
-| C12 | الهوية الإماراتية المسجلة | Emirates ID on file (label before a masked ID) | packages/aegov-audit/evals/fixtures/compliant/ar.html:54 |  |  |
-| C13 | أؤكد أن المعلومات المقدمة صحيحة | I confirm the information provided is accurate (checkbox label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:63 |  |  |
-| C14 | إرسال الطلب | Submit application (button) | packages/aegov-audit/evals/fixtures/compliant/ar.html:65<br>packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:355 |  |  |
+| C8 | طلب شهادة خدمة | Apply for a service certificate (page h1) | packages/aegov-audit/evals/fixtures/compliant/ar.html:66 |  |  |
+| C9 | قدّم طلبك عبر الإنترنت. تكتمل المعالجة خلال 3 أيام عمل | Submit your application online. Processing completes within 3 working days. | packages/aegov-audit/evals/fixtures/compliant/ar.html:67 |  |  |
+| C10 | يُغلق باب التقديم في | Applications close on … (a DMY date follows) | packages/aegov-audit/evals/fixtures/compliant/ar.html:68 |  |  |
+| C11 | بياناتك | Your details (section heading) | packages/aegov-audit/evals/fixtures/compliant/ar.html:70 |  |  |
+| C12 | الهوية الإماراتية المسجلة | Emirates ID on file (label before a masked ID) | packages/aegov-audit/evals/fixtures/compliant/ar.html:71 |  |  |
+| C13 | أؤكد أن المعلومات المقدمة صحيحة | I confirm the information provided is accurate (checkbox label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:80 |  |  |
+| C14 | إرسال الطلب | Submit application (button) | packages/aegov-audit/evals/fixtures/compliant/ar.html:82<br>packages/aegov-mcp/evals/outputs/10-emirates-id-form-rtl.html:355 |  |  |
 | C15 | وزارة المثال | Ministry of Example (fictional entity name) | packages/aegov-audit/evals/fixtures/compliant/ar.html:70<br>packages/aegov-audit/evals/fixtures/seeded-langmix/index.html:25 (+1) |  |  |
-| C16 | جهة حكومية اتحادية في دولة الإمارات العربية المتحدة | A federal government entity of the United Arab Emirates | packages/aegov-audit/evals/fixtures/compliant/ar.html:71 |  |  |
-| C17 | إشعار ملفات تعريف الارتباط | Cookie notice (region aria-label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:72 |  |  |
-| C18 | نستخدم ملفات تعريف الارتباط لتحسين هذه الخدمة | We use cookies to improve this service | packages/aegov-audit/evals/fixtures/compliant/ar.html:73 |  |  |
-| C19 | قبول ملفات تعريف الارتباط | Accept cookies (button) | packages/aegov-audit/evals/fixtures/compliant/ar.html:74 |  |  |
+| C16 | جهة حكومية اتحادية في دولة الإمارات العربية المتحدة | A federal government entity of the United Arab Emirates | packages/aegov-audit/evals/fixtures/compliant/ar.html:90 |  |  |
+| C17 | إشعار ملفات تعريف الارتباط | Cookie notice (region aria-label) | packages/aegov-audit/evals/fixtures/compliant/ar.html:113 |  |  |
+| C18 | نستخدم ملفات تعريف الارتباط لتحسين هذه الخدمة | We use cookies to improve this service | packages/aegov-audit/evals/fixtures/compliant/ar.html:114 |  |  |
+| C19 | قبول ملفات تعريف الارتباط | Accept cookies (button) | packages/aegov-audit/evals/fixtures/compliant/ar.html:115 |  |  |
 | C20 | وزارة المثال — الخدمات | Page title: "Ministry of Example — Services" | packages/aegov-audit/evals/fixtures/compliant/ar.html:9<br>packages/aegov-audit/evals/fixtures/compliant/ar.html:16 |  |  |
-| C21 | العربية | Arabic (language-switch link on the English page) | packages/aegov-audit/evals/fixtures/compliant/index.html:45 |  |  |
+| C21 | العربية | Arabic (language-switch link on the English page) | packages/aegov-audit/evals/fixtures/compliant/index.html:50 |  |  |
 | C22 | خدمات الشركات | Corporate services (h1) | packages/aegov-audit/evals/fixtures/seeded-langmix/index.html:16 |  |  |
 | C23 | ستكتشف هنا مجموعة خدمات الشركات المقدمة من قبل المؤسسة لدعم قطاع الأعمال | Here you will discover the corporate services offered by the corporation to support the business sector | packages/aegov-audit/evals/fixtures/seeded-langmix/index.html:21 |  |  |
 | C24 | انتقل إلى دليل خدماتنا واختر الخدمة التي تناسب احتياجاتك، ثم قدّم الطلب إلكترونياً | Go to our service directory, choose the service that fits your needs, then apply electronically | packages/aegov-audit/evals/fixtures/seeded-langmix/index.html:22 |  |  |
@@ -91,6 +95,7 @@ Small fake government pages used for testing and demos (a fictional "Ministry of
 | C36 | تقديم طلب خدمة | Submit a service application | packages/aegov-audit/test/fixtures/parity-ar.html:9 |  |  |
 | C37 | قدّم طلبك الآن | Submit your application now (CTA on a seeded-defect fixture) | packages/aegov-audit/test/fixtures/seeded-dls.html:29 |  |  |
 | C38 | الصفحة غير موجودة | Page not found (bilingual designed-404 test page) | packages/aegov-audit/test/tier-b.test.mjs:90 |  |  |
+| C39 | القائمة الرئيسية للجوال | "Main menu (mobile)" — accessible name for the collapsed mobile navigation, read aloud by screen readers. **Added 2026-07-26; not in the original pack.** | packages/aegov-audit/evals/fixtures/compliant/ar.html:57 |  |  |
 
 ## Group D — AI-generated demo pages (eval outputs)
 
@@ -112,7 +117,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D12 | عن الهيئة | 10-emirates-id-form-rtl.html |  |  |
 | D13 | إمكانية الوصول | 10-emirates-id-form-rtl.html |  |  |
 | D14 | تبديل اللغة | 10-emirates-id-form-rtl.html |  |  |
-| D15 | فتح القائمة الرئيسية | 10-emirates-id-form-rtl.html |  |  |
+| D15 | فتح القائمة الرئيسية | 10-emirates-id-form-rtl.html<br>**also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:53 (mobile-menu button label) — one verdict covers both |  |  |
 | D16 | تخطّي إلى المحتوى الرئيسي | 10-emirates-id-form-rtl.html |  |  |
 | D17 | إغلاق القائمة الرئيسية | 10-emirates-id-form-rtl.html |  |  |
 | D18 | إغلاق النافذة | 10-emirates-id-form-rtl.html |  |  |
@@ -157,7 +162,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D57 | نعم | 10-emirates-id-form-rtl.html |  |  |
 | D58 | لا، لم يكن المحتوى مفيدًا | 10-emirates-id-form-rtl.html |  |  |
 | D59 | لا | 10-emirates-id-form-rtl.html |  |  |
-| D60 | روابط التذييل | 10-emirates-id-form-rtl.html |  |  |
+| D60 | روابط التذييل | 10-emirates-id-form-rtl.html<br>**also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:91 (footer navigation label) — one verdict covers both |  |  |
 | D61 | عنوان | 10-emirates-id-form-rtl.html |  |  |
 | D62 | نبذة عن الهيئة | 10-emirates-id-form-rtl.html |  |  |
 | D63 | الرؤية والرسالة | 10-emirates-id-form-rtl.html |  |  |
@@ -180,7 +185,7 @@ Full bilingual pages produced by an AI assistant connected to our tools, committ
 | D80 | المصطلحات والاختصارات | 10-emirates-id-form-rtl.html |  |  |
 | D81 | تواصل | 10-emirates-id-form-rtl.html |  |  |
 | D82 | الرقم المجاني | 10-emirates-id-form-rtl.html |  |  |
-| D83 | الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ. جميع الحقوق محفوظة | 10-emirates-id-form-rtl.html |  |  |
+| D83 | الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ. جميع الحقوق محفوظة | 10-emirates-id-form-rtl.html<br>the closing phrase **جميع الحقوق محفوظة** is **also hand-authored** in packages/aegov-audit/evals/fixtures/compliant/ar.html:112 — please judge that phrase as well as the entity name |  |  |
 | D84 | آخر تحديث في 07/07/2026 الساعة | 10-emirates-id-form-rtl.html |  |  |
 | D85 | تابعنا على | 10-emirates-id-form-rtl.html |  |  |
 | D86 | فيسبوك | 10-emirates-id-form-rtl.html |  |  |

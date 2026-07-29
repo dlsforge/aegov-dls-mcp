@@ -11,9 +11,9 @@
  *
  * Community project. Not affiliated with or endorsed by TDRA.
  */
-import { pathToFileURL } from "node:url";
-import { existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { pathToFileURL, fileURLToPath } from "node:url";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { resolve, dirname, join } from "node:path";
 import { chromium } from "playwright";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { runAxe, AXE_VERSION } from "./engines/axe.js";
@@ -88,6 +88,8 @@ Usage: aegov-audit <url|path> [--json] [--lighthouse] [--parity [url]] [--out <d
   --fail-on <s>  Exit 1 when any finding is at or above severity <s>
                  (critical > serious > moderate > minor). Default: none —
                  report only. This is what CI (the GitHub Action) keys off.
+  --version, -v  Print the installed aegov-audit version and exit.
+  --help, -h     Print this usage and exit.
 
 Loads the target in headless Chromium and runs axe-core (WCAG) plus the
 AEGOV DLS rules — the shared rules-core checks, token fidelity, component
@@ -97,11 +99,31 @@ and Arabic parity is always flagged for native-speaker review, never
 asserted. Lighthouse scores are evaluated against the verified TDRA
 thresholds strictly under the local-run caveat.`;
 
+/**
+ * Read from the installed package.json at runtime, never a literal: a
+ * hardcoded version silently goes stale on the next release and every consumer
+ * is told the wrong thing (exactly the 0.2.0 defect in the sibling MCP server).
+ */
+const PKG_VERSION: string = (() => {
+  try {
+    const pkg = join(dirname(fileURLToPath(import.meta.url)), "..", "package.json");
+    return JSON.parse(readFileSync(pkg, "utf8")).version ?? "unknown";
+  } catch {
+    return "unknown";
+  }
+})();
+
 function targetToUrl(arg: string): string {
   if (/^https?:\/\//i.test(arg)) return arg;
   const abs = resolve(arg);
   if (!existsSync(abs)) {
     console.error(`aegov-audit: target not found: ${arg}`);
+    process.exit(2);
+  }
+  // A directory renders as Chromium's generated file listing, which would be
+  // audited — and passed — as if it were the entity's page.
+  if (statSync(abs).isDirectory()) {
+    console.error(`aegov-audit: target is a directory, not an HTML page: ${arg}`);
     process.exit(2);
   }
   return pathToFileURL(abs).href;
@@ -189,15 +211,64 @@ if (tplIdx !== -1) {
   }
   xlsxTemplate = args[tplIdx + 1];
   consumed.add(tplIdx + 1);
+  // Validated HERE, not at write time: the template is consumed only after the
+  // whole audit completes, so a typo used to surface as an ENOENT minutes into
+  // a real-site run — with report.json/report.md already written beside it.
+  const abs = resolve(xlsxTemplate);
+  if (!existsSync(abs)) {
+    console.error(`aegov-audit: --xlsx-template not found: ${xlsxTemplate}`);
+    process.exit(2);
+  }
+  if (!statSync(abs).isFile()) {
+    console.error(`aegov-audit: --xlsx-template is not a file: ${xlsxTemplate}`);
+    process.exit(2);
+  }
+  if (formatIdx === -1)
+    console.error(
+      "aegov-audit: --xlsx-template has no effect without --format xlsx (no workbook will be written)",
+    );
 }
 const target = args.find((a, i) => !a.startsWith("--") && !consumed.has(i));
 // Asking for help is a success; being given no target is a usage error. The
 // exit code keyed off the target instead, so `aegov-audit --help` — the most
 // ordinary invocation there is — exited 2 and read as a failure in scripts.
 const helpRequested = args.includes("--help") || args.includes("-h");
+if (args.includes("--version") || args.includes("-v")) {
+  console.log(PKG_VERSION);
+  process.exit(0);
+}
 if (!target || helpRequested) {
   console.log(USAGE);
   process.exit(helpRequested ? 0 : 2);
+}
+
+// Every flag this CLI accepts. An unrecognised one must be a hard error: when
+// unknown flags were ignored, `aegov-audit page.html --lighthose` ran a full
+// audit, exited 0, and reported a clean pass for a check it never performed —
+// a compliance tool failing silently green is worse than not running at all.
+const KNOWN_FLAGS = new Set([
+  "--json",
+  "--lighthouse",
+  "--parity",
+  "--fail-on",
+  "--out",
+  "--format",
+  "--no-crawl",
+  "--entity-type",
+  "--artifacts",
+  "--xlsx-template",
+  "--help",
+  "-h",
+  "--version",
+  "-v",
+]);
+const unknown = args.filter(
+  (a, i) => a.startsWith("-") && !consumed.has(i) && !KNOWN_FLAGS.has(a),
+);
+if (unknown.length) {
+  console.error(`aegov-audit: unknown option${unknown.length > 1 ? "s" : ""}: ${unknown.join(", ")}`);
+  console.error("aegov-audit: run --help for the supported options");
+  process.exit(2);
 }
 
 const url = targetToUrl(target);
@@ -390,6 +461,25 @@ try {
     }
   }
   if (status >= 400) process.exitCode = 1;
+} catch (err) {
+  // Everything past argument parsing used to escape as an uncaught exception:
+  // an unreachable URL, a non-HTML target, a malformed workbook template. The
+  // underlying messages are good ("not a zip: no end-of-central-directory
+  // record") but arrived buried in a Playwright/Node stack trace. Report the
+  // message, keep the nonzero exit CI keys off, and put the stack behind
+  // DEBUG=1 for when it is actually wanted.
+  const message = err instanceof Error ? err.message : String(err);
+  const first = message.split("\n")[0].trim();
+  console.error(`aegov-audit: ${first}`);
+  if (/ERR_CONNECTION_REFUSED|ERR_NAME_NOT_RESOLVED|ERR_UNSAFE_PORT|net::/.test(message))
+    console.error(`aegov-audit: could not load ${url} — check the URL is reachable`);
+  else if (/Download is starting/.test(message))
+    console.error(
+      `aegov-audit: ${url} is not an HTML page (the browser tried to download it) — audit an HTML page or URL`,
+    );
+  if (process.env.DEBUG && err instanceof Error && err.stack) console.error(err.stack);
+  else console.error("aegov-audit: re-run with DEBUG=1 for the full stack trace");
+  process.exitCode = 1;
 } finally {
   await browser.close();
 }

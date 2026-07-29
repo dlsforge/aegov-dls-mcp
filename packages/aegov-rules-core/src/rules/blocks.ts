@@ -140,7 +140,13 @@ function evaluate(
   const check = req.check;
   switch (check.kind) {
     case "present": {
-      const n = probe.counts?.[check.selector] ?? 0;
+      const n = probe.counts?.[check.selector];
+      // A selector the consumer never reported was never ASKED — unanswerable,
+      // so not-applicable. Only an explicit 0 ("asked, matched nothing") is a
+      // violation. Reading a missing key as 0 asserted a failure against a page
+      // the consumer had not measured, which is precisely the wrong-assertion
+      // failure this module refuses.
+      if (n === undefined) return { ...base, status: "not-applicable" };
       return n > 0 ? { ...base, status: "satisfied" } : violated(req.statement);
     }
     case "count-max": {

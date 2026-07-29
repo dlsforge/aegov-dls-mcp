@@ -34,12 +34,23 @@ const byId = (id) => contracts.flatMap((c) => c.requirements).find((r) => r.id =
 const resultFor = (results, id) => results.find((r) => r.requirementId === id);
 
 /** A probe where nothing matches — the "block absent" baseline. */
-const emptyProbe = (currentYear = 2026) => ({
-  counts: {},
-  groupCounts: {},
-  texts: {},
-  currentYear,
-});
+/**
+ * A probe of a page that has none of the block markup on it.
+ *
+ * Every selector is explicitly 0 — which is what a real DOM probe returns for a
+ * blank page ("asked, matched nothing"), and what distinguishes it from a key
+ * the consumer never reported at all ("never asked"). The two must not be
+ * conflated: the first is a violation, the second is not-applicable.
+ */
+const emptyProbe = (currentYear = 2026) => {
+  const spec = blockProbeSpec(contracts);
+  return {
+    counts: Object.fromEntries(spec.present.map((s) => [s, 0])),
+    groupCounts: {},
+    texts: {},
+    currentYear,
+  };
+};
 
 /** Build a probe that satisfies every requirement. */
 function conformingProbe(currentYear = 2026) {
@@ -287,6 +298,28 @@ describe("evaluation", () => {
       assert.equal(
         resultFor(checkBlockContracts(contracts, probe), "header.nav-max-items").status,
         "not-applicable",
+      );
+    });
+
+    test("a selector the consumer never reported at all is not-applicable", () => {
+      // Adversarial pass 2026-07-29: a consumer that simply OMITS a key (rather
+      // than declaring it unavailable) had it read as a count of zero, so the
+      // library reported "the page has no DLS footer" against a page it had
+      // never measured. An unasked question has no answer.
+      const probe = { counts: { "header.aegov-header": 1 }, groupCounts: {}, texts: {}, currentYear: 2026 };
+      const results = checkBlockContracts(contracts, probe);
+      assert.equal(resultFor(results, "footer.root").status, "not-applicable");
+      assert.equal(resultFor(results, "header.mobile-menu").status, "not-applicable");
+      // Nothing may be asserted as violated from an unmeasured probe.
+      assert.deepEqual(results.filter((r) => r.status === "violated"), []);
+    });
+
+    test("an explicit zero is still a violation (asked, matched nothing)", () => {
+      const probe = conformingProbe();
+      probe.counts["footer.aegov-footer"] = 0;
+      assert.equal(
+        resultFor(checkBlockContracts(contracts, probe), "footer.root").status,
+        "violated",
       );
     });
 

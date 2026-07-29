@@ -23,7 +23,18 @@ import type { Catalog } from "../catalog/types.js";
 
 // Matches class="…", class='…', and the HTML5-valid unquoted class=… form
 // (third group) — an unquoted attribute must not slip past class validation.
-const CLASS_ATTR_RE = /\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/g;
+//
+// The leading lookbehind is a WHITELIST of what may precede a real class
+// attribute (start of input, whitespace, or a preceding attribute's closing
+// quote / a self-closing slash), not a blacklist of what may not. A `\b`
+// boundary here matched any attribute *ending* in "class" — `data-class`,
+// `ng-class`, `:class`, `[class]` — whose values are JS expressions or
+// arbitrary data, and tokenising those as CSS classes invented errors on valid
+// markup. The `i` flag is required because HTML attribute names are
+// case-insensitive: without it `CLASS="…"` bypassed class validation entirely,
+// taking the block contracts (which key off the root class token) with it.
+const CLASS_ATTR_RE =
+  /(?<=^|[\s"'/])class\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/gi;
 
 export type Finding = {
   level: "error" | "warning" | "info";

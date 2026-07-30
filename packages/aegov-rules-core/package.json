@@ -1,6 +1,6 @@
 {
   "name": "@dlsforge/aegov-rules-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Machine-readable model of the UAE Design System (AEGOV DLS): component schemas, resolved design tokens, catalogue loader, and the DLS rule engine. Community project. Not affiliated with or endorsed by TDRA.",
   "license": "MIT",
   "author": "Alam Khan Durrani",

@@ -118,12 +118,38 @@ run(`npx --yes @anthropic-ai/mcpb@2.1.2 pack "${stageDir}" "${outFile}"`, pkgDir
 // objects from tools/list. Smithery's deploy API requires inputSchema per tool
 // (400 "expected object" without it) and at least one serverCard field
 // (400 "No values to set" when tools are omitted) — verified 2026-07-25.
-// The MCPB validator rejects those keys, so this variant is zipped directly
-// (bsdtar --format zip); a .mcpb is a plain zip archive.
+// The MCPB validator rejects those keys, so this variant is zipped directly;
+// a .mcpb is a plain zip archive.
+//
+// `--format zip` is a bsdtar/libarchive feature. Bare `tar` resolves to bsdtar
+// from PowerShell/cmd on Windows but to GNU tar inside Git Bash and on Linux,
+// where it dies with "zip: Invalid archive format" — AFTER the primary bundle
+// has already been written, which reads like a half-successful build. Resolve
+// bsdtar explicitly and say so plainly when it is not there.
 const smitheryOut = join(outDir, `aegov-mcp-${version}-smithery.mcpb`);
 writeFileSync(join(stageDir, 'manifest.json'), JSON.stringify({ ...manifest, tools }, null, 2));
 rmSync(smitheryOut, { force: true });
-run(`tar --format zip -cf "${smitheryOut}" manifest.json package.json package-lock.json node_modules`, stageDir);
+
+const bsdtar = (() => {
+  const candidates =
+    process.platform === 'win32'
+      ? [join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', 'tar.exe'), 'bsdtar', 'tar']
+      : ['bsdtar', 'tar'];
+  for (const candidate of candidates) {
+    try {
+      const banner = execSync(`"${candidate}" --version`, { encoding: 'utf8', stdio: 'pipe' });
+      if (/bsdtar|libarchive/i.test(banner)) return candidate;
+    } catch {
+      // not present or not runnable — try the next candidate
+    }
+  }
+  throw new Error(
+    'No bsdtar/libarchive `tar` found, so the Smithery zip variant cannot be built.\n' +
+      `The primary bundle at ${outFile} is complete and valid — only the Smithery variant is missing.\n` +
+      'On Windows run this script from PowerShell (System32 tar is bsdtar); on Linux install libarchive-tools.',
+  );
+})();
+run(`"${bsdtar}" --format zip -cf "${smitheryOut}" manifest.json package.json package-lock.json node_modules`, stageDir);
 
 console.log(`\nBuilt ${outFile}`);
 console.log(`Built ${smitheryOut} (Smithery variant, full tool schemas)`);

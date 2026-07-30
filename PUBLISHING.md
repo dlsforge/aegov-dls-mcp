@@ -159,8 +159,15 @@ npm view @dlsforge/aegov-audit version
 mkdir /tmp/verify && cd /tmp/verify && echo '{"private":true}' > package.json
 
 npm install @dlsforge/aegov-mcp
-node -e "console.log(require('@dlsforge/aegov-rules-core/package.json').version)"  # resolved dep
-node -e "const c=require('@dlsforge/aegov-rules-core/catalog/catalog.json');console.log(c.meta.schemaVersion, c.blockContracts?.length)"
+
+# The core's exports map deliberately exposes only "." — subpath requires like
+# `@dlsforge/aegov-rules-core/package.json` or `/catalog/catalog.json` throw
+# ERR_PACKAGE_PATH_NOT_EXPORTED. (Earlier revisions of this runbook prescribed
+# exactly those, and they never worked; corrected 2026-07-30 against the
+# published 0.2.1.) Read the resolved version off disk, and the catalogue
+# through the public API:
+node -e "console.log(JSON.parse(require('fs').readFileSync('node_modules/@dlsforge/aegov-rules-core/package.json','utf8')).version)"
+node --input-type=module -e "import {loadCatalog} from '@dlsforge/aegov-rules-core';const c=loadCatalog();console.log(c.meta.schemaVersion, c.meta.generatedFrom.version, c.blockContracts?.length)"
 
 npm install @dlsforge/aegov-audit
 npx aegov-audit --help ; echo "exit=$?"     # must be 0

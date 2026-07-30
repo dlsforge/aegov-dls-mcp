@@ -10,7 +10,65 @@ The exact sequence to publish the packages to npm under `@dlsforge`.
 
 > **Order is not optional.** `@dlsforge/aegov-rules-core` must publish **first** — `@dlsforge/aegov-audit` depends on it at `0.1.0` and will not resolve from a clean install until the core is on the registry.
 
-> ## Pending release — 0.2.0 across all three (added 2026-07-29)
+> ## Pending release — adversarial-pass patch: core 0.2.1, mcp 0.2.2, audit 0.2.2 (added 2026-07-30)
+>
+> Commit `80c2cf9` fixed six real defects that the registry still carries.
+> The repo is bumped, gated, and awaiting `npm publish`.
+>
+> | Package | Registry | Repo | Why it moves |
+> |---|---|---|---|
+> | `@dlsforge/aegov-rules-core` | 0.2.0 | **0.2.1** | Class tokenizer: uppercase `CLASS=` bypassed class validation entirely, while the `\b` boundary flagged `data-class`/`ng-class`/`:class`/`[class]` on valid markup (whitelist lookbehind + `i` flag). `checkBlockContracts`: a probe key the consumer never reported was read as 0 and reported VIOLATED — now not-applicable; an explicit 0 stays a violation |
+> | `@dlsforge/aegov-mcp` | 0.2.1 | **0.2.2** | No source change — repins core `0.2.1` exactly so `validate_snippet` ships the tokenizer fix |
+> | `@dlsforge/aegov-audit` | 0.2.1 | **0.2.2** | Unknown flags no longer run a silent-green audit (exit 2); a directory target no longer audits Chromium's file-listing page (exit 2); `--version` added (reads package.json at runtime); typed CLI errors instead of raw stack traces; `--xlsx-template` validated at parse time, not after the audit. Repins core `0.2.1` |
+>
+> **Core first, as always.** Publish + verify order:
+>
+> ```sh
+> npm publish -w @dlsforge/aegov-rules-core
+> npm view @dlsforge/aegov-rules-core version   # must print 0.2.1 before continuing
+> npm publish -w @dlsforge/aegov-mcp
+> npm publish -w @dlsforge/aegov-audit
+> ```
+>
+> While the core is unpublished, the mcp packaging probe again installs BOTH
+> workspace tarballs (`test/helpers/tarballs.mjs`, npm `overrides`). **After the
+> core publishes, drop `overrides` + `packCore` there** to restore the
+> single-tarball flow, which additionally proves the real
+> `npm install @dlsforge/aegov-mcp` path.
+>
+> Post-publish, beyond the standard clean-room verification below:
+>
+> 1. Tag and push: `aegov-rules-core-v0.2.1`, `aegov-mcp-v0.2.2`, `aegov-audit-v0.2.2`.
+> 2. Rebuild the `.mcpb` (`node packages/aegov-mcp/scripts/build-mcpb.mjs` — it
+>    stages the PUBLISHED artifact) and attach it to a fresh GitHub release
+>    `aegov-mcp-v0.2.2`, marked Latest.
+> 3. **Official MCP Registry refresh** — the registry entry still shows 0.1.1
+>    (missed during the 0.2.x releases; `server.json` is now 0.2.2). Needs the
+>    Owner-role + classic `read:org` PAT path from MCP-REGISTRY-SUBMISSIONS.md §1
+>    (the old 7-day PAT has expired), then `mcp-publisher publish` from
+>    `packages/aegov-mcp`.
+> 4. Release-specific clean-room checks — the six fixes, as a user sees them:
+>    - core / `validate_snippet`: `<div CLASS="aegov-fake">x</div>` must be
+>      REJECTED (uppercase attribute caught); `<div data-class="aegov-x">x</div>`
+>      must NOT raise the unknown-class error; `<header CLASS="aegov-header"></header>`
+>      must fire the header block contract.
+>    - audit: `npx aegov-audit --version` prints the published version, exit 0 ·
+>      an unknown flag (`--lighthose`) exits 2 · a directory target exits 2 ·
+>      `--xlsx-template nope.xlsx` fails at parse time, before any audit work ·
+>      `--help` still exits 0.
+>    - MCP client: `serverInfo.version` must report 0.2.2; the resolved
+>      `@dlsforge/aegov-rules-core` must be 0.2.1.
+> 5. Revoke the Bypass-2FA npm token — or consciously keep it for the pending
+>    Arabic-pack patch window and revoke after that.
+
+> ## ~~Pending release — 0.2.0 across all three~~ SHIPPED 2026-07-29
+>
+> Landed as `rules-core@0.2.0`, then `aegov-mcp@0.2.0`/`aegov-audit@0.2.0` with
+> same-day `0.2.1` patches for both dependents after the mandatory clean-room
+> verification caught two live defects (stale hardcoded `serverInfo.version`;
+> `--help` exiting 2). All five tags pushed; `.mcpb` attached to the
+> `aegov-mcp-v0.2.1` GitHub release. Single-tarball probe flow restored
+> post-publish. Historical block kept as written:
 >
 > The repo is ahead of the registry and the three packages are now **coupled**: both dependents call core APIs added after `0.1.0`.
 >

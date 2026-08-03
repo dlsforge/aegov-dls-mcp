@@ -10,3 +10,7 @@ report.xlsx
 
 mcpb-build/
 mcpb-dist/
+
+# Returned Arabic review workbook — metadata identifies the reviewer by name;
+# the outcome is recorded in ARABIC-REVIEW-PACK.md instead.
+arabic-strings-review.xlsx

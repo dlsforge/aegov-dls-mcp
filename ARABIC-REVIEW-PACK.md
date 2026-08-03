@@ -303,3 +303,49 @@ Single words in unit tests and the tool name. Ten-second glance is enough.
 ---
 
 _Generated from the repository source; regenerate rather than hand-maintain. Thank you!_
+
+---
+
+## Review outcome (returned 2026-08-01 as xlsx, verified + applied 2026-08-03)
+
+The native-speaker review came back complete: all 231 rows, verdicts on every
+group that needed them, group E (quoted official text) correctly left
+untouched, originals unmodified. Verdicts: 133 ✅ · 28 ⚠ · 4 ✏️.
+The returned workbook itself is **deliberately not committed** — its metadata
+identifies the reviewer by name; this section is the durable record.
+
+**Applied (hand-authored fixtures, direct edits):** C1, C4, C9, C10, C12, C23,
+C39 — `compliant/ar.html` + `seeded-langmix/index.html`. Evals re-run green
+(the compliant pair stays pinned to zero findings).
+
+**Reviewed but kept as-is (objections upheld 2026-08-03, Alam's ruling):**
+
+- **A5** — the suggested rewrite says الهوية الرقمية (= UAE PASS) where the
+  string is the *Emirates ID* validation error, and drops the trailing
+  بالصيغة that composes with the appended `784-XXXX-XXXXXXX-X` sample.
+- **A10** — the suggestion embeds our meaning-gloss "(على المستند)" into a
+  button label.
+- **C2** — conflicts with the reviewer's own B1 confirmation that real UAE
+  sites use the تخط stem in skip links (and the parenthetical is a gloss
+  leak); the fixture also deliberately models the recognizer's wording.
+- **C3** — "(وصف الصورة)" inside an `alt` attribute is a gloss leak and an
+  accessibility antipattern.
+- **D76** — الشكاوى is the MSA plural (the register TDRA mandates) and what
+  official UAE portals use; the suggested الشكاوي is the informal spelling.
+
+**Deferred to the next eval regeneration (D-group rows live in model-generated
+outputs, which are never hand-edited):** the reviewer's recurring and sound
+theme — name **UAE PASS** explicitly alongside الهوية الرقمية on first mention
+(D5, D7, D8) — plus the phrasing improvements in D9, D20, D21, D25, D39, D47,
+D49, D53, D81, D84, D89, D95, D98. Fold these into generator/tool-description
+guidance when the evals are next regenerated (paid run).
+
+**Engineering backlog from B7:** the crawl classifier's خدم stem can
+false-match employee/service-role phrases (خدمة العملاء، خدمة المتعاملين،
+مركز الخدمة، موظف خدمة، سنوات الخدمة، الخدمة الوطنية) — evaluate guarding the
+service-page heuristic (`packages/aegov-audit/src/engines/crawl.ts`) against
+these before relying on 3.25 classification more heavily.
+
+**B confirmations requiring no change:** B1 (تخط is what real sites use),
+B3 (common login wordings all contain تسجيل الدخول, which the pattern already
+matches as a substring).

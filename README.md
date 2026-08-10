@@ -39,7 +39,7 @@ npm run validate     # catalogue lint + invariants (rules-core)
 
 Mizan's suites render pages, so `npx playwright install chromium` is needed once for `npm test` / `npm run evals:audit`.
 
-See `CLAUDE.md` for the hard rules, `STAGE1-HANDOFF.md` / `STAGE2-HANDOFF.md` for the build briefs, and each package's own README for usage.
+See each package's own README for usage.
 
 ## License
 

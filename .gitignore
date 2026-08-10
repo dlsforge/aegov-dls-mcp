@@ -3,7 +3,7 @@ dist/
 *.log
 .docs-cache/
 .uaepass-cache/
-.claude/settings.local.json
+.claude/
 .tdra-cache/
 # Filled copies of TDRA's workbook embed TDRA's own file — never redistribute
 report.xlsx
@@ -11,6 +11,17 @@ report.xlsx
 mcpb-build/
 mcpb-dist/
 
-# Returned Arabic review workbook — metadata identifies the reviewer by name;
-# the outcome is recorded in ARABIC-REVIEW-PACK.md instead.
+# Returned Arabic review workbook — metadata identifies the reviewer by name.
 arabic-strings-review.xlsx
+~$*.xlsx
+
+# Internal working docs — local only, never published
+CLAUDE.md
+STAGE1-HANDOFF.md
+STAGE2-HANDOFF.md
+STAGE2B-HANDOFF.md
+FUTURE-STAGES-NOTES.md
+PROJECT-CONTEXT-v2.md
+PUBLISHING.md
+MCP-REGISTRY-SUBMISSIONS.md
+ARABIC-REVIEW-PACK.md

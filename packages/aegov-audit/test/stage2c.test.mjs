@@ -119,11 +119,12 @@ describe("3.60/3.61 + 2.21 — technology fingerprints (hard signals only)", () 
 });
 
 describe("checklist wiring for Stage 2C", () => {
-  test("coverage reached 66 machine-checked items", () => {
+  test("coverage reached 67 machine-checked items", () => {
     // 61 through Stage 2C, +5 from the docs-sourced block contracts
-    // (3.19–3.22 header/footer conformance and the 2.40 roll-up).
+    // (3.19–3.22 header/footer conformance and the 2.40 roll-up),
+    // +1 from the site-map-page probe (1.5).
     const view = buildChecklistView([], {});
-    assert.equal(view.machineCheckedItems.length, 66);
+    assert.equal(view.machineCheckedItems.length, 67);
   });
   test("3.40 is not-checked until the validator ran; stack/breakpoint items always run", () => {
     const closed = buildChecklistView([], { lighthouseRan: true, httpRan: true });

@@ -297,6 +297,17 @@ try {
   const finalUrl = page.url();
 
   const axeFindings = await runAxe(page);
+  // Links feed the site-map-page probe (checklist 1.5): the page's own labelled
+  // link is the only way to find a map at a path no well-known list would guess.
+  const pageLinks = await page
+    .evaluate(() =>
+      Array.from(document.querySelectorAll("a[href]")).map((a) => ({
+        href: a.getAttribute("href") ?? "",
+        text: (a.textContent ?? "").trim().slice(0, 120),
+        title: a.getAttribute("title") ?? "",
+      })),
+    )
+    .catch(() => [] as Array<{ href: string; text: string; title: string }>);
   const dlsFindings: AuditFinding[] = [
     ...(await runDlsRules(page)),
     ...(await runTokenFidelity(page)),
@@ -305,7 +316,7 @@ try {
     ...(await runMetaChecks(page)),
     ...(await runAssetChecks(page)),
     ...(await runMediaChecks(page)),
-    ...(await runHttpChecks(finalUrl)),
+    ...(await runHttpChecks(finalUrl, pageLinks)),
     ...(await runStyleChecks(page, { entityType })),
     ...(await runStackChecks(page)),
   ];

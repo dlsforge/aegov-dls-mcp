@@ -118,6 +118,9 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // targets; buildChecklistView marks these "not-checked" for local files.
   "http-error-page": ["2.42", "3.38"],
   "http-sitemap": ["3.64"],
+  // 1.5 and 3.64 are different artefacts for different consumers: the XML file
+  // for crawlers, this page for people. Neither substitutes for the other.
+  "http-sitemap-page": ["1.5"],
   // Computed-style rules against rules-core tokens (Stage 2B Tier C)
   "style-font-family": ["2.2"],
   "style-heading-typography": ["2.3"],

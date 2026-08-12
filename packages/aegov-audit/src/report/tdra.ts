@@ -142,6 +142,9 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // least one crawled subpage; "not-checked" otherwise. crawl-alternate also
   // upgrades 3.35 from home-only to all crawled pages.
   "crawl-title-duplicate": ["3.29"],
+  // 3.62 asks about a CMS ability; per-page titles/descriptions across the
+  // crawled set are the only form of it observable from outside the CMS.
+  "crawl-meta-per-page": ["3.62"],
   "crawl-description-duplicate": ["3.29"],
   "crawl-alternate-missing": ["3.35"],
   "crawl-page-rating": ["3.25"],

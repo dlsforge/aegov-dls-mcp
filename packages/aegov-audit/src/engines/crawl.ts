@@ -228,6 +228,37 @@ export async function runCrawlChecks(
       urls,
     );
 
+  // 3.62 — evidence that the CMS manages meta tags at page level. The
+  // observable form of that ability is page-specific titles AND descriptions
+  // across the crawled set. Uniform or absent metadata does not prove the CMS
+  // *cannot* do it, so the finding says "no evidence", never "no ability".
+  //
+  // This deliberately catches what the duplicate rules above cannot: groupBy
+  // skips empty values, so a site where NO page carries a description produces
+  // no duplicate finding at all — the worse case reported nothing.
+  if (scans.length > 1) {
+    const distinct = (field: "title" | "description") =>
+      new Set(scans.map((s) => s[field]).filter(Boolean)).size;
+    const titles = distinct("title");
+    const descriptions = distinct("description");
+    const gaps: string[] = [];
+    if (!descriptions) gaps.push("no page carries a meta description");
+    else if (descriptions === 1) gaps.push("every page repeats one meta description");
+    if (!titles) gaps.push("no page carries a <title>");
+    else if (titles === 1) gaps.push("every page repeats one <title>");
+    if (gaps.length)
+      add(
+        "crawl-meta-per-page",
+        "moderate",
+        `No evidence of page-level meta-tag management ${crawledNote}: ${gaps.join("; ")} ` +
+          `(${titles} distinct title(s), ${descriptions} distinct description(s)). Checklist 3.62 ` +
+          `asks whether the CMS can manage meta tags per page; per-page titles and descriptions ` +
+          `are how that ability shows up on the rendered site.`,
+        "Template the <title> and meta description from each page's own fields in the CMS.",
+        scans.map((s) => s.url),
+      );
+  }
+
   // 3.35 — alternate hreflang on every crawled subpage (home is covered by
   // the single-page meta-alternate rule; do not double-report it).
   const missingAlternate = scans.filter((s) => s.url !== finalUrl && !s.hasAlternate);

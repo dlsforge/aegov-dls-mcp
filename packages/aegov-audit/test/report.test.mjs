@@ -84,7 +84,7 @@ describe("TDRA checklist mirror", () => {
        "3.15", "3.19", "3.20", "3.21", "3.22", "3.23", "3.24", "3.25", "3.26", "3.27", "3.28", "3.29", "3.30", "3.31", "3.32",
        "3.33", "3.34", "3.35", "3.36", "3.37", "3.38", "3.39", "3.40", "3.41", "3.42", "3.43",
        "3.46", "3.47", "3.48", "3.49", "3.50", "3.51", "3.52", "3.53", "3.54", "3.57", "3.58",
-       "3.59", "3.60", "3.61", "3.64"],
+       "3.59", "3.60", "3.61", "3.62", "3.64"],
       "the curated machine-checkable set — update deliberately when a new engine lands",
     );
     // Without a Lighthouse run, an http(s) target (origin probes + crawl) or
@@ -94,7 +94,7 @@ describe("TDRA checklist mirror", () => {
     const notRun = new Set([
       "3.43", "3.46", "3.47", "3.53", "3.54", "3.58", // lighthouse-only
       "1.5", "2.42", "3.38", "3.64", // http-probe-only
-      "3.25", "3.29", // crawl-only (Tier D)
+      "3.25", "3.29", "3.62", // crawl-only (Tier D)
       "2.12", // --entity-type ministry only (Tier C)
       "3.40", // offline HTML validation — source not fetched in this bare view
     ]);

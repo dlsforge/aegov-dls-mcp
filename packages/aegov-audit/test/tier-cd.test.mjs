@@ -255,6 +255,70 @@ describe("bounded crawl (local throwaway servers)", () => {
       await p.close();
     }
   });
+
+  // ---- 3.62, page-level meta-tag management ----
+
+  const crawlOf = async (routes) => {
+    const srv = await serve(routes);
+    const base = `http://127.0.0.1:${srv.address().port}/`;
+    const p = await browser.newPage();
+    try {
+      await p.goto(base);
+      return await runCrawlChecks(browser, p, base);
+    } finally {
+      await p.close();
+      srv.close();
+    }
+  };
+
+  test("no page carries a meta description → 3.62 flags (the gap duplicates cannot see)", async () => {
+    // The duplicate rules group non-empty values, so an all-empty site used to
+    // produce no finding at all — the worse case reported nothing.
+    const { findings } = await crawlOf({
+      "/": { body: page("Home", '<nav><a href="/a">A</a> <a href="/b">B</a></nav>') },
+      "/a": { body: page("About the corporation", "<p>a</p>") },
+      "/b": { body: page("Our services", "<p>b</p>") },
+    });
+    const f = findings.find((x) => x.ruleId === "crawl-meta-per-page");
+    assert.ok(f, findings.map((x) => x.ruleId).join(","));
+    assert.match(f.message, /no page carries a meta description/);
+    assert.match(f.message, /3\.62/);
+    // Titles do vary here, so the title half must not be claimed as a gap.
+    assert.ok(!/repeats one <title>/.test(f.message), f.message);
+  });
+
+  test("one title and one description repeated across every page → 3.62 flags both halves", async () => {
+    const { findings } = await crawlOf({
+      "/": {
+        body: page("Fujairah Portal", '<nav><a href="/a">A</a> <a href="/b">B</a></nav>', {
+          desc: "one description for the whole site",
+        }),
+      },
+      "/a": { body: page("Fujairah Portal", "<p>a</p>", { desc: "one description for the whole site" }) },
+      "/b": { body: page("Fujairah Portal", "<p>b</p>", { desc: "one description for the whole site" }) },
+    });
+    const f = findings.find((x) => x.ruleId === "crawl-meta-per-page");
+    assert.ok(f, findings.map((x) => x.ruleId).join(","));
+    assert.match(f.message, /repeats one meta description/);
+    assert.match(f.message, /repeats one <title>/);
+    assert.match(f.message, /1 distinct title\(s\), 1 distinct description\(s\)/);
+    // Never claims an ability verdict — only that evidence is absent.
+    assert.match(f.message, /No evidence of page-level meta-tag management/);
+  });
+
+  test("per-page titles and descriptions → 3.62 stays quiet", async () => {
+    const { findings } = await crawlOf({
+      "/": {
+        body: page("Home", '<nav><a href="/a">A</a> <a href="/b">B</a></nav>', {
+          desc: "home description",
+          alternate: true,
+        }),
+      },
+      "/a": { body: page("About", "<p>a</p>", { desc: "about description", alternate: true }) },
+      "/b": { body: page("Services", "<p>b</p>", { desc: "services description", alternate: true }) },
+    });
+    assert.ok(!findings.some((x) => x.ruleId === "crawl-meta-per-page"), findings.map((x) => x.ruleId).join(","));
+  });
 });
 
 describe("checklist gating for the new evidence engines", () => {

@@ -200,8 +200,15 @@ async function scan(page: Page): Promise<DesignScan> {
       }
     }
 
-    /* ---- 1.15: is this page English, and what does the copy read like? */
-    const text = bodyText.replace(/\s+/g, " ").slice(0, 120_000);
+    /* ---- 1.15: is this page English, and what does the copy read like?
+     *
+     * innerText, NOT textContent: textContent concatenates the source of every
+     * inline <script> and <style> too, which on a script-heavy portal buries
+     * the real copy under JavaScript. That made an 82%-Arabic page read as
+     * English and matched CSS property names ("color", "center") as if they
+     * were prose — caught on fnrc.gov.ae before this shipped. */
+    const rendered = (document.body as HTMLElement | null)?.innerText ?? "";
+    const text = rendered.replace(/\s+/g, " ").slice(0, 120_000);
     const latin = (text.match(/[A-Za-z]/g) ?? []).length;
     const arabic = (text.match(/[؀-ۿ]/g) ?? []).length;
 

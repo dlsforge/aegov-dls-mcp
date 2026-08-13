@@ -108,6 +108,27 @@ describe("not-applicable, never a false pass", () => {
     assert.ok(!findings.some((f) => f.ruleId === "design-british-english"));
   });
 
+  test("inline script/style source is not copy — an Arabic page stays Arabic", async () => {
+    // Regression: textContent concatenates <script>/<style> source, which on a
+    // script-heavy portal outweighed the real copy and made fnrc.gov.ae — an
+    // 82% Arabic page mislabelled lang="en" — read as English, then matched
+    // the CSS property names "color" and "center" as American spelling.
+    const { notApplicableRules, findings } = await onContent(
+      `<html lang="en"><head><style>
+         .a { color: #fff; text-align: center; }
+         .b { background-color: #000; }
+       </style></head><body>
+         <p>هذه صفحة عربية بالكامل ولا تحتوي على نص إنجليزي حقيقي على الإطلاق.</p>
+         <script>const color = "center"; function organize(){ return color; }</script>
+       </body></html>`,
+    );
+    assert.ok(
+      notApplicableRules.includes("design-british-english"),
+      "script/style text must not make an Arabic page look English",
+    );
+    assert.ok(!findings.some((f) => f.ruleId === "design-british-english"));
+  });
+
   test("those rules land on their items as not-checked, not as clean", async () => {
     const { notApplicableRules } = await onContent(
       "<html lang='ar' dir='rtl'><body><p>عربي فقط.</p></body></html>",

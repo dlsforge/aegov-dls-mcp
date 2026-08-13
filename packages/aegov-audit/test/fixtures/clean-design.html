@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Clean design fixture</title>
+    <style>
+      /* 2.28 — mobile-first: min-width conditions build upward */
+      @media (min-width: 640px) { .grid { display: flex; } }
+      @media (min-width: 768px) { .grid { gap: 1rem; } }
+      @media (min-width: 1024px) { .grid { gap: 1.5rem; } }
+      @media (min-width: 1280px) { .grid { gap: 2rem; } }
+      @media (max-width: 480px) { .grid { display: block; } }
+
+      /* 2.5 — comfortable body copy */
+      p { font-size: 16px; line-height: 1.6; }
+
+      /* 2.31 — buttons are filled and padded; prose links stay underlined text */
+      button {
+        background: #b68a35;
+        border: 1px solid #8a6626;
+        padding: 12px 20px;
+        color: #fff;
+        text-decoration: none;
+      }
+      p a[href] {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        text-decoration: underline;
+        color: #8a6626;
+      }
+      /* 3.5 — sections span the viewport; only inner content is constrained */
+      .inner { max-width: 900px; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <header><nav><a href="/">Home</a></nav></header>
+    <main>
+      <div class="inner">
+        <h1>Service centre</h1>
+        <p>
+          We organise the colour of every neighbour's favourite catalogue, and our behaviour
+          honours the labour of the travelling officer. Please visit the centre to fulfil the
+          enrolment.
+        </p>
+        <p>
+          The centre will organise your favourite documents and honour the colour of the
+          neighbourhood without travelling.
+        </p>
+        <p>
+          A third paragraph describing the colour, the centre and the labour behind our organised
+          catalogue of services.
+        </p>
+        <p>Contact the <a href="/help">help centre</a> for the organised catalogue.</p>
+
+        <!-- 2.33 — controls inside a DLS form component -->
+        <form class="aegov-form">
+          <div class="aegov-form-control">
+            <label for="eid">Emirates ID</label>
+            <input id="eid" type="text" name="eid" />
+          </div>
+          <div class="aegov-form-control">
+            <select name="emirate"><option>Fujairah</option></select>
+          </div>
+          <div class="aegov-form-control">
+            <textarea name="notes"></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </main>
+    <footer><div class="inner"><p>2026 Fujairah</p></div></footer>
+
+    <!-- 3.45 — an outdated-browser notice, phrased against current browsers -->
+    <div id="browser-support" hidden>
+      Your browser is not supported. Please update your browser to a current version.
+    </div>
+    <!-- 3.44 — noscript fallback for the core task -->
+    <noscript>
+      <p>Scripting is disabled. The service is still available by visiting our offices.</p>
+    </noscript>
+    <script type="module">
+      window.__clean = true;
+    </script>
+    <script nomodule>
+      window.__cleanFallback = true;
+    </script>
+  </body>
+</html>

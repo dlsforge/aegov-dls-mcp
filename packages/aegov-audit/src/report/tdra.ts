@@ -117,6 +117,15 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   // Origin HTTP probes (Stage 2B Tier B) — evidence exists only for http(s)
   // targets; buildChecklistView marks these "not-checked" for local files.
   "http-error-page": ["2.42", "3.38"],
+  // Design conformance the rendered page settles on its own. Items asking
+  // whether a process happened stay human even where an outcome is visible.
+  "design-action-affordance": ["2.31"],
+  "design-site-boxed": ["3.5"],
+  "design-form-components": ["2.33"],
+  "design-graceful-degradation": ["3.44"],
+  "design-browser-notice-stale": ["3.45"],
+  "design-mobile-first": ["2.28"],
+  "design-british-english": ["1.15"],
   "http-sitemap": ["3.64"],
   // 1.5 and 3.64 are different artefacts for different consumers: the XML file
   // for crawlers, this page for people. Neither substitutes for the other.

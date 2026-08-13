@@ -30,6 +30,7 @@ import { runZoomCheck, runKeyboardChecks, runBreakpointCheck } from "./engines/i
 import { runCrawlChecks, CRAWL_CAP } from "./engines/crawl.js";
 import { runStackChecks } from "./engines/stack.js";
 import { runBlockChecks } from "./engines/blocks.js";
+import { runDesignChecks } from "./engines/design.js";
 import { runHtmlValidation } from "./engines/validate-html.js";
 import { writeArtifacts } from "./artifacts.js";
 import { runParityCheck, discoverAlternate } from "./engines/parity.js";
@@ -322,6 +323,8 @@ try {
   ];
   const blocks = await runBlockChecks(page);
   dlsFindings.push(...blocks.findings);
+  const design = await runDesignChecks(page);
+  dlsFindings.push(...design.findings);
   const htmlValidation = await runHtmlValidation(finalUrl);
   dlsFindings.push(...htmlValidation.findings);
   // Keyboard walk and viewport emulation mutate focus/viewport — run them
@@ -377,7 +380,7 @@ try {
     kbdRan: kbd.ran,
     ministryChecked: entityType === "ministry",
     htmlValidateRan: htmlValidation.ran,
-    notApplicableRules: blocks.notApplicableRules,
+    notApplicableRules: [...blocks.notApplicableRules, ...design.notApplicableRules],
     blocksRan: blocks.ran,
   });
 

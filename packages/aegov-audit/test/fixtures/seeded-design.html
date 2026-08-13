@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Seeded design fixture</title>
+    <style>
+      /* 2.28 — desktop-first: max-width conditions dominate min-width */
+      @media (max-width: 1200px) { .grid { display: block; } }
+      @media (max-width: 992px) { .grid { margin: 0; } }
+      @media (max-width: 768px) { .grid { padding: 0; } }
+      @media (max-width: 480px) { .grid { font-size: 14px; } }
+      @media (min-width: 1400px) { .grid { max-width: 1320px; } }
+
+      /* 3.5 — the whole page, header and footer included, inside one box */
+      .page-wrap { max-width: 900px; margin: 0 auto; }
+
+      /* 2.5 — body copy below the 1.5x line-height floor */
+      p { font-size: 16px; line-height: 18px; }
+
+      /* 2.31 — buttons and prose links share one treatment: bare text */
+      button,
+      p a[href] {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        text-decoration: none;
+        color: #123456;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <header><nav><a href="/">Home</a></nav></header>
+      <main>
+        <h1>Service center</h1>
+        <p>
+          We organize the color of every neighbor's favorite catalog, and our behavior honors the
+          labor of the traveling officer. Please visit the center to fulfill the enrollment.
+        </p>
+        <p>
+          The center will organize your favorite documents. Our behavior is to honor the color of
+          the neighborhood and fulfill every request without traveling.
+        </p>
+        <p>
+          Another paragraph so the sample passes the minimum, describing the color and the center
+          and the labor involved in the organized catalog.
+        </p>
+        <p>Contact the <a href="/help">help center</a> for the organized catalog of services.</p>
+
+        <!-- 2.33 — form controls with no DLS component anywhere in the ancestry -->
+        <form>
+          <label for="eid">Emirates ID</label>
+          <input id="eid" type="text" name="eid" />
+          <select name="emirate"><option>Fujairah</option></select>
+          <textarea name="notes"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </main>
+      <footer><p>2025 Fujairah</p></footer>
+    </div>
+
+    <!-- 3.44 — module script, no nomodule fallback, no noscript -->
+    <script type="module">
+      window.__seeded = true;
+    </script>
+    <!-- 3.45 — deliberately no outdated-browser notice anywhere -->
+  </body>
+</html>

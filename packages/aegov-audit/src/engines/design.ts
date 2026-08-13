@@ -244,6 +244,67 @@ async function scan(page: Page): Promise<DesignScan> {
   })) as DesignScan;
 }
 
+/** Minimum og:image the social platforms render without cropping or upscaling. */
+const OG_IMAGE_MIN = { width: 1200, height: 630 };
+
+/**
+ * 3.63 — the image sizes used by the Open Graph tags. Loaded in the page
+ * rather than fetched from Node so cookies, auth and relative URLs resolve
+ * exactly as they do for a real visitor.
+ */
+async function ogImageCheck(page: Page): Promise<{
+  finding: AuditFinding | null;
+  notApplicable: boolean;
+}> {
+  const probe = await page.evaluate(async () => {
+    const el = document.querySelector('meta[property="og:image" i], meta[name="og:image" i]');
+    const src = el?.getAttribute("content")?.trim();
+    if (!src) return { state: "absent" as const };
+    let url: string;
+    try {
+      url = new URL(src, location.href).href;
+    } catch {
+      return { state: "absent" as const };
+    }
+    return await new Promise<{ state: "ok" | "unloadable"; url: string; w?: number; h?: number }>(
+      (resolve) => {
+        const img = new Image();
+        const done = (state: "ok" | "unloadable") =>
+          resolve({ state, url, w: img.naturalWidth, h: img.naturalHeight });
+        img.onload = () => done("ok");
+        img.onerror = () => done("unloadable");
+        setTimeout(() => done("unloadable"), 10_000);
+        img.src = url;
+      },
+    );
+  });
+
+  // No og:image at all is dom-og-tags' business (3.36), not this rule's; an
+  // image we could not load is no evidence either way.
+  if (probe.state !== "ok" || !probe.w || !probe.h) return { finding: null, notApplicable: true };
+  if (probe.w >= OG_IMAGE_MIN.width && probe.h >= OG_IMAGE_MIN.height)
+    return { finding: null, notApplicable: false };
+
+  return {
+    notApplicable: false,
+    finding: {
+      engine: "dls",
+      ruleId: "design-og-image-size",
+      severity: "minor",
+      confidence: "heuristic",
+      message:
+        `The og:image is ${probe.w}×${probe.h}, below the ${OG_IMAGE_MIN.width}×${OG_IMAGE_MIN.height} ` +
+        `social platforms render without cropping or upscaling — the checklist asks for correct ` +
+        `image sizes for the Open Graph tags. Source: ${probe.url}`,
+      fix: `Publish the og:image at ${OG_IMAGE_MIN.width}×${OG_IMAGE_MIN.height} or larger, 1.91:1.`,
+      helpUrl: null,
+      tags: ["aegov-dls", "design", "meta"],
+      targets: [probe.url],
+      nodeCount: 1,
+    },
+  };
+}
+
 export async function runDesignChecks(
   page: Page,
 ): Promise<{ findings: AuditFinding[]; notApplicableRules: string[] }> {
@@ -377,6 +438,11 @@ export async function runDesignChecks(
         hits,
       );
   }
+
+  /* 3.63 — Open Graph image dimensions */
+  const og = await ogImageCheck(page);
+  if (og.finding) findings.push(og.finding);
+  if (og.notApplicable) notApplicableRules.push("design-og-image-size");
 
   return { findings, notApplicableRules };
 }

@@ -137,6 +137,105 @@ export async function runBreakpointCheck(page: Page): Promise<AuditFinding[]> {
   }
 }
 
+/** The canvas and container widths checklist item 2.26 names by number. */
+const CANVAS_WIDTH = 1536;
+const CONTAINER_WIDTH = 1480;
+/** Container measurement tolerance: padding legitimately trims a few px. */
+const CONTAINER_TOLERANCE = 48;
+
+/**
+ * 2.26 — the 1536px canvas and 1480px container, measured on the built page.
+ *
+ * 2.4 (responsive typography) deliberately has NO rule: nothing in the design
+ * system defines a threshold for "responsive" type, and the item asks whether
+ * the design process planned for it. Flagging a fixed type size would be an
+ * opinion wearing a standard's clothes.
+ */
+export async function runResponsiveDesignChecks(
+  page: Page,
+): Promise<{ findings: AuditFinding[]; notApplicableRules: string[] }> {
+  const vp = page.viewportSize();
+  const findings: AuditFinding[] = [];
+  const notApplicableRules: string[] = [];
+  if (!vp) return { findings, notApplicableRules: ["design-canvas-container"] };
+
+  const sample = async () =>
+    page.evaluate(() => {
+      const px = (v: string) => parseFloat(v) || 0;
+      const visible = (el: Element) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 && r.height > 0;
+      };
+      const dominant = (sel: string) => {
+        const counts = new Map<number, number>();
+        for (const el of Array.from(document.querySelectorAll(sel)).filter(visible).slice(0, 40)) {
+          const size = Math.round(px(getComputedStyle(el).fontSize) * 100) / 100;
+          counts.set(size, (counts.get(size) ?? 0) + 1);
+        }
+        let best: number | null = null;
+        let n = 0;
+        for (const [k, v] of counts) if (v > n) ((best = k), (n = v));
+        return best;
+      };
+      // The site's content container: the widest element that is deliberately
+      // constrained (an author-set max-width), not merely narrow by accident.
+      let container = 0;
+      for (const el of Array.from(document.body?.querySelectorAll("*") ?? []).slice(0, 4000)) {
+        const cs = getComputedStyle(el);
+        if (cs.maxWidth === "none" || !cs.maxWidth) continue;
+        const w = el.getBoundingClientRect().width;
+        if (w > container) container = w;
+      }
+      return {
+        body: dominant("p"),
+        heading: dominant("h1, h2"),
+        container: Math.round(container),
+      };
+    });
+
+  try {
+    await page.setViewportSize({ width: 640, height: vp.height });
+    await page.waitForTimeout(350);
+    const small = await sample();
+    await page.setViewportSize({ width: CANVAS_WIDTH, height: vp.height });
+    await page.waitForTimeout(350);
+    const large = await sample();
+    await page.setViewportSize(vp);
+    await page.waitForTimeout(100);
+
+    /* 2.26 — the container at the 1536px canvas */
+    if (!large.container) {
+      notApplicableRules.push("design-canvas-container");
+    } else if (Math.abs(large.container - CONTAINER_WIDTH) > CONTAINER_TOLERANCE) {
+      findings.push({
+        engine: "dls",
+        ruleId: "design-canvas-container",
+        severity: "minor",
+        confidence: "heuristic",
+        message:
+          `At the ${CANVAS_WIDTH}px canvas the widest constrained container renders ` +
+          `${large.container}px wide, against the ${CONTAINER_WIDTH}px the checklist names ` +
+          `(±${CONTAINER_TOLERANCE}px allowed for padding). This measures the built page; it does ` +
+          `not speak to whether the wireframes used that canvas.`,
+        fix: `Set the content container to ${CONTAINER_WIDTH}px within a ${CANVAS_WIDTH}px canvas.`,
+        helpUrl: null,
+        tags: ["aegov-dls", "interaction", "design"],
+        targets: [`${large.container}px`],
+        nodeCount: 1,
+      });
+    }
+  } catch {
+    try {
+      await page.setViewportSize(vp);
+    } catch {
+      /* page gone — nothing to restore */
+    }
+    return { findings: [], notApplicableRules: ["design-canvas-container"] };
+  }
+
+  return { findings, notApplicableRules };
+}
+
 type WalkAnalysis = {
   wrapped: boolean;
   steps: number;

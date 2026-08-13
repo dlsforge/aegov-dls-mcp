@@ -15,6 +15,7 @@ import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
 import { runDesignChecks } from "../dist/engines/design.js";
+import { runResponsiveDesignChecks } from "../dist/engines/interaction.js";
 import { buildChecklistView } from "../dist/report/tdra.js";
 
 const fx = (name) => pathToFileURL(resolve(`test/fixtures/${name}`)).href;
@@ -137,6 +138,71 @@ describe("not-applicable, never a false pass", () => {
     const status = (id) => view.machineCheckedItems.find((i) => i.id === id).status;
     assert.equal(status("1.15"), "not-checked");
     assert.equal(status("2.33"), "not-checked");
+  });
+});
+
+describe("2.26 — the container measured at the 1536px canvas", () => {
+  const page = (css, body = "<h1>Heading</h1><p>Copy for the sample.</p>") =>
+    `<html lang="en"><head><style>${css}</style></head><body>${body}</body></html>`;
+
+  async function responsive(html) {
+    const p = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+    try {
+      await p.setContent(html);
+      return await runResponsiveDesignChecks(p);
+    } finally {
+      await p.close();
+    }
+  }
+
+  test("a container near 1480px at the 1536px canvas is accepted", async () => {
+    const { findings } = await responsive(
+      page("p{font-size:16px}h1{font-size:28px}.wrap{max-width:1480px;margin:0 auto}",
+        '<div class="wrap"><h1>H</h1><p>Copy for the sample.</p></div>'),
+    );
+    assert.ok(!findings.some((f) => f.ruleId === "design-canvas-container"),
+      findings.map((f) => f.ruleId).join(","));
+  });
+
+  test("a container far from 1480px reports the measured width", async () => {
+    const { findings } = await responsive(
+      page("p{font-size:16px}h1{font-size:28px}.wrap{max-width:960px;margin:0 auto}",
+        '<div class="wrap"><h1>H</h1><p>Copy for the sample.</p></div>'),
+    );
+    const f = findings.find((x) => x.ruleId === "design-canvas-container");
+    assert.ok(f, findings.map((x) => x.ruleId).join(","));
+    assert.match(f.message, /960px/);
+    // Must not overclaim: the item asks about wireframes, this measures the build.
+    assert.match(f.message, /does not speak to whether the wireframes/i);
+  });
+
+  test("no constrained container at all is not-applicable, not a pass", async () => {
+    const { notApplicableRules } = await responsive(page("p{font-size:16px}h1{font-size:28px}"));
+    assert.ok(notApplicableRules.includes("design-canvas-container"), notApplicableRules.join(","));
+  });
+});
+
+describe("3.63 — og:image dimensions", () => {
+  // 1x1 and 1200x630 PNGs as data URIs, so no network is involved.
+  const tiny =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+
+  test("an undersized og:image flags with its measured size", async () => {
+    const { findings } = await onContent(
+      `<html lang="en"><head><meta property="og:image" content="${tiny}"></head><body><p>x</p></body></html>`,
+    );
+    const f = findings.find((x) => x.ruleId === "design-og-image-size");
+    assert.ok(f, findings.map((x) => x.ruleId).join(","));
+    assert.match(f.message, /1×1/);
+    assert.match(f.message, /1200×630/);
+  });
+
+  test("no og:image is not-applicable here — that gap belongs to 3.36", async () => {
+    const { notApplicableRules, findings } = await onContent(
+      "<html lang='en'><body><p>No open graph tags.</p></body></html>",
+    );
+    assert.ok(notApplicableRules.includes("design-og-image-size"));
+    assert.ok(!findings.some((f) => f.ruleId === "design-og-image-size"));
   });
 });
 

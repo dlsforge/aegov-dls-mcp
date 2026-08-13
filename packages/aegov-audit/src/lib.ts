@@ -42,6 +42,7 @@ export {
   runZoomCheck,
   runKeyboardChecks,
   runBreakpointCheck,
+  runResponsiveDesignChecks,
   DLS_BREAKPOINTS,
 } from "./engines/interaction.js";
 export { runCrawlChecks, CRAWL_CAP, parseRobots } from "./engines/crawl.js";

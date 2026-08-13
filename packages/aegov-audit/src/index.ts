@@ -26,7 +26,12 @@ import { runAssetChecks } from "./engines/assets.js";
 import { runMediaChecks } from "./engines/media.js";
 import { runHttpChecks } from "./engines/http.js";
 import { runStyleChecks } from "./engines/styles.js";
-import { runZoomCheck, runKeyboardChecks, runBreakpointCheck } from "./engines/interaction.js";
+import {
+  runZoomCheck,
+  runKeyboardChecks,
+  runBreakpointCheck,
+  runResponsiveDesignChecks,
+} from "./engines/interaction.js";
 import { runCrawlChecks, CRAWL_CAP } from "./engines/crawl.js";
 import { runStackChecks } from "./engines/stack.js";
 import { runBlockChecks } from "./engines/blocks.js";
@@ -333,6 +338,8 @@ try {
   dlsFindings.push(...kbd.findings);
   dlsFindings.push(...(await runZoomCheck(page)));
   dlsFindings.push(...(await runBreakpointCheck(page)));
+  const responsive = await runResponsiveDesignChecks(page);
+  dlsFindings.push(...responsive.findings);
   let crawl: { findings: AuditFinding[]; pagesCrawled: number } = { findings: [], pagesCrawled: 0 };
   if (!noCrawl && /^https?:/i.test(finalUrl)) {
     crawl = await runCrawlChecks(browser, page, finalUrl);
@@ -380,7 +387,11 @@ try {
     kbdRan: kbd.ran,
     ministryChecked: entityType === "ministry",
     htmlValidateRan: htmlValidation.ran,
-    notApplicableRules: [...blocks.notApplicableRules, ...design.notApplicableRules],
+    notApplicableRules: [
+      ...blocks.notApplicableRules,
+      ...design.notApplicableRules,
+      ...responsive.notApplicableRules,
+    ],
     blocksRan: blocks.ran,
   });
 

@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Clean design fixture</title>
+    <!-- A correctly sized og:image (SVG carries its dimensions, so the fixture
+         stays small and needs no network). -->
+    <meta
+      property="og:image"
+      content="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3C/svg%3E"
+    />
     <style>
       /* 2.28 — mobile-first: min-width conditions build upward */
       @media (min-width: 640px) { .grid { display: flex; } }

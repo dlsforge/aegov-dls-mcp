@@ -126,6 +126,8 @@ const RULE_TO_ITEMS: Record<string, string[]> = {
   "design-browser-notice-stale": ["3.45"],
   "design-mobile-first": ["2.28"],
   "design-british-english": ["1.15"],
+  "design-canvas-container": ["2.26"],
+  "design-og-image-size": ["3.63"],
   "http-sitemap": ["3.64"],
   // 1.5 and 3.64 are different artefacts for different consumers: the XML file
   // for crawlers, this page for people. Neither substitutes for the other.

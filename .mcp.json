@@ -2,7 +2,7 @@
   "mcpServers": {
     "aegov-dls": {
       "command": "node",
-      "args": ["dist/index.js"]
+      "args": ["packages/aegov-mcp/dist/index.js"]
     }
   }
 }

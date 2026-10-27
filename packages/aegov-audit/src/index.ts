@@ -340,7 +340,11 @@ try {
   dlsFindings.push(...(await runBreakpointCheck(page)));
   const responsive = await runResponsiveDesignChecks(page);
   dlsFindings.push(...responsive.findings);
-  let crawl: { findings: AuditFinding[]; pagesCrawled: number } = { findings: [], pagesCrawled: 0 };
+  let crawl: { findings: AuditFinding[]; pagesCrawled: number; crawledUrls: string[] } = {
+    findings: [],
+    pagesCrawled: 0,
+    crawledUrls: [],
+  };
   if (!noCrawl && /^https?:/i.test(finalUrl)) {
     crawl = await runCrawlChecks(browser, page, finalUrl);
     console.error(
@@ -384,6 +388,7 @@ try {
     findings,
     lighthouse,
     crawlRan: crawl.pagesCrawled > 0,
+    crawledUrls: crawl.crawledUrls,
     kbdRan: kbd.ran,
     ministryChecked: entityType === "ministry",
     htmlValidateRan: htmlValidation.ran,

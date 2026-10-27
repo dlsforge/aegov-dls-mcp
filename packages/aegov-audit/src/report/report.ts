@@ -42,6 +42,8 @@ export type AuditReport = {
     machine: string;
     note: string;
     lighthouse: Array<LighthouseScores["runConditions"]> | null;
+    /** Exact subpage URLs the Tier D crawl sampled — null when the crawl did not run. */
+    crawledUrls: string[] | null;
   };
   summary: {
     findingCount: number;
@@ -118,6 +120,8 @@ export function buildReport(input: {
   httpRan?: boolean;
   /** Whether the Tier D crawl reached at least one subpage. Default false. */
   crawlRan?: boolean;
+  /** Exact subpage URLs the Tier D crawl sampled (recorded so two runs are comparable). */
+  crawledUrls?: string[];
   /** Whether the Tier C keyboard walk completed without aborting. Default true. */
   kbdRan?: boolean;
   /** Whether --entity-type ministry was passed (item 2.12). Default false. */
@@ -141,6 +145,7 @@ export function buildReport(input: {
       machine: `${process.platform} ${process.arch}, node ${process.version}`,
       note: "Local run — see the disclaimers before comparing numbers across environments.",
       lighthouse: input.lighthouse?.map((r) => r.runConditions) ?? null,
+      crawledUrls: input.crawlRan ? (input.crawledUrls ?? []) : null,
     },
     summary: {
       findingCount: input.findings.length,
@@ -179,6 +184,11 @@ export function renderMarkdown(r: AuditReport): string {
   lines.push(`> Page: HTTP ${r.page.status}, ${r.page.nodes} nodes in ${r.page.loadMs} ms — "${r.page.title}" (lang=${r.page.lang || "unset"} dir=${r.page.dir || "unset"})`);
   if (r.page.finalUrl && r.page.finalUrl !== r.target)
     lines.push(`> Final URL after redirects: ${r.page.finalUrl}`);
+  if (r.runConditions.crawledUrls?.length)
+    lines.push(
+      `> Crawl sampled ${r.runConditions.crawledUrls.length} subpage(s): ` +
+        r.runConditions.crawledUrls.join(" · "),
+    );
   lines.push("");
   lines.push(
     `**${r.summary.findingCount} finding(s)** — ${s.critical} critical, ${s.serious} serious, ` +

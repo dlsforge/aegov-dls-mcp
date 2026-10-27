@@ -19,7 +19,7 @@ import { chromium } from "playwright";
 import { loadCatalog } from "@dlsforge/aegov-rules-core";
 import { runStyleChecks } from "../dist/engines/styles.js";
 import { runZoomCheck, runKeyboardChecks } from "../dist/engines/interaction.js";
-import { runCrawlChecks, parseRobots } from "../dist/engines/crawl.js";
+import { runCrawlChecks, orderCandidates, parseRobots } from "../dist/engines/crawl.js";
 import { buildChecklistView } from "../dist/report/tdra.js";
 
 const fx = (name) => pathToFileURL(resolve(`test/fixtures/${name}`)).href;
@@ -156,6 +156,62 @@ describe("robots.txt parsing", () => {
   });
 });
 
+describe("deterministic candidate ordering (STAGE2B §13 follow-up)", () => {
+  const home = "https://example.gov.ae/";
+  const link = (href, inChrome = false) => ({ href, inChrome });
+
+  test("DOM order does not matter — shuffled input yields identical output", () => {
+    const links = [
+      link("https://example.gov.ae/services", true),
+      link("https://example.gov.ae/about", true),
+      link("https://example.gov.ae/news/item-2"),
+      link("https://example.gov.ae/contact", true),
+      link("https://example.gov.ae/news/item-1"),
+    ];
+    const a = orderCandidates(links, home);
+    const b = orderCandidates([...links].reverse(), home);
+    assert.deepEqual(a, b);
+    assert.deepEqual(a, [
+      // chrome group first, each group sorted by URL
+      "https://example.gov.ae/about",
+      "https://example.gov.ae/contact",
+      "https://example.gov.ae/services",
+      "https://example.gov.ae/news/item-1",
+      "https://example.gov.ae/news/item-2",
+    ]);
+  });
+
+  test("a link seen in both chrome and body counts as chrome, once", () => {
+    const out = orderCandidates(
+      [
+        link("https://example.gov.ae/zz-body-only"),
+        link("https://example.gov.ae/dual"),
+        link("https://example.gov.ae/dual", true),
+      ],
+      home,
+    );
+    assert.deepEqual(out, ["https://example.gov.ae/dual", "https://example.gov.ae/zz-body-only"]);
+  });
+
+  test("home, other origins, assets, and non-http schemes are excluded; trailing slashes dedupe", () => {
+    const out = orderCandidates(
+      [
+        link("https://example.gov.ae/"),
+        link("https://example.gov.ae"),
+        link("https://other.gov.ae/page"),
+        link("https://example.gov.ae/brochure.pdf"),
+        link("mailto:info@example.gov.ae"),
+        link("https://example.gov.ae/about/"),
+        link("https://example.gov.ae/about"),
+        link("not a url"),
+      ],
+      home,
+    );
+    assert.equal(out.length, 1);
+    assert.match(out[0], /example\.gov\.ae\/about\/?$/);
+  });
+});
+
 describe("bounded crawl (local throwaway servers)", () => {
   const page = (title, body, { desc = "", alternate = false } = {}) =>
     `<!DOCTYPE html><html lang="en"><head><title>${title}</title>` +
@@ -200,8 +256,13 @@ describe("bounded crawl (local throwaway servers)", () => {
     const p = await browser.newPage();
     try {
       await p.goto(base);
-      const { findings, pagesCrawled } = await runCrawlChecks(browser, p, base);
+      const { findings, pagesCrawled, crawledUrls } = await runCrawlChecks(browser, p, base);
       assert.equal(pagesCrawled, 3, "a, b, apply — blocked is robots-disallowed");
+      // The sampled set is recorded, in the deterministic (chrome-first, URL-sorted) order.
+      assert.deepEqual(
+        crawledUrls.map((u) => new URL(u).pathname),
+        ["/a", "/b", "/services/apply"],
+      );
       const byRule = Object.fromEntries(findings.map((f) => [f.ruleId, f]));
       assert.ok(byRule["crawl-title-duplicate"], findings.map((f) => f.ruleId).join(","));
       assert.ok(!byRule["crawl-title-duplicate"].targets.some((t) => t.includes("/blocked")));

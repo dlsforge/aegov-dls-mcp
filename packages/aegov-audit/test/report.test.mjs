@@ -121,6 +121,21 @@ describe("report aggregation", () => {
     assert.equal(row("firstContentfulPaint").meetsUnderLocalConditions, true);
   });
 
+  test("the report records which URLs the crawl sampled; null when the crawl did not run", () => {
+    const urls = ["https://example.gov.ae/a", "https://example.gov.ae/b"];
+    const withCrawl = buildReport({
+      target: "https://example.gov.ae", page: PAGE, engines: {}, findings: [], lighthouse: null,
+      crawlRan: true, crawledUrls: urls,
+    });
+    assert.deepEqual(withCrawl.runConditions.crawledUrls, urls);
+    assert.match(renderMarkdown(withCrawl), /Crawl sampled 2 subpage\(s\): .*\/a · .*\/b/);
+    const noCrawl = buildReport({
+      target: "https://example.gov.ae", page: PAGE, engines: {}, findings: [], lighthouse: null,
+    });
+    assert.equal(noCrawl.runConditions.crawledUrls, null);
+    assert.doesNotMatch(renderMarkdown(noCrawl), /Crawl sampled/);
+  });
+
   test("the markdown report carries checklist shape, run conditions and every disclaimer", () => {
     const r = buildReport({
       target: "https://example.gov.ae",

@@ -45,7 +45,7 @@ export {
   runResponsiveDesignChecks,
   DLS_BREAKPOINTS,
 } from "./engines/interaction.js";
-export { runCrawlChecks, CRAWL_CAP, parseRobots } from "./engines/crawl.js";
+export { runCrawlChecks, orderCandidates, CRAWL_CAP, parseRobots } from "./engines/crawl.js";
 export { runStackChecks } from "./engines/stack.js";
 export { runDesignChecks } from "./engines/design.js";
 export { runHtmlValidation } from "./engines/validate-html.js";

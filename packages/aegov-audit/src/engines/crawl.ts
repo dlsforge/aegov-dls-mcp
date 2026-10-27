@@ -13,6 +13,13 @@
  * loads with a delay, a self-identifying User-Agent, and robots.txt
  * Disallow rules honoured (for our UA group, else *). Every network failure
  * is fail-soft: a page that will not load is skipped, never guessed about.
+ *
+ * Determinism (STAGE2B §13 follow-up): candidates are ORDERED, not taken in
+ * DOM order — nav/header/footer links first, each group sorted by URL — so
+ * two runs of an unchanged site sample the same pages regardless of load
+ * timing or injection order. The report records exactly which URLs were
+ * crawled, so any residual variance (a link present in one run only, a page
+ * that timed out) is visible instead of silently changing the verdict.
  */
 import type { Browser, Page } from "playwright";
 import type { AuditFinding, AuditSeverity } from "../report/types.js";
@@ -102,29 +109,22 @@ async function scanPage(page: Page, url: string): Promise<PageScan> {
   }, url)) as PageScan;
 }
 
-export async function runCrawlChecks(
-  browser: Browser,
-  homePage: Page,
+/**
+ * Deterministic candidate ordering (exported for test): same-origin page
+ * links, deduplicated, nav/header/footer links before body links, each group
+ * sorted by URL (plain codepoint order — locale-independent). A link that
+ * appears both in the chrome and the body counts as chrome. DOM order and
+ * load timing no longer decide which pages fill the crawl cap.
+ */
+export function orderCandidates(
+  rawLinks: Array<{ href: string; inChrome: boolean }>,
   finalUrl: string,
-): Promise<{ findings: AuditFinding[]; pagesCrawled: number }> {
-  if (!/^https?:/i.test(finalUrl)) return { findings: [], pagesCrawled: 0 };
+): string[] {
   const origin = new URL(finalUrl).origin;
-
-  // Candidate links from the rendered home page, nav/footer links first.
-  const rawLinks = (await homePage
-    .evaluate(() =>
-      Array.from(document.querySelectorAll("a[href]")).map((a) => ({
-        href: (a as HTMLAnchorElement).href,
-        inChrome: a.closest("nav, header, footer") !== null,
-      })),
-    )
-    .catch(() => [])) as Array<{ href: string; inChrome: boolean }>;
-
   const normalize = (u: URL) => u.origin + u.pathname.replace(/\/+$/, "") + u.search;
   const home = normalize(new URL(finalUrl));
-  const seen = new Set<string>();
-  const candidates: string[] = [];
-  for (const { href } of [...rawLinks.filter((l) => l.inChrome), ...rawLinks.filter((l) => !l.inChrome)]) {
+  const byKey = new Map<string, { url: string; inChrome: boolean }>();
+  for (const { href, inChrome } of rawLinks) {
     let u: URL;
     try {
       u = new URL(href);
@@ -135,10 +135,37 @@ export async function runCrawlChecks(
     if (SKIP_EXTENSIONS.test(u.pathname)) continue;
     if (/^(mailto|tel|javascript):/i.test(u.protocol)) continue;
     const n = normalize(u);
-    if (n === home || seen.has(n)) continue;
-    seen.add(n);
-    candidates.push(u.origin + u.pathname + u.search);
+    if (n === home) continue;
+    const prior = byKey.get(n);
+    if (prior) prior.inChrome = prior.inChrome || inChrome;
+    else byKey.set(n, { url: u.origin + u.pathname + u.search, inChrome });
   }
+  return [...byKey.values()]
+    .sort((a, b) =>
+      a.inChrome !== b.inChrome ? (a.inChrome ? -1 : 1) : a.url < b.url ? -1 : a.url > b.url ? 1 : 0,
+    )
+    .map((c) => c.url);
+}
+
+export async function runCrawlChecks(
+  browser: Browser,
+  homePage: Page,
+  finalUrl: string,
+): Promise<{ findings: AuditFinding[]; pagesCrawled: number; crawledUrls: string[] }> {
+  if (!/^https?:/i.test(finalUrl)) return { findings: [], pagesCrawled: 0, crawledUrls: [] };
+  const origin = new URL(finalUrl).origin;
+
+  // Candidate links from the rendered home page, in deterministic order.
+  const rawLinks = (await homePage
+    .evaluate(() =>
+      Array.from(document.querySelectorAll("a[href]")).map((a) => ({
+        href: (a as HTMLAnchorElement).href,
+        inChrome: a.closest("nav, header, footer") !== null,
+      })),
+    )
+    .catch(() => [])) as Array<{ href: string; inChrome: boolean }>;
+
+  const candidates = orderCandidates(rawLinks, finalUrl);
 
   let disallow: string[] = [];
   try {
@@ -155,9 +182,9 @@ export async function runCrawlChecks(
     /* home scan failed — subpage evidence still counts */
   }
 
-  let pagesCrawled = 0;
+  const crawledUrls: string[] = [];
   for (const url of candidates) {
-    if (pagesCrawled >= CRAWL_CAP) break;
+    if (crawledUrls.length >= CRAWL_CAP) break;
     if (!robotsAllows(disallow, new URL(url).pathname)) continue;
     await new Promise((r) => setTimeout(r, CRAWL_DELAY_MS));
     let page: Page | null = null;
@@ -166,14 +193,15 @@ export async function runCrawlChecks(
       await page.goto(url, { waitUntil: "load", timeout: PAGE_TIMEOUT_MS });
       await page.waitForTimeout(600);
       scans.push(await scanPage(page, url));
-      pagesCrawled++;
+      crawledUrls.push(url);
     } catch {
       /* fail soft — an unloadable page is skipped, not guessed about */
     } finally {
       await page?.close().catch(() => {});
     }
   }
-  if (pagesCrawled === 0) return { findings: [], pagesCrawled: 0 };
+  const pagesCrawled = crawledUrls.length;
+  if (pagesCrawled === 0) return { findings: [], pagesCrawled: 0, crawledUrls: [] };
 
   const findings: AuditFinding[] = [];
   const add = (
@@ -290,5 +318,5 @@ export async function runCrawlChecks(
       servicePagesWithoutRating.map((s) => s.url),
     );
 
-  return { findings, pagesCrawled };
+  return { findings, pagesCrawled, crawledUrls };
 }
